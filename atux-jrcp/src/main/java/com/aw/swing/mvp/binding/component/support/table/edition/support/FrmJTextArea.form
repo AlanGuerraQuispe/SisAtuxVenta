@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.aw.swing.mvp.binding.component.support.table.edition.support.FrmJTextArea">
+  <grid id="27dc6" binding="pnlMain" layout-manager="FormLayout">
+    <rowspec value="center:d:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:d:grow"/>
+    <rowspec value="top:5dlu:noGrow"/>
+    <rowspec value="center:14dlu:noGrow"/>
+    <colspec value="fill:d:noGrow"/>
+    <colspec value="fill:d:noGrow"/>
+    <colspec value="fill:163px:noGrow"/>
+    <colspec value="left:4dlu:noGrow"/>
+    <colspec value="fill:124px:noGrow"/>
+    <constraints>
+      <xy x="20" y="20" width="295" height="126"/>
+    </constraints>
+    <properties>
+      <minimumSize width="295" height="100"/>
+      <preferredSize width="295" height="100"/>
+    </properties>
+    <border type="line">
+      <color color="-16777216"/>
+    </border>
+    <children>
+      <scrollpane id="c302c">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="a89f7" class="javax.swing.JTextArea" binding="txtData">
+            <constraints/>
+            <properties>
+              <columns value="20"/>
+              <lineWrap value="true"/>
+              <rows value="3"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <grid id="9a85e" binding="pnlToolbar" layout-manager="FormLayout">
+        <rowspec value="fill:14dlu:noGrow"/>
+        <colspec value="fill:40dlu:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:d:noGrow"/>
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="5d9c1" class="javax.swing.JButton" binding="btnAceptar">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <text value="Aceptar"/>
+            </properties>
+          </component>
+          <component id="683f1" class="javax.swing.JButton" binding="btnCancel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false"/>
+            </constraints>
+            <properties>
+              <text value="Cancelar"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

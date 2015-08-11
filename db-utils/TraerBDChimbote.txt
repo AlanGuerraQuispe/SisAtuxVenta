@@ -1,0 +1,25 @@
+
+1) Traer dumps de SUMINISTROSQA y SEGURIDADQA
+
+        PC Desarrollo a Chimbote 200.41.110.24
+	Servidor de BD 10.78.10.12  (usuario sistema operativo  oracle/sider)
+	Usuario BD system/sider
+
+
+	1.a) generar dumps en el servidor de BD 10.78.10.12  (putty)
+	  exp system/sider file=./suministrosqa.dmp owner=suministrosqa
+	  exp system/sider file=./seguridadqa.dmp owner=seguridadqa
+
+	1.b) Copiar los dumps generados del servidor de BD 10.78.10.12 a la PC de desarrollo (WinSCP)
+
+	1.c) Traer los archivos (zipeados) usando Ultra VNC
+
+
+2) Instalar en ORCL u ORCL3 (segun se decida)
+        2.1) hacer backup de las BD (E:\ProgFile\aw-util\doBackupSider.bat)
+        2.2) Copiar dumps a UTIL_HOME/dumps, debe llamarse  suministrosqa.dmp y seguridadqa.dmp
+	2.3) Editar UTIL_HOME/parcialSumiSeg/segsumi-import.bat configurar el parametro ORACLE_SID con el valor del TNSNAME por ejemplo ORCL3
+	2.4) Ejecutar UTIL_HOME/parcialSumiSeg/segsumi-import.bat 
+	2.5) Verificar haciendco una prueba basica
+
+

@@ -1,0 +1,36 @@
+package $packageWeb;
+
+import com.aw.core.web.servlet.mvc.grid.ColumnInfo;
+import com.aw.core.web.servlet.mvc.grid.GridInfoProvider;
+import com.aw.core.web.servlet.mvc.grid.SelectorColumn;
+import com.sider.seguridad.config.SPDD;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class $ipNameClass extends GridInfoProvider<$entityImpl> {
+
+    @Autowired
+    SPDD spdd;
+
+
+    public ColumnInfo[] getColumnInfo() {
+        ColumnInfo[] columns = new ColumnInfo[]{
+                new SelectorColumn(),
+                #set($i=0 )
+                #foreach( $column in $columns )
+                  #set($i=$i+1 )
+                  #if ($columns.size()==$i )
+                    new ColumnInfo("$column.label", "$column.name", $column.width, ColumnInfo.LEFT)
+                  #else
+                    new ColumnInfo("$column.label", "$column.name", $column.width, ColumnInfo.LEFT),
+                  #end
+                #end
+        };
+        return columns;
+    }
+
+    public List getValues($entityImpl obj) {
+        return new ArrayList();
+    }
+}

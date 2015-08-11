@@ -1,0 +1,1 @@
+sqlplus suministrosqa/suministrosqa@AWORCL2100

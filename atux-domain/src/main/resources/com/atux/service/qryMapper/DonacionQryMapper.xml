@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.DonacionQryMapper">
+
+    <select id="findInstitucionList"
+            parameterType="com.atux.bean.donacion.DonacionFlt"
+            resultType="com.atux.bean.donacion.Donacion"
+            >
+        SELECT
+            CI.CO_INSTITUCION coInstitucion,
+            CI.DE_CORTA_INSTITUCION deCortaInstitucion,
+            CI.DE_INSTITUCION deInstitucion,
+            CI.NU_RUC_INSTITUCION nuRucInstitucion,
+            CI.NU_NRO_CUENTA nuNroCuenta,
+            CI.DE_DIRECCION deDireccion,
+            CI.NU_TEL_REFERENCIA nuTelReferencia,
+            CI.NO_CONTACTO noContacto,
+            CI.DE_EMAIL deEmail,
+            CI.ES_INSTITUCION esInstitucion,
+            CI.ID_CREA_INSTITUCION idCreaInstitucion,
+            CI.FE_CREA_INSTITUCION feCreaInstitucion
+        FROM CVTM_INSTITUCION CI
+        <where >
+            1 = 1
+            <if test="coInstitucion!=null and coInstitucion!=''">
+                AND CI.CO_INSTITUCION  =#{coInstitucion}
+            </if>
+            <if test="deInstitucion!=null and deInstitucion!=''">
+                AND CI.DE_INSTITUCION   like  UPPER(#{deInstitucion})
+            </if>
+            <if test="fechaInicio!=null and fechaFin!=''">
+                AND CI.CO_INSTITUCION in (
+                SELECT CILD.CO_INSTITUCION FROM CVTR_INSTITUCION_LOCAL CILD WHERE
+                 (CILD.FE_INI_COBERTURA BETWEEN
+                TO_DATE(TO_CHAR(#{fechaInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{fechaFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+                OR CILD.FE_FIN_COBERTURA BETWEEN
+                TO_DATE(TO_CHAR(#{fechaInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{fechaFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+                )
+                )
+            </if>
+       </where>
+    </select>
+
+    <select id="findDonacionDetalleList"
+            parameterType="com.atux.bean.donacion.DonacionFlt"
+            resultType="com.atux.bean.donacion.DonacionDetalle"
+            >
+        SELECT
+            CILD.CO_COMPANIA coCompania,
+            CILD.CO_LOCAL coLocal,
+            VL.DE_LOCAL deLocal,
+            CILD.NU_INTERNO nuInterno,
+            CILD.FE_INI_COBERTURA fechaInicio,
+            CILD.FE_FIN_COBERTURA fechaFin,
+            CILD.ES_COBERTURA esCobertura,
+            CILD.ID_CREA_COBERTURA_CONVENIO idCreaCoberturaConvenio,
+            CILD.FE_CREA_COBERTURA_CONVENIO feCreaCoberturaConvenio
+        FROM
+        CVTR_INSTITUCION_LOCAL CILD
+            INNER JOIN VTTM_LOCAL VL ON VL.CO_COMPANIA= CILD.CO_COMPANIA AND VL.CO_LOCAL=CILD.CO_LOCAL
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND CILD.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND CILD.CO_LOCAL=  #{localId.coLocal}
+            </if>
+                AND CILD.CO_INSTITUCION=  #{coInstitucion}
+       </where>
+    </select>
+
+    <delete id="deleteDonacionLocal" parameterType="string" >
+        DELETE FROM CVTR_INSTITUCION_LOCAL WHERE CO_INSTITUCION=#{value}
+    </delete>
+
+</mapper>

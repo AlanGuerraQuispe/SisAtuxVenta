@@ -1,0 +1,78 @@
+package $packageWeb;
+
+import com.aw.core.view.ViewMode;
+import com.aw.core.web.servlet.mvc.action.RoundTransitionAction;
+import com.aw.core.web.servlet.mvc.action.types.DeleteItemAction;
+import com.aw.core.web.servlet.mvc.cmp.pick.Pick;
+import com.aw.core.web.servlet.mvc.cmp.pick.PickImpl;
+import com.aw.core.web.servlet.mvc.controller.AWFormController;
+import com.aw.core.web.servlet.mvc.core.Flow;
+import com.aw.core.web.servlet.mvc.core.WebInfoProvider;
+import com.aw.core.web.servlet.mvc.grid.GridProvider;
+import com.aw.core.cache.CacheManager;
+import com.aw.core.security.userdetails.ApplicationUser;
+import com.aw.stereotype.AWController;
+import com.sider.seguridad.config.SPDD;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+@AWController(templateRoot = "$templateRoot", title = "")
+public class $controllerName extends AWFormController<$entityImpl> {
+
+    @Autowired
+    $serviceName $serviceName_var;
+
+    @Autowired
+    SPDD spdd;
+
+
+    #foreach( $gridInfo in $gridsInfo )
+        private GridProvider $gridInfo.name;
+    #end
+
+
+
+    public $controllerName() {
+    }
+
+    @Override
+    protected void onPageOpened(WebInfoProvider wip) {
+    #foreach( $gridInfo in $gridsInfo )
+        refreshGrid(wip, $gridInfo.name);
+    #end
+    }
+
+    @Override
+    protected void registerBinding() {
+
+    }
+
+    public void registerActions() {
+        actionRsr.registerAction("Grabar", this, "save").setAsAjaxAction().closeViewAtEnd().setLabel("Grabar");
+    }
+
+
+    protected void registerGridProviders() {
+        
+        #foreach( $gridInfo in $gridsInfo )
+            $gridInfo.ipNameClass $gridInfo.ipName = new ${gridInfo.ipNameClass}();
+            $gridInfo.name = gridProviderMgr.registerGridProvider($gridInfo.ipName).setPageSize(5).enableMultiSelection();
+        #end
+
+    }
+
+    public void save(WebInfoProvider<$entityImpl> wip) {
+        $entityImpl backBean = wip.getBackBean();
+        ${serviceName_var}.guardar(backBean);
+    }
+
+    protected void registerPicks() {
+        #foreach( $pick in $picksInfo )
+            Pick ${pick.varName}Pick = new PickImpl("Pick${pick.tableName}");
+            ${pick.varName}Pick.registerBind("domain.${pick.fkFieldName}", "${pick.pkFieldName}");
+            pickMgr.registerPick("no${pick.tableName}", ${pick.varName}Pick);
+        #end
+        
+
+    }
+}

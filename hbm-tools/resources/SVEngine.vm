@@ -1,0 +1,20 @@
+package $packageDomain;
+
+import com.sider.seguridad.bean.rol.BNRolFlt;
+import com.sider.seguridad.dominio.comun.SVNumeracion;
+import com.sider.seguridad.dominio.entity.RolTmImpl;
+
+import java.util.List;
+
+
+        
+
+public interface $serviceName {
+
+    public List buscar($filtroName filtro);
+
+    public void guardar($entityImpl entity,String viewMode);
+
+    public void eliminar(List lista);
+
+}

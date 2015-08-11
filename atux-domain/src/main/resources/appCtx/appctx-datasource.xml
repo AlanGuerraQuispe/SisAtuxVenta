@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd                   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd   http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+        >
+
+    <context:property-placeholder location="classpath:META-INF/spring/database.properties"/>
+
+	<bean id="dataSource" lazy-init="true"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <!--<property name="url" value="jdbc:oracle:thin:@192.168.1.140:1521:XE" />-->
+        <!--<property name="url" value="jdbc:oracle:thin:@7.128.235.239:1521:XE" />-->
+        <property name="url" value="jdbc:oracle:thin:@192.168.1.111:1521:ABDPV001" />
+        <!--<property name="url" value="jdbc:oracle:thin:@192.168.1.91:1521:XE" />-->
+        <!--<property name="url" value="jdbc:oracle:thin:@7.86.89.177:1521:ABDPV001" />-->
+        <property name="username" value="ecventa"/>
+        <property name="password" value="venta"/>
+        <property name="timeBetweenEvictionRunsMillis" value="10000"/><!--evict cada 10 segs-->
+        <property name="numTestsPerEvictionRun" value="10"/><!--analizar 10 conex-->
+        <property name="minEvictableIdleTimeMillis" value="10000"/><!-- evitc si 10 segs idle -->
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="30"/>
+        <property name="logAbandoned" value="true"/>
+	</bean>
+
+
+    <bean id="cache" class="com.aw.core.cache.storage.CacheEHImpl" lazy-init="true"></bean>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="persistenceUnit" />
+        <property name="persistenceXmlLocation" value="classpath*:/META-INF/atux-persistence.xml" />
+        <property name="dataSource" ref="dataSource" />
+        <property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+        </property>
+        <property name="jpaVendorAdapter" ref="vendorAdapter" />
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
+
+    <bean id="vendorAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="databasePlatform" value="org.hibernate.dialect.Oracle10gDialect"/>
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="false"/>
+    </bean>
+
+    <bean id="exceptionInterpreter" class="com.atux.infraestructura.InterforestExcepcionInterpreter"/>
+
+    <jpa:repositories base-package="com.atux.infraestructura.jpa" />
+
+</beans>
+	

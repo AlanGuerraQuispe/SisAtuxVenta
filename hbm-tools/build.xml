@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+
+<project name="hibernate-tools" basedir="." default="usage">
+    <property file="build.properties"/>
+    <property name="targetdir" value="${basedir}/out/production/templates"/>
+    <property name="generated.dir" value="generated"/>
+    <property name="packageImpl" value="com.sider.suministros"/>
+    <property name="package.dir" value="com/sider/suministros"/>
+    <property name="lib.root" value="lib"/>
+
+
+    <target name="usage">
+        <echo message="Hibernate tools "/>
+        <echo message="------------------------------------------------------"/>
+        <echo message=""/>
+        <echo message="Reverse engineering targets are:"/>
+        <echo message="clean           --> Elimina directorios temporales"/>
+        <echo message="full            --> Genera los archivos hbm y pojos"/>
+        <echo message="db-hbm		   --> Genera los hbm desde la BD"/>
+        <echo message="reveng.db       --> Genera los hbm (no los estandariza)"/>
+        <echo message="reveng.replace  --> Estandariza los hbm a la convencion usada por Eckerd"/>
+        <echo message="hbm-pojo        --> Genera los POJO desde los hbm estadarizados"/>
+        <echo message="pojo-entity     --> Make hbm and POJOs to use entities"/>
+        <echo message="copy-hbm        --> copy hbm to sources"/>
+        <echo message="copy-pojo       --> copy POJO to sources"/>
+
+        <echo message=""/>
+        <echo message="Support targets are :"/>
+        <echo message="docs        --> Crea la documentacion Javadoc"/>
+        <echo message="style.java  --> Aplica estilo predefido a los archivos *.java"/>
+        <echo message="coverage    --> Corre el test coverage para la aplicacion"/>
+        <echo message=""/>
+        <echo message="Testing targets are :"/>
+        <echo message="testAll     --> Ejecuta los tests "/>
+        <echo message=""/>
+        <echo message=""/>
+
+    </target>
+
+
+    <target name="clean" description="Clean output dirs (build, docs, weblib, dist)">
+        <deltree dir="${generated.dir}"/>
+    </target>
+
+    <target name="create" description="Create package name">
+        <mkdir dir="${generated.dir}/hbm.orig/${package.dir}/hibernate/hbm"/>
+        <mkdir dir="${generated.dir}/${package.dir}/bean"/>
+        <mkdir dir="${generated.dir}/${package.dir}/dominio"/>
+        <mkdir dir="${generated.dir}/${package.dir}/dominio/entity"/>
+        <mkdir dir="${generated.dir}/${package.dir}/hibernate"/>
+        <mkdir dir="${generated.dir}/${package.dir}/hibernate/pojo"/>
+        <mkdir dir="${generated.dir}/${package.dir}/hibernate/hbm"/>
+        <mkdir dir="${generated.dir}/${package.dir}/web"/>
+        <mkdir dir="${generated.dir}/${package.dir}/form"/>
+    </target>
+
+    <target name="full" description="Genera los archivos hbm y pojos"
+            depends="clean,create,db-hbm,hbm-pojo,pojo-entity,impl">
+    </target>
+
+    <target name="impl" description="Genera los archivos hbm y pojos">
+        <java classname="com.aw.core.hibernate.reveng.EntityImplGenerador">
+            <arg value="./${generated.dir}"/>
+            <arg value="${packageImpl}.hibernate.pojo"/>
+            <arg value="${packageImpl}.dominio.entity"/>
+            <classpath>
+                <pathelement location="lib"/>
+                <!--<pathelement path="toolslib"/>-->
+            </classpath>
+        </java>
+    </target>
+
+
+    <target name="aw" description="Genera los archivos FNCtr, Ctr, Flt,BN,Pick "  >
+        <java classname="com.aw.builder.GenerateTemplate"  classpathref="master-classpath">
+            <arg value="${package.dir}"/>
+            <arg value="${packageImpl}"/>
+            <classpath path="${targetdir}"/>
+        </java>
+    </target>
+
+    <path id="master-classpath">
+        <fileset refid="fileset.basic.path"/>
+        <pathelement path="${lib.root}"/>
+    </path>
+
+    <target name="jarfile"  description="Build the web application archive">
+        <!-- create jar file-->
+        <jar jarfile="generator.jar" compress="true" basedir="D:\$AW\proyectos\templates\out\production\templates"/>
+    </target>
+
+    <fileset dir="${lib.root}" id="fileset.basic.path">
+        <include name="**/*.jar"/>
+        
+    </fileset>
+
+    <path id="toolslib">
+        <path location="lib\com"/>
+        <path location="lib\templates"/>
+        <fileset dir="lib">
+            <include name="**/*.jar"/>
+            <include name="${lib.root}/velocity.properties"/>
+        </fileset>
+        <path location="."/>
+        <path location="${lib.root}/oracle/classes12.jar"/>
+    </path>
+
+    <taskdef name="hibernatetool"
+             classname="org.hibernate.tool.ant.HibernateToolTask"
+             classpathref="toolslib"/>
+
+
+    <property name="gen.hbm.orig" value="${generated.dir}/hbm.orig"/>
+    <property name="gen.hbm.final" value="${generated.dir}"/>
+    <target name="db-hbm" depends="reveng.db" description="Perform reverse engineer">
+    </target>
+    <target name="reveng.db" description="Perform reverse engineer from the database">
+
+        <hibernatetool>
+            <jdbcconfiguration
+                    propertyfile="hbm-config/hibernate.properties"
+                    revengfile="hbm-config/hibernate.reveng.xml"
+                    packagename="com.atux.hibernate.pojo"
+                    />
+            <hbm2hbmxml destdir="${gen.hbm.orig}"/>
+        </hibernatetool>
+
+        <move todir="${gen.hbm.orig}/${package.dir}/hibernate/hbm" overwrite="true">
+            <fileset dir="${gen.hbm.orig}/${package.dir}/hibernate/pojo"/>
+        </move>
+
+    </target>
+    <target name="reveng.replace" description="Replace and standarize names in hbm files">
+
+        <copy todir="${gen.hbm.final}" overwrite="true">
+            <fileset dir="${gen.hbm.orig}"/>
+        </copy>
+
+
+        <replaceregexp flags="mg" byline="false">
+            <regexp pattern='many-to-one(.*)Impl" fetch="select"'/>
+            <substitution expression='many-to-one\1Impl" insert="false" update="false" fetch="select"'/>
+            <fileset dir="${gen.hbm.final}" includes="**/*.*"/>
+        </replaceregexp>
+    </target>
+
+
+    <property name="gen.pojo.final" value="${generated.dir}"/>
+    <target name="hbm-pojo" description="Generate POJOs from hbm files">
+        <hibernatetool destdir="${gen.pojo.final}">
+            <configuration propertyfile="hbm-config/hibernate.properties">
+                <fileset dir="${gen.hbm.final}">
+                    <include name="**/*.xml"/>
+                </fileset>
+            </configuration>
+            <hbm2java/>
+        </hibernatetool>
+
+    </target>
+
+    <property name="gen.entity.final" value="${generated.dir}"/>
+
+    <target name="pojo-entity" description="Generate Entitys for POJOSs">
+
+        <replaceregexp byline="true">
+            <regexp pattern='public class'/>
+            <substitution expression='public abstract class'/>
+            <fileset dir="${gen.pojo.final}" includes="**/*.java" excludes="**/*Pk.java"/>
+        </replaceregexp>
+
+        <replaceregexp byline="true">
+            <regexp pattern='(.*)hibernate.pojo.(.*)" table="'/>
+            <substitution expression='\1dominio.entity.\2Impl" table="'/>
+            <fileset dir="${gen.hbm.final}" includes="**/*.*"/>
+        </replaceregexp>
+        <replaceregexp byline="true">
+            <regexp pattern='one-to-many(.*)hibernate.pojo.(.*)"'/>
+            <substitution expression='one-to-many\1dominio.entity.\2Impl"'/>
+            <fileset dir="${gen.hbm.final}" includes="**/*.*"/>
+        </replaceregexp>
+        <replaceregexp byline="true">
+            <regexp pattern='many-to-one(.*)hibernate.pojo.(.*)" update'/>
+            <substitution expression='many-to-one\1dominio.entity.\2Impl" update'/>
+            <fileset dir="${gen.hbm.final}" includes="**/*.*"/>
+        </replaceregexp>
+        <replaceregexp byline="true">
+            <regexp pattern='many-to-one(.*)hibernate.pojo.(.*)" fetch'/>
+            <substitution expression='many-to-one\1dominio.entity.\2Impl" fetch'/>
+            <fileset dir="${gen.hbm.final}" includes="**/*.*"/>
+        </replaceregexp>
+        <replaceregexp flags="mg" byline="false">
+            <regexp pattern='many-to-one(.*)Impl" fetch="select"'/>
+            <substitution expression='many-to-one\1Impl" insert="false" update="false" fetch="select"'/>
+            <fileset dir="${gen.hbm.final}" includes="**/*.*"/>
+        </replaceregexp>
+        <replaceregexp flags="mg" byline="false">
+            <regexp pattern='many-to-many entity-name(.*)Impl"'/>
+            <substitution expression='many-to-many entity-name\1Impl"'/>
+            <fileset dir="${gen.hbm.final}" includes="**/*.*"/>
+        </replaceregexp>
+
+        <move todir="${gen.entity.final}/${package.dir}/hibernate/hbm" includeemptydirs="false">
+            <fileset dir="${gen.hbm.orig}/${package.dir}/hibernate/hbm" includes="**/*.xml"/>
+            <mapper type="glob" from="*.hbm.xml" to="*Impl.hbm.xml"/>
+        </move>
+
+    </target>
+
+
+</project>

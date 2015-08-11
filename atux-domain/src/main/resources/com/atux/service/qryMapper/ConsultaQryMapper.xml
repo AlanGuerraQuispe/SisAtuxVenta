@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.ConsultaQryMapper">
+
+    <resultMap type="map" id="resumenVentas">
+        <result property="vaEmitido" column="VAEMITIDO"/>
+        <result property="vaTicket" column="VATICKET"/>
+        <result property="vaFactura" column="VAFACTURA"/>
+        <result property="vaDevolucion" column="VADEVOLUCION"/>
+        <result property="vaOtro" column="file.maptoCustomClass"/>
+        <result property="vaTotal" column="file.maptoCustomClass"/>
+    </resultMap>
+
+    <select id="findResumenVentasMap"
+            parameterType="com.atux.bean.consulta.ConsultaFlt"
+            resultMap="resumenVentas"
+            >
+        SELECT
+        NVL(V0.TOT,0) vaEmitido,<!-- 1 -->
+        NVL(V1.SUM,0) ,<!-- 2 -->
+        NVL(V1.TOT,0) vaTicket,<!-- 3 -->
+        NVL(V2.SUM,0) ,<!-- 4 -->
+        NVL(V2.TOT,0) vaDevolucion,<!-- 5 -->
+        NVL(V3.SUM,0) ,<!-- 6 -->
+        NVL(V3.TOT,0) vaFactura<!-- 7 -->
+
+        FROM
+        (SELECT SUM(CANT) SUM,
+        SUM(TOT) TOT
+        FROM(SELECT COUNT(PED_VEN.NU_PEDIDO) CANT,
+        SUM(PED_VEN.VA_TOTAL_PRECIO_VENTA) TOT
+        FROM VTTC_PEDIDO_VENTA PED_VEN
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.ES_PEDIDO_VENTA='C'
+        )) V0,
+        (SELECT SUM(SUM) SUM,
+        SUM(TOT) TOT
+        FROM(SELECT COUNT(PED_VEN.NU_PEDIDO) SUM,
+        SUM(PED_VEN.VA_TOTAL_PRECIO_VENTA) TOT
+        FROM VTTV_COMPROBANTE_PAGO PED_VEN
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_COMPROBANTE BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.TI_COMPROBANTE IN ('01','05', '09')
+
+        )) V1,
+        (SELECT SUM(SUM) SUM,
+        SUM(TOT) TOT
+        FROM(SELECT COUNT(PED_VEN.NU_PEDIDO) SUM,
+        SUM(PED_VEN.VA_TOTAL_PRECIO_VENTA) TOT
+        FROM VTTV_COMPROBANTE_PAGO PED_VEN
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_ANULA_COMPROBANTE BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.TI_COMPROBANTE IN ('01','02','05','06','09','10','14')
+
+        )) V2,
+        (
+        SELECT SUM(SUM) SUM,
+        SUM(TOT) TOT
+        FROM(
+        SELECT COUNT(PED_VEN.NU_PEDIDO) SUM,
+        SUM(PED_VEN.VA_TOTAL_PRECIO_VENTA) TOT
+        FROM VTTV_COMPROBANTE_PAGO PED_VEN
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_COMPROBANTE BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.TI_COMPROBANTE IN ('02','06','10')
+
+        )
+        )V3,
+        (SELECT SUM(SUM) SUM,
+        SUM(TOT) TOT
+        FROM (SELECT COUNT(PED_VEN.NU_PEDIDO) SUM,
+        SUM(PED_VEN.VA_TOTAL_PRECIO_VENTA) TOT
+        FROM VTTV_COMPROBANTE_PAGO PED_VEN
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_COMPROBANTE BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.TI_COMPROBANTE IN ('04', '11','12')
+
+        )) V9,
+        (SELECT SUM(SUM) SUM,
+        SUM(TOT) TOT
+        FROM (SELECT COUNT(PED_VEN.NU_PEDIDO) SUM,
+        SUM(PED_VEN.VA_TOTAL_PRECIO_VENTA) TOT
+        FROM VTTV_COMPROBANTE_PAGO PED_VEN
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_ANULA_COMPROBANTE BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.TI_COMPROBANTE IN ('04', '11','12')
+
+        )) V10,
+        (SELECT COUNT(PED_VEN.NU_PEDIDO) SUM,
+        SUM(PED_VEN.VA_TOTAL_PRECIO_VENTA) TOT
+        FROM VTTC_PEDIDO_VENTA PED_VEN
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.TI_PEDIDO = '7'
+        AND PED_VEN.CA_ITEM = 0
+        ) v11
+    </select>
+
+    <select id="findResumenFormaPago"
+            parameterType="com.atux.bean.consulta.ConsultaFlt"
+            resultType="com.atux.bean.consulta.ReporteVentaFormaPagoItem"
+            >
+        SELECT
+        Z.CO_FORMA_PAGO coFormaPago ,
+        Z.DE_CORTA_FORMA_PAGO deFormaPago ,
+        TOTAL vaFormaPago
+        FROM (
+        SELECT TO_CHAR(NVL(FOR_PAG.CO_FORMA_PAGO,' ')) CO_FORMA_PAGO,
+        TO_CHAR(NVL(FOR_PAG.DE_CORTA_FORMA_PAGO,' ')) DE_CORTA_FORMA_PAGO,
+        SUM(NVL(PAG_PED.IM_TOTAL_PAGO,0)-NVL(PAG_PED.VA_VUELTO,0)) TOTAL
+        FROM VTTC_PEDIDO_VENTA PED_VEN,
+        VTTX_FORMA_PAGO_PEDIDO PAG_PED,
+        VTTR_FORMA_PAGO FOR_PAG
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.ES_PEDIDO_VENTA ='C'
+        AND PED_VEN.CO_COMPANIA = PAG_PED.CO_COMPANIA
+        AND PED_VEN.CO_LOCAL = PAG_PED.CO_LOCAL
+        AND PED_VEN.NU_PEDIDO = PAG_PED.NU_PEDIDO
+        AND PAG_PED.CO_COMPANIA = FOR_PAG.CO_COMPANIA(+)
+        AND PAG_PED.CO_FORMA_PAGO = FOR_PAG.CO_FORMA_PAGO(+)
+        AND FOR_PAG.CO_FORMA_PAGO_PADRE IS NULL
+        GROUP BY FOR_PAG.CO_FORMA_PAGO, FOR_PAG.DE_CORTA_FORMA_PAGO
+        UNION
+        SELECT TO_CHAR(NVL(FOR_PAG_PADRE.CO_FORMA_PAGO,' ')) CO_FORMA_PAGO,
+        TO_CHAR(NVL(FOR_PAG_PADRE.DE_CORTA_FORMA_PAGO,' ')) DE_CORTA_FORMA_PAGO,
+        SUM(NVL(PAG_PED.IM_TOTAL_PAGO,0)-NVL(PAG_PED.VA_VUELTO,0)) TOTAL
+        FROM VTTC_PEDIDO_VENTA PED_VEN,
+        VTTX_FORMA_PAGO_PEDIDO PAG_PED,
+        VTTR_FORMA_PAGO FOR_PAG,
+        VTTR_FORMA_PAGO FOR_PAG_PADRE
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.ES_PEDIDO_VENTA ='C'
+        AND PED_VEN.CO_COMPANIA = PAG_PED.CO_COMPANIA
+        AND PED_VEN.CO_LOCAL = PAG_PED.CO_LOCAL
+        AND PED_VEN.NU_PEDIDO = PAG_PED.NU_PEDIDO
+        AND PAG_PED.CO_COMPANIA = FOR_PAG.CO_COMPANIA(+)
+        AND PAG_PED.CO_FORMA_PAGO = FOR_PAG.CO_FORMA_PAGO(+)
+        AND FOR_PAG.CO_FORMA_PAGO_PADRE IS NOT NULL
+        AND FOR_PAG.CO_COMPANIA = FOR_PAG_PADRE.CO_COMPANIA
+        AND FOR_PAG.CO_FORMA_PAGO_PADRE = FOR_PAG_PADRE.CO_FORMA_PAGO
+        GROUP BY FOR_PAG_PADRE.CO_FORMA_PAGO, FOR_PAG_PADRE.DE_CORTA_FORMA_PAGO) Z
+    </select>
+
+    <select id="findDetalleVenta"
+            parameterType="com.atux.bean.consulta.ConsultaFlt"
+            resultType="com.atux.bean.consulta.ReporteVentaItem"
+            >
+        SELECT
+        PED_VEN.NU_PEDIDO nuPedido,
+        PED_VEN.FE_PEDIDO fePedido,
+        PROD.CO_PRODUCTO coProducto,
+        DECODE(PED_VEN.ES_PEDIDO_VENTA,'C','E','') emitido,
+        PROD.DE_CORTA_PRODUCTO deProducto,
+        PROD.DE_UNIDAD_PRODUCTO unidadProducto,
+        DET_PED_VEN.CA_ATENDIDA caAtendida,
+        DET_PED_VEN.VA_VENTA vaVenta,
+        DET_PED_VEN.VA_PRECIO_PUBLICO vaPrecioPublico,
+        DET_PED_VEN.VA_PRECIO_VENTA*(1/(TO_NUMBER(NVL(pc_impuesto_1,0))/100+1)) vaPrecioVentaSinIgv,
+        DET_PED_VEN.VA_PRECIO_VENTA vaPrecioVenta,
+        DET_PED_VEN.VA_PRECIO_PROMEDIO vaPrecioPromedio,
+        (NVL(DET_PED_VEN.PC_DESCUENTO_1,0)/100)*NVL(DET_PED_VEN.CA_ATENDIDA,0)*NVL(DET_PED_VEN.VA_VENTA,0) vaDescuento,
+        DET_PED_VEN.TI_COMPROBANTE tiComprobante,
+        DET_PED_VEN.NU_COMPROBANTE_PAGO nuComprobante,
+        TO_CHAR(SUBSTR( NVL(DET_PED_VEN.NU_COMPROBANTE_PAGO,''),1,3)||'-'|| SUBSTR(
+        NVL(DET_PED_VEN.NU_COMPROBANTE_PAGO,''),4,7) )||
+        NVL(DECODE(DET_PED_VEN.TI_COMPROBANTE,'02','F',' '),' ')nuComprobanteCustom,
+        CTL.DE_LABORATORIO deLaboratorio
+        FROM
+        VTTC_PEDIDO_VENTA PED_VEN,
+        VTTD_PEDIDO_VENTA DET_PED_VEN,
+        LGTM_PRODUCTO PROD,
+        CMTR_LABORATORIO CTL
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="tipoDocumento!=null and tipoDocumento!=''">
+                AND DET_PED_VEN.TI_COMPROBANTE = #{tipoDocumento}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.CO_COMPANIA=DET_PED_VEN.CO_COMPANIA
+        AND PED_VEN.CO_LOCAL=DET_PED_VEN.CO_LOCAL
+        AND PED_VEN.NU_PEDIDO=DET_PED_VEN.NU_PEDIDO
+        AND DET_PED_VEN.CO_COMPANIA=PROD.CO_COMPANIA(+)
+        AND DET_PED_VEN.CO_PRODUCTO=PROD.CO_PRODUCTO(+)
+        AND CTL.CO_LABORATORIO=PROD.CO_LABORATORIO
+        AND PED_VEN.ES_PEDIDO_VENTA='C'
+        AND PED_VEN.FE_ANULA_PEDIDO IS NULL
+    </select>
+
+    <select id="findVentaTransaccion"
+            parameterType="com.atux.bean.consulta.ConsultaFlt"
+            resultType="com.atux.bean.consulta.ReporteVentaItem"
+            >
+        SELECT
+        PED_VEN.NU_PEDIDO nuPedido,
+        SUBSTR(COMP_PAGO.NU_COMPROBANTE_PAGO,1,3)||'-'|| SUBSTR(COMP_PAGO.NU_COMPROBANTE_PAGO,4,7)||
+        NVL(DECODE(COMP_PAGO.TI_COMPROBANTE,'02','F'),' ') nuComprobante,
+        PED_VEN.FE_PEDIDO fePedido,
+        NVL(COMP_PAGO.NO_IMPRESO_CLIENTE,' ') noCliente,
+        COMP_PAGO.TI_COMPROBANTE tiComprobante,
+        PED_VEN.VA_TOTAL_IMPUESTO imp,
+        CU.ID_USUARIO noVendedor,
+        (PED_VEN.VA_TOTAL_VENTA ) vaPrecioPromedio,
+        (comp_pago.VA_TOTAL_PRECIO_VENTA) vaPrecioVenta,
+        PED_VEN.ES_PEDIDO_VENTA esPedidoVenta
+        FROM VTTC_PEDIDO_VENTA PED_VEN ,
+        VTTV_COMPROBANTE_PAGO COMP_PAGO,
+        CMTS_USUARIO CU
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.ES_PEDIDO_VENTA = 'C'
+        AND PED_VEN.CO_COMPANIA = COMP_PAGO.CO_COMPANIA
+        AND PED_VEN.CO_LOCAL = COMP_PAGO.CO_LOCAL
+        AND PED_VEN.NU_PEDIDO = COMP_PAGO.NU_PEDIDO_ANUL
+        AND CU.CO_COMPANIA= PED_VEN.CO_COMPANIA
+        AND CU.CO_LOCAL= PED_VEN.CO_LOCAL
+        AND CU.NU_SEC_USUARIO= PED_VEN.CO_VENDEDOR
+        UNION
+        SELECT
+        PED_VEN.NU_PEDIDO nuPedido,
+        SUBSTR(COMP_PAGO.NU_COMPROBANTE_PAGO,1,3)||'-'|| SUBSTR(COMP_PAGO.NU_COMPROBANTE_PAGO,4,7)||
+        NVL(DECODE(COMP_PAGO.TI_COMPROBANTE,'02','F'),' ') nuComprobante,
+        PED_VEN.FE_PEDIDO fePedido,
+        NVL(COMP_PAGO.NO_IMPRESO_CLIENTE,' ') noCliente,
+        COMP_PAGO.TI_COMPROBANTE tiComprobante,
+        PED_VEN.VA_TOTAL_IMPUESTO imp,
+        CU.ID_USUARIO noVendedor,
+        (PED_VEN.VA_TOTAL_VENTA ) vaPrecioPromedio,
+        (comp_pago.VA_TOTAL_PRECIO_VENTA) vaPrecioVenta,
+        PED_VEN.ES_PEDIDO_VENTA esPedidoVenta
+        FROM VTTC_PEDIDO_VENTA PED_VEN ,
+        VTTV_COMPROBANTE_PAGO COMP_PAGO,
+        CMTS_USUARIO CU
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.ES_PEDIDO_VENTA = 'C'
+        AND PED_VEN.CO_COMPANIA = COMP_PAGO.CO_COMPANIA
+        AND PED_VEN.CO_LOCAL = COMP_PAGO.CO_LOCAL
+        AND PED_VEN.NU_PEDIDO = COMP_PAGO.NU_PEDIDO
+        AND CU.CO_COMPANIA= PED_VEN.CO_COMPANIA
+        AND CU.CO_LOCAL= PED_VEN.CO_LOCAL
+        AND CU.NU_SEC_USUARIO= PED_VEN.CO_VENDEDOR
+        UNION
+        SELECT PED_VEN.NU_PEDIDO ,
+        ' ' ,
+        PED_VEN.FE_PEDIDO ,
+        '' ,
+        '',
+        0,
+        CU.ID_USUARIO noVendedor,
+        0,
+        0,
+        PED_VEN.ES_PEDIDO_VENTA esPedidoVenta
+        FROM VTTC_PEDIDO_VENTA PED_VEN,
+        CMTR_MOTIVO MOTIVO,
+        CMTS_USUARIO CU
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.ES_PEDIDO_VENTA ='P'
+        AND PED_VEN.CO_GRUPO_MOTIVO=MOTIVO.CO_GRUPO_MOTIVO
+        AND PED_VEN.CO_MOTIVO_ANULACION=MOTIVO.CO_MOTIVO
+        AND CU.CO_COMPANIA= PED_VEN.CO_COMPANIA
+        AND CU.CO_LOCAL= PED_VEN.CO_LOCAL
+        AND CU.NU_SEC_USUARIO= PED_VEN.CO_VENDEDOR
+        UNION
+        SELECT PED_VEN.NU_PEDIDO ,
+        ' ' ,
+        PED_VEN.FE_PEDIDO ,
+        '' ,
+        '',
+        0,
+        CU.ID_USUARIO noVendedor,
+        0,
+        0,
+        PED_VEN.ES_PEDIDO_VENTA esPedidoVenta
+        FROM VTTC_PEDIDO_VENTA PED_VEN,
+        CMTS_USUARIO CU
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.ES_PEDIDO_VENTA ='N'
+        AND CU.CO_COMPANIA= PED_VEN.CO_COMPANIA
+        AND CU.CO_LOCAL= PED_VEN.CO_LOCAL
+        AND CU.NU_SEC_USUARIO= PED_VEN.CO_VENDEDOR
+    </select>
+
+
+    <select id="findDetalleVentaResumen"
+            parameterType="com.atux.bean.consulta.ConsultaFlt"
+            resultType="com.atux.bean.consulta.ReporteVentaItem"
+            >
+        SELECT
+        DET_PED_VEN.CO_PRODUCTO coProducto,
+        DET_PED_VEN.pc_impuesto_1 vaImpuesto,
+        PROD.DE_CORTA_PRODUCTO deProducto,
+        PROD.DE_UNIDAD_PRODUCTO unidadProducto,
+        CTL.DE_LABORATORIO deLaboratorio,
+        SUM(NVL(DET_PED_VEN.CA_ATENDIDA, 0) / DECODE(DET_PED_VEN.VA_FRACCION, 0, 1,DET_PED_VEN.VA_FRACCION ))
+        caAtendida,
+        SUM(NVL(DET_PED_VEN.CA_ATENDIDA, 0) * (NVL(DET_PED_VEN.VA_VENTA,0))) vaVenta,
+        SUM(NVL(DET_PED_VEN.CA_ATENDIDA, 0) * (NVL(DET_PED_VEN.VA_VENTA,0) - (NVL(DET_PED_VEN.VA_VENTA, 0)*
+        (DET_PED_VEN.PC_DESCUENTO_1/100)))) vaPrecioVenta,
+        SUM( DECODE(PROD.CO_MONEDA,
+        '01', NVL(PROD.VA_PRECIO_PROMEDIO, 0) * NVL(DET_PED_VEN.CA_ATENDIDA, 0) / DECODE(NVL(DET_PED_VEN.VA_FRACCION,
+        0),
+        0, 1, DET_PED_VEN.VA_FRACCION),
+        '02', NVL(PROD.VA_PRECIO_PROMEDIO, 0) * NVL(DET_PED_VEN.CA_ATENDIDA, 0) / DECODE(NVL(DET_PED_VEN.VA_FRACCION,
+        0),
+        0, 1, DET_PED_VEN.VA_FRACCION) * NVL(PED_VEN.VA_TASA_CAMBIO, 0), 0)) vaPrecioPromedio
+        FROM
+        VTTC_PEDIDO_VENTA PED_VEN,
+        VTTD_PEDIDO_VENTA DET_PED_VEN,
+        LGTM_PRODUCTO PROD,
+        CMTR_LABORATORIO CTL
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PED_VEN.CO_COMPANIA = #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PED_VEN.CO_LOCAL = #{localId.coLocal}
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND PED_VEN.FE_PEDIDO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+        </where>
+        AND PED_VEN.ES_PEDIDO_VENTA ='C'
+        AND PED_VEN.CO_COMPANIA = DET_PED_VEN.CO_COMPANIA
+        AND PED_VEN.CO_LOCAL = DET_PED_VEN.CO_LOCAL
+        AND PED_VEN.NU_PEDIDO = DET_PED_VEN.NU_PEDIDO
+        AND DET_PED_VEN.CO_COMPANIA = PROD.CO_COMPANIA(+)
+        AND DET_PED_VEN.CO_PRODUCTO = PROD.CO_PRODUCTO(+)
+        AND CTL.CO_LABORATORIO=PROD.CO_LABORATORIO
+        GROUP BY
+        DET_PED_VEN.CO_PRODUCTO,
+        DET_PED_VEN.pc_impuesto_1,
+        PROD.DE_CORTA_PRODUCTO ,
+        DET_PED_VEN.VA_PRECIO_PROMEDIO,
+        PROD.VA_PRECIO_COMPRA,
+        PROD.DE_UNIDAD_PRODUCTO,
+        CTL.DE_LABORATORIO ,
+        DET_PED_VEN.VA_FRACCION,
+        PROD.CO_MONEDA,
+        PED_VEN.VA_TASA_CAMBIO,
+        DET_PED_VEN.IN_PRODUCTO_FRACCION
+    </select>
+
+
+    <select id="findVentaDia"
+            parameterType="com.atux.bean.consulta.ConsultaFlt"
+            resultType="com.atux.bean.consulta.ReporteDiaItem"
+            >
+        SELECT
+        VVENTA.FECHA fechaStr,
+        TO_CHAR(NVL(SUBSTR(VBOLETA.PRIMERABOLETA,1,3)||'-'|| SUBSTR(VBOLETA.PRIMERABOLETA,4,7),' ') ) nuBoletaInicio ,
+        TO_CHAR(NVL(SUBSTR(VBOLETA.ULTIMABOLETA,1,3)||'-'|| SUBSTR(VBOLETA.ULTIMABOLETA,4,7),' ') ) nuBoletaFin ,
+        TO_CHAR(NVL(SUBSTR(VFACTURA.PRIMERAFACTURA,1,3)||'-'|| SUBSTR(VFACTURA.PRIMERAFACTURA,4,7),' ')) nuFacturaInicio  ,
+        TO_CHAR(NVL(SUBSTR(VFACTURA.ULTIMAFACTURA,1,3)||'-'|| SUBSTR(VFACTURA.ULTIMAFACTURA,4,7),' ')) nuFacturaFin  ,
+        NVL(VBOLETA.COUNTBOLETA,0) totalBoleta,
+        NVL(VFACTURA.COUNTFACTURA,0) totalFactura,
+        NVL(PEDIDOSDEVUELTOS.PEDIDOS_DEVUELTOS,0) totalDevolucion,
+        NVL(VVENTA.TOTALVENTA,0) vaMonto ,
+        VVENTA.FECHA_1
+        FROM (
+        SELECT
+            TO_CHAR(VVENTA_CABPEDIDO.FE_PEDIDO,'dd/MM/yyyy') FECHA,
+            SUM(VVENTA_CABPEDIDO.VA_TOTAL_PRECIO_VENTA) TOTALVENTA,
+            TO_CHAR(VVENTA_CABPEDIDO.FE_PEDIDO,'yyyy/MM/dd') FECHA_1
+        FROM
+            VTTC_PEDIDO_VENTA VVENTA_CABPEDIDO
+        WHERE
+            VVENTA_CABPEDIDO.CO_COMPANIA=#{localId.coCompania}
+            AND VVENTA_CABPEDIDO.CO_LOCAL=#{localId.coLocal}
+            AND VVENTA_CABPEDIDO.FE_PEDIDO BETWEEN  TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+            AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            AND VVENTA_CABPEDIDO.ES_PEDIDO_VENTA = 'C'
+        GROUP BY TO_CHAR(VVENTA_CABPEDIDO.FE_PEDIDO,'dd/MM/yyyy'), TO_CHAR(VVENTA_CABPEDIDO.FE_PEDIDO,'yyyy/MM/dd')
+        ) VVENTA,
+        (
+        SELECT
+            TO_CHAR(VBOLETA_COMPROBANTE.FE_COMPROBANTE,'dd/MM/yyyy') FECHA,
+            COUNT(VBOLETA_COMPROBANTE.NU_COMPROBANTE_PAGO)  COUNTBOLETA,
+            MIN(VBOLETA_COMPROBANTE.NU_COMPROBANTE_PAGO)    PRIMERABOLETA,
+            MAX(VBOLETA_COMPROBANTE.NU_COMPROBANTE_PAGO)    ULTIMABOLETA
+        FROM VTTV_COMPROBANTE_PAGO VBOLETA_COMPROBANTE
+        WHERE
+            VBOLETA_COMPROBANTE.CO_COMPANIA=#{localId.coCompania}
+        AND VBOLETA_COMPROBANTE.CO_LOCAL=#{localId.coLocal}
+        AND VBOLETA_COMPROBANTE.TI_COMPROBANTE  in ('01','05','09')
+        AND VBOLETA_COMPROBANTE.FE_COMPROBANTE BETWEEN  TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+        AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+        GROUP BY TO_CHAR(VBOLETA_COMPROBANTE.FE_COMPROBANTE,'dd/MM/yyyy')
+        ) VBOLETA,
+        (
+          SELECT
+            TO_CHAR(VFACTURA_COMPROBANTE.FE_COMPROBANTE,'dd/MM/yyyy') FECHA,
+            COUNT(*)  COUNTFACTURA,
+            MIN(VFACTURA_COMPROBANTE.NU_COMPROBANTE_PAGO)    PRIMERAFACTURA,
+            MAX(VFACTURA_COMPROBANTE.NU_COMPROBANTE_PAGO)    ULTIMAFACTURA
+          FROM VTTV_COMPROBANTE_PAGO VFACTURA_COMPROBANTE
+          WHERE
+            VFACTURA_COMPROBANTE.CO_COMPANIA=#{localId.coCompania}
+          AND VFACTURA_COMPROBANTE.CO_LOCAL=#{localId.coLocal}
+          AND VFACTURA_COMPROBANTE.TI_COMPROBANTE in ('02','06','10')
+          AND VFACTURA_COMPROBANTE.FE_COMPROBANTE BETWEEN  TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+          AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+        GROUP BY TO_CHAR(VFACTURA_COMPROBANTE.FE_COMPROBANTE,'dd/MM/yyyy')
+        ORDER BY 1
+        ) VFACTURA,
+        (
+        SELECT COUNT(*) PEDIDOS_DEVUELTOS,
+          TO_CHAR(FE_PEDIDO,'dd/MM/yyyy') FECHA
+        FROM VTTC_PEDIDO_VENTA
+        WHERE CO_COMPANIA=#{localId.coCompania}
+        AND CO_LOCAL=#{localId.coLocal}
+        AND FE_PEDIDO BETWEEN TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+        AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+        AND ES_PEDIDO_VENTA='C'
+        <![CDATA[
+                AND VA_TOTAL_PRECIO_VENTA < 0
+                     ]]>
+        GROUP BY TO_CHAR(FE_PEDIDO,'dd/MM/yyyy')
+        )PEDIDOSDEVUELTOS
+        WHERE VVENTA.FECHA=VBOLETA.FECHA(+)
+        AND VVENTA.FECHA= VFACTURA.FECHA(+)
+        AND VVENTA.FECHA= PEDIDOSDEVUELTOS.FECHA(+)
+        ORDER BY VVENTA.FECHA_1
+    </select>
+
+    <select id="findVentaPorVendedor"
+            parameterType="com.atux.bean.consulta.ConsultaFlt"
+            resultType="com.atux.bean.consulta.ReporteVendedorItem"
+            >
+    SELECT
+        USU.NU_EMPLEADO nuEmpleado ,
+        NVL(RTRIM(USU.AP_PATERNO_USUARIO), ' ') || ' ' || NVL(RTRIM(USU.NO_USUARIO), ' ') empleado ,
+        ti_rol tiRol,
+        NVL(SUM(TOT_VENTA), 0) totalVenta,
+        NVL(SUM(TOT_BONO), 0) totalBono,
+        NVL(SUM(TOT_GRUPO_A), 0) totalGrupoA,
+        NVL(SUM(TOT_GRUPO_A) / DECODE(SUM(TOT_VENTA),NULL,1,0,1,SUM(TOT_VENTA)), 0) * 100 margenGrupoA,
+        NVL(SUM(TOT_PP), 0)  totalPP,
+        NVL(SUM(TOT_PP) / DECODE(SUM(TOT_VENTA),NULL,1,0,1,SUM(TOT_VENTA)), 0) * 100 margenPP,
+        NVL(SUM(TOT_NUM_PEDIDOS), 0) totalPedidos,
+        NVL(SUM(TOT_NUM_UNIDADES), 0) totalUnidades ,
+        NVL(SUM(TOT_VENTA) / DECODE(SUM(TOT_NUM_PEDIDOS),NULL,1,0,1,SUM(TOT_NUM_PEDIDOS)), 0) valePromocion,
+        NVL(SUM(TOT_NUM_UNIDADES) / DECODE(SUM(TOT_NUM_PEDIDOS),NULL,1,0,1,SUM(TOT_NUM_PEDIDOS)), 0) unidadesVale ,
+        NVL(SUM(TOT_VENTA) / DECODE(SUM(TOT_NUM_UNIDADES),NULL,1,0,1,SUM(TOT_NUM_UNIDADES)), 0) promedioUnidades ,
+        USU.NU_SEC_USUARIO nuSecUsuario
+     FROM
+        VTTR_VENTAS_POR_VENDEDOR T1,
+        CMTS_USUARIO USU,
+        CMTS_USUARIO_ROL ROL
+     WHERE T1.CO_COMPANIA=#{localId.coCompania}
+        AND T1.CO_LOCAL =#{localId.coLocal}
+        AND FE_DIA_VENTA BETWEEN  TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                                  AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+        AND   USU.CO_COMPANIA(+) = T1.CO_COMPANIA
+        AND  USU.CO_LOCAL(+) = T1.CO_LOCAL
+        AND   USU.NU_SEC_USUARIO(+) = T1.NU_SEC_USUARIO
+        AND  ROL.CO_COMPANIA(+) = USU.CO_COMPANIA
+        AND  ROL.CO_LOCAL(+) = USU.CO_LOCAL
+        AND   ROL.NU_SEC_USUARIO(+) = USU.NU_SEC_USUARIO
+        AND  ROL.CO_ROL(+) = '02'
+     GROUP BY USU.NU_EMPLEADO,
+          NVL(RTRIM(USU.AP_PATERNO_USUARIO), ' '),
+        NVL(RTRIM(USU.NO_USUARIO), ' '),
+        TI_ROL,
+        USU.NU_SEC_USUARIO
+     ORDER BY USU.NU_SEC_USUARIO
+    </select>
+
+    <select id="findDetalleVentaPorVendedor"
+            parameterType="com.atux.bean.consulta.ConsultaFlt"
+            resultType="com.atux.bean.consulta.ReporteVentaItem"
+            >
+    SELECT
+         DET.NU_PEDIDO nuPedido,
+         DET.CO_PRODUCTO coProducto,
+         PROD.DE_PRODUCTO deProducto,
+         PROD.DE_UNIDAD_PRODUCTO unidadProducto,
+         DECODE(NVL(DET.IN_PRODUCTO_FRACCION, ' '), 'S', NVL(DET.CA_ATENDIDA, 0)/NVL(DET.VA_FRACCION, 1), NVL(DET.CA_ATENDIDA, 0)) caAtendida,
+         NVL(DET.VA_PRECIO_VENTA, 0) vaPrecioVenta,
+         NVL(DET.VA_BONO, 0) vaBono
+     FROM
+        VTTC_PEDIDO_VENTA PED,
+        VTTD_PEDIDO_VENTA DET,
+        CMTS_USUARIO USU,
+        LGTM_PRODUCTO PROD
+
+     WHERE PED.CO_COMPANIA =#{localId.coCompania}
+        AND PED.CO_LOCAL =#{localId.coLocal}
+        AND PED.FE_PEDIDO BETWEEN  TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                                  AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+     AND  PED.ES_PEDIDO_VENTA = 'C'
+     AND  DET.CO_VENDEDOR = #{coVendedor}
+     AND  PED.CO_COMPANIA = DET.CO_COMPANIA
+     AND  PED.CO_LOCAL = DET.CO_LOCAL
+     AND  PED.NU_PEDIDO = DET.NU_PEDIDO
+     AND  DET.CO_COMPANIA = USU.CO_COMPANIA(+)
+     AND  DET.CO_LOCAL = USU.CO_LOCAL(+)
+     AND  DET.CO_VENDEDOR = USU.NU_SEC_USUARIO(+)
+     AND  DET.CO_COMPANIA = PROD.CO_COMPANIA
+     AND  DET.CO_PRODUCTO = PROD.CO_PRODUCTO
+     AND  DET.NU_REVISION_PRODUCTO = PROD.NU_REVISION_PRODUCTO
+     ORDER BY DET.NU_PEDIDO
+    </select>
+
+
+    <parameterMap type="map" id="vendedorParam">
+        <parameter property="coCompania" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="coLocal" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="fecha" jdbcType="VARCHAR" mode="IN"/>
+    </parameterMap>
+
+    <update id="calculaVentasPorVendedor" parameterMap="vendedorParam" statementType="CALLABLE">
+        { CALL CARGA_DATA_CONSOLIDADA.CALCULA_VENTAS_POR_VENDEDOR(?,?,?) }
+    </update>
+
+</mapper>

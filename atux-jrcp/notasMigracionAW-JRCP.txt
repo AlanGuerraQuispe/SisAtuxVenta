@@ -1,0 +1,52 @@
+Colores Para Gradiente: 
+00 75 9F
+0 117 159
+
+Mensajes de Error
+=================
+Falta poner los mensajes de Error en modo prueba
+Ubicar diversos tipos de Mensajes de Error
+
+Generics
+========
+Considera el uso de generics para instanciar los Presenters:
+presenter = new PickPst<FrmPick>();
+
+Para detectar problemas con los tipos de vista en tiempo de compilacion...
+
+Titulos en los presenters
+=========================
+Injection de dependencias
+
+
+Swing Application Framework (JSR-296)
+===========================
+Estudiar:
+https://appframework.dev.java.net/intro/index.html
+
+Spring 2.5 Java Config:
+=======================
+
+http://blog.interface21.com/main/2007/10/24/spring-25-rc1-is-here-introducing-new-configuration-approaches/
+
+Ver Proyecto Adjuntado: TestSpringConfig
+
+
+Parametros JVM:
+===============
+
+-Dfilthy.active=true -Dswing.defaultlaf=org.jvnet.substance.SubstanceLookAndFeel -Dsubstancelaf.theme=org.jvnet.substance.theme.SubstanceEbonyTheme -Dsubstancelaf.buttonShaper=org.jvnet.substance.button.ClassicButtonShaper -Dsubstancelaf.watermark=null
+
+Falta crear automaticamente los parametros cuando se ejecutan los presenters de manera automatica.
+
+Soporte FEST
+============
+Falta agregar soporte FEST al Filthy View
+ 
+Visuales
+========
+PopUp Blocker
+On Screen PopUps Transparentes
+FadeIn para los Picsk
+Aplicacar nuevos diseños.
+

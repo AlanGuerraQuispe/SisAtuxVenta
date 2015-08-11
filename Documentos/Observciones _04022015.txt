@@ -1,0 +1,16 @@
+Alan:
+ 
+En el Menu  PRECIOS / Precios: La opción es para enviar o EXPORTAR los precios de los productos para cumplir con lo requerido por DIGEMID, por lo que faltaría la opción de seleccionar Locales de una misma empresa y confirmar la cadena de envio.
+ 
+En el Menu  PRECIOS / Listas de precios proveedor, adicionar esta opción esta siendo desarrollada por Ryky
+ 
+En el Menu  PRECIOS / Promociones que  funcione el botón Salir x ahora
+ 
+En el Menu  PRECIOS / Fraccionamiento, que funcione el botón marcar para todos los locales, una parte de ellos, o un local determinado.
+ 
+En el Menu  PRECIOS / Fraccionamiento, a nivel de detalle no muestra el fraccionamiento realizado.
+ 
+En el Menu CATALOGO / Medicos revisar el botón ESPECIALIDAD
+ 
+Saludos
+Cesar

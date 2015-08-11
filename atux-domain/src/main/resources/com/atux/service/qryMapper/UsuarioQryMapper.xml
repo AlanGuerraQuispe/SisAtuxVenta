@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.UsuarioQryMapper">
+
+    <select id="findUsuarios"
+            parameterType="com.atux.bean.consulta.UsuarioFlt"
+            resultType="com.atux.dominio.modelo.UsuarioDTO"
+            >
+        SELECT
+          ID_USUARIO idUsuario,
+          NU_SEC_USUARIO nuSecUsuario,
+          NO_USUARIO noUsuario,
+          AP_PATERNO_USUARIO apPaternoUsuario,
+          AP_MATERNO_USUARIO apMaternoUsuario
+        FROM CMTS_USUARIO
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND CO_COMPANIA =  #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND CO_LOCAL      =  #{localId.coLocal}
+            </if>
+            <if test="idUsuario!=null and idUsuario!=''">
+                AND (
+                ID_USUARIO  LIKE    UPPER(CONCAT(CONCAT('%',#{idUsuario}),'%'))
+                  OR NO_USUARIO  LIKE    UPPER(CONCAT(CONCAT('%',#{idUsuario}),'%'))
+                 OR AP_PATERNO_USUARIO  LIKE    UPPER(CONCAT(CONCAT('%',#{idUsuario}),'%')) OR
+                    AP_MATERNO_USUARIO  LIKE    UPPER(CONCAT(CONCAT('%',#{idUsuario}),'%')))
+            </if>
+        </where>
+
+        ORDER BY  ID_USUARIO
+    </select>
+
+</mapper>

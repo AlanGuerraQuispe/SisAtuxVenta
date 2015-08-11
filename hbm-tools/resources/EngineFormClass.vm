@@ -1,0 +1,18 @@
+package $packageForm
+        
+import javax.swing.*;
+
+/**
+ * User: Kaiser
+ * Date: 01/04/2009
+ */
+public class $entityFrm {
+
+
+    private JPanel pnlMain;
+
+    #foreach( $column in $columns )
+        private JTextField ${column.txtName};
+        private JLabel ${column.lblName};
+    #end
+}

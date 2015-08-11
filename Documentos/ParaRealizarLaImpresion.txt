@@ -1,0 +1,6 @@
+net use * /delete /y
+net use \\192.168.1.45 /user:atux atuxpro
+
+net use lpt1 \\192.168.1.45\epson
+
+rickykaiser@gmail.com / MZ5vf6Gb6nK2\

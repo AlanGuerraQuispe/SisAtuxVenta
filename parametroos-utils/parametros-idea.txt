@@ -1,0 +1,4 @@
+-Xmx512m -Dcom.sider.ad.disabled=true  -Dcom.sider.seguridad.disabled=true
+
+
+-Xmx512m -Dcom.sider.ad.disabled=true -Dsuminet.autologin.pwd=1234  -Dcom.sider.seguridad.disabled=true -Dcom.edChecker.enabled=true

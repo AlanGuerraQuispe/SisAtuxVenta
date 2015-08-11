@@ -1,0 +1,33 @@
+package $packagePojo;
+
+
+import com.aw.core.Identifiable;
+import com.aw.core.validation.annotation.Validation;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public abstract class $pojoName  implements java.io.Serializable, Identifiable {
+
+
+    #foreach( $column in $columns )
+
+            private $column.type ${column.name};
+    #end
+
+    #foreach( $column in $columns )
+        #if($column.validation!="")
+        @Validation(value = "$column.validation")
+        #end
+        public $column.type get${column.methodName}() {
+            return this.${column.name};
+        }
+
+        public void set${column.methodName}($column.type $column.name) {
+            this.${column.name}= $column.name;
+        }
+    #end
+}
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/10/2007 05:36:49 PM by Hibernate Tools 3.2.0.beta8
+
+ create table DAO_HBM_TABLE_BEAN(
+    ID_FIELD NUMBER(12) NOT NULL,
+    FIELD_TEXT VARCHAR2(4),
+    FIELD_DATE DATE,
+  CONSTRAINT PK_DAO_HBM_TABLE_BEAN
+  PRIMARY KEY ( ID_FIELD )
+ )
+ -->
+<hibernate-mapping>
+    <class name="com.aw.core.dao.bean.DAOHbmTableImpl" table="DAO_HBM_TABLE_BEAN" >
+        <id name="id" type="java.lang.Long">
+            <meta attribute="use-in-equals" inherit="false">true</meta>
+            <column name="ID_FIELD" precision="12" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">SEQ_COTIZACION</param>
+            </generator>
+        </id>
+        <!--<many-to-one name="tipoIdentificacion" class="com.etna.qt.dominio.entity.TipoIdentificacionImpl" insert="false" update="false" fetch="select">-->
+            <!--<column name="IDTIPOIDENTIFICACION" precision="22" scale="0" not-null="true" />-->
+        <!--</many-to-one>-->
+        <property name="fieldText" type="string">
+            <column name="FIELD_TEXT" length="4" />
+        </property>
+        <property name="fieldDate" type="timestamp">
+            <column name="FIELD_DATE" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

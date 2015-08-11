@@ -1,0 +1,9 @@
+cd /tmp/aw
+
+exp system/sider owner=seguridadqa   file=./seguridadqa.dmp 
+exp system/sider owner=suministrosqa file=./suministrosqa.dmp 
+exp system/sider file=./rrhh.dmp         tables=RRHH.TRABAJADORES
+exp system/sider file=./contabilidad.dmp tables=CONTABILIDAD.CUENTAS_CONTABLES
+exp system/sider file=./costocont.dmp    tables=COSTOCONT.CENTROS_COSTOS,COSTOCONT.CENTROS_COSTOS,COSTOCONT.SUBCTAS
+exp system/sider file=./ctaxpagar.dmp    tables=CTAXPAGAR.CUENTAS_PROVEEDORES,CTAXPAGAR.PROVEEDORES,CTAXPAGAR.TIPOS_MONEDAS,CTAXPAGAR.TIPOS_PAGOS_ORDEN_COMPRA,CTAXPAGAR.FUNCIONARIOS,CTAXPAGAR.CUENTAS_PROVEEDORES_IMPO
+exp system/sider file=./ventas.dmp       tables=VENTAS.BANCOS,VENTAS.CUENTAS_BANCOS,VENTAS.DEPARTAMENTOS,VENTAS.DISTRITOS,VENTAS.PAISES,VENTAS.PROVINCIAS,VENTAS.TIPO_CAMBIO

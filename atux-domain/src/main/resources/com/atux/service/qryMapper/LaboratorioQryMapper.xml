@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.LaboratorioQryMapper">
+
+    <select id="findLaboratorio"
+            parameterType="com.atux.bean.precios.LaboratorioFlt"
+            resultType="com.atux.bean.precios.Laboratorio"
+            >
+        SELECT
+          CL.CO_LABORATORIO coLaboratorio,
+          CL.DE_LABORATORIO deLaboratorio
+        FROM
+          CMTR_LABORATORIO CL
+        <where>
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND CL.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="buscar!=null and buscar!=''">
+                AND ( CL.CO_LABORATORIO =  #{buscar} or CL.DE_LABORATORIO LIKE  UPPER(CONCAT(CONCAT('%',#{buscar}),'%'))  )
+            </if>
+            AND CL.ES_LABORATORIO = 'A'
+            ORDER BY CL.CO_LABORATORIO
+        </where>
+    </select>
+
+
+
+</mapper>

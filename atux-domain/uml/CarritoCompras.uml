@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagramm>
+  <classes>
+    <class fqn="com.sider.suministros.bean.carritoCompras.BNCarritoCompras.BNDet" x="196.82386363636368" y="-115.54545454545453" />
+    <class fqn="com.sider.suministros.bean.carritoCompras.BNCarritoCompras" x="-189.11363636363637" y="-127.54545454545453" />
+  </classes>
+  <packages />
+  <edges>
+    <edge source="com.sider.suministros.bean.carritoCompras.BNCarritoCompras.BNDet" target="com.sider.suministros.bean.carritoCompras.BNCarritoCompras" relationship="INNER_CLASS">
+      <point x="-20.0" y="-13.0" />
+      <point x="307.6875" y="127.0" />
+      <point x="252.24999999999997" y="127.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+  </edges>
+  <settings isCamel="false" isColorManagerEnabled="true" isFieldsVisible="false" isConstructorsVisible="false" isMethodsVisible="false" isShowDependencies="false" isShowInnerClasses="true" defaultVisibility="private" isPropertiesVisible="true" zoom="1.0" x="224.5" y="94.5" />
+  <SelectedNodes>
+    <node fqn="com.sider.suministros.bean.carritoCompras.BNCarritoCompras.BNDet" />
+  </SelectedNodes>
+</ClassDiagramm>
+

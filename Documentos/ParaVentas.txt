@@ -1,0 +1,13 @@
+Agregar columna para cantidad de cada principio (DECIMALES), costo promedio y precio
+
+- Al seleccionar el producto debe jalar el detalle de sus insumos
+
+215069 descripcion linea cantidad precio 
+
+Detalle : los insumos separados por coma
+
+Princio activo = Productos del tipo insumo
+
+En el detalle de tabla guardar 
+
+Agregar el tipo de producto en el detalle del pedido

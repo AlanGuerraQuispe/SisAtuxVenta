@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.PrecioQryMapper">
+
+    <select id="findNextNuSecProd"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="Long"
+            >
+                SELECT
+                  count(*)
+                FROM
+                  VTTR_PRODUCTO_BONO VPB
+                WHERE
+                    VPB.CO_COMPANIA=  #{localId.coCompania}
+                    AND VPB.CO_PRODUCTO   =  #{coProducto}
+                    AND VPB.NU_REVISION_PRODUCTO   =  #{nuRevision}
+
+    </select>
+
+    <update id="inactivarProductoBono"
+            parameterType="com.atux.bean.precios.Incentivo"
+            >
+                UPDATE
+                  VTTR_PRODUCTO_BONO
+                SET
+                  ES_PROD_BONO='I',
+                  FE_MOD_PROD_BONO=SYSDATE,
+                  ID_MOD_PROD_BONO=#{idUsuario}
+                WHERE
+                    CO_COMPANIA=  #{coCompania}
+                    AND CO_PRODUCTO   =  #{coProducto}
+                    AND NU_REVISION_PRODUCTO   =  #{nuRevision}
+                    <if test="nuSecProdBono!=null">
+                        AND NU_SEC_PROD_BONO   =  #{nuSecProdBono}
+                    </if>
+
+    </update>
+
+
+
+</mapper>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.atux.desktop.seguridad.FrmLogin">
+  <grid id="27dc6" binding="pnlMain" layout-manager="FormLayout">
+    <rowspec value="center:7dlu:noGrow"/>
+    <rowspec value="fill:12dlu:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="fill:12dlu:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;0px):noGrow"/>
+    <rowspec value="center:max(d;14px):noGrow"/>
+    <rowspec value="fill:26dlu:noGrow"/>
+    <rowspec value="top:7dlu:noGrow"/>
+    <colspec value="fill:0dlu:noGrow"/>
+    <colspec value="fill:max(d;0px):noGrow"/>
+    <colspec value="left:0dlu:grow"/>
+    <colspec value="fill:28dlu:noGrow"/>
+    <colspec value="left:10dlu:noGrow"/>
+    <colspec value="fill:53dlu:noGrow"/>
+    <colspec value="fill:11dlu:grow"/>
+    <colspec value="fill:max(d;0dlu):noGrow"/>
+    <constraints>
+      <xy x="123" y="36" width="280" height="140"/>
+    </constraints>
+    <properties>
+      <minimumSize width="240" height="140"/>
+      <preferredSize width="270" height="170"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="61078" class="javax.swing.JLabel" binding="lblUserName">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="4"/>
+          <text value="Usuario"/>
+        </properties>
+      </component>
+      <component id="1c38a" class="javax.swing.JTextField" binding="txtUserName">
+        <constraints>
+          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="ece2" class="javax.swing.JLabel" binding="lblPassword">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="4"/>
+          <text value="Clave"/>
+        </properties>
+      </component>
+      <component id="d5ad5" class="javax.swing.JPasswordField" binding="txtPassword">
+        <constraints>
+          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <grid id="f9745" binding="footerPanel" custom-create="true" layout-manager="FormLayout">
+        <rowspec value="center:4dlu:noGrow"/>
+        <rowspec value="center:14dlu:noGrow"/>
+        <rowspec value="top:8dlu:noGrow"/>
+        <colspec value="fill:d:grow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:55dlu:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:55dlu:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;0px):noGrow"/>
+        <colspec value="left:d:grow"/>
+        <colspec value="fill:max(d;0px):noGrow"/>
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="8" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-8147749"/>
+          <minimumSize width="12" height="12"/>
+          <preferredSize width="12" height="12"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="1bec7" class="javax.swing.JButton" binding="btnCancel">
+            <constraints>
+              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="Cancelar"/>
+            </properties>
+          </component>
+          <component id="991a7" class="javax.swing.JButton" binding="btnAceptar">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="Aceptar"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

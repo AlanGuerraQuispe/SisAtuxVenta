@@ -1,0 +1,34 @@
+package $packageDomain;
+
+import com.sider.seguridad.bean.rol.BNRolFlt;
+import com.sider.seguridad.dominio.comun.SVNumeracion;
+import com.sider.seguridad.dominio.entity.RolTmImpl;
+
+import java.util.List;
+
+
+@Service
+public interface $serviceNameImpl {
+
+    protected final Log logger = LogFactory.getLog(getClass());
+
+    @Autowired
+    private $repositoryName $repositoryName_var;
+
+    public List buscar($filtroName filtro){
+        return ${repositoryName_var}.buscar(filtro);
+    }
+
+    public void guardar($entityImpl entity,String viewMode){
+        #if($useDomain)
+            ${repositoryName_var}.guardar(entity.getDomain());
+        #else
+            ${repositoryName_var}.guardar(entity);
+        #end
+    }
+
+    public void eliminar(List lista){
+        ${repositoryName_var}.eliminar(obj);
+    }
+
+}

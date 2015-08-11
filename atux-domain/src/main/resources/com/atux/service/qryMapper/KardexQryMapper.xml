@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.KardexQryMapper">
+
+    <select id="findKardexDetalle"
+            parameterType="com.atux.bean.kardex.KardexFlt"
+            resultType="com.atux.bean.kardex.KardexDetalle"
+            >
+        SELECT
+            LK.FE_KARDEX feKardex ,
+            LK.NU_DOCUMENTO nuDocumento,
+            LK.NU_DOCUMENTO_REF nuReferencia,
+            LK.CO_GRUPO_MOTIVO coGrupoMotivo,
+            LK.CO_MOTIVO_KARDEX coMotivo,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_STOCK_INICIAL/DECODE(LK.VA_FRACCION_INICIAL,NULL,1,0,1,LK.VA_FRACCION_INICIAL)), LK.CA_STOCK_INICIAL) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_STOCK_INICIAL, LK.VA_FRACCION_INICIAL), 0) , 0) caInicial,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_MOVIMIENTO/DECODE(LK.VA_FRACCION_INICIAL,NULL,1,0,1,LK.VA_FRACCION_INICIAL)), LK.CA_MOVIMIENTO) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_MOVIMIENTO, LK.VA_FRACCION_INICIAL), 0) , 0)  caMovimiento,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_STOCK_FINAL/DECODE(LK.VA_FRACCION_FINAL,NULL,1,0,1,LK.VA_FRACCION_FINAL)), LK.CA_STOCK_FINAL) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_STOCK_FINAL, LK.VA_FRACCION_FINAL), 0) , 0) caFinal,
+            NULL,
+            NULL,
+            NVL(LK.ID_CREA_KARDEX,' ') usuario,
+          LK.VA_FRACCION_FINAL vaFraccion,
+          LK.VA_COSTO_PROMEDIO costoPromedio
+
+        FROM LGTV_KARDEX LK,
+        LGTR_PRODUCTO_LOCAL LPL
+        <where>
+             LK.CO_COMPANIA =  #{localId.coCompania}
+            AND LK.CO_LOCAL      =  #{localId.coLocal}
+            AND LK.CO_PRODUCTO   =  #{coProducto}
+            <if test="coGrupoMotivo!=null and coGrupoMotivo!=''">
+                AND LK.CO_GRUPO_MOTIVO   =  #{coGrupoMotivo}
+            </if>
+            <if test="coMotivo!=null and coMotivo!=''">
+                AND LK.CO_MOTIVO_KARDEX   =  #{coMotivo}
+            </if>
+            <if test="idUsuario!=null and idUsuario!=''">
+                AND LK.ID_CREA_KARDEX   =  #{idUsuario}
+            </if>
+            AND LK.FE_KARDEX BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            AND LK.CO_COMPANIA      = LPL.CO_COMPANIA
+            AND LK.CO_LOCAL         = LPL.CO_LOCAL
+            AND LK.CO_PRODUCTO      = LPL.CO_PRODUCTO
+            AND LK.TI_DOCUMENTO IS NULL
+        </where>
+        UNION
+        SELECT
+            LK.FE_KARDEX feKardex ,
+            LK.NU_DOCUMENTO nuDocumento,
+            LK.NU_DOCUMENTO_REF nuReferencia,
+            LK.CO_GRUPO_MOTIVO coGrupoMotivo,
+            LK.CO_MOTIVO_KARDEX coMotivo,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_STOCK_INICIAL/DECODE(LK.VA_FRACCION_INICIAL,NULL,1,0,1,LK.VA_FRACCION_INICIAL)), LK.CA_STOCK_INICIAL) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_STOCK_INICIAL, LK.VA_FRACCION_INICIAL), 0) , 0) caInicial,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_MOVIMIENTO/DECODE(LK.VA_FRACCION_INICIAL,NULL,1,0,1,LK.VA_FRACCION_INICIAL)), LK.CA_MOVIMIENTO) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_MOVIMIENTO, LK.VA_FRACCION_INICIAL), 0) , 0)  caMovimiento,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_STOCK_FINAL/DECODE(LK.VA_FRACCION_FINAL,NULL,1,0,1,LK.VA_FRACCION_FINAL)), LK.CA_STOCK_FINAL) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_STOCK_FINAL, LK.VA_FRACCION_FINAL), 0) , 0) caFinal,
+            NULL,
+            NULL,
+            NVL(LK.ID_CREA_KARDEX,' ') usuario,
+            LK.VA_FRACCION_FINAL vaFraccion,
+        LK.VA_COSTO_PROMEDIO costoPromedio
+        FROM LGTV_KARDEX LK,
+        LGTR_PRODUCTO_LOCAL LPL
+        <where>
+                LK.CO_COMPANIA =  #{localId.coCompania}
+            AND LK.CO_LOCAL      =  #{localId.coLocal}
+            AND LK.CO_PRODUCTO   =  #{coProducto}
+            <if test="coGrupoMotivo!=null and coGrupoMotivo!=''">
+                AND LK.CO_GRUPO_MOTIVO   =  #{coGrupoMotivo}
+            </if>
+            <if test="coMotivo!=null and coMotivo!=''">
+                AND LK.CO_MOTIVO_KARDEX   =  #{coMotivo}
+            </if>
+            <if test="idUsuario!=null and idUsuario!=''">
+                AND LK.ID_CREA_KARDEX   =  #{idUsuario}
+            </if>
+            AND LK.FE_KARDEX BETWEEN
+            TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+            AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            AND LK.CO_COMPANIA      = LPL.CO_COMPANIA
+            AND LK.CO_LOCAL         = LPL.CO_LOCAL
+            AND LK.CO_PRODUCTO      = LPL.CO_PRODUCTO
+            AND LK.TI_DOCUMENTO IN ('01','02','03','06','07','08')
+        </where>
+
+        UNION
+        SELECT
+            LK.FE_KARDEX feKardex ,
+            LK.NU_DOCUMENTO nuDocumento,
+            LK.NU_DOCUMENTO_REF nuReferencia,
+            LK.CO_GRUPO_MOTIVO coGrupoMotivo,
+            LK.CO_MOTIVO_KARDEX coMotivo,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_STOCK_INICIAL/DECODE(LK.VA_FRACCION_INICIAL,NULL,1,0,1,LK.VA_FRACCION_INICIAL)), LK.CA_STOCK_INICIAL) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_STOCK_INICIAL, LK.VA_FRACCION_INICIAL), 0) , 0) caInicial,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_MOVIMIENTO/DECODE(LK.VA_FRACCION_INICIAL,NULL,1,0,1,LK.VA_FRACCION_INICIAL)), LK.CA_MOVIMIENTO) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_MOVIMIENTO, LK.VA_FRACCION_INICIAL), 0) , 0)  caMovimiento,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_STOCK_FINAL/DECODE(LK.VA_FRACCION_FINAL,NULL,1,0,1,LK.VA_FRACCION_FINAL)), LK.CA_STOCK_FINAL) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_STOCK_FINAL, LK.VA_FRACCION_FINAL), 0) , 0) caFinal,
+            LDRP.NU_LOTE,
+            ldrp.fe_vence_producto,
+            NVL(LK.ID_CREA_KARDEX,' ') usuario,
+            LK.VA_FRACCION_FINAL vaFraccion,
+        LK.VA_COSTO_PROMEDIO costoPromedio
+
+        FROM
+            LGTC_RECEPCION_PRODUCTO LCRP,
+            LGTD_RECEPCION_PRODUCTO LDRP,
+            LGTV_KARDEX LK,
+            LGTR_PRODUCTO_LOCAL LPL
+        <where>
+                LCRP.CO_COMPANIA =  #{localId.coCompania}
+            AND LCRP.CO_LOCAL     =  #{localId.coLocal}
+            and LDRP.CO_COMPANIA= LCRP.CO_COMPANIA
+            AND LDRP.CO_LOCAL= LCRP.CO_LOCAL
+            AND LDRP.NU_RECEPCION_PRODUCTO = LCRP.NU_RECEPCION_PRODUCTO
+            AND LCRP.TI_DOCUMENTO_RECEPCION ='03'
+            AND LDRP.CO_PRODUCTO  =  #{coProducto}
+            AND LK.CO_COMPANIA=  LCRP.CO_COMPANIA
+            AND LK.CO_LOCAL=  LCRP.CO_LOCAL
+            AND LK.TI_DOCUMENTO=  LCRP.TI_DOCUMENTO_RECEPCION
+            AND LK.CO_PRODUCTO=  LDRP.CO_PRODUCTO
+            AND LPL.CO_COMPANIA = LK.CO_COMPANIA
+            AND LPL.CO_LOCAL = LK.CO_LOCAL
+            AND LPL.CO_PRODUCTO = LK.CO_PRODUCTO
+            <if test="coGrupoMotivo!=null and coGrupoMotivo!=''">
+                AND LK.CO_GRUPO_MOTIVO   =  #{coGrupoMotivo}
+            </if>
+            <if test="coMotivo!=null and coMotivo!=''">
+                AND LK.CO_MOTIVO_KARDEX   =  #{coMotivo}
+            </if>
+            <if test="idUsuario!=null and idUsuario!=''">
+                AND LK.ID_CREA_KARDEX   =  #{idUsuario}
+            </if>
+            AND LK.FE_KARDEX BETWEEN
+            TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+            AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+
+        </where>
+        UNION
+        SELECT
+            LK.FE_KARDEX feKardex ,
+            LK.NU_DOCUMENTO nuDocumento,
+            LK.NU_DOCUMENTO_REF nuReferencia,
+            LK.CO_GRUPO_MOTIVO coGrupoMotivo,
+            LK.CO_MOTIVO_KARDEX coMotivo,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_STOCK_INICIAL/DECODE(LK.VA_FRACCION_INICIAL,NULL,1,0,1,LK.VA_FRACCION_INICIAL)), LK.CA_STOCK_INICIAL) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_STOCK_INICIAL, LK.VA_FRACCION_INICIAL), 0) , 0) caInicial,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_MOVIMIENTO/DECODE(LK.VA_FRACCION_INICIAL,NULL,1,0,1,LK.VA_FRACCION_INICIAL)), LK.CA_MOVIMIENTO) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_MOVIMIENTO, LK.VA_FRACCION_INICIAL), 0) , 0)  caMovimiento,
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', TRUNC(LK.CA_STOCK_FINAL/DECODE(LK.VA_FRACCION_FINAL,NULL,1,0,1,LK.VA_FRACCION_FINAL)), LK.CA_STOCK_FINAL) ,0) +
+            NVL(DECODE(LK.IN_PROD_FRACCIONADO, 'S', MOD(LK.CA_STOCK_FINAL, LK.VA_FRACCION_FINAL), 0) , 0) caFinal,
+            NULL,
+            LDGT.fe_vence_producto,
+            NVL(LK.ID_CREA_KARDEX,' ') usuario,
+        LK.VA_FRACCION_FINAL vaFraccion,
+        LK.VA_COSTO_PROMEDIO costoPromedio
+
+        FROM
+            LGTC_GUIA_TRANSFERENCIA LCGT,
+            LGTD_GUIA_TRANSFERENCIA LDGT,
+            LGTV_KARDEX LK,
+            LGTR_PRODUCTO_LOCAL LPL
+        <where>
+
+                LCGT.CO_COMPANIA=  #{localId.coCompania}
+            AND LCGT.CO_LOCAL     =  #{localId.coLocal}
+            AND LDGT.CO_PRODUCTO   =  #{coProducto}
+            AND LDGT.CO_COMPANIA= LCGT.CO_COMPANIA
+            AND LDGT.CO_LOCAL= LCGT.CO_LOCAL
+            AND LDGT.NU_GUIA_TRANSFERENCIA = LCGT.NU_GUIA_TRANSFERENCIA
+            AND LK.CO_COMPANIA=  LCGT.CO_COMPANIA
+            AND LK.CO_LOCAL=  LCGT.CO_LOCAL
+            AND LK.TI_DOCUMENTO=  '04'
+            AND LK.CO_PRODUCTO=  LDGT.CO_PRODUCTO
+            AND LPL.CO_COMPANIA = LK.CO_COMPANIA
+            AND LPL.CO_LOCAL = LK.CO_LOCAL
+            AND LPL.CO_PRODUCTO = LK.CO_PRODUCTO
+            <if test="coGrupoMotivo!=null and coGrupoMotivo!=''">
+                AND LK.CO_GRUPO_MOTIVO   =  #{coGrupoMotivo}
+            </if>
+            <if test="coMotivo!=null and coMotivo!=''">
+                AND LK.CO_MOTIVO_KARDEX   =  #{coMotivo}
+            </if>
+            <if test="idUsuario!=null and idUsuario!=''">
+                AND LK.ID_CREA_KARDEX   =  #{idUsuario}
+            </if>
+            AND LK.FE_KARDEX BETWEEN
+            TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+            AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+
+        </where>
+
+    </select>
+
+
+    <select id="findKardexAjusteDetalle"
+            parameterType="com.atux.bean.kardex.KardexFlt"
+            resultType="com.atux.bean.kardex.KardexDetalle"
+            >
+        SELECT
+            LK.FE_KARDEX feKardex ,
+            LK.CO_GRUPO_MOTIVO coGrupoMotivo,
+            LK.CO_MOTIVO_KARDEX coMotivo,
+            LK.ID_CREA_KARDEX usuario,
+            DE_GLOSA justificacion
+        FROM LGTV_KARDEX LK,
+        LGTR_PRODUCTO_LOCAL LPL
+        <where>
+             LK.CO_COMPANIA =  #{localId.coCompania}
+            AND LK.CO_LOCAL      =  #{localId.coLocal}
+            AND LK.CO_PRODUCTO   =  #{coProducto}
+            AND LK.CO_GRUPO_MOTIVO_AJUSTE   =  '04'
+            <if test="feInicio!=null and feFin!=null">
+                AND LK.FE_KARDEX BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            </if>
+            AND LK.CO_COMPANIA      = LPL.CO_COMPANIA
+            AND LK.CO_LOCAL         = LPL.CO_LOCAL
+            AND LK.CO_PRODUCTO      = LPL.CO_PRODUCTO
+            ORDER BY 1 DESC
+        </where>
+    </select>
+
+
+    <select id="findKardexAjuste"
+            parameterType="com.atux.bean.kardex.KardexFlt"
+            resultType="com.atux.bean.kardex.Producto"
+            >
+        SELECT
+        LPL.CO_PRODUCTO coProducto ,
+        LP.DE_PRODUCTO deProducto,
+        CL.DE_LABORATORIO deLaboratorio,
+        LP.DE_UNIDAD_PRODUCTO unidadProducto,
+        LP.VA_PRECIO_PROMEDIO precioPromedio,
+        LPL.DE_UNIDAD_FRACCION unidadFraccion,
+        LPL.DE_UNIDAD_FRACCION unidadFraccion,
+        LPL.IN_PROD_FRACCIONADO inProdFraccionado,
+        DECODE(LPL.IN_PROD_FRACCIONADO, 'S', TRUNC(LPL.CA_STOCK_DISPONIBLE/LPL.VA_FRACCION), LPL.CA_STOCK_DISPONIBLE) stkEntero,
+        DECODE(LPL.IN_PROD_FRACCIONADO, 'S', MOD(LPL.CA_STOCK_DISPONIBLE, LPL.VA_FRACCION), 0) stkFraccion ,
+        DECODE(LPL.IN_PROD_FRACCIONADO, 'S', TRUNC(LPL.CA_STOCK_DISPONIBLE/LPL.VA_FRACCION), LPL.CA_STOCK_DISPONIBLE) stkEnteroActual,
+        DECODE(LPL.IN_PROD_FRACCIONADO, 'S', MOD(LPL.CA_STOCK_DISPONIBLE, LPL.VA_FRACCION), 0) stkFraccionActual ,
+        LPL.VA_FRACCION vaFraccion
+        FROM LGTR_PRODUCTO_LOCAL LPL
+        LEFT JOIN LGTM_PRODUCTO LP
+        ON LPL.CO_COMPANIA           = LP.CO_COMPANIA
+        AND LPL.CO_PRODUCTO          = LP.CO_PRODUCTO
+        AND LPL.NU_REVISION_PRODUCTO = LP.NU_REVISION_PRODUCTO
+        LEFT JOIN CMTR_LABORATORIO CL
+        ON  CL.CO_COMPANIA   = LP.CO_COMPANIA
+        AND CL.CO_LABORATORIO=LP.CO_LABORATORIO
+        <where >
+            1 = 1
+                AND LPL.CO_COMPANIA=  #{localId.coCompania}
+                AND LPL.CO_LOCAL   =  #{localId.coLocal}
+            <if test="buscar!=null and buscar!=''">
+                AND ( LP.CO_PRODUCTO =  #{buscar} or LP.DE_PRODUCTO LIKE  UPPER(CONCAT(CONCAT('%',#{buscar}),'%'))  )
+            </if>
+                AND (LPL.ES_PROD_LOCAL = 'A' OR LPL.CA_STOCK_DISPONIBLE > 0)
+        </where>
+    </select>
+
+    <parameterMap type="map" id="kardexAjusteParam">
+        <parameter property="caMovimiento" jdbcType="NUMERIC" mode="OUT"/>
+        <parameter property="coCompania" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="coLocal" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="coProducto" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="stkEntero" jdbcType="NUMERIC" mode="IN"/>
+        <parameter property="stkFraccion" jdbcType="NUMERIC" mode="IN"/>
+        <parameter property="tiDocumento" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="nuDocumento" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="justificacion" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="coGrupoMotivoKardex" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="coMotivoKardex" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="coGrupoMotivoAjuste" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="coMotivoAjuste" jdbcType="VARCHAR" mode="IN"/>
+        <parameter property="idUsuario" jdbcType="VARCHAR" mode="IN"/>
+    </parameterMap>
+
+
+    <update id="sp_invAjusteInv" parameterMap="kardexAjusteParam"  statementType="CALLABLE">
+        { CALL ? := INKVENTA_INVENTARIO.INV_AJUSTE_INV(?,?,?,?,?,?,?,?,?,?,?,?,?) }
+    </update>
+
+</mapper>

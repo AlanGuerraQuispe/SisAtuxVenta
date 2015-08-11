@@ -1,0 +1,93 @@
+package $packageWeb;
+
+import com.aw.core.web.servlet.mvc.action.Action;
+import com.aw.core.web.servlet.mvc.action.ActionNames;
+import com.aw.core.web.servlet.mvc.action.types.*;
+import com.aw.core.web.servlet.mvc.cmp.pick.Pick;
+import com.aw.core.web.servlet.mvc.cmp.pick.PickImpl;
+import com.aw.core.web.servlet.mvc.controller.FindController;
+import com.aw.core.web.servlet.mvc.core.WebInfoProvider;
+import com.aw.core.web.servlet.mvc.grid.ColumnInfo;
+import com.aw.core.web.servlet.mvc.grid.GridDataHolder;
+import com.aw.core.web.servlet.mvc.grid.GridProvider;
+import com.aw.core.web.servlet.mvc.grid.SelectorColumn;
+import com.aw.stereotype.AWController;
+import com.sider.seguridad.web.comun.MostrarAuditoriaInfoAction;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@AWController(templateRoot = "$packageDomain", title = "")
+public class $controllerName extends FindController<$filtroName> {
+
+    @Autowired
+    $serviceName $serviceName_var;
+
+    @Autowired
+    SPDD spdd;
+
+    public $controllerName() {
+          searchAtBeginning();
+    }
+
+    protected void registerBinding() {
+
+    }
+
+    public void registerActions() {
+        GridProvider gdp = getGridProvider();
+
+        actionRsr.registerAction(ActionNames.ACTION_ADD, new InsertAction(), gdp).setView("$viewName").refreshGridAtEnd().setLabel("Crear").noNeedSelectedRow().setAsAjaxAction().noExecValidation().setResultMsg("$entityName creado correctamente");
+        actionRsr.registerAction(ActionNames.ACTION_EDIT, new EditAction(), gdp).setView("$viewName").refreshGridAtEnd().setLabel("Modificar").executeOnDblClick().setAsAjaxAction().setResultMsg("$entityName actualizado correctamente");
+        actionRsr.registerAction(ActionNames.ACTION_VIEW, new ViewAction(new EditAction()), gdp).setView("$viewName").setLabel("Ver").noExecValidation().setAsAjaxAction();
+
+        Action activateInactivate = new ActivateInactivateItemAction(true) {
+            protected void activateInactivateObj(WebInfoProvider wip, Object objToBeActivateInactive) {
+                String resultMsg = {$serviceName_var}.eliminarRol((List) objToBeActivateInactive);
+                if (StringUtils.isNotEmpty(resultMsg)) {
+                    wip.setErrorMsg(resultMsg);
+                }
+            }
+        };
+        
+        actionRsr.registerAction(ActionNames.ACTION_DELETE_LOGICAL, activateInactivate, gdp).setConfirmMsg("Desea eliminar el $entityName del registro?").setLabel("Eliminar").setAsAjaxAction().refreshGridAtEnd();
+        actionRsr.registerAction(ActionNames.ACTION_PRINT_GRID, new PrintGridAction(" "), gdp).setLabel("Exportar a PDF");
+        actionRsr.registerAction(ActionNames.ACTION_EXPORT_GRID, new ExportGridAction(" "), gdp).setLabel("Exportar a Excel");
+
+
+    }
+
+    public ColumnInfo[] getColumnInfo() {
+        ColumnInfo[] columns = new ColumnInfo[]{
+                new SelectorColumn(),
+
+                #foreach( $column in $columns )
+                  new ColumnInfo("$column.label", "$column.name", $column.width, ColumnInfo.LEFT),
+                #end
+
+
+                new ColumnInfo("Usuario Creación", "usuCrea", 140, ColumnInfo.LEFT).setRptChrs(25).setAsNoPrintable(),
+                new ColumnInfo("Fecha Creación", "fecCrea", 140, ColumnInfo.LEFT).formatAsDateTime().setAsNoPrintable(),
+                new ColumnInfo("Usuario Modificación", "usuModi", 140, ColumnInfo.LEFT).setRptChrs(25).setAsNoPrintable(),
+                new ColumnInfo("Fecha Modificación", "fecModi", 140, ColumnInfo.LEFT).formatAsDateTime().setAsNoPrintable()
+
+
+
+        };
+        return columns;
+    }
+
+    public List getValues($filtroName obj) {
+        return ${serviceName_var}.buscar(obj);
+    }
+
+    @Override
+    protected void registerPicks() {
+        Pick task1Pick = new PickImpl("PickUsuario");
+        task1Pick.registerBind("coUsuCreaFlt", "coUsuario");
+        task1Pick.registerBind("noUsuCreaFlt", "nombreCompleto");
+        pickMgr.registerPick("noUsuCreaFlt", task1Pick);
+    }
+}

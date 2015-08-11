@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.PromocionQryMapper">
+
+    <select id="findPromocionList"
+            parameterType="com.atux.bean.promocion.PromocionFlt"
+            resultType="com.atux.bean.promocion.Promocion"
+            >
+        SELECT
+            PP.CO_COMPANIA coCompania,
+            PP.CO_PROMOCION coPromocion,
+            PP.NO_PROMOCION noPromocion,
+            PP.DE_CORTA_PROMOCION mensajeCorto,
+            PP.DE_PROMOCION mensajeLargo,
+            PP.FE_INI_PROMOCION fechaInicio,
+            PP.FE_FIN_PROMOCION fechaFin,
+            PP.ES_PROMOCION esPromocion,
+            PP.DE_OBSERVACIONES observacion,
+            PP.IN_TODOS_LOCALES inTodosLocales,
+            PP.ID_CREA_PROMOCION creadoPor,
+            PP.FE_CREA_PROMOCION fechaCreacion
+        FROM PRTM_PROMO PP INNER JOIN  PRTR_LOCAL_PROMO PLP
+             ON PLP.CO_COMPANIA= PP.CO_COMPANIA
+                AND PLP.CO_PROMOCION= PP.CO_PROMOCION
+
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PP.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PLP.CO_LOCAL= #{localId.coLocal}
+            </if>
+            <if test="noPromocion!=null and noPromocion!=''">
+                AND PP.NO_PROMOCION   like  UPPER(#{noPromocion})
+            </if>
+            <if test="fechaInicio!=null and fechaFin!=''">
+                AND (PP.FE_INI_PROMOCION BETWEEN
+                TO_DATE(TO_CHAR(#{fechaInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{fechaFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+                OR PP.FE_FIN_PROMOCION BETWEEN
+                TO_DATE(TO_CHAR(#{fechaInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{fechaFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+                )
+            </if>
+       </where>
+    </select>
+
+    <select id="findPromocionDetalleList"
+            parameterType="com.atux.bean.promocion.PromocionFlt"
+            resultType="com.atux.bean.promocion.PromocionDetalle"
+            >
+        SELECT
+            PPPP.CO_COMPANIA coCompania,
+            PPPP.CO_PROMOCION coPromocion,
+            PPPP.CO_PRODUCTO coProducto,
+            LPO.DE_PRODUCTO deProducto,
+            PPPP.CA_PRODUCTO caProducto,
+            PPPP.VA_FRACCION vaFraccion,
+            PPPP.CO_PRODUCTO_P coProductoP,
+            LPP.DE_PRODUCTO deProductoP,
+            PPPP.CA_PRODUCTO_P caProductoP,
+            PPPP.VA_FRACCION_P vaFraccionP,
+            PPPP.ES_PRODUCTO_PLAN esProductoPlan
+        FROM
+          PRTD_PRODUCTO_PLAN_PROMO PPPP
+            INNER JOIN LGTM_PRODUCTO LPO ON LPO.CO_COMPANIA= PPPP.CO_COMPANIA AND LPO.CO_PRODUCTO=PPPP.CO_PRODUCTO
+            INNER JOIN LGTM_PRODUCTO LPP ON LPP.CO_COMPANIA= PPPP.CO_COMPANIA AND LPP.CO_PRODUCTO=PPPP.CO_PRODUCTO_P
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PPPP.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="coPromocion!=null and coPromocion!=''">
+                AND PPPP.CO_PROMOCION   =  #{coPromocion}
+            </if>
+       </where>
+    </select>
+
+    <select id="findPromocionPorProducto"
+            parameterType="com.atux.bean.promocion.PromocionFlt"
+            resultType="com.atux.bean.promocion.PromocionDetalle"
+            >
+        SELECT
+            PPPP.CO_COMPANIA coCompania,
+            PPPP.CO_PROMOCION coPromocion,
+            PPPP.CO_PRODUCTO coProducto,
+            LPO.DE_PRODUCTO deProducto,
+            PPPP.CA_PRODUCTO caProducto,
+            PPPP.VA_FRACCION vaFraccion,
+            PPPP.CO_PRODUCTO_P coProductoP,
+            LPP.DE_PRODUCTO deProductoP,
+            LPP.DE_UNIDAD_PRODUCTO unidadProductoP,
+            LPO.DE_UNIDAD_PRODUCTO unidadProducto,
+            PPPP.CA_PRODUCTO_P caProductoP,
+            PPPP.VA_FRACCION_P vaFraccionP,
+            PPPP.ES_PRODUCTO_PLAN esProductoPlan
+        FROM
+            PRTM_PROMO PP
+            INNER JOIN PRTD_PRODUCTO_PLAN_PROMO PPPP ON PPPP.CO_COMPANIA= PP.CO_COMPANIA AND PPPP.CO_PROMOCION = PP.CO_PROMOCION
+            INNER JOIN PRTR_LOCAL_PROMO PLP   ON PLP.CO_COMPANIA= PP.CO_COMPANIA        AND PLP.CO_PROMOCION= PP.CO_PROMOCION
+            INNER JOIN LGTM_PRODUCTO LPO ON LPO.CO_COMPANIA= PPPP.CO_COMPANIA AND LPO.CO_PRODUCTO=PPPP.CO_PRODUCTO
+            INNER JOIN LGTM_PRODUCTO LPP ON LPP.CO_COMPANIA= PPPP.CO_COMPANIA AND LPP.CO_PRODUCTO=PPPP.CO_PRODUCTO_P
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND LPO.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PLP.CO_LOCAL=  #{localId.coLocal}
+            </if>
+                AND PPPP.CO_PRODUCTO=  #{coProducto}
+                AND SYSDATE BETWEEN TO_DATE(TO_CHAR(PP.FE_INI_PROMOCION,'dd/MM/yyyy')||' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                          AND TO_DATE(TO_CHAR(PP.FE_FIN_PROMOCION,'dd/MM/yyyy')||' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+            <![CDATA[
+                AND  PPPP.CA_PRODUCTO <= #{caAtendida}
+            ]]>
+            ORDER BY PPPP.CA_PRODUCTO DESC, PPPP.CA_PRODUCTO_P DESC
+       </where>
+    </select>
+
+    <select id="findPromocionDetalleLocalList"
+            parameterType="com.atux.bean.promocion.PromocionFlt"
+            resultType="com.atux.bean.promocion.PromocionLocal"
+            >
+        SELECT
+        PLP.CO_COMPANIA coCompania,
+        PLP.CO_LOCAL coLocal,
+        VL.DE_LOCAL deLocal
+        FROM
+        PRTR_LOCAL_PROMO PLP
+            INNER JOIN VTTM_LOCAL VL ON VL.CO_COMPANIA= PLP.CO_COMPANIA AND VL.CO_LOCAL=PLP.CO_LOCAL
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND PLP.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="localId.coLocal!=null and localId.coLocal!=''">
+                AND PLP.CO_LOCAL=  #{localId.coLocal}
+            </if>
+            <if test="coPromocion!=null and coPromocion!=''">
+                AND PLP.CO_PROMOCION   =  #{coPromocion}
+            </if>
+       </where>
+    </select>
+    <delete id="deletePromocion" parameterType="string">
+        DELETE FROM PRTD_PRODUCTO_PLAN_PROMO WHERE CO_COMPANIA='001' AND CO_PROMOCION=#{value}
+    </delete>
+    <delete id="deletePromocionLocal" parameterType="string">
+        DELETE FROM PRTR_LOCAL_PROMO WHERE CO_COMPANIA='001' AND CO_PROMOCION=#{value}
+    </delete>
+
+</mapper>

@@ -1,0 +1,19 @@
+package $packageBean;
+
+import java.io.Serializable;
+
+public class $entityBean implements Serializable {
+    $entityImpl domain;
+
+    public $entityBean() {
+        domain = new $entityImpl();
+    }
+
+    public $entityImpl getDomain() {
+        return domain;
+    }
+
+    public void setDomain($entityImpl domain) {
+        this.domain = domain;
+    }
+}

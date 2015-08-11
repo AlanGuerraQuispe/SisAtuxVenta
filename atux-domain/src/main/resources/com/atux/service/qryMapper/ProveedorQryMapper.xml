@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.ProveedorQryMapper">
+
+    <select id="findProveedor"
+            parameterType="com.atux.bean.precios.ProveedorFlt"
+            resultType="com.atux.bean.precios.Proveedor"
+            >
+        SELECT
+        VP.CO_COMPANIA coCompania,
+        VP.CO_PROVEEDOR coProveedor,
+        VP.NU_DOC_IDENTIDAD nuDocIdentidad,
+        VP.DE_PROVEEDOR noProveedor
+        FROM
+        VTTM_PROVEEDOR VP
+        <where>
+            VP.CO_COMPANIA= #{localId.coCompania}
+            <if test="buscar!=null and buscar!=''">
+                AND ( VP.CO_PROVEEDOR =#{buscar} OR VP.DE_PROVEEDOR LIKE  UPPER(#{buscar})
+                or VP.NU_DOC_IDENTIDAD = #{buscar}  )
+            </if>
+        </where>
+    </select>
+
+    <select id="findProveedorFacturacion"
+            parameterType="com.atux.bean.precios.ProveedorFlt"
+            resultType="com.atux.bean.precios.Proveedor"
+            >
+        SELECT
+        LCF.FE_DOCUMENTO feFacturacion,
+        LCF.CO_PROVEEDOR coProveedor,
+        VP.DE_PROVEEDOR noProveedor,
+        LDF.VA_CANTIDAD caTotal
+        FROM
+        LGTC_FARINV1 LCF
+        INNER JOIN LGTD_FARINV2 LDF
+        ON LDF.CO_COMPANIA= LCF.CO_COMPANIA
+        AND LDF.CO_PROVEEDOR = LCF.CO_PROVEEDOR
+        AND LDF.NU_GUIA = LCF.NU_GUIA
+        <![CDATA[
+            AND ROWNUM < 4
+            ]]>
+        LEFT JOIN LGTM_PRODUCTO LP
+        ON LP.CO_COMPANIA = LDF.CO_COMPANIA
+        AND LP.CO_PRODUCTO = LDF.CO_PRODUCTO
+        LEFT JOIN VTTM_PROVEEDOR VP
+        ON VP.CO_COMPANIA = LCF.CO_COMPANIA
+        AND VP.CO_PROVEEDOR = LCF.CO_PROVEEDOR
+        <where>
+            1=1
+            AND LCF.CO_COMPANIA= #{localId.coCompania}
+            AND LP.CO_PRODUCTO= #{coProducto}
+        </where>
+    </select>
+
+    <select id="findListaPrecioList"
+            parameterType="com.atux.bean.precios.ProveedorFlt"
+            resultType="com.atux.bean.precios.PrecioLista"
+            >
+        SELECT
+        VPL.CO_LISTA coLista,
+        VPL.CO_PROVEEDOR coProveedor,
+        VP.DE_PROVEEDOR noProveedor,
+        VPL.FE_INICIO fechaInicio,
+        VPL.FE_FIN fechaFin
+        FROM VTTC_PRECIO_LISTA VPL
+        LEFT JOIN VTTM_PROVEEDOR VP ON VP.CO_PROVEEDOR = VPL.CO_PROVEEDOR
+        <where>
+            VP.CO_COMPANIA= #{localId.coCompania}
+            <if test="buscar!=null and buscar!=''">
+                AND ( VP.CO_PROVEEDOR =#{buscar} OR VP.DE_PROVEEDOR LIKE  UPPER(#{buscar}) )
+            </if>
+            <if test="feInicio!=null and feFin!=''">
+                AND (VPL.FE_INICIO BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+                OR VPL.FE_FIN BETWEEN
+                TO_DATE(TO_CHAR(#{feInicio},'dd/MM/yyyy') || ' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(#{feFin},'dd/MM/yyyy') || ' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+                )
+            </if>
+        </where>
+        ORDER BY 1
+    </select>
+
+    <delete id="deleteListaDetalle" parameterType="String">
+        DELETE FROM VTTD_PRECIO_LISTA WHERE CO_LISTA=#{value}
+    </delete>
+    <select id="findListaPrecioDetalleList"
+            parameterType="com.atux.bean.precios.ProveedorFlt"
+            resultType="com.atux.bean.precios.PrecioListaDetalle"
+            >
+        SELECT
+        AX.CO_LISTA coLista,
+        AX.CO_PRODUCTO coProducto,
+        AX.CO_PROD_PROV coProductoProv,
+        AX.CO_MONEDA coMoneda,
+        AX.VA_PREC_VENTA vaPrecioVenta,
+        AX.CANTIDAD cantidad,
+        LP.DE_PRODUCTO deProducto,
+        CL.DE_LABORATORIO deLaboratorio,
+        LP.DE_UNIDAD_PRODUCTO unidadProducto
+        FROM VTTD_PRECIO_LISTA AX
+        LEFT JOIN LGTM_PRODUCTO LP
+        ON LP.CO_PRODUCTO   = AX.CO_PRODUCTO
+        LEFT JOIN CMTR_LABORATORIO CL
+        ON  CL.CO_COMPANIA   = LP.CO_COMPANIA
+        AND CL.CO_LABORATORIO=LP.CO_LABORATORIO
+        <where>
+            LP.CO_COMPANIA= #{localId.coCompania}
+            AND AX.CO_LISTA   = #{coLista}
+        </where>
+        ORDER BY 1
+    </select>
+
+
+</mapper>

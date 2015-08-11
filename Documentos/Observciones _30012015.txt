@@ -1,0 +1,27 @@
+Ryky
+----
+- En el reporte de ventas por vendedor, debe calcular previamente el acumulado del día o ejecuta el proceso antes de mostrar los datos el packages es CONSOLIDA_DATOS CARGA_VENTAS_POR_VENDEDOR,
+  ver cual toma menos tiempo de ejcución (optimo)
+- En el módulo de detalle de venta el %DSCTO colocarlo en minuscula, ademas de reducir el tamanio de la columna laboratorio y aumentar el tamanio de la columna correlativo
+  retirar el % de margen y su valor ya que no sabemos de donde michi lo estas sacando, agregar el simbolo de soles S/ en los valores de moneda que muestras en la cajas de texto de acumulados, 
+  solo considerar los pedidos cobrados con comprobante ya que el total y los registros que se listan son todos los pedidos cobrados, anulados y pendientes de cobro.
+- En el módulo incentivos debe poder hacerse la búsqueda por producto.
+- Terminar la integración del app de Central
+- Agregar los datos de la empresa de base de datos de la pantalla inicial , verificar la clase JVentas.
+
+Omar, Alan
+----
+- Modificar la imagen que muestra DIC..2014								     			ok
+- El tipo de cambio de cambiar de acuerdo al ultimo cambio que se realice en el catalogo de tipo de cambio.  			ok
+- Agregar en el ticket el numero de correlativo del día que servira para las anulaciones.`		     			ok   		
+- Agregar títulos a los módulos.												ok  
+- En el módulo de consulta de pedidos mostrar los pedidos pendientes en otro color.			     			ok
+- Revisar el registro de guias de ingreso para el caso de cotizaciones debe ser C y R para registro de compras. 		ok
+- Retirar los registros de franquicias de la tabla que carga las clases de pedidos 						ok
+- Quitar la opción tipo de documento del menú principal.									ok
+
+- Las devoluciones se pueden realizar de cualquier fecha, hacer la busqueda por el correlativo del día o el número de pedido.
+- Arqueos; en la opción anulación de pedidos debe listar los pedidos pendientes de cobro por fecha indicada en el módulo de arqueos, quitar la opción F7 y F8
+- En el módulo de cierre caja turno renombrar Aceptar por cierre caja turno.	
+- En el módulo de Ingreso de compras agregar la carga de proveedores para su selección.
+- agregar el elemento fecha en el módulo de arqueos.

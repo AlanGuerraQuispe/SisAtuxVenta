@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.ProductoQryMapper">
+
+    <select id="findProducto"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="com.atux.bean.kardex.Producto"
+            >
+                SELECT
+                    LPL.CO_COMPANIA coCompania ,
+                    LPL.CO_PRODUCTO coProducto ,
+                    LP.DE_PRODUCTO deProducto,
+                    CL.DE_LABORATORIO deLaboratorio,
+                    LP.DE_UNIDAD_PRODUCTO unidadProducto,
+                    LPL.DE_UNIDAD_FRACCION unidadFraccion,
+                    DECODE(LP.CO_MONEDA,'01','S/.','$') moneda,
+                    LPL.VA_PRECIO_PUBLICO precioVentaPublico,
+                    VI.PC_IMPUESTO vaImpuesto,
+                    (NVL(LPL.VA_VENTA,0) - (NVL(LPL.VA_VENTA,0) * (1-(1-(NVL(LPL.PC_DESCUENTO_1,0)/100))))) precioVentaSinIGV,
+                    LPL.PC_DESCUENTO_1 porcentajeDescuento,
+                    DECODE(LPL.IN_PROD_FRACCIONADO, 'S', TRUNC(LPL.CA_STOCK_DISPONIBLE/LPL.VA_FRACCION), LPL.CA_STOCK_DISPONIBLE) stkEntero,
+                    DECODE(LPL.IN_PROD_FRACCIONADO, 'S', MOD(LPL.CA_STOCK_DISPONIBLE, LPL.VA_FRACCION), 0) stkFraccion ,
+                    LPL.VA_VENTA precioProveedor,
+                    LPL.VA_COSTO_PRODUCTO precioPromedio ,
+                    LPL.VA_TOTAL_INVENTARIO precioValorizado ,
+                    DECODE(nvl(LPL.VA_VENTA,0),0,0,(NVL(LPL.VA_VENTA,0) - (NVL(LPL.VA_VENTA,0) * (1-(1-(NVL(LPL.PC_DESCUENTO_1,0)/100)))))*100/NVL(LPL.VA_VENTA,0))  porcentajeMargen ,
+                    DECODE(nvl(LPL.VA_VENTA,0),0,0,LPL.VA_VENTA/(1+VI.PC_IMPUESTO/100))  precioPVP ,
+                    DECODE(LPL.VA_VENTA,NULL,0,LPL.VA_VENTA) - (DECODE(LPL.VA_VENTA,NULL,0,LPL.VA_VENTA) * (1-(1-(DECODE(LPL.PC_DESCUENTO_1,NULL,0,LPL.PC_DESCUENTO_1)/100)))) precioPVPFinal,
+                    LPL.VA_FRACCION vaFraccion,
+                    LPL.IN_PROD_INVENTARIO inProdInventario,
+                    LPL.ES_PROD_LOCAL esProductoLocal,
+                    LLPE.DE_LINEA_PROD_ERP lineaG1,
+                    LGPE.DE_GRUPO_PROD_ERP divisionG2,
+                    LGA.DE_GRUPO_ANATOMICO subdivisionG3,
+                    LGT.DE_GRUPO_TERAPEUTICO familiaG4,
+                    LAT.DE_ACCION_TERAPEUTICA subFamiliaG5
+                FROM LGTR_PRODUCTO_LOCAL LPL
+                LEFT JOIN LGTM_PRODUCTO LP
+                    ON LPL.CO_COMPANIA           = LP.CO_COMPANIA
+                    AND LPL.CO_PRODUCTO          = LP.CO_PRODUCTO
+                    AND LPL.NU_REVISION_PRODUCTO = LP.NU_REVISION_PRODUCTO
+                INNER JOIN VTTR_IMPUESTO VI ON LP.CO_COMPANIA = VI.CO_COMPANIA AND LP.CO_IMPUESTO_1 = VI.CO_IMPUESTO
+                LEFT JOIN CMTR_LABORATORIO CL
+                    ON  CL.CO_COMPANIA   = LP.CO_COMPANIA
+                    AND CL.CO_LABORATORIO=LP.CO_LABORATORIO
+                LEFT JOIN LGTR_ACCION_TERAPEUTICA LAT
+                    ON LAT.CO_ACCION_TERAPEUTICA=LP.CO_ACCION_TERAPEUTICA
+                LEFT JOIN LGTR_GRUPO_TERAPEUTICO LGT
+                    ON LGT.CO_GRUPO_TERAPEUTICO=LP.CO_GRUPO_TERAPEUTICO
+                LEFT JOIN LGTR_GRUPO_ANATOMICO LGA
+                    ON LGA.CO_GRUPO_ANATOMICO=LP.CO_GRUPO_ANATOMICO
+                LEFT JOIN LGTR_GRUPO_PROD_ERP LGPE
+                    ON LGPE.CO_GRUPO_PROD_ERP=LP.CO_GRUPO_PROD_ERP
+                LEFT JOIN LGTR_LINEA_PROD_ERP LLPE
+                    ON LLPE.CO_LINEA_PROD_ERP=LP.CO_LINEA_PROD_ERP
+             <where >
+                1 = 1
+                <if test="localId.coCompania!=null and localId.coCompania!=''">
+                    AND LPL.CO_COMPANIA=  #{localId.coCompania}
+                </if>
+                <if test="localId.coLocal!=null and localId.coLocal!=''">
+                    AND LPL.CO_LOCAL   =  #{localId.coLocal}
+                </if>
+                <if test="coLaboratorio!=null and coLaboratorio!=''">
+                    AND CL.CO_LABORATORIO   =  #{coLaboratorio}
+                </if>
+                <if test="buscar!=null and buscar!=''">
+                    AND ( LP.CO_PRODUCTO =  #{buscar} or LP.DE_PRODUCTO LIKE  UPPER(CONCAT(CONCAT('%',#{buscar}),'%'))  )
+                </if>
+
+            </where>
+    </select>
+
+    <select id="findProductoRotacion"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="com.atux.bean.kardex.Producto"
+            >
+            SELECT
+                VVPM.FE_ANNIO feAnnio,
+                VVPM.VA_VTA_01 vaVta01,
+                VVPM.VA_UNI_01 vaUni01,
+                VVPM.VA_MG_01 vaMg01,
+                VVPM.VA_VTA_02 vaVta02,
+                VVPM.VA_UNI_02 vaUni02,
+                VVPM.VA_MG_02 vaMg02,
+                VVPM.VA_VTA_03 vaVta03,
+                VVPM.VA_UNI_03 vaUni03,
+                VVPM.VA_MG_03 vaMg03,
+                VVPM.VA_VTA_04 vaVta04,
+                VVPM.VA_UNI_04 vaUni04,
+                VVPM.VA_MG_04 vaMg04,
+                VVPM.VA_VTA_05 vaVta05,
+                VVPM.VA_UNI_05 vaUni05,
+                VVPM.VA_MG_05 vaMg05,
+                VVPM.VA_VTA_06 vaVta06,
+                VVPM.VA_UNI_06 vaUni06,
+                VVPM.VA_MG_06 vaMg06,
+                VVPM.VA_VTA_07 vaVta07,
+                VVPM.VA_UNI_07 vaUni07,
+                VVPM.VA_MG_07 vaMg07,
+                VVPM.VA_VTA_08 vaVta08,
+                VVPM.VA_UNI_08 vaUni08,
+                VVPM.VA_MG_08 vaMg08,
+                VVPM.VA_VTA_09 vaVta09,
+                VVPM.VA_UNI_09 vaUni09,
+                VVPM.VA_MG_09 vaMg09,
+                VVPM.VA_VTA_10 vaVta10,
+                VVPM.VA_UNI_10 vaUni10,
+                VVPM.VA_MG_10 vaMg10,
+                VVPM.VA_VTA_11 vaVta11,
+                VVPM.VA_UNI_11 vaUni11,
+                VVPM.VA_MG_11 vaMg11,
+                VVPM.VA_VTA_12 vaVta12,
+                VVPM.VA_UNI_12 vaUni12,
+                VVPM.VA_MG_12 vaMg12
+            FROM
+                VTTR_VENTA_PRODUCTO_MES VVPM
+        <where>
+                    VVPM.CO_COMPANIA=  #{localId.coCompania}
+                    AND VVPM.CO_LOCAL   =  #{localId.coLocal}
+                    AND TRIM(VVPM.CO_PRODUCTO) =  #{coProducto}
+        </where>
+    </select>
+
+    <select id="findProductoPrecioLocal"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="com.atux.bean.kardex.Producto"
+            >
+        SELECT
+            LPL.CO_COMPANIA coCompania,
+            LPL.CO_PRODUCTO coProducto,
+            LP.DE_PRODUCTO  deProducto,
+            LPL.IN_PROD_FRACCIONADO inProdFraccionado,
+            LPL.DE_UNIDAD_FRACCION unidadFraccion,
+            LPL.ES_PROD_LOCAL esProductoLocal,
+            LP.DE_UNIDAD_PRODUCTO  unidadProducto,
+            (DECODE(LPL.VA_VENTA,NULL,0,LPL.VA_VENTA) - (DECODE(LPL.VA_VENTA,NULL,0,LPL.VA_VENTA) * (1-(1-(DECODE(LPL.PC_DESCUENTO_1,NULL,0,LPL.PC_DESCUENTO_1)/100)))))  precioVenta,
+            LPL.FE_ULT_MOD_PRECIO feModificacion ,
+            SYSDATE - LPL.FE_ULT_MOD_PRECIO nroDiasSinCambioPrecio ,
+            CL.DE_LABORATORIO deLaboratorio
+        FROM
+            LGTR_PRODUCTO_LOCAL LPL
+            LEFT JOIN LGTM_PRODUCTO LP
+            ON LPL.CO_COMPANIA           = LP.CO_COMPANIA
+            AND LPL.CO_PRODUCTO          = LP.CO_PRODUCTO
+            AND LPL.NU_REVISION_PRODUCTO = LP.NU_REVISION_PRODUCTO
+            LEFT JOIN CMTR_LABORATORIO CL
+            ON  CL.CO_COMPANIA   = LP.CO_COMPANIA
+            AND CL.CO_LABORATORIO=LP.CO_LABORATORIO
+        <where >
+            1 = 1
+                AND LPL.CO_COMPANIA=  #{localId.coCompania}
+                AND LPL.CO_LOCAL   =  #{localId.coLocal}
+            <if test="buscar!=null and buscar!=''">
+                AND ( LP.CO_PRODUCTO =  #{buscar} or LP.DE_PRODUCTO LIKE  UPPER(CONCAT(CONCAT('%',#{buscar}),'%'))  )
+            </if>
+        </where>
+    </select>
+
+    <select id="findProductoIncentivo"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="com.atux.bean.precios.Incentivo"
+            >
+        SELECT
+            LP.CO_COMPANIA coCompania,
+            LP.CO_PRODUCTO coProducto,
+            LP.NU_REVISION_PRODUCTO nuRevision,
+            LP.DE_PRODUCTO deProducto,
+            LPL.IN_PROD_FRACCIONADO inProdFraccionado,
+            LP.DE_UNIDAD_PRODUCTO unidadProducto,
+            LPL.DE_UNIDAD_FRACCION unidadFraccion,
+            LPL.VA_VENTA precioVenta,
+            LPL.VA_COSTO_PRODUCTO precioPromedio ,
+            DECODE(nvl(LPL.VA_VENTA,0),0,0,(NVL(LPL.VA_VENTA,0) - (NVL(LPL.VA_VENTA,0) * (1-(1-(NVL(LPL.PC_DESCUENTO_1,0)/100)))))*100/NVL(LPL.VA_VENTA,0))  porcentajeMargen ,
+            DECODE(nvl(LPL.VA_VENTA,0),0,0,LPL.VA_VENTA/(1+VI.PC_IMPUESTO/100))  precioPVP ,
+            DECODE(LPL.VA_VENTA,NULL,0,LPL.VA_VENTA) - (DECODE(LPL.VA_VENTA,NULL,0,LPL.VA_VENTA) * (1-(1-(DECODE(LPL.PC_DESCUENTO_1,NULL,0,LPL.PC_DESCUENTO_1)/100)))) precioPVPFinal,
+            VPB.FE_CREA_PROD_BONO feCreacion,
+            VPB.FE_INICIO_BONO feInicio,
+            VPB.FE_FIN_BONO feFin,
+            VPB.VA_BONO vaIncentivo,
+            VPB.NU_SEC_PROD_BONO nuSecProdBono,
+            VPB.NU_REVISION_PRODUCTO nuRevisionProducto
+        FROM
+            LGTR_PRODUCTO_LOCAL LPL
+            LEFT JOIN LGTM_PRODUCTO LP
+            ON LPL.CO_COMPANIA           = LP.CO_COMPANIA
+                AND LPL.CO_PRODUCTO          = LP.CO_PRODUCTO
+                AND LPL.NU_REVISION_PRODUCTO = LP.NU_REVISION_PRODUCTO
+            INNER JOIN VTTR_IMPUESTO VI ON LP.CO_COMPANIA = VI.CO_COMPANIA AND LP.CO_IMPUESTO_1 = VI.CO_IMPUESTO
+            LEFT JOIN VTTR_PRODUCTO_BONO VPB
+            ON VPB.CO_COMPANIA = LP.CO_COMPANIA
+                AND VPB.CO_PRODUCTO = LP.CO_PRODUCTO
+                AND VPB.ES_PROD_BONO =  'A'
+        <where >
+                1 = 1
+                AND LPL.CO_COMPANIA=  #{localId.coCompania}
+                AND LPL.CO_LOCAL   =  #{localId.coLocal}
+            <if test="buscar!=null and buscar!=''">
+                AND ( LP.CO_PRODUCTO =  #{buscar} or LP.DE_PRODUCTO LIKE  UPPER(#{buscar})  )
+            </if>
+                AND LP.CO_LABORATORIO =  #{coLaboratorio}
+
+        </where>
+    </select>
+
+    <select id="findProductoMinExhibicion"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="com.atux.bean.kardex.Producto"
+            >
+        SELECT
+        LPL.CO_COMPANIA coCompania ,
+        LPL.CO_PRODUCTO coProducto,
+        LP.DE_PRODUCTO  deProducto,
+        LPL.IN_PROD_FRACCIONADO inProdFraccionado,
+        LPL.DE_UNIDAD_FRACCION unidadFraccion,
+        LP.DE_UNIDAD_PRODUCTO  unidadProducto,
+        NVL(LPL.CA_STOCK_DISPONIBLE,0)-NVL(LPL.CA_STOCK_COMPROMETIDO,0) stkDisponible ,
+        LPL.VA_VENTA precioVenta,
+        LPL.VA_COSTO_PRODUCTO precioPromedio ,
+        DECODE(nvl(LPL.VA_VENTA,0),0,0,(NVL(LPL.VA_VENTA,0) - (NVL(LPL.VA_VENTA,0) * (1-(1-(NVL(LPL.PC_DESCUENTO_1,0)/100)))))*100/NVL(LPL.VA_VENTA,0))  porcentajeMargen ,
+        DECODE(nvl(LPL.VA_VENTA,0),0,0,LPL.VA_VENTA/(1+VI.PC_IMPUESTO/100))  precioPVP ,
+        DECODE(LPL.VA_VENTA,NULL,0,LPL.VA_VENTA) - (DECODE(LPL.VA_VENTA,NULL,0,LPL.VA_VENTA) * (1-(1-(DECODE(LPL.PC_DESCUENTO_1,NULL,0,LPL.PC_DESCUENTO_1)/100)))) precioPVPFinal,
+        LPL.CA_MIN_PROD_EXHIBICION vaExhibicion,
+        LPL.FE_MOD_PROD_LOCAL feModificacion ,
+        CL.DE_LABORATORIO deLaboratorio
+        FROM
+            LGTR_PRODUCTO_LOCAL LPL
+            LEFT JOIN LGTM_PRODUCTO LP
+            ON LPL.CO_COMPANIA           = LP.CO_COMPANIA
+            AND LPL.CO_PRODUCTO          = LP.CO_PRODUCTO
+            AND LPL.NU_REVISION_PRODUCTO = LP.NU_REVISION_PRODUCTO
+            INNER JOIN VTTR_IMPUESTO VI ON LP.CO_COMPANIA = VI.CO_COMPANIA AND LP.CO_IMPUESTO_1 = VI.CO_IMPUESTO
+            LEFT JOIN CMTR_LABORATORIO CL
+            ON  CL.CO_COMPANIA   = LP.CO_COMPANIA
+            AND CL.CO_LABORATORIO=LP.CO_LABORATORIO
+        <where >
+            1 = 1
+            AND LPL.CO_COMPANIA=  #{localId.coCompania}
+            AND LPL.CO_LOCAL   =  #{localId.coLocal}
+            <if test="coProducto!=null and coProducto!=''">
+                AND ( LP.CO_PRODUCTO =  #{coProducto} or LP.DE_PRODUCTO LIKE  UPPER(CONCAT(CONCAT('%',#{coProducto}),'%'))  )
+            </if>
+            <if test="coLaboratorio!=null and coLaboratorio!=''">
+                AND ( LP.CO_LABORATORIO =  #{coLaboratorio}  )
+            </if>
+        </where>
+    </select>
+
+    <select id="findProductoBase"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="com.atux.bean.kardex.Producto"
+            >
+        SELECT
+        LP.CO_COMPANIA coCompania ,
+        LP.CO_PRODUCTO coProducto ,
+        LP.DE_PRODUCTO deProducto,
+        CL.DE_LABORATORIO deLaboratorio,
+        LP.DE_UNIDAD_PRODUCTO unidadProducto,
+        LP.IN_PROD_FRACCIONABLE inProdFraccionado,
+        LP.MIN_FRACC minFraccion ,
+        LP.MAX_FRACC maxFraccion,
+        LP.CA_EMPAQUE_MIN caEmpaqueMin ,
+        LP.CA_EMPAQUE_MAX caEmpaqueMax
+        FROM  LGTM_PRODUCTO LP
+        LEFT JOIN CMTR_LABORATORIO CL
+            ON  CL.CO_COMPANIA   = LP.CO_COMPANIA
+            AND CL.CO_LABORATORIO=LP.CO_LABORATORIO
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND LP.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="coLaboratorio!=null and coLaboratorio!=''">
+                AND CL.CO_LABORATORIO   =  #{coLaboratorio}
+            </if>
+            <if test="buscar!=null and buscar!=''">
+                AND ( LP.CO_PRODUCTO =  #{buscar} or LP.DE_PRODUCTO LIKE  UPPER(CONCAT(CONCAT('%',#{buscar}),'%'))  )
+            </if>
+        </where>
+    </select>
+
+    <select id="findProductoFraccionamientoActivo"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="com.atux.bean.kardex.Producto"
+            >
+        SELECT
+            LF.CO_COMPANIA coCompania,
+            LF.CO_LOCAL coLocal,
+            LF.CO_PRODUCTO coProducto,
+            MIN(LF.FE_VIGENCIA) feVigencia,
+            MIN(LF.FE_CREA) feCreacion,
+            MIN(LF.FE_CREA) feUltCambio
+        FROM LGTM_PRODUCTO LP INNER JOIN
+             LGTR_FRACCION LF ON LP.CO_COMPANIA= LF.CO_COMPANIA AND LP.CO_PRODUCTO= LF.CO_PRODUCTO
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND LP.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="coLaboratorio!=null and coLaboratorio!=''">
+                AND CL.CO_LABORATORIO   =  #{coLaboratorio}
+            </if>
+            <if test="coProducto!=null and coProducto!=''">
+                AND LP.CO_PRODUCTO   =  #{coProducto}
+            </if>
+            <if test="buscar!=null and buscar!=''">
+                AND ( LP.CO_PRODUCTO =  #{buscar} or LP.DE_PRODUCTO LIKE  UPPER(CONCAT(CONCAT('%',#{buscar}),'%'))  )
+            </if>
+        </where>
+        GROUP BY
+          LF.CO_COMPANIA,
+          LF.CO_LOCAL,
+          LF.CO_PRODUCTO
+    </select>
+
+    <select id="findProductoFraccionamiento"
+            parameterType="com.atux.bean.kardex.ProductoFlt"
+            resultType="com.atux.bean.central.FraccionamientoLocal"
+            >
+        SELECT
+        LP.CO_COMPANIA coCompania,
+        LPL.CO_LOCAL coLocal,
+        VL.DE_LOCAL deLocal,
+        LP.CO_PRODUCTO coProducto,
+        DECODE(LPL.IN_PROD_FRACCIONADO, 'S', TRUNC(LPL.CA_STOCK_DISPONIBLE/LPL.VA_FRACCION), LPL.CA_STOCK_DISPONIBLE) stkEntero,
+        DECODE(LPL.IN_PROD_FRACCIONADO, 'S', MOD(LPL.CA_STOCK_DISPONIBLE, LPL.VA_FRACCION), 0) stkFraccion,
+        LPL.IN_PROD_FRACCIONADO inProdFraccionadoLocal,
+        LPL.VA_FRACCION vaFraccion,
+        LPL.DE_UNIDAD_FRACCION unidadFraccion
+        FROM LGTR_PRODUCTO_LOCAL LPL
+        LEFT JOIN LGTM_PRODUCTO LP  ON LPL.CO_COMPANIA= LP.CO_COMPANIA AND LPL.CO_PRODUCTO=LP.CO_PRODUCTO
+        INNER JOIN VTTM_LOCAL VL ON VL.CO_COMPANIA= LPL.CO_COMPANIA AND VL.CO_LOCAL = LPL.CO_LOCAL
+        <where >
+            1 = 1
+            <if test="localId.coCompania!=null and localId.coCompania!=''">
+                AND LP.CO_COMPANIA=  #{localId.coCompania}
+            </if>
+            <if test="coProducto!=null and coProducto!=''">
+                AND ( LP.CO_PRODUCTO =  #{coProducto} )
+            </if>
+        </where>
+        ORDER BY
+          LPL.CO_COMPANIA,
+          LPL.CO_LOCAL
+    </select>
+
+    <select id="findUnidad"
+            parameterType="com.atux.bean.consulta.UnidadFlt"
+            resultType="com.atux.bean.central.Unidad"
+            >
+        SELECT
+          CO_UNIDAD_VENTA coUnidad,
+          TRIM(DE_CORTA_UNIDAD_VENTA) deUnidadCorta,
+          TRIM(DE_UNIDAD_VENTA) deUnidad
+        FROM
+          VTTR_UNIDAD_VENTA
+        <where >
+            1 = 1
+            <if test="coUnidad!=null and coUnidad!=''">
+                AND ( CO_UNIDAD_VENTA =  #{coUnidad} )
+            </if>
+            <if test="unidad!=null and unidad!=''">
+                AND ( CO_UNIDAD_VENTA =  #{unidad} OR TRIM(DE_UNIDAD_VENTA) LIKE  UPPER(CONCAT(CONCAT('%',#{unidad}),'%'))  )
+            </if>
+        </where>
+        ORDER BY 3 DESC
+    </select>
+
+
+    <select id="findNextNuSecFraccion"
+            parameterType="com.atux.bean.central.ProductoFraccionFlt"
+            resultType="Long"
+            >
+        SELECT
+        count(*)
+        FROM
+        LGTR_FRACCION VPB
+        WHERE
+        VPB.CO_COMPANIA=  #{coCompania}
+        AND VPB.CO_LOCAL   =  #{coLocal}
+        AND VPB.CO_PRODUCTO   =  #{coProducto}
+
+    </select>
+
+    <update id="inactivarProductoFraccion"
+            parameterType="com.atux.bean.central.ProductoFraccionFlt"
+            >
+        UPDATE
+            LGTR_FRACCION
+        SET
+            ES_FRACCION='I',
+            IN_ACTIVO='0',
+            FE_MOD=SYSDATE,
+            ID_MOD=#{usuario}
+        WHERE
+            CO_COMPANIA=  #{coCompania}
+            AND CO_LOCAL   =  #{coLocal}
+            AND CO_PRODUCTO   =  #{coProducto}
+    </update>
+
+    <insert id="insertProductoFraccion" parameterType="com.atux.bean.central.FraccionamientoLocal">
+        INSERT INTO LGTR_FRACCION
+        (CO_COMPANIA,CO_LOCAL,CO_PRODUCTO,NU_SEC_FRACCION,VA_FRACCION,DE_FRACCION,FE_VIGENCIA,IN_FRACCION,IN_ACTIVO,ES_FRACCION,FE_CREA,ID_CREA)
+        values
+        (#{coCompania},#{coLocal},#{producto.coProducto},#{nuSecProdFraccion},#{vaFraccionNuevo, jdbcType=VARCHAR},#{unidadFraccionNuevo, jdbcType=VARCHAR}
+        ,#{feVigencia},#{inProdFraccionadoNuevo},#{inActivo},#{esFraccion},sysdate,#{usuario})
+    </insert>
+
+</mapper>

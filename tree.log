@@ -1,0 +1,641 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.atux:atux-domain:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 172, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 180, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-source-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 195, column 21
+[WARNING] 'reporting.plugins.plugin.version' for org.apache.maven.plugins:maven-project-info-reports-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jxr-maven-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jdepend-maven-plugin is missing.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.atux:atux-desktop:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 172, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 180, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-source-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 195, column 21
+[WARNING] The expression ${parent.artifactId} is deprecated. Please use ${project.parent.artifactId} instead.
+[WARNING] 'reporting.plugins.plugin.version' for org.apache.maven.plugins:maven-project-info-reports-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jxr-maven-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jdepend-maven-plugin is missing.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.atux:atux-base:jar:2.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework:spring-test:jar -> duplicate declaration of version ${spring.version} @ line 123, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 172, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 180, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-source-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 195, column 21
+[WARNING] 'reporting.plugins.plugin.version' for org.apache.maven.plugins:maven-project-info-reports-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jxr-maven-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jdepend-maven-plugin is missing.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.atux:atux-jrcp:jar:1.0
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: net.java.dev.timingframework:timingframework:jar -> duplicate declaration of version 1.0 @ line 72, column 15
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 172, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 180, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-source-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 195, column 21
+[WARNING] 'reporting.plugins.plugin.version' for org.apache.maven.plugins:maven-project-info-reports-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jxr-maven-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jdepend-maven-plugin is missing.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.atux:atux-dao:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 172, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 180, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-source-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 195, column 21
+[WARNING] 'reporting.plugins.plugin.version' for org.apache.maven.plugins:maven-project-info-reports-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jxr-maven-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jdepend-maven-plugin is missing.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.atux:build-tools:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 172, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 180, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-source-plugin is missing. @ com.atux:atux:1.0, C:\workstation\proyectos\ms\atux-svn\pom.xml, line 195, column 21
+[WARNING] 'reporting.plugins.plugin.version' for org.apache.maven.plugins:maven-project-info-reports-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jxr-maven-plugin is missing.
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jdepend-maven-plugin is missing.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.atux:atux:pom:1.0
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 172, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 180, column 21
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-source-plugin is missing. @ line 195, column 21
+[WARNING] 'reporting.plugins.plugin.version' for org.apache.maven.plugins:maven-project-info-reports-plugin is missing. @ line 377, column 21
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jxr-maven-plugin is missing. @ line 394, column 21
+[WARNING] 'reporting.plugins.plugin.version' for org.codehaus.mojo:jdepend-maven-plugin is missing. @ line 398, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Atux
+[INFO] ATUX - Framework - Core - Base
+[INFO] ATUX - Framework - Core - DAO
+[INFO] Atux - Domain Model
+[INFO] ATUX - Framework - Core - JRCP
+[INFO] Atux - Build Tools
+[INFO] Atux - Desktop
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Atux 1.0
+[INFO] ------------------------------------------------------------------------
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-test\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-test\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The POM for org.mockito:mockito-all:jar:1.7 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The POM for org.dbunit:dbunit:jar:2.4.4 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ atux ---
+[WARNING] Invalid POM for org.mockito:mockito-all:jar:1.7, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] Invalid POM for org.dbunit:dbunit:jar:2.4.4, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] com.atux:atux:pom:1.0
+[INFO] +- org.springframework:spring-test:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- commons-net:commons-net:jar:2.0:compile
+[INFO] +- commons-net-ftp:commons-net-ftp:jar:2.0:compile
+[INFO] +- org.jmock:jmock-junit3:jar:2.1.0:test
+[INFO] |  +- org.jmock:jmock:jar:2.1.0:test
+[INFO] |  |  +- org.hamcrest:hamcrest-api:jar:1.0:test
+[INFO] |  |  \- org.hamcrest:hamcrest-library:jar:1.0:test
+[INFO] |  \- junit:junit:jar:3.8.2:test
+[INFO] +- net.sf.ehcache:ehcache:jar:1.5.0:compile
+[INFO] |  +- backport-util-concurrent:backport-util-concurrent:jar:3.1:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2:compile
+[INFO] |  \- net.sf.jsr107cache:jsr107cache:jar:1.0:compile
+[INFO] +- javax.mail:mail:jar:1.4:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- junit:junit-dep:jar:4.4:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] +- velocity:velocity:jar:1.5:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.1:compile
+[INFO] |  \- oro:oro:jar:2.0.8:compile
+[INFO] +- org.mockito:mockito-all:jar:1.7:test
+[INFO] \- org.dbunit:dbunit:jar:2.4.4:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ATUX - Framework - Core - Base 2.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[WARNING] The POM for org.hibernate:hibernate-core:jar:4.2.7.Final is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The POM for org.hibernate:hibernate-core:jar:4.0.0.Final is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-beans\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-beans\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-core\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-core\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-aop\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-aop\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-aspects\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-aspects\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The POM for org.aspectj:aspectjweaver:jar:1.8.0.M1 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-context-support\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-context-support\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-context\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-context\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-expression\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-expression\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-orm\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-orm\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-jdbc\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-jdbc\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-tx\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\spring-tx\4.0.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ atux-base ---
+[WARNING] Invalid POM for org.hibernate:hibernate-core:jar:4.2.7.Final, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] Invalid POM for org.hibernate:hibernate-core:jar:4.2.7.Final, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] Invalid POM for org.hibernate:hibernate-core:jar:4.0.0.Final, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] Cannot read metadata from 'C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml': end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] Invalid POM for org.aspectj:aspectjweaver:jar:1.8.0.M1, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] com.atux:atux-base:jar:2.0.1-SNAPSHOT
+[INFO] +- org.hibernate:hibernate-core:jar:4.2.7.Final:compile
+[INFO] +- org.hibernate:hibernate-entitymanager:jar:4.2.7.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  +- org.javassist:javassist:jar:3.18.1-GA:compile
+[INFO] |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  \- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] +- joda-time:joda-time:jar:1.6.2:compile
+[INFO] +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.0.1.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:0.8.0:compile
+[INFO] +- org.hibernate:hibernate-tools:jar:4.0.0-CR1:compile
+[INFO] |  +- javax.transaction:jta:jar:1.1:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.1:compile
+[INFO] |  |  +- log4j:log4j:jar:1.2.12:compile
+[INFO] |  |  +- logkit:logkit:jar:1.0.1:compile
+[INFO] |  |  +- avalon-framework:avalon-framework:jar:4.1.3:compile
+[INFO] |  |  \- javax.servlet:servlet-api:jar:2.3:compile
+[INFO] |  +- ant:ant:jar:1.6.5:compile
+[INFO] |  +- freemarker:freemarker:jar:2.3.8:compile
+[INFO] |  +- org.hibernate:jtidy:jar:r8-20060801:compile
+[INFO] |  +- org.eclipse.tycho:org.eclipse.jdt.core:jar:3.8.0.v_C03:compile
+[INFO] |  +- org.eclipse:text:jar:3.2.0-v20060605-1400:compile
+[INFO] |  |  \- org.eclipse.core:commands:jar:3.3.0-I20070605-0010:compile
+[INFO] |  \- antlr:antlr:jar:2.7.7:compile
+[INFO] +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] +- org.springframework:spring-beans:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  \- org.springframework:spring-core:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-aop:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.0.M1:compile
+[INFO] +- org.springframework:spring-test:jar:4.0.0.BUILD-SNAPSHOT:test
+[INFO] +- org.springframework:spring-orm:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-tx:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-context:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- commons-functor:commons-functor:jar:1.0:compile
+[INFO] +- commons-lang:commons-lang:jar:2.1:compile
+[INFO] +- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[INFO] +- javax.mail:mail:jar:1.4:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- commons-net:commons-net:jar:2.0:compile
+[INFO] +- commons-net-ftp:commons-net-ftp:jar:2.0:compile
+[INFO] +- org.jmock:jmock-junit3:jar:2.1.0:test
+[INFO] |  +- org.jmock:jmock:jar:2.1.0:test
+[INFO] |  |  +- org.hamcrest:hamcrest-api:jar:1.0:test
+[INFO] |  |  \- org.hamcrest:hamcrest-library:jar:1.0:test
+[INFO] |  \- junit:junit:jar:3.8.2:test
+[INFO] +- net.sf.ehcache:ehcache:jar:1.5.0:compile
+[INFO] |  +- backport-util-concurrent:backport-util-concurrent:jar:3.1:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2:compile
+[INFO] |  \- net.sf.jsr107cache:jsr107cache:jar:1.0:compile
+[INFO] +- junit:junit-dep:jar:4.4:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] +- velocity:velocity:jar:1.5:compile
+[INFO] |  \- oro:oro:jar:2.0.8:compile
+[INFO] +- org.mockito:mockito-all:jar:1.7:test
+[INFO] \- org.dbunit:dbunit:jar:2.4.4:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ATUX - Framework - Core - DAO 1.0
+[INFO] ------------------------------------------------------------------------
+[WARNING] The metadata C:\workstation\system\.m2\repository\com\atux\atux-base\2.0.1-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\data\spring-data-jpa\1.5.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\data\spring-data-jpa\1.5.0.BUILD-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The POM for org.springframework.data:spring-data-commons:jar:1.7.0.RELEASE is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The POM for org.springframework.data:spring-data-commons:jar:1.5.0.RELEASE is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The artifact poi:poi:jar:3.1-FINAL has been relocated to org.apache.poi:poi:jar:3.1-FINAL
+[WARNING] The metadata C:\workstation\system\.m2\repository\com\atux\atux-base\2.0.1-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ atux-dao ---
+[WARNING] Cannot read metadata from 'C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml': end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] Invalid POM for org.springframework.data:spring-data-commons:jar:1.7.0.RELEASE, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] Invalid POM for org.springframework.data:spring-data-commons:jar:1.5.0.RELEASE, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] Cannot read metadata from 'C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml': end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] While downloading poi:poi:3.1-FINAL
+  This artifact has been relocated to org.apache.poi:poi:3.1-FINAL.
+
+
+[INFO] com.atux:atux-dao:jar:1.0
+[INFO] +- com.atux:atux-base:jar:2.0.1-SNAPSHOT:compile
+[INFO] |  +- joda-time:joda-time:jar:1.6.2:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- org.springframework:spring-core:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.8.0.M1:compile
+[INFO] |  +- org.springframework:spring-orm:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context-support:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- commons-functor:commons-functor:jar:1.0:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.1:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[INFO] +- org.hibernate:hibernate-core:jar:4.2.7.Final:compile
+[INFO] +- org.hibernate:hibernate-entitymanager:jar:4.2.7.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  +- org.javassist:javassist:jar:3.18.1-GA:compile
+[INFO] |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  \- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.0.1.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:0.8.0:compile
+[INFO] +- org.springframework.data:spring-data-jpa:jar:1.5.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.7.4:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.6:compile
+[INFO] |  \- org.slf4j:jcl-over-slf4j:jar:1.7.6:runtime
+[INFO] +- org.springframework.data:spring-data-commons:jar:1.5.0.RELEASE:compile
+[INFO] +- org.hibernate:hibernate-tools:jar:4.0.0-CR1:compile
+[INFO] |  +- javax.transaction:jta:jar:1.1:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.1:compile
+[INFO] |  |  +- log4j:log4j:jar:1.2.12:compile
+[INFO] |  |  +- logkit:logkit:jar:1.0.1:compile
+[INFO] |  |  +- avalon-framework:avalon-framework:jar:4.1.3:compile
+[INFO] |  |  \- javax.servlet:servlet-api:jar:2.3:compile
+[INFO] |  +- ant:ant:jar:1.6.5:compile
+[INFO] |  +- freemarker:freemarker:jar:2.3.8:compile
+[INFO] |  +- org.hibernate:jtidy:jar:r8-20060801:compile
+[INFO] |  +- org.eclipse.tycho:org.eclipse.jdt.core:jar:3.8.0.v_C03:compile
+[INFO] |  +- org.eclipse:text:jar:3.2.0-v20060605-1400:compile
+[INFO] |  |  \- org.eclipse.core:commands:jar:3.3.0-I20070605-0010:compile
+[INFO] |  \- antlr:antlr:jar:2.7.7:compile
+[INFO] +- net.sf.ehcache:ehcache:jar:1.5.0:compile
+[INFO] |  +- backport-util-concurrent:backport-util-concurrent:jar:3.1:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2:compile
+[INFO] |  \- net.sf.jsr107cache:jsr107cache:jar:1.0:compile
+[INFO] +- commons-dbutils:commons-dbutils:jar:1.1:compile
+[INFO] +- jasperreports:jasperreports-local:jar:2.0.2:compile
+[INFO] +- org.apache.poi:poi:jar:3.1-FINAL:compile
+[INFO] +- com.lowagie:itext:jar:1.3.1:compile
+[INFO] +- net.chrisrichardson:ormunit-hibernate:jar:1.0:test
+[INFO] |  \- junit:junit:jar:3.8.1:test
+[INFO] +- commons-dbcp:commons-dbcp:jar:1.2.1:compile
+[INFO] |  \- commons-pool:commons-pool:jar:1.2:compile
+[INFO] +- org.springframework:spring-test:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- commons-net:commons-net:jar:2.0:compile
+[INFO] +- commons-net-ftp:commons-net-ftp:jar:2.0:compile
+[INFO] +- org.jmock:jmock-junit3:jar:2.1.0:test
+[INFO] |  \- org.jmock:jmock:jar:2.1.0:test
+[INFO] |     +- org.hamcrest:hamcrest-api:jar:1.0:test
+[INFO] |     \- org.hamcrest:hamcrest-library:jar:1.0:test
+[INFO] +- javax.mail:mail:jar:1.4:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- junit:junit-dep:jar:4.4:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] +- velocity:velocity:jar:1.5:compile
+[INFO] |  \- oro:oro:jar:2.0.8:compile
+[INFO] +- org.mockito:mockito-all:jar:1.7:test
+[INFO] \- org.dbunit:dbunit:jar:2.4.4:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Atux - Domain Model 1.0
+[INFO] ------------------------------------------------------------------------
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The POM for org.jmock:jmock-legacy:jar:2.1.0 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The POM for org.slf4j:slf4j-simple:jar:1.4.3 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The metadata C:\workstation\system\.m2\repository\com\atux\atux-base\2.0.1-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ atux-domain ---
+[WARNING] Cannot read metadata from 'C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml': end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] Invalid POM for org.springframework.data:spring-data-commons:jar:1.7.0.RELEASE, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] Invalid POM for org.jmock:jmock-legacy:jar:2.1.0, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] Invalid POM for org.slf4j:slf4j-simple:jar:1.4.3, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] com.atux:atux-domain:jar:1.0
+[INFO] +- org.hibernate:hibernate-core:jar:4.2.7.Final:compile
+[INFO] +- org.hibernate:hibernate-entitymanager:jar:4.2.7.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  +- org.javassist:javassist:jar:3.18.1-GA:compile
+[INFO] |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  \- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.0.1.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:0.8.0:compile
+[INFO] +- org.hibernate:hibernate-tools:jar:4.0.0-CR1:compile
+[INFO] |  +- javax.transaction:jta:jar:1.1:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.1:compile
+[INFO] |  |  +- logkit:logkit:jar:1.0.1:compile
+[INFO] |  |  +- avalon-framework:avalon-framework:jar:4.1.3:compile
+[INFO] |  |  \- javax.servlet:servlet-api:jar:2.3:compile
+[INFO] |  +- ant:ant:jar:1.6.5:compile
+[INFO] |  +- freemarker:freemarker:jar:2.3.8:compile
+[INFO] |  +- org.hibernate:jtidy:jar:r8-20060801:compile
+[INFO] |  +- org.eclipse.tycho:org.eclipse.jdt.core:jar:3.8.0.v_C03:compile
+[INFO] |  +- org.eclipse:text:jar:3.2.0-v20060605-1400:compile
+[INFO] |  |  \- org.eclipse.core:commands:jar:3.3.0-I20070605-0010:compile
+[INFO] |  \- antlr:antlr:jar:2.7.7:compile
+[INFO] +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] +- org.springframework:spring-test:jar:4.0.0.BUILD-SNAPSHOT:test (scope not updated to compile)
+[INFO] +- org.springframework.data:spring-data-jpa:jar:1.5.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-orm:jar:3.2.8.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:3.2.8.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:3.2.8.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjrt:jar:1.7.4:compile
+[INFO] +- org.springframework.data:spring-data-commons:jar:1.5.0.RELEASE:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:jcl-over-slf4j:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.springframework:spring-beans:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-tx:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] +- org.springframework:spring-context:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- com.atux:atux-dao:jar:1.0:compile
+[INFO] |  +- com.atux:atux-base:jar:2.0.1-SNAPSHOT:compile
+[INFO] |  |  +- joda-time:joda-time:jar:1.6.2:compile
+[INFO] |  |  +- org.springframework:spring-aspects:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  |  \- org.aspectj:aspectjweaver:jar:1.8.0.M1:compile
+[INFO] |  |  +- commons-functor:commons-functor:jar:1.0:compile
+[INFO] |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[INFO] |  +- commons-dbutils:commons-dbutils:jar:1.1:compile
+[INFO] |  +- jasperreports:jasperreports-local:jar:2.0.2:compile
+[INFO] |  +- org.apache.poi:poi:jar:3.1-FINAL:compile
+[INFO] |  \- com.lowagie:itext:jar:1.3.1:compile
+[INFO] +- net.sf.ehcache:ehcache:jar:1.5.0:compile
+[INFO] |  +- backport-util-concurrent:backport-util-concurrent:jar:3.1:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2:compile
+[INFO] |  \- net.sf.jsr107cache:jsr107cache:jar:1.0:compile
+[INFO] +- org.jmock:jmock-junit3:jar:2.1.0:test
+[INFO] |  +- org.jmock:jmock:jar:2.1.0:test
+[INFO] |  |  +- org.hamcrest:hamcrest-api:jar:1.0:test
+[INFO] |  |  \- org.hamcrest:hamcrest-library:jar:1.0:test
+[INFO] |  \- junit:junit:jar:3.8.2:test
+[INFO] +- org.jmock:jmock-legacy:jar:2.1.0:test
+[INFO] +- org.slf4j:slf4j-simple:jar:1.4.3:test
+[INFO] +- aspectj:aspectjweaver:jar:1.5.3:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.0.2:compile
+[INFO] +- org.mybatis:mybatis:jar:3.0.6:compile
+[INFO] +- commons-dbcp:commons-dbcp:jar:1.2.1:compile
+[INFO] |  \- commons-pool:commons-pool:jar:1.2:compile
+[INFO] +- oracle:ojdbc:jar:11.2.0.1.0:compile
+[INFO] +- commons-net:commons-net:jar:2.0:compile
+[INFO] +- commons-net-ftp:commons-net-ftp:jar:2.0:compile
+[INFO] +- javax.mail:mail:jar:1.4:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- junit:junit-dep:jar:4.4:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] +- velocity:velocity:jar:1.5:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.1:compile
+[INFO] |  \- oro:oro:jar:2.0.8:compile
+[INFO] +- org.mockito:mockito-all:jar:1.7:test
+[INFO] \- org.dbunit:dbunit:jar:2.4.4:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ATUX - Framework - Core - JRCP 1.0
+[INFO] ------------------------------------------------------------------------
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The artifact poi:poi:jar:3.1-FINAL has been relocated to org.apache.poi:poi:jar:3.1-FINAL
+[WARNING] The metadata C:\workstation\system\.m2\repository\com\atux\atux-base\2.0.1-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ atux-jrcp ---
+[WARNING] Cannot read metadata from 'C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml': end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] While downloading poi:poi:3.1-FINAL
+  This artifact has been relocated to org.apache.poi:poi:3.1-FINAL.
+
+
+[INFO] com.atux:atux-jrcp:jar:1.0
+[INFO] +- com.atux:atux-base:jar:2.0.1-SNAPSHOT:compile
+[INFO] |  +- org.hibernate:hibernate-core:jar:4.2.7.Final:compile
+[INFO] |  +- org.hibernate:hibernate-entitymanager:jar:4.2.7.Final:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.18.1-GA:compile
+[INFO] |  |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  |  \- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] |  +- joda-time:joda-time:jar:1.6.2:compile
+[INFO] |  +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] |  +- org.hibernate:hibernate-validator:jar:5.0.1.Final:compile
+[INFO] |  |  \- com.fasterxml:classmate:jar:0.8.0:compile
+[INFO] |  +- org.hibernate:hibernate-tools:jar:4.0.0-CR1:compile
+[INFO] |  |  +- javax.transaction:jta:jar:1.1:compile
+[INFO] |  |  +- ant:ant:jar:1.6.5:compile
+[INFO] |  |  +- freemarker:freemarker:jar:2.3.8:compile
+[INFO] |  |  +- org.hibernate:jtidy:jar:r8-20060801:compile
+[INFO] |  |  +- org.eclipse.tycho:org.eclipse.jdt.core:jar:3.8.0.v_C03:compile
+[INFO] |  |  +- org.eclipse:text:jar:3.2.0-v20060605-1400:compile
+[INFO] |  |  |  \- org.eclipse.core:commands:jar:3.3.0-I20070605-0010:compile
+[INFO] |  |  \- antlr:antlr:jar:2.7.7:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- org.springframework:spring-core:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.8.0.M1:compile
+[INFO] |  +- org.springframework:spring-orm:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context-support:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- commons-functor:commons-functor:jar:1.0:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.1:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[INFO] +- commons-validator:commons-validator:jar:1.3.1:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.6:compile
+[INFO] |     \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] +- jgoodies:forms:jar:1.1.0:compile
+[INFO] +- jgoodies:validation:jar:2.0.0:compile
+[INFO] +- net.java.dev.timingframework:timingframework:jar:1.0:compile
+[INFO] +- net.java.dev.fuse:fuse-core:jar:0.4:compile
+[INFO] +- net.java.dev.fuse:fuse-swing:jar:0.4:compile
+[INFO] +- org.swingx:jxpanel:jar:0.8:compile
+[INFO] +- org.easytesting:fest-swing:jar:1.2a2:compile
+[INFO] +- org.easytesting:fest-reflect:jar:1.1:compile
+[INFO] +- org.easytesting:fest-assert:jar:1.1:test
+[INFO] +- org.easytesting:fest-util:jar:1.1:compile
+[INFO] +- net.sf.ehcache:ehcache:jar:1.5.0:compile
+[INFO] |  +- backport-util-concurrent:backport-util-concurrent:jar:3.1:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2:compile
+[INFO] |  \- net.sf.jsr107cache:jsr107cache:jar:1.0:compile
+[INFO] +- jasperreports:jasperreports-local:jar:2.0.2:compile
+[INFO] +- org.apache.poi:poi:jar:3.1-FINAL:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1:compile
+[INFO] +- com.lowagie:itext:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-test:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- commons-net:commons-net:jar:2.0:compile
+[INFO] +- commons-net-ftp:commons-net-ftp:jar:2.0:compile
+[INFO] +- org.jmock:jmock-junit3:jar:2.1.0:test
+[INFO] |  +- org.jmock:jmock:jar:2.1.0:test
+[INFO] |  |  +- org.hamcrest:hamcrest-api:jar:1.0:test
+[INFO] |  |  \- org.hamcrest:hamcrest-library:jar:1.0:test
+[INFO] |  \- junit:junit:jar:3.8.2:test
+[INFO] +- javax.mail:mail:jar:1.4:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- junit:junit-dep:jar:4.4:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] +- velocity:velocity:jar:1.5:compile
+[INFO] |  \- oro:oro:jar:2.0.8:compile
+[INFO] +- org.mockito:mockito-all:jar:1.7:test
+[INFO] \- org.dbunit:dbunit:jar:2.4.4:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Atux - Build Tools 1.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ build-tools ---
+[INFO] com.atux:build-tools:jar:1.0
+[INFO] +- org.springframework:spring-test:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- commons-net:commons-net:jar:2.0:compile
+[INFO] +- commons-net-ftp:commons-net-ftp:jar:2.0:compile
+[INFO] +- org.jmock:jmock-junit3:jar:2.1.0:test
+[INFO] |  +- org.jmock:jmock:jar:2.1.0:test
+[INFO] |  |  +- org.hamcrest:hamcrest-api:jar:1.0:test
+[INFO] |  |  \- org.hamcrest:hamcrest-library:jar:1.0:test
+[INFO] |  \- junit:junit:jar:3.8.2:test
+[INFO] +- net.sf.ehcache:ehcache:jar:1.5.0:compile
+[INFO] |  +- backport-util-concurrent:backport-util-concurrent:jar:3.1:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2:compile
+[INFO] |  \- net.sf.jsr107cache:jsr107cache:jar:1.0:compile
+[INFO] +- javax.mail:mail:jar:1.4:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- junit:junit-dep:jar:4.4:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] +- velocity:velocity:jar:1.5:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.1:compile
+[INFO] |  \- oro:oro:jar:2.0.8:compile
+[INFO] +- org.mockito:mockito-all:jar:1.7:test
+[INFO] \- org.dbunit:dbunit:jar:2.4.4:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Atux - Desktop 1.0
+[INFO] ------------------------------------------------------------------------
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\com\atux\atux-dao\2.0-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\com\atux\atux-dao\2.0-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The POM for com.atux:atux-dao:jar:2.0-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\security\spring-security-core\3.2.0.CI-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\org\springframework\security\spring-security-core\3.2.0.CI-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] The metadata C:\workstation\system\.m2\repository\com\atux\atux-base\2.0.1-SNAPSHOT\maven-metadata-sourceforge.xml is invalid: end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ atux-desktop ---
+[WARNING] Cannot read metadata from 'C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml': end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] Cannot read metadata from 'C:\workstation\system\.m2\repository\org\eclipse\core\commands\maven-metadata-sourceforge.xml': end tag name </body> must match start tag name <hr> from line 5 (position: TEXT seen ...</center>\r\n</body>... @6:8) 
+[WARNING] Invalid POM for com.atux:atux-dao:jar:2.0-SNAPSHOT, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] com.atux:atux-desktop:jar:1.0
+[INFO] +- com.atux:atux-jrcp:jar:1.0:compile
+[INFO] |  +- com.atux:atux-base:jar:2.0.1-SNAPSHOT:compile
+[INFO] |  |  +- joda-time:joda-time:jar:1.6.2:compile
+[INFO] |  |  +- org.springframework:spring-aop:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  +- org.springframework:spring-aspects:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  |  \- org.aspectj:aspectjweaver:jar:1.8.0.M1:compile
+[INFO] |  |  +- org.springframework:spring-orm:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  +- commons-functor:commons-functor:jar:1.0:compile
+[INFO] |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[INFO] |  +- commons-validator:commons-validator:jar:1.3.1:compile
+[INFO] |  |  \- commons-digester:commons-digester:jar:1.6:compile
+[INFO] |  +- jgoodies:forms:jar:1.1.0:compile
+[INFO] |  +- jgoodies:validation:jar:2.0.0:compile
+[INFO] |  +- net.java.dev.timingframework:timingframework:jar:1.0:compile
+[INFO] |  +- net.java.dev.fuse:fuse-core:jar:0.4:compile
+[INFO] |  +- net.java.dev.fuse:fuse-swing:jar:0.4:compile
+[INFO] |  +- org.easytesting:fest-swing:jar:1.2a2:compile
+[INFO] |  +- org.easytesting:fest-reflect:jar:1.1:compile
+[INFO] |  +- org.easytesting:fest-util:jar:1.1:compile
+[INFO] |  +- jasperreports:jasperreports-local:jar:2.0.2:compile
+[INFO] |  +- org.apache.poi:poi:jar:3.1-FINAL:compile
+[INFO] |  \- com.lowagie:itext:jar:1.3.1:compile
+[INFO] +- com.atux:atux-domain:jar:1.0:compile
+[INFO] |  +- org.hibernate:hibernate-core:jar:4.2.7.Final:compile
+[INFO] |  +- org.hibernate:hibernate-entitymanager:jar:4.2.7.Final:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.18.1-GA:compile
+[INFO] |  |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  |  \- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] |  +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |  \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] |  +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] |  +- org.hibernate:hibernate-validator:jar:5.0.1.Final:compile
+[INFO] |  |  \- com.fasterxml:classmate:jar:0.8.0:compile
+[INFO] |  +- org.hibernate:hibernate-tools:jar:4.0.0-CR1:compile
+[INFO] |  |  +- javax.transaction:jta:jar:1.1:compile
+[INFO] |  |  +- ant:ant:jar:1.6.5:compile
+[INFO] |  |  +- freemarker:freemarker:jar:2.3.8:compile
+[INFO] |  |  +- org.hibernate:jtidy:jar:r8-20060801:compile
+[INFO] |  |  +- org.eclipse.tycho:org.eclipse.jdt.core:jar:3.8.0.v_C03:compile
+[INFO] |  |  +- org.eclipse:text:jar:3.2.0-v20060605-1400:compile
+[INFO] |  |  |  \- org.eclipse.core:commands:jar:3.3.0-I20070605-0010:compile
+[INFO] |  |  \- antlr:antlr:jar:2.7.7:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.springframework.data:spring-data-jpa:jar:1.5.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  +- org.springframework:spring-core:jar:3.2.8.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjrt:jar:1.7.4:compile
+[INFO] |  +- org.springframework.data:spring-data-commons:jar:1.5.0.RELEASE:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] |  +- org.slf4j:jcl-over-slf4j:jar:1.7.1:compile
+[INFO] |  +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] |  |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context-support:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] |  +- aspectj:aspectjweaver:jar:1.5.3:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.0.2:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.0.6:compile
+[INFO] |  +- commons-dbcp:commons-dbcp:jar:1.2.1:compile
+[INFO] |  |  \- commons-pool:commons-pool:jar:1.2:compile
+[INFO] |  \- oracle:ojdbc:jar:11.2.0.1.0:compile
+[INFO] +- com.atux:atux-dao:jar:1.0:compile
+[INFO] |  \- commons-dbutils:commons-dbutils:jar:1.1:compile
+[INFO] +- commons-el:commons-el:jar:1.0:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.0.3:compile
+[INFO] +- org.swingx:jxpanel:jar:0.8:compile
+[INFO] +- org.springframework.security:spring-security-core:jar:3.2.0.CI-SNAPSHOT:compile
+[INFO] |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] +- com.atux:build-tools:jar:1.0:compile
+[INFO] +- org.springframework:spring-test:jar:4.0.0.BUILD-SNAPSHOT:compile
+[INFO] +- commons-net:commons-net:jar:2.0:compile
+[INFO] +- commons-net-ftp:commons-net-ftp:jar:2.0:compile
+[INFO] +- org.jmock:jmock-junit3:jar:2.1.0:test
+[INFO] |  +- org.jmock:jmock:jar:2.1.0:test
+[INFO] |  |  +- org.hamcrest:hamcrest-api:jar:1.0:test
+[INFO] |  |  \- org.hamcrest:hamcrest-library:jar:1.0:test
+[INFO] |  \- junit:junit:jar:3.8.2:test
+[INFO] +- net.sf.ehcache:ehcache:jar:1.5.0:compile
+[INFO] |  +- backport-util-concurrent:backport-util-concurrent:jar:3.1:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2:compile
+[INFO] |  \- net.sf.jsr107cache:jsr107cache:jar:1.0:compile
+[INFO] +- javax.mail:mail:jar:1.4:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- junit:junit-dep:jar:4.4:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] +- velocity:velocity:jar:1.5:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.1:compile
+[INFO] |  \- oro:oro:jar:2.0.8:compile
+[INFO] +- org.mockito:mockito-all:jar:1.7:test
+[INFO] \- org.dbunit:dbunit:jar:2.4.4:test
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Atux .............................................. SUCCESS [0.633s]
+[INFO] ATUX - Framework - Core - Base .................... SUCCESS [0.343s]
+[INFO] ATUX - Framework - Core - DAO ..................... SUCCESS [0.202s]
+[INFO] Atux - Domain Model ............................... SUCCESS [0.243s]
+[INFO] ATUX - Framework - Core - JRCP .................... SUCCESS [0.085s]
+[INFO] Atux - Build Tools ................................ SUCCESS [0.019s]
+[INFO] Atux - Desktop .................................... SUCCESS [0.127s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.042s
+[INFO] Finished at: Tue Dec 02 09:44:26 COT 2014
+[INFO] Final Memory: 12M/150M
+[INFO] ------------------------------------------------------------------------

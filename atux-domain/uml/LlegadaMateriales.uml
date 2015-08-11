@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagramm>
+  <classes>
+    <class fqn="com.sider.recepcionMateriales.bean.DRequisicionCompra" x="-1.0" y="547.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.NotaSalida" x="147.0" y="627.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.ItemLlegada" x="581.0" y="187.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.OrdenCompra" x="178.0" y="-13.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.Producto" x="391.5" y="107.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.RequisicionCompra" x="203.0" y="547.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.NotaIngreso" x="-18.0" y="627.0" />
+    <class fqn="com.aw.core.Identifiable" x="584.5" y="307.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.SolicitudCT" x="426.0" y="547.0" />
+    <class fqn="com.aw.core.domain.ICloneable" x="187.0" y="107.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.DOrdenCompra" x="174.0" y="467.0" />
+    <class fqn="com.aw.core.domain.model.Auditable" x="590.0" y="-13.0" />
+    <class fqn="com.sider.recepcionMateriales.bean.LlegadaMateriales" x="765.0" y="307.0" />
+    <class fqn="java.lang.Cloneable" x="-10.5" y="107.0" />
+  </classes>
+  <packages />
+  <edges>
+    <edge source="com.sider.recepcionMateriales.bean.ItemLlegada" target="com.aw.core.domain.ICloneable" relationship="INTERFACE_GENERALIZATION">
+      <point x="-59.0" y="0.0" />
+      <point x="280.0" y="200.0" />
+      <point x="40.0" y="13.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.LlegadaMateriales" target="com.aw.core.domain.ICloneable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="13.0" />
+      <point x="840.0" y="400.0" />
+      <point x="260.0" y="400.0" />
+      <point x="20.0" y="13.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.Producto" target="com.aw.core.domain.ICloneable" relationship="INTERFACE_GENERALIZATION">
+      <point x="-48.5" y="0.0" />
+      <point x="53.0" y="0.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.ItemLlegada" target="com.aw.core.Identifiable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="13.0" />
+      <point x="0.0" y="-13.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.Producto" target="com.aw.core.Identifiable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="13.0" />
+      <point x="440.0" y="320.0" />
+      <point x="-55.5" y="0.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.LlegadaMateriales" target="com.aw.core.domain.model.Auditable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-13.0" />
+      <point x="840.0" y="0.0" />
+      <point x="50.0" y="0.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.OrdenCompra" target="com.aw.core.domain.ICloneable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="13.0" />
+      <point x="0.0" y="-13.0" />
+    </edge>
+    <edge source="com.aw.core.domain.ICloneable" target="java.lang.Cloneable" relationship="INTERFACE_GENERALIZATION">
+      <point x="-53.0" y="0.0" />
+      <point x="50.5" y="0.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.ItemLlegada" target="com.aw.core.domain.model.Auditable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.Producto" target="com.aw.core.domain.model.Auditable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-13.0" />
+      <point x="440.0" y="8.0" />
+      <point x="-50.0" y="8.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.DOrdenCompra" target="com.aw.core.domain.ICloneable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.OrdenCompra" target="com.aw.core.domain.model.Auditable" relationship="INTERFACE_GENERALIZATION">
+      <point x="62.0" y="0.0" />
+      <point x="-50.0" y="0.0" />
+    </edge>
+    <edge source="com.sider.recepcionMateriales.bean.LlegadaMateriales" target="com.aw.core.Identifiable" relationship="INTERFACE_GENERALIZATION">
+      <point x="-75.0" y="0.0" />
+      <point x="55.5" y="0.0" />
+    </edge>
+  </edges>
+  <settings isCamel="false" isColorManagerEnabled="true" isFieldsVisible="false" isConstructorsVisible="false" isMethodsVisible="false" isShowDependencies="false" isShowInnerClasses="false" defaultVisibility="private" isPropertiesVisible="false" zoom="0.8498542274052479" x="448.5" y="320.0" />
+  <SelectedNodes />
+</ClassDiagramm>
+

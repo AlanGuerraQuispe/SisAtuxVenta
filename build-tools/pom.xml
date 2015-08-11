@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.atux</groupId>
+		<artifactId>atux</artifactId>
+		<version>1.0</version>
+    </parent>
+    <groupId>com.atux</groupId>
+    <artifactId>build-tools</artifactId>
+    <version>1.0</version>
+    <name>Atux - Build Tools</name>
+    <packaging>jar</packaging>
+
+	<build>
+	<plugins>
+		<plugin>
+			<artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <configuration>
+                            <tasks>
+                                <!-- versioning -->
+                                <echo message="[build version]"/>
+                                <!--delete file="main/qt-swing/target/classes/version.properties"/-->
+                                <tstamp>
+                                    <format property="rightNow" pattern="yyyyMMdd" locale="en"/>
+                                </tstamp>
+                                <copy todir="target/classes">
+                                    <fileset dir=".">
+                                        <include name="version.properties"/>
+                                    </fileset>
+                                    <filterset>
+                                        <filter token="VERSION" value="${project.version}-#${buildNumber}"/>
+                                        <filter token="BUILTON" value="${rightNow}"/>
+                                    </filterset>
+                                </copy>
+                                <echo message=" version is ${buildNumber}"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+		</plugin>
+			<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.0-beta-2</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <doCheck>true</doCheck>
+                    <doUpdate>false</doUpdate>
+                    <!--<format>${version}.{0,number}</format>-->
+                    <format>{0,number}</format>
+                    <items>
+                        <item>buildNumber0</item>
+                    </items>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+</project>

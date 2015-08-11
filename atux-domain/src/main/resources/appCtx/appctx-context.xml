@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+    default-autowire="byName">
+
+    <bean id="estadoToLabelMapper" class="com.aw.core.domain.model.EstadoToLabelMapper" >
+    </bean>
+    <context:component-scan base-package="com.atux.config"/>
+
+    <context:property-placeholder location="classpath*:*.properties"/>
+
+    <context:component-scan  base-package="com.atux.config.*"/>
+
+    <context:component-scan base-package="com.atux.infraestructura.*">
+
+    </context:component-scan>
+   
+    <context:component-scan base-package="com.atux.dominio.*">
+    </context:component-scan>
+
+    <bean id="cacheDropDown" class="com.aw.core.cache.storage.CacheEHImpl" lazy-init="true">
+        <property name="name" value="dropDown"/>
+    </bean>
+
+    <bean id="conversionService"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.atux.dominio.converter.ProductoToLgtdFarinV2"/>
+                <bean class="com.atux.dominio.converter.IncentivoToVtttrProductoBono"/>
+            </list>
+        </property>
+    </bean>
+
+    <aop:aspectj-autoproxy/>
+
+    <context:spring-configured/>
+</beans>

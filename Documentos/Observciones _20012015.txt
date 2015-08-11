@@ -1,0 +1,67 @@
+- Agrgegar la ruta del testigo                                           X 
+- Label de promocion deshabilitar				         X
+- Agregar el estado a la consulta de pedidos, el tipo de documento       X
+- En devolucion agregar el estado del pedido			         X
+- En la anulacion de comprobante, solo los que tengan la misma fraccion  X
+- Al generar el comprobante manual en el documento : En lugar ticket - debe decir ticket/boleta o factura manual.Ademas agregar   el tipo de comprobante Boleta Manual y Factura Manual.		 X
+
+
+- Pantalla de reposicion Agregar el factor de fraccionamiento y agregar la lista de productos de falta cero y agregar cantidad solicitada, en la  pantalla de ver lista final- Ordenar de mayor a menor de la cantidad calculada, agregar el laboratorio al lado de la descripcion del producto,  los datos del pedido se deben almacenar.
+
+- Ordenamiento de la lista de catalogos Por default debe estar al crear el boton debe estar activo
+- Al registrar el falta CERO en la reposicion almacenar en un historico - en el detalle del pedido reposicion
+- Generar el menu de ADMCentral similar al del punto venta 
+
+Stock Promedio = Venta/dias de rotacion
+S/ Stock Prom = stock al costo
+s/ Rep Costo = unidades calculdad al costo
+Total Stock(+) = entradas del excel
+Total Stock(-) = salidas  del excel
+Mostrar el numero de dias del calculo
+
+- Rotacion de productos Cambiar los valores de venta x margen solo títulos y Cantidades vendidas del periodo con 2 decimales
+
+- Pantalla de precios agregar el estado y cambiar titulo --> Llevar esta pantalla para ADMCentral 
+	- Catalogo
+	- Precios, Fraccionamiento, Promocion
+
+
+27-01-2015
+----------
+
+1 Guia de ingreso manual - colocar una lista que diga compras por competencia y compras
+
+compras por competencia compras especificas indicadas por el area de compras - Indicar el tipo.
+
+2 solicitud
+3 Lista de pedidos de traslado
+4 recepcion del pedido
+
+Retirar Utilitarios - colocar Procesos CD
+				Ordenes de Compras
+				guia de internamiento
+				verificacion de factura
+				GDP	
+
+Otra columna reporte - reporteador
+
+
+Pendientes :
+
+	- Registrar los falta cero en una tabla historica.
+	- Donaciones
+	- Tarjetas virtuales
+	- Promociones
+	- Los clientes deben tomarlo de la tabla
+
+28-01-2015
+----------
+
+Agregar campos :
+
+alter table LOGISTICA.LGTC_RECEPCION_PRODUCTO
+add IN_TIPO_ORDEN char(1) default 'N'
+
+modiifcacion de packages INKVENTA_INVENTARIO.pck
+
+- Revisar la ejecucion del proceso de BDA que calcula entre las tablas la VTTR_VENTAS_POR_VENDEDOR

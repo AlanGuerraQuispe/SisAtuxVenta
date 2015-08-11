@@ -1,0 +1,68 @@
+package $packageWeb;
+
+import com.aw.core.web.servlet.mvc.action.Action;
+import com.aw.core.web.servlet.mvc.action.ActionNames;
+import com.aw.core.web.servlet.mvc.action.types.*;
+import com.aw.core.web.servlet.mvc.cmp.pick.Pick;
+import com.aw.core.web.servlet.mvc.cmp.pick.PickImpl;
+import com.aw.core.web.servlet.mvc.controller.FindController;
+import com.aw.core.web.servlet.mvc.core.WebInfoProvider;
+import com.aw.core.web.servlet.mvc.grid.ColumnInfo;
+import com.aw.core.web.servlet.mvc.grid.GridDataHolder;
+import com.aw.core.web.servlet.mvc.grid.GridProvider;
+import com.aw.core.web.servlet.mvc.grid.SelectorColumn;
+import com.aw.stereotype.AWController;
+import com.sider.seguridad.web.comun.MostrarAuditoriaInfoAction;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@AWController(templateRoot = "$package", title = "")
+public class $pickName extends FindController<$filtroName> {
+
+    @Autowired
+    $serviceName $serviceName_var;
+
+    @Autowired
+    SPDD spdd;
+
+    public $pickName() {
+          searchAtBeginning();
+    }
+
+    protected void registerBinding() {
+
+    }
+
+    public void registerActions() {
+        actionRsr.registerAction(ActionNames.ACTION_PICK_SELECT, new PickSelectItemAction(), getGridProvider()).setLabel("Agregar");
+
+    }
+
+    public ColumnInfo[] getColumnInfo() {
+        ColumnInfo[] columns = new ColumnInfo[]{
+                new SelectorColumn(),
+
+                #foreach( $column in $columns )
+                  new ColumnInfo("$column.label", "$column.name", $column.width, ColumnInfo.LEFT),
+                #end
+
+
+                new ColumnInfo("Usuario Creación", "usuCrea", 140, ColumnInfo.LEFT).setRptChrs(25).setAsNoPrintable(),
+                new ColumnInfo("Fecha Creación", "fecCrea", 140, ColumnInfo.LEFT).formatAsDateTime().setAsNoPrintable(),
+                new ColumnInfo("Usuario Modificación", "usuModi", 140, ColumnInfo.LEFT).setRptChrs(25).setAsNoPrintable(),
+                new ColumnInfo("Fecha Modificación", "fecModi", 140, ColumnInfo.LEFT).formatAsDateTime().setAsNoPrintable()
+
+
+
+        };
+        return columns;
+    }
+
+    public List getValues($filtroName obj) {
+        return ${serviceName_var}.buscar(obj);
+    }
+
+}

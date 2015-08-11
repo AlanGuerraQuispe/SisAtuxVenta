@@ -1,0 +1,6 @@
+2014-11-08 10:58:48,668 DEBUG [org.springframework.beans.CachedIntrospectionResults] - <Getting BeanInfo for class [com.aw.swing.mvp.grid.TestCriteria$BeanForTest]>
+2014-11-08 10:58:48,669 DEBUG [org.springframework.beans.CachedIntrospectionResults] - <Caching PropertyDescriptors for class [com.aw.swing.mvp.grid.TestCriteria$BeanForTest]>
+2014-11-08 10:58:48,670 DEBUG [org.springframework.beans.CachedIntrospectionResults] - <Found bean property 'class' of type [java.lang.Class]>
+2014-11-08 10:58:48,673 DEBUG [org.springframework.beans.CachedIntrospectionResults] - <Found bean property 'criter1' of type [java.lang.String]>
+2014-11-08 10:58:48,675 DEBUG [org.springframework.beans.CachedIntrospectionResults] - <Found bean property 'criter2' of type [java.lang.String]>
+2014-11-08 10:58:48,675 DEBUG [org.springframework.beans.CachedIntrospectionResults] - <Found bean property 'criter3' of type [java.lang.String]>

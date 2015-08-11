@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering
+   SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+<!--schema-selection match-schema=".*ECVENTA.*" match-catalog=".*" match-table=".*RM.*" /-->
+<!--schema-selection  match-schema="ECVENTA"  match-table=".*Rm.*" /-->
+
+	<type-mapping>
+		<!-- estado debe ser String  -->
+		<sql-type jdbc-type="CHAR" length='1' hibernate-type="string" />
+	</type-mapping>
+
+<!--Tablas directamente relacionadas al Modulo de Recetas -->
+<table-filter match-name="BIN.*" exclude="true" />
+<!--<table-filter match-schema="CTDESA"  match-catalog=".*" match-name=".*" exclude="false" />-->
+<table-filter match-schema="SUMINISTROSQA"  match-catalog=".*" match-name="CIERRE_CONSIGNACION_TC" exclude="false" />
+</hibernate-reverse-engineering>

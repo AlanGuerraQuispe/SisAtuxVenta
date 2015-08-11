@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.InventarioQryMapper">
+
+    <select id="grabarInicioTomaCabecera"
+            parameterType="com.atux.bean.inventario.TomaInventario"
+            resultType="string">
+        select PTOVTA_TOMAINVENTARIO.GRABA_TOMA_INVENTARIO(#{coCompania}, #{coLocal},  #{tiTomaInventario}, #{creadoPor}) from dual
+    </select>
+
+
+    <update id="grabarInicioTomaDetalle" parameterType="com.atux.bean.inventario.TomaInventarioLaboratorio" statementType="CALLABLE">
+        { CALL PTOVTA_TOMAINVENTARIO.CONGELA_INVENTARIO(#{coCompania}, #{coLocal}, #{nuSecTomaInventario}, #{coLaboratorio}, #{tiTomaInventario}, #{creadoPor}) }
+    </update>
+
+    <select id="findLaboratorioConPedidoPendiente"
+            parameterType="com.atux.bean.inventario.LaboratorioInventarioFlt"
+            resultType="string"
+            >
+         SELECT DISTINCT LP.CO_LABORATORIO AS coLaboratorio
+               FROM   VTTC_PEDIDO_VENTA VCPD,
+                   VTTD_PEDIDO_VENTA VDPD,
+                   LGTM_PRODUCTO LP
+               WHERE  VCPD.CO_COMPANIA =  #{localId.coCompania}
+               AND    VCPD.CO_LOCAL =  #{localId.coLocal}
+               AND    VCPD.ES_PEDIDO_VENTA = 'P'
+               AND    VCPD.CO_COMPANIA = VDPD.CO_COMPANIA
+               AND    VCPD.CO_LOCAL = VDPD.CO_LOCAL
+               AND    VCPD.NU_PEDIDO = VDPD.NU_PEDIDO
+               AND    VDPD.CO_COMPANIA = LP.CO_COMPANIA
+               AND    VDPD.CO_PRODUCTO = LP.CO_PRODUCTO
+                <if test="seleccionados!=null and seleccionados.size()>0">
+                    AND  LP.CO_LABORATORIO in
+                    <foreach collection="seleccionados" index="index" open="(" close=")" separator="," item="item">
+                        #{item.coLaboratorio}
+                    </foreach>
+                </if>
+    </select>
+
+
+    <select id="findLaboratorio"
+            parameterType="com.atux.bean.precios.LaboratorioFlt"
+            resultType="com.atux.bean.inventario.LaboratorioInventario"
+            >
+        SELECT
+            CL.CO_LABORATORIO coLaboratorio,
+            CL.DE_LABORATORIO deLaboratorio,
+            CL.IN_LAB_TOMA_INV,
+            COUNT(LP.CO_PRODUCTO) caProducto
+        FROM  CMTR_LABORATORIO CL,
+              LGTM_PRODUCTO LP
+        WHERE  CL.CO_COMPANIA=  #{localId.coCompania}
+            AND CL.ES_LABORATORIO = 'A'
+            AND CL.IN_LAB_INVENTARIO = 'N'
+            AND LP.CO_COMPANIA(+)=CL.CO_COMPANIA
+            AND LP.CO_LABORATORIO(+)=CL.CO_LABORATORIO
+            AND LP.ES_PRODUCTO = 'A'
+            AND CL.co_laboratorio not in ('0360', '1157')
+        <if test="buscar!=null and buscar!=''">
+            AND (CL.CO_LABORATORIO   =  #{buscar} OR  CL.DE_LABORATORIO LIKE  UPPER(#{buscar}) )
+        </if>
+
+        GROUP BY
+            CL.CO_LABORATORIO,
+            CL.DE_LABORATORIO ,
+            CL.IN_LAB_TOMA_INV
+        ORDER BY CL.DE_LABORATORIO
+    </select>
+
+
+    <select id="findTomaInventarioList"
+            parameterType="com.atux.bean.inventario.TomaInventarioFlt"
+            resultType="com.atux.bean.inventario.TomaInventario"
+            >
+        SELECT
+        NU_SEC_TOMA_INVENTARIO nuSecTomaInventario,
+        TI_TOMA_INVENTARIO tiTomaInventario ,
+        FE_INICIO_TOMA_INVENTARIO fechaInicio ,
+        FE_FIN_TOMA_INVENTARIO fechaFin ,
+        ES_TOMA_INVENTARIO estado
+        FROM LGTC_TOMA_INVENTARIO
+        WHERE CO_COMPANIA = #{localId.coCompania} AND
+        CO_LOCAL = #{localId.coLocal} AND
+        ES_TOMA_INVENTARIO = 'P'
+        ORDER BY NU_SEC_TOMA_INVENTARIO DESC
+    </select>
+
+
+    <select id="findTomaInventarioLaboratorioList"
+            parameterType="com.atux.bean.inventario.TomaInventarioFlt"
+            resultType="com.atux.bean.inventario.TomaInventarioLaboratorio"
+            >
+        SELECT
+            LTIL.CO_LABORATORIO coLaboratorio ,
+            CL.DE_LABORATORIO deLaboratorio,
+            LTIL.IN_LAB_EN_PROCESO inLabProceso,
+            LTIL.IN_TIPO_INVENTARIO inTipoInventario
+        FROM
+            LGTD_TOMA_INVENTARIO_LAB LTIL,
+            CMTR_LABORATORIO CL
+        WHERE
+          LTIL.CO_COMPANIA = #{localId.coCompania} AND
+          LTIL.CO_LOCAL = #{localId.coLocal} AND
+          LTIL.NU_SEC_TOMA_INVENTARIO = #{nuSecTomaInventario} AND
+          LTIL.CO_COMPANIA = CL.CO_COMPANIA(+) AND
+          LTIL.CO_LABORATORIO = CL.CO_LABORATORIO(+)
+        ORDER BY CL.DE_LABORATORIO
+    </select>
+
+    <select id="findTomaInventarioProductoList"
+            parameterType="com.atux.bean.inventario.TomaInventarioFlt"
+            resultType="com.atux.bean.inventario.TomaInventarioProducto"
+            >
+       SELECT   LTI.CO_COMPANIA coCompania,
+                LTI.NU_SEC_TOMA_INVENTARIO nuSecTomaInventario,
+                LTI.CO_PRODUCTO coProducto,
+                LP.CO_LABORATORIO coLaboratorio,
+                LP.DE_PRODUCTO deProducto,
+                LP.DE_UNIDAD_PRODUCTO unidadProducto,
+                LPL.DE_UNIDAD_FRACCION unidadFraccion,
+                LTI.IN_PROD_FRACCIONADO inProdFraccionado,
+                LPL.VA_FRACCION vaFraccion,
+                LTI.ES_ORIGEN ,
+                DECODE(LTI.IN_PROD_FRACCIONADO,'S',TRUNC(LTI.CA_PRIMERA_CUENTA/LTI.VA_FRACCION),LTI.CA_PRIMERA_CUENTA) caEntero,
+                DECODE(LTI.IN_PROD_FRACCIONADO,'S',MOD(LTI.CA_PRIMERA_CUENTA, LTI.VA_FRACCION),NULL) caFraccion
+       FROM LGTD_TOMA_INVENTARIO LTI,
+            LGTM_PRODUCTO LP,
+            LGTR_PRODUCTO_LOCAL LPL
+      <where>
+          LTI.CO_COMPANIA =  #{localId.coCompania} AND
+          LTI.CO_LOCAL = #{localId.coLocal} AND
+          LTI.NU_SEC_TOMA_INVENTARIO =  #{nuSecTomaInventario} AND
+          <if test="coLaboratorio!=null and coLaboratorio!=''">
+              LTI.CO_LABORATORIO   =  #{coLaboratorio} AND
+          </if>
+          LTI.CO_COMPANIA = LP.CO_COMPANIA AND
+          LTI.CO_PRODUCTO = LP.CO_PRODUCTO AND
+          LTI.CO_COMPANIA = LPL.CO_COMPANIA AND
+          LTI.CO_LOCAL = LPL.CO_LOCAL AND
+          LTI.CO_PRODUCTO = LPL.CO_PRODUCTO
+          ORDER BY LTI.CO_PRODUCTO
+      </where>
+    </select>
+
+
+
+</mapper>
