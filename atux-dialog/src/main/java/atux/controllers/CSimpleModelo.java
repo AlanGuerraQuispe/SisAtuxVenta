@@ -548,7 +548,7 @@ public class CSimpleModelo extends JAbstractController implements Serializable{
             query.append("               /*+ CHOOSE */ \n");
             query.append("               PROD_LOCAL.CO_COMPANIA   , \n");
             query.append("               PROD_LOCAL.CO_LOCAL      , \n");
-            query.append("               PROD.CO_PRODUCTO PRODUCTO, \n");
+            query.append("               PROD.CO_PRODUCTO CO_PRODUCTO, \n");
             query.append("               DECODE(NVL(PROD_LOCAL.NU_MIN_DIAS_REPOSICION,0), \n");
             query.append("                      0, DECODE(NVL(LABORATORIO.NU_MIN_DIAS_REPOSICION,0), \n");
             query.append("                                0, DECODE(NVL(LINEA_LOCAL.NU_MIN_DIAS_REPOSICION,0), \n");
@@ -623,10 +623,13 @@ public class CSimpleModelo extends JAbstractController implements Serializable{
             query.append("               ) \n");
             query.append("       AND     PRODUCTO_LOCAL.CO_COMPANIA = PRODUCTO.CO_COMPANIA \n");
             query.append("       AND     PRODUCTO_LOCAL.CO_PRODUCTO = PRODUCTO.CO_PRODUCTO \n");
+            query.append("       AND     PRODUCTO_LOCAL.NU_REVISION_PRODUCTO = PRODUCTO.NU_REVISION_PRODUCTO \n");
             query.append("       AND     PRODUCTO.ES_PRODUCTO       = 'A' \n");
             query.append("       ) \n");
             query.append("       V2 \n");
-            query.append("WHERE  V1.PRODUCTO = V2.CO_PRODUCTO");
+            query.append("WHERE  V1.CO_COMPANIA = V2.CO_COMPANIA\n");
+            query.append("AND  V1.CO_LOCAL    = V2.CO_LOCAL\n");
+            query.append("AND  V1.CO_PRODUCTO = V2.CO_PRODUCTO");
 
             rs =  this.getRegistrosSinFiltro(query);
 
