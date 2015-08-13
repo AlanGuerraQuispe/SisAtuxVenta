@@ -96,7 +96,7 @@ public final class IPedidoReposicionAGenerar extends javax.swing.JDialog{
                 txtDeProductoKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtDeProductoKeyReleased(evt);
+                txtDeProductokeyReleased(evt);
             }
         });
 
@@ -414,9 +414,8 @@ public final class IPedidoReposicionAGenerar extends javax.swing.JDialog{
                dblCantidadReposSolic = 0;
         String strInPedidoReposicion = "";
         
-        ArrayList arrayListProdReponerAux = new ArrayList();
         for (int i = 0; i < arrayListProdReponer.size(); i++) {
-            ProductoLocal productoLocal = ((ProductoLocal) arrayListProdReponer.get(i));
+            ProductoLocal productoLocal = arrayListProdReponer.get(i);
             
             strInPedidoReposicion = productoLocal.getInProductoReponer();
             dblCantidadReposCalc =  productoLocal.getCaStockReponerCalcula();
@@ -434,21 +433,21 @@ public final class IPedidoReposicionAGenerar extends javax.swing.JDialog{
         tblDetalle.repaint();
         AtuxUtility.setearPrimerRegistro(tblDetalle, txtDeProducto, 1);
         AtuxUtility.moveFocus(txtDeProducto);
-
+        prodLocal =(ProductoLocal)model.getFila(tblDetalle.getSelectedRow());
+        muestraDetalleProd(prodLocal);
     }
 
     private void tblDetalleKeyPressed(java.awt.event.KeyEvent evt) {
-        prodLocal =(ProductoLocal)model.getFila(tblDetalle.getSelectedRow());
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            prodLocal =(ProductoLocal)model.getFila(tblDetalle.getSelectedRow());
             ingresaCantPedida(prodLocal,tblDetalle.getSelectedRow());
             evt.consume();
+            muestraDetalleProd(prodLocal);
         }
-        else if (tblDetalle != null && !(evt.getKeyCode() == KeyEvent.VK_ESCAPE)) {
-            AtuxGridUtils.aceptarTeclaPresionada(evt, tblDetalle, null, 1);
-            evt.consume();
-        }
-
-        muestraDetalleProd(prodLocal);
+//        else if (tblDetalle != null && !(evt.getKeyCode() == KeyEvent.VK_ESCAPE)) {
+//            AtuxGridUtils.aceptarTeclaPresionada(evt, tblDetalle, null, 1);
+//            evt.consume();
+//        }
     }
     
     public void ingresaCantPedida(ProductoLocal prodLocal, int rowSelected) {
@@ -534,21 +533,28 @@ public final class IPedidoReposicionAGenerar extends javax.swing.JDialog{
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtDeProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeProductoKeyPressed
-        prodLocal =(ProductoLocal)model.getFila(tblDetalle.getSelectedRow());
+
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            prodLocal =(ProductoLocal)model.getFila(tblDetalle.getSelectedRow());
             ingresaCantPedida(prodLocal,tblDetalle.getSelectedRow());
             evt.consume();
+            muestraDetalleProd(prodLocal);
         }
-        else if (tblDetalle != null && !(evt.getKeyCode() == KeyEvent.VK_ESCAPE)) {
+//        else if (tblDetalle != null && !(evt.getKeyCode() == KeyEvent.VK_ESCAPE)) {
+//            AtuxGridUtils.aceptarTeclaPresionada(evt, tblDetalle, txtDeProducto, 1);
+//            evt.consume();
+//        }
+
+    }//GEN-LAST:event_txtDeProductoKeyPressed
+
+    private void txtDeProductokeyReleased(KeyEvent evt) {
+        prodLocal =(ProductoLocal)model.getFila(tblDetalle.getSelectedRow());
+        if (tblDetalle != null && !(evt.getKeyCode() == KeyEvent.VK_ESCAPE)) {
             AtuxGridUtils.aceptarTeclaPresionada(evt, tblDetalle, txtDeProducto, 1);
             evt.consume();
         }
         muestraDetalleProd(prodLocal);
-    }//GEN-LAST:event_txtDeProductoKeyPressed
-
-    private void txtDeProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeProductoKeyReleased
-
-    }//GEN-LAST:event_txtDeProductoKeyReleased
+    }
 
     private void btnGrabarPedidoRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarPedidoRepActionPerformed
         generarPedidoRep();

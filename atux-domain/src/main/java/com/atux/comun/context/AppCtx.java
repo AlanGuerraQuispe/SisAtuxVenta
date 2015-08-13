@@ -77,7 +77,7 @@ public class AppCtx {
     public UsuarioDTO getUsuario() {
         if (usuario == null) {
             usuario = new UsuarioDTO();
-            usuario.setIdUsuario("AGUERRA");
+            //usuario.setIdUsuario("AGUERRA");
         }
         return usuario;
     }

@@ -92,7 +92,7 @@ public final class IPedidoVenta extends javax.swing.JInternalFrame {
         this.jLTipoCambio.setVisible(true);
         this.ftfCambio.setText(String.valueOf(AtuxVariables.vTipoCambio));        
                 
-        this.bntImprimir.setEnabled(false);
+        this.bntImprimir.setEnabled(AtuxVariables.vTipoCaja.equalsIgnoreCase(AtuxVariables.TIPO_CAJA_MULTIFUNCIONAL));
         this.bntGuardar.setEnabled(false);                        
         rbTicketBoleta.setSelected(true);
         rbTicketFactura.setSelected(false);
