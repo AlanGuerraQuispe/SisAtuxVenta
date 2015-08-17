@@ -27,6 +27,7 @@ import atux.vistas.buscar.BuscarProveedor;
 
 import java.awt.*;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -93,7 +94,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         this.jLTipoCambio.setVisible(true);
         this.ftfCambio.setText(String.valueOf(AtuxVariables.vTipoCambio));
 
-        this.bntImprimir.setEnabled(false);
+        this.bntImprimir.setEnabled(AtuxVariables.vTipoCaja.equalsIgnoreCase(AtuxVariables.TIPO_CAJA_MULTIFUNCIONAL));
         this.bntGuardar.setEnabled(false);
         rbTicketBoleta.setSelected(true);
         rbTicketFactura.setSelected(false);
@@ -841,6 +842,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         pedido.setEsPedidoVenta("P");
         pedido.setNuPuntoVenta(AtuxVariables.vNuCaja);
         pedido.setNuTurno(AtuxVariables.vNuTurno);
+        pedido.setFePedido(AtuxSearch.getFechaHoraTimestamp());
         pedido.setIdCreaPedidoVenta(AtuxVariables.vIdUsuario);
         pedido.setFeCreaPedidoVenta(AtuxSearch.getFechaHora());
         pedido.setDetallePedidoVenta(mtdpv.getDetallesPedidoVenta());
@@ -1065,6 +1067,14 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
     private void mostrarPagoPedido() {
         logger.info("Muestra el pago del pedido");
         IPagoPedido iPagoPedido = new IPagoPedido(new Frame(), "Pago de pedido", true);
+        CPedidoVenta cpedido = new CPedidoVenta();
+
+        ArrayList ArrayPedidos = cpedido.getPedidoVenta(pedido.getNuPedidoDiario(),pedido.getNuPedido(),FormatoFecha(pedido.getFePedido()),FormatoFecha(pedido.getFePedido()),"COBRO");
+
+        Iterator<PedidoVenta> iter = ArrayPedidos.iterator();
+        while (iter.hasNext()){
+            pedido = iter.next();
+        }
         iPagoPedido.setPedido(pedido);
         iPagoPedido.setVisible(true);
 
@@ -1072,6 +1082,15 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
             this.setVisible(false);
             this.dispose();
         }
+    }
+
+    private String FormatoFecha(Date oldFecha) {
+        String Fecha = null;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateInString = oldFecha;
+
+        Fecha = formatter.format(dateInString);
+        return Fecha;
     }
 
     private void impresionComandaTestigo() {

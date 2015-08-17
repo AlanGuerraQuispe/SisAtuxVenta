@@ -60,7 +60,7 @@ public class CPedidoVenta extends JAbstractController{
                             pedidoCab.getNuPedido(),
                             pedidoCab.getTiPedido(),
                             pedidoCab.getCoLocal(),
-                            AtuxSearch.getFechaHoraTimestamp(),//Fecha de Pedido
+                            pedidoCab.getFePedido(),//Fecha de Pedido
                             pedidoCab.getCaItem(),                                                       
                             pedidoCab.getVaTotalVenta(),
                             pedidoCab.getVaTotalPrecioVenta(),                            

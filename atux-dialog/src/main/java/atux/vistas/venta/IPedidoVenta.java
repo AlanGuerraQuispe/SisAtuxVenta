@@ -792,6 +792,7 @@ public final class IPedidoVenta extends javax.swing.JInternalFrame {
         pedido.setEsPedidoVenta("P");
         pedido.setNuPuntoVenta(AtuxVariables.vNuCaja);
         pedido.setNuTurno(AtuxVariables.vNuTurno);
+        pedido.setFePedido(AtuxSearch.getFechaHoraTimestamp());
         pedido.setIdCreaPedidoVenta(AtuxVariables.vIdUsuario);       
         pedido.setFeCreaPedidoVenta(AtuxSearch.getFechaHora());
         pedido.setDetallePedidoVenta(mtdpv.getDetallesPedidoVenta());        

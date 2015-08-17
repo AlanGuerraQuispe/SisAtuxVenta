@@ -44,7 +44,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelImage1" alignment="0" pref="524" max="32767" attributes="0"/>
+          <Component id="panelImage1" alignment="0" pref="513" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -85,7 +85,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnlBuscador" pref="46" max="32767" attributes="0"/>
+                  <Component id="pnlBuscador" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="pnlEntradasObligatorias" min="-2" pref="267" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -780,10 +780,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="571" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="563" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                           <Component id="btnPrimero" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="5" pref="5" max="5" attributes="0"/>
                           <Component id="btnAnterior" min="-2" max="-2" attributes="0"/>
@@ -799,17 +799,17 @@
                           <Component id="rbAtivos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="5" pref="5" max="5" attributes="0"/>
                           <Component id="rbNoActivos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="42" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btnPrimero" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAnterior" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -820,7 +820,7 @@
                               <Component id="rbAtivos" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="rbNoActivos" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -974,7 +974,7 @@
                       <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="12" max="32767" attributes="0"/>
                       <Component id="bntPass" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnSalir" min="-2" pref="88" max="-2" attributes="0"/>

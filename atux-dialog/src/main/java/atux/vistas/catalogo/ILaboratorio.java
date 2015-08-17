@@ -131,7 +131,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
-        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Laboratorio", 1, 2));
+        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Laboratorio", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
         pnlEntradas.setOpaque(false);
         pnlEntradas.setPreferredSize(new java.awt.Dimension(780, 200));
 
@@ -459,7 +459,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
+        pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
         pnlBuscador.setOpaque(false);
         pnlBuscador.setPreferredSize(new java.awt.Dimension(780, 200));
 
@@ -537,10 +537,10 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
         pnlBuscador.setLayout(pnlBuscadorLayout);
         pnlBuscadorLayout.setHorizontalGroup(
             pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 564, Short.MAX_VALUE)
             .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorLayout.createSequentialGroup()
-                    .addGap(0, 17, Short.MAX_VALUE)
+                    .addGap(0, 9, Short.MAX_VALUE)
                     .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5, 5, 5)
                     .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -556,14 +556,14 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                     .addComponent(rbAtivos)
                     .addGap(5, 5, 5)
                     .addComponent(rbNoActivos)
-                    .addGap(0, 16, Short.MAX_VALUE)))
+                    .addGap(0, 8, Short.MAX_VALUE)))
         );
         pnlBuscadorLayout.setVerticalGroup(
             pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 33, Short.MAX_VALUE)
+            .addGap(0, 25, Short.MAX_VALUE)
             .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorLayout.createSequentialGroup()
-                    .addGap(0, 4, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -573,7 +573,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                         .addComponent(rbTodos)
                         .addComponent(rbAtivos)
                         .addComponent(rbNoActivos))
-                    .addGap(0, 4, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         tblLaboratorio.setModel(new javax.swing.table.DefaultTableModel(
@@ -591,7 +591,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblLaboratorio);
 
-        pnlAccionesLab.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
+        pnlAccionesLab.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
         pnlAccionesLab.setOpaque(false);
         pnlAccionesLab.setPreferredSize(new java.awt.Dimension(780, 200));
 
@@ -652,7 +652,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlAccionesLabLayout.setVerticalGroup(
             pnlAccionesLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -683,21 +683,21 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlEntradas, javax.swing.GroupLayout.DEFAULT_SIZE, 907, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addContainerGap())
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addGap(162, 162, 162)
                 .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bntParametrosReposicion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 907, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
             .addGroup(panelImage1Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
+                .addGap(204, 204, 204)
                 .addComponent(pnlAccionesLab, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -709,7 +709,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                     .addComponent(bntParametrosReposicion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlAccionesLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
