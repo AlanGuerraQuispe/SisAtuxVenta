@@ -552,7 +552,6 @@ public final class IClientes extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulario datos del Cliente");
         setOpaque(true);
-        setPreferredSize(new java.awt.Dimension(890, 600));
         setRequestFocusEnabled(false);
         try {
             setSelected(true);
@@ -566,7 +565,6 @@ public final class IClientes extends javax.swing.JInternalFrame {
 
         pnlEntradas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlEntradas.setOpaque(false);
-        pnlEntradas.setPreferredSize(new java.awt.Dimension(1050, 360));
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setText("Codigo");
@@ -578,7 +576,7 @@ public final class IClientes extends javax.swing.JInternalFrame {
         lblNroDocumento.setAlignmentX(0.2F);
         lblNroDocumento.setAlignmentY(0.2F);
 
-        lblUrbanizacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblUrbanizacion.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblUrbanizacion.setText("Urbanizacion");
         lblUrbanizacion.setAlignmentX(0.2F);
         lblUrbanizacion.setAlignmentY(0.2F);
@@ -588,7 +586,7 @@ public final class IClientes extends javax.swing.JInternalFrame {
         lblEmail.setAlignmentX(0.2F);
         lblEmail.setAlignmentY(0.2F);
 
-        lblTelefono.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTelefono.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTelefono.setText("Telefono");
         lblTelefono.setAlignmentX(0.2F);
         lblTelefono.setAlignmentY(0.2F);
@@ -634,7 +632,7 @@ public final class IClientes extends javax.swing.JInternalFrame {
         txtUrbanizacion.setEditable(false);
         txtUrbanizacion.setAlignmentX(0.2F);
         txtUrbanizacion.setAlignmentY(0.2F);
-        txtUrbanizacion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtUrbanizacion.setFont(new java.awt.Font("Arial", 0, 12));
         txtUrbanizacion.setPreferredSize(new java.awt.Dimension(320, 25));
         txtUrbanizacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -658,7 +656,7 @@ public final class IClientes extends javax.swing.JInternalFrame {
         txtReferencia.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtReferencia.setAlignmentX(0.2F);
         txtReferencia.setAlignmentY(0.2F);
-        txtReferencia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtReferencia.setFont(new java.awt.Font("Arial", 0, 12));
         txtReferencia.setPreferredSize(new java.awt.Dimension(120, 25));
         txtReferencia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -692,12 +690,12 @@ public final class IClientes extends javax.swing.JInternalFrame {
         lblDepartamento.setAlignmentX(0.2F);
         lblDepartamento.setAlignmentY(0.2F);
 
-        lblDistrito.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDistrito.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDistrito.setText("Distrito");
         lblDistrito.setAlignmentX(0.2F);
         lblDistrito.setAlignmentY(0.2F);
 
-        lblNombreVia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNombreVia.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblNombreVia.setText("Nombre Via");
         lblNombreVia.setAlignmentX(0.2F);
         lblNombreVia.setAlignmentY(0.2F);
@@ -866,7 +864,7 @@ public final class IClientes extends javax.swing.JInternalFrame {
         dteFechaNacimiento.setBackground(new java.awt.Color(0, 0, 0));
         dteFechaNacimiento.setForeground(new java.awt.Color(255, 0, 0));
         dteFechaNacimiento.setDate(Calendar.getInstance().getTime());
-        dteFechaNacimiento.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dteFechaNacimiento.setFont(new java.awt.Font("Tahoma", 1, 13));
         dteFechaNacimiento.setPreferredSize(new java.awt.Dimension(120, 22));
         dteFechaNacimiento.setRequestFocusEnabled(false);
         dteFechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -936,7 +934,7 @@ public final class IClientes extends javax.swing.JInternalFrame {
         txtCodigoDistrito.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtCodigoDistrito.setAlignmentX(0.2F);
         txtCodigoDistrito.setAlignmentY(0.2F);
-        txtCodigoDistrito.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCodigoDistrito.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodigoDistrito.setPreferredSize(new java.awt.Dimension(120, 25));
         txtCodigoDistrito.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1283,7 +1281,6 @@ public final class IClientes extends javax.swing.JInternalFrame {
         lblCodigo.getAccessibleContext().setAccessibleName("COPROVEEDOR");
 
         jScrollPane1.setOpaque(false);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(452, 90));
 
         tblListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1300,7 +1297,6 @@ public final class IClientes extends javax.swing.JInternalFrame {
 
         pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
         pnlBuscadorTDeCambio.setOpaque(false);
-        pnlBuscadorTDeCambio.setPreferredSize(new java.awt.Dimension(575, 37));
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
         btnPrimero.setText("<<");
@@ -1502,8 +1498,8 @@ public final class IClientes extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 859, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlAccionesTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(pnlEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

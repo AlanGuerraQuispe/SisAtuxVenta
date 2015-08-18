@@ -30,10 +30,10 @@ public class BaseConexion {
     public static int CONNECION      = 5;
 
     public static String connect_string_thin = "jdbc:oracle:thin:ecventa/venta@192.168.1.111:1521:ABDPV001";
-//    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.140:1521:XE";
-//    public static String connect_string_thin = "jdbc:oracle:thin:ecventa/venta@7.86.89.177:1521:ABDPV001";
-//    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.91:1521:XE";
-    //public static String connect_string_thin = "jdbc:oracle:thin:ecventa/venta@25.153.221.86:1521:ABDPV000";
+//  public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.10:1521:ABDPV002";
+//  public static String connect_string_thin = "jdbc:oracle:thin:ecventa/venta@7.86.89.177:1521:ABDPV001";
+//  public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.91:1521:XE";
+//  public static String connect_string_thin = "jdbc:oracle:thin:ecventa/venta@25.153.221.86:1521:ABDPV000";
       
     /**
      * String de Conexion modo OCI
@@ -61,7 +61,6 @@ public class BaseConexion {
         }
         return conn;
     }
-
 
     /* ************************************************************************ */
     /**
@@ -135,7 +134,7 @@ public class BaseConexion {
         }
         try
         {
-           //st = (Statement) conn.createStatement();  
+//           st = (Statement) conn.createStatement();
             st =   conn.createStatement(
                                ResultSet.TYPE_SCROLL_INSENSITIVE,
                                ResultSet.CONCUR_READ_ONLY);

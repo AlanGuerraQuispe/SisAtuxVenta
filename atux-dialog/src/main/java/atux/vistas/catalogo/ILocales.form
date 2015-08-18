@@ -44,22 +44,27 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="10" pref="10" max="10" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnlEntradasComplementarias" max="32767" attributes="1"/>
-                      <Component id="plnCompania" max="32767" attributes="0"/>
-                      <Component id="pnlEntradasObligatorias" alignment="0" pref="835" max="32767" attributes="3"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="plnCompania" max="32767" attributes="1"/>
+                              <Component id="pnlEntradasObligatorias" alignment="0" max="32767" attributes="3"/>
+                              <Component id="pnlEntradasComplementarias" alignment="0" max="32767" attributes="1"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlBuscador" min="-2" pref="133" max="-2" attributes="1"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="971" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+                          <Component id="pnlAccionesLab" min="-2" pref="503" max="-2" attributes="1"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="3" pref="3" max="3" attributes="0"/>
-                  <Component id="pnlBuscador" min="-2" pref="133" max="-2" attributes="1"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="971" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="217" pref="217" max="217" attributes="0"/>
-                  <Component id="pnlAccionesLab" min="-2" pref="503" max="-2" attributes="1"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -68,22 +73,26 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="plnCompania" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="3" pref="3" max="3" attributes="0"/>
-                          <Component id="pnlEntradasObligatorias" min="-2" pref="187" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Component id="pnlEntradasComplementarias" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="pnlEntradasObligatorias" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  <Component id="pnlEntradasComplementarias" min="-2" pref="245" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="pnlBuscador" min="-2" pref="450" max="-2" attributes="1"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="97" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlAccionesLab" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                          <Component id="pnlBuscador" min="-2" pref="450" max="-2" attributes="1"/>
-                      </Group>
+                      <Component id="plnCompania" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="107" max="-2" attributes="0"/>
-                  <EmptySpace min="8" pref="8" max="8" attributes="0"/>
-                  <Component id="pnlAccionesLab" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -422,98 +431,103 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="4" attributes="0"/>
-                      <Component id="lblCodigo" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="lblTipoLocal" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace min="19" pref="19" max="19" attributes="0"/>
-                      <Component id="lblDescripcion" min="-2" pref="220" max="-2" attributes="0"/>
-                      <EmptySpace min="28" pref="28" max="28" attributes="0"/>
-                      <Component id="lblDescripcionCorta" min="-2" pref="140" max="-2" attributes="0"/>
-                      <EmptySpace min="18" pref="18" max="18" attributes="0"/>
-                      <Component id="lblEstado" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="4" attributes="0"/>
-                      <Component id="txtCodigo" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace min="18" pref="18" max="18" attributes="0"/>
-                      <Component id="cmbTipoLocal" min="-2" pref="144" max="-2" attributes="0"/>
-                      <EmptySpace min="18" pref="18" max="18" attributes="0"/>
-                      <Component id="txtDescripcion" min="-2" pref="238" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="6" attributes="0"/>
-                      <Component id="txtDescripcionCorta" min="-2" pref="166" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="chbEstado" min="-2" pref="130" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="4" attributes="0"/>
-                      <Component id="lblPais" min="-2" pref="145" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="lblDepartamento" min="-2" pref="145" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="lblProvincia" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="lblDistrito" min="-2" pref="145" max="-2" attributes="0"/>
-                      <EmptySpace min="15" pref="15" max="15" attributes="0"/>
-                      <Component id="lblRegion" min="-2" pref="160" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="4" attributes="0"/>
-                      <Component id="txtCodigoPais" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                      <Component id="txtPais" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="txtCodigoDepartamento" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                      <Component id="txtDepartamento" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="6" attributes="0"/>
-                      <Component id="txtCodigoProvincia" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                      <Component id="txtProvincia" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="txtCodigoDistrito" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                      <Component id="txtDistrito" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="txtCodigoRegion" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                      <Component id="txtRegion" min="-2" pref="160" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-                      <Component id="lblTipoVia" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="39" pref="39" max="39" attributes="0"/>
-                      <Component id="lblNombreVia" min="-2" pref="170" max="-2" attributes="0"/>
-                      <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-                      <Component id="lblNumero" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace min="18" pref="18" max="18" attributes="0"/>
-                      <Component id="lblDpto" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="lblManzana" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="9" pref="9" max="9" attributes="0"/>
-                      <Component id="lblLote" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-                      <Component id="lblTipoVivienda" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace min="33" pref="33" max="33" attributes="0"/>
-                      <Component id="lblPoblacion" min="-2" pref="111" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="4" attributes="0"/>
-                      <Component id="cmbTipoVia" min="-2" pref="108" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="6" attributes="0"/>
-                      <Component id="txtNombreVia" min="-2" pref="170" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="txtNumero" min="-2" pref="60" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="txtDpto" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="txtManzana" min="-2" pref="65" max="-2" attributes="0"/>
-                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                      <Component id="txtLote" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                      <Component id="cmbTipoPoblacion" min="-2" pref="140" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="6" attributes="0"/>
-                      <Component id="txtNombrePoblacion" min="-2" pref="116" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+                              <Component id="lblCodigo" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="lblTipoLocal" min="-2" pref="160" max="-2" attributes="0"/>
+                              <EmptySpace min="19" pref="19" max="19" attributes="0"/>
+                              <Component id="lblDescripcion" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace min="28" pref="28" max="28" attributes="0"/>
+                              <Component id="lblDescripcionCorta" min="-2" pref="140" max="-2" attributes="0"/>
+                              <EmptySpace min="18" pref="18" max="18" attributes="0"/>
+                              <Component id="lblEstado" min="-2" pref="110" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+                              <Component id="txtCodigo" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace min="18" pref="18" max="18" attributes="0"/>
+                              <Component id="cmbTipoLocal" min="-2" pref="144" max="-2" attributes="0"/>
+                              <EmptySpace min="18" pref="18" max="18" attributes="0"/>
+                              <Component id="txtDescripcion" min="-2" pref="238" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+                              <Component id="txtDescripcionCorta" min="-2" pref="166" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="chbEstado" min="-2" pref="130" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+                              <Component id="lblPais" min="-2" pref="145" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="lblDepartamento" min="-2" pref="145" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="lblProvincia" min="-2" pref="141" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="lblDistrito" min="-2" pref="145" max="-2" attributes="0"/>
+                              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
+                              <Component id="lblRegion" min="-2" pref="160" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+                              <Component id="txtCodigoPais" min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace min="5" pref="5" max="5" attributes="0"/>
+                              <Component id="txtPais" min="-2" pref="115" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="txtCodigoDepartamento" min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace min="5" pref="5" max="5" attributes="0"/>
+                              <Component id="txtDepartamento" min="-2" pref="115" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+                              <Component id="txtCodigoProvincia" min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace min="5" pref="5" max="5" attributes="0"/>
+                              <Component id="txtProvincia" min="-2" pref="115" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="txtCodigoDistrito" min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace min="5" pref="5" max="5" attributes="0"/>
+                              <Component id="txtDistrito" min="-2" pref="115" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="txtCodigoRegion" min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace min="5" pref="5" max="5" attributes="0"/>
+                              <Component id="txtRegion" min="-2" pref="160" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                              <Component id="lblTipoVia" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="39" pref="39" max="39" attributes="0"/>
+                              <Component id="lblNombreVia" min="-2" pref="170" max="-2" attributes="0"/>
+                              <EmptySpace min="12" pref="12" max="12" attributes="0"/>
+                              <Component id="lblNumero" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace min="18" pref="18" max="18" attributes="0"/>
+                              <Component id="lblDpto" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="lblManzana" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="9" pref="9" max="9" attributes="0"/>
+                              <Component id="lblLote" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
+                              <Component id="lblTipoVivienda" min="-2" pref="90" max="-2" attributes="0"/>
+                              <EmptySpace min="33" pref="33" max="33" attributes="0"/>
+                              <Component id="lblPoblacion" min="-2" pref="111" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+                              <Component id="cmbTipoVia" min="-2" pref="108" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+                              <Component id="txtNombreVia" min="-2" pref="170" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="txtNumero" min="-2" pref="60" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="txtDpto" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="txtManzana" min="-2" pref="65" max="-2" attributes="0"/>
+                              <EmptySpace min="5" pref="5" max="5" attributes="0"/>
+                              <Component id="txtLote" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                              <Component id="cmbTipoPoblacion" min="-2" pref="140" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+                              <Component id="txtNombrePoblacion" min="-2" pref="116" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1207,7 +1221,7 @@
                               <EmptySpace min="6" pref="6" max="6" attributes="0"/>
                               <Component id="txtCodigoZonaSupervision" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Component id="txtZonaSupervision" pref="122" max="32767" attributes="0"/>
+                              <Component id="txtZonaSupervision" pref="130" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="20" pref="20" max="20" attributes="0"/>
@@ -1280,7 +1294,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2108,7 +2122,7 @@
                       <Component id="txtDescripcionCompania" min="-2" pref="218" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="lblMensaje" min="-2" pref="204" max="-2" attributes="0"/>
-                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
