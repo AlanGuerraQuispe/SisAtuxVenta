@@ -138,7 +138,6 @@
           <SubComponents>
             <Component class="elaprendiz.gui.textField.TextField" name="txtCajero">
               <Properties>
-                <Property name="text" type="java.lang.String" value="txtCajero"/>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -179,7 +178,6 @@
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtFecha">
               <Properties>
-                <Property name="text" type="java.lang.String" value="txtFecha"/>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -188,7 +186,6 @@
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtCaja">
               <Properties>
-                <Property name="text" type="java.lang.String" value="txtCaja"/>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -197,7 +194,6 @@
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtTurno">
               <Properties>
-                <Property name="text" type="java.lang.String" value="txtTurno"/>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -216,9 +212,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnNuevo" min="-2" pref="168" max="-2" attributes="0"/>
+                      <Component id="btnCerrarCajaTurno" min="-2" pref="168" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnModificar" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="btnCancelar" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -228,8 +224,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnNuevo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="btnModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCerrarCajaTurno" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -237,7 +233,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="elaprendiz.gui.button.ButtonRect" name="btnNuevo">
+            <Component class="elaprendiz.gui.button.ButtonRect" name="btnCerrarCajaTurno">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -245,10 +241,10 @@
                 <Property name="text" type="java.lang.String" value="Cerrar Caja Turno"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarCajaTurnoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="elaprendiz.gui.button.ButtonRect" name="btnModificar">
+            <Component class="elaprendiz.gui.button.ButtonRect" name="btnCancelar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="33" type="rgb"/>
@@ -256,7 +252,7 @@
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

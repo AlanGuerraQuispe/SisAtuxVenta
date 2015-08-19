@@ -4,7 +4,6 @@ import atux.controllers.CCajaPago;
 import atux.util.common.AtuxUtility;
 import atux.util.common.AtuxVariables;
 import atux.util.common.AtuxDBUtility;
-import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,8 +79,8 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
         txtCaja = new elaprendiz.gui.textField.TextField();
         txtTurno = new elaprendiz.gui.textField.TextField();
         jPanel3 = new javax.swing.JPanel();
-        btnNuevo = new elaprendiz.gui.button.ButtonRect();
-        btnModificar = new elaprendiz.gui.button.ButtonRect();
+        btnCerrarCajaTurno = new elaprendiz.gui.button.ButtonRect();
+        btnCancelar = new elaprendiz.gui.button.ButtonRect();
 
         setBorder(null);
         setResizable(true);
@@ -92,7 +91,6 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
         jPanel2.setEnabled(false);
         jPanel2.setOpaque(false);
 
-        txtCajero.setText("txtCajero");
         txtCajero.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCajero.setEnabled(false);
 
@@ -108,15 +106,12 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel8.setText("Fecha :");
 
-        txtFecha.setText("txtFecha");
         txtFecha.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtFecha.setEnabled(false);
 
-        txtCaja.setText("txtCaja");
         txtCaja.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCaja.setEnabled(false);
 
-        txtTurno.setText("txtTurno");
         txtTurno.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTurno.setEnabled(false);
 
@@ -164,19 +159,19 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
 
         jPanel3.setOpaque(false);
 
-        btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
-        btnNuevo.setText("Cerrar Caja Turno");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrarCajaTurno.setBackground(new java.awt.Color(0, 153, 255));
+        btnCerrarCajaTurno.setText("Cerrar Caja Turno");
+        btnCerrarCajaTurno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
+                btnCerrarCajaTurnoActionPerformed(evt);
             }
         });
 
-        btnModificar.setBackground(new java.awt.Color(51, 153, 255));
-        btnModificar.setText("Cancelar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -186,9 +181,9 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCerrarCajaTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -196,8 +191,8 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCerrarCajaTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -226,11 +221,11 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         getAccessibleContext().setAccessibleName("Formulario Tipo de Cambio");
@@ -239,11 +234,11 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
-}//GEN-LAST:event_btnModificarActionPerformed
+}//GEN-LAST:event_btnCancelarActionPerformed
 
-private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+private void btnCerrarCajaTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCajaTurnoActionPerformed
     String MovCaja = null;
     CCajaPago movimientoCaja = new CCajaPago();
     try {
@@ -261,11 +256,11 @@ private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         String Resultado = movimientoCaja.ImpresionWincha(MovCaja);
         JOptionPane.showMessageDialog(this, Resultado);
     }    
-}//GEN-LAST:event_btnNuevoActionPerformed
+}//GEN-LAST:event_btnCerrarCajaTurnoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private elaprendiz.gui.button.ButtonRect btnModificar;
-    private elaprendiz.gui.button.ButtonRect btnNuevo;
+    private elaprendiz.gui.button.ButtonRect btnCancelar;
+    private elaprendiz.gui.button.ButtonRect btnCerrarCajaTurno;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

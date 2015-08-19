@@ -437,7 +437,7 @@ public class CProducto extends JAbstractController {
             query.append(" WHERE T1.CO_COMPANIA = T2.CO_COMPANIA ");
             query.append("   AND T1.CO_LABORATORIO = T2.CO_LABORATORIO ");
             query.append("   AND T1.CO_COMPANIA = '").append(AtuxVariables.vCodigoCompania).append("'\n");
-            query.append("   AND T1.CO_LABORATORIO IN ('0014','0100') ");
+            //query.append("   AND T1.CO_LABORATORIO IN ('0014','0100') ");
 
             if ("A".equals(Filtro) || "I".equals(Filtro)){
                 query.append("   AND T1.ES_PRODUCTO = '").append(Filtro).append("' ");
