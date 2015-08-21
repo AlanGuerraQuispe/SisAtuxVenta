@@ -63,7 +63,7 @@ public class DlgSelLocal extends JDialog {
     }
 
     private void jbInit() throws Exception {
-        this.setSize(new Dimension(494, 486));
+        this.setSize(new Dimension(494, 490));
         this.getContentPane().setLayout(null);
         this.setFont(new Font("SansSerif", 0, 11));
         this.setTitle("búsqueda de Locales");

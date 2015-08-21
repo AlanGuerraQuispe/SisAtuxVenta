@@ -205,7 +205,7 @@ public class CTipoDeCambio extends JAbstractController{
     public String getNuevoCodigo(){
         String Codigo="";
         try {
-            return AtuxDBUtility.getValueAt(TipoDeCambio.nt,"rtrim(ltrim(to_char(max(nu_sec_tipo_cambio) + 1,'00000000')))"," co_compania = '" + AtuxVariables.vCodigoCompania + "' and co_moneda ='02'");
+            return AtuxDBUtility.getValueAt(TipoDeCambio.nt,"rtrim(ltrim(to_char(nvl(max(nu_sec_tipo_cambio),0) + 1,'00000000')))"," co_compania = '" + AtuxVariables.vCodigoCompania + "' and co_moneda ='02'");
         } catch (SQLException ex) {
             Logger.getLogger(CTipoDeCambio.class.getName()).log(Level.SEVERE, null, ex);
         }

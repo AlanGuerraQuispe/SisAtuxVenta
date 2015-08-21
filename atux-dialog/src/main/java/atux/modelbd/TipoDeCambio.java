@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 
-
 public class TipoDeCambio extends JAbstractModelBD implements Serializable,IModel{
     private static final long serialVersionUID = 1L;
     

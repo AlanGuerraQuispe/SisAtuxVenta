@@ -126,7 +126,8 @@ public class DlgGuiaIngreso extends JDialog {
 	}
 
 	private void jbInit() throws Exception {
-		this.setSize(new Dimension(758, 542));
+		this.setSize(new Dimension(758, 555));
+		this.setTitle("Ingreso Manual");
 		this.getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setFont(new Font("SansSerif", 0, 11));
@@ -357,7 +358,7 @@ public class DlgGuiaIngreso extends JDialog {
 		lblEnter.setBounds(new Rectangle(570, 5, 125, 15));
 		lblEnter.setFont(new Font("SansSerif", 1, 11));
 		lblEnter.setForeground(Color.white);
-		cmbTypeOrden.setBounds(new Rectangle(485, 45, 200, 20));
+		cmbTypeOrden.setBounds(new Rectangle(489, 45, 186, 20));
 		cmbTypeOrden.addItemListener(new java.awt.event.ItemListener() {
 			public void itemStateChanged(java.awt.event.ItemEvent evt) {
 				cmbTypeOrdenItemStateChanged(evt);
@@ -463,7 +464,7 @@ public class DlgGuiaIngreso extends JDialog {
 			initInfoMontos(true);
 			try {
 				porcentajeVariacion = AtuxUtility.getDecimalNumber(AtuxDBUtility.getValueAt("CMTR_VARIABLES_SISTEMA", "VA_NUMERICO",
-						"CO_COMPANIA = '001' AND CO_LOCAL = '099' AND CO_VARIABLE = 'porcentaje.variacion.cotizacion'"));
+						"CO_COMPANIA = '"+AtuxVariables.vCodigoCompania+"' AND CO_LOCAL = '099' AND CO_VARIABLE = 'porcentaje.variacion.cotizacion'"));
 				porcentajeVariacion = porcentajeVariacion / 100;
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this, "Problemas al obtener el Porcentaje de Variacion de Precios", "Cotizaciones por Competencia", JOptionPane.WARNING_MESSAGE);
@@ -476,7 +477,7 @@ public class DlgGuiaIngreso extends JDialog {
 			iniciaTablaEnteros();
 		}
 
-		AtuxLoadCVL.loadCVL(cmbDocumento, "LGTR_TIPO_DOCUMENTO", "TI_DOCUMENTO", "DE_CORTA_TIPO_DOCUMENTO", true, "CO_COMPANIA = '001' AND ES_TIPO_DOCUMENTO='A' AND IN_DOCUMENTO_INGRESO='S'");
+		AtuxLoadCVL.loadCVL(cmbDocumento, "LGTR_TIPO_DOCUMENTO", "TI_DOCUMENTO", "DE_CORTA_TIPO_DOCUMENTO", true, "CO_COMPANIA = '"+AtuxVariables.vCodigoCompania+"' AND ES_TIPO_DOCUMENTO='A' AND IN_DOCUMENTO_INGRESO='S'");
 
 		AtuxLoadCVL.setSelectedValueInComboBox(cmbDocumento, "LGTR_TIPO_DOCUMENTO", "05");
 		try {
@@ -1035,7 +1036,7 @@ public class DlgGuiaIngreso extends JDialog {
 							// String codInterfaceLogistica = AtuxDBUtility.getValueAt("CMTR_VARIABLES_SISTEMA", "VA_TEXTO",
 							// "CO_COMPANIA = '001' AND CO_LOCAL = '099' AND CO_VARIABLE = 'codigo.interface.cotizacion.logistica'");
 							String codInterfaceAbastecimiento = AtuxDBUtility.getValueAt("CMTR_VARIABLES_SISTEMA", "VA_TEXTO",
-									"CO_COMPANIA = '001' AND CO_LOCAL = '099' AND CO_VARIABLE = 'codigo.interface.cotizacion.abastecimiento'");
+									"CO_COMPANIA = '"+AtuxVariables.vCodigoCompania+"' AND CO_LOCAL = '099' AND CO_VARIABLE = 'codigo.interface.cotizacion.abastecimiento'");
 
 							// GeneraArchivo generaLogistica = new GeneraArchivo();
 							// generaLogistica.setCodInterface(codInterfaceLogistica);

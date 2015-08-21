@@ -202,7 +202,7 @@ public final class IListaPedidosReposicion extends javax.swing.JInternalFrame {
         jPanelDetalle.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanelDetalle.setOpaque(false);
 
-        lblDetalle.setFont(new java.awt.Font("Tahoma", 1, 12));
+        lblDetalle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblDetalle.setText("Detalle del pedido :");
 
         lblItemsT.setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -238,8 +238,9 @@ public final class IListaPedidosReposicion extends javax.swing.JInternalFrame {
             .addGroup(jPanelDetalleLayout.createSequentialGroup()
                 .addGroup(jPanelDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDetalleLayout.createSequentialGroup()
-                        .addComponent(lblDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(13, 13, 13)
+                        .addComponent(lblDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblItemsT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblItems, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -256,7 +257,7 @@ public final class IListaPedidosReposicion extends javax.swing.JInternalFrame {
                     .addComponent(lblItemsT)
                     .addComponent(lblItems))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPanelDetalle, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addComponent(jScrollPanelDetalle, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

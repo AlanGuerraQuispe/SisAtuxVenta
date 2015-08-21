@@ -81,11 +81,12 @@ public class DlgRecepGuias extends JDialog {
     }
 
     private void jbInit() throws Exception {
-        this.setSize(new Dimension(700, 491));
+        this.setSize(new Dimension(710, 500));
         this.getContentPane().setLayout(null);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setFont(new Font("SansSerif", 0, 11));
-        this.setResizable(true);
+        //this.setResizable(true);
+        this.setTitle("Recepción de Productos");
         this.addWindowListener(new WindowAdapter() {
             public void windowOpened(WindowEvent e) {
                 this_windowOpened(e);

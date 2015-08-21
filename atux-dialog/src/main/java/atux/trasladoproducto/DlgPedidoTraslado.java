@@ -127,6 +127,7 @@ public class DlgPedidoTraslado extends JDialog {
 		this.getContentPane().setLayout(xYLayout1);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setFont(new Font("SansSerif", 0, 11));
+		this.setTitle("Pedido de Traslado");
 		this.addWindowListener(new WindowAdapter() {
 			public void windowOpened(WindowEvent e) {
 				this_windowOpened(e);

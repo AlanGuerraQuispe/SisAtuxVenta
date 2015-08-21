@@ -160,6 +160,14 @@ public final class IProveedores extends javax.swing.JInternalFrame {
         txtNumCuenta = new elaprendiz.gui.textField.TextField();
         chbEstado = new javax.swing.JCheckBox();
         cbxRubro = new elaprendiz.gui.comboBox.ComboBoxRect();
+        pnlAcciones = new javax.swing.JPanel();
+        btnNuevo = new elaprendiz.gui.button.ButtonRect();
+        btnModificar = new elaprendiz.gui.button.ButtonRect();
+        btnGuardar = new elaprendiz.gui.button.ButtonRect();
+        btnCancelar = new elaprendiz.gui.button.ButtonRect();
+        btnSalir = new elaprendiz.gui.button.ButtonRect();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProveedores = new javax.swing.JTable();
         pnlBuscador = new javax.swing.JPanel();
         btnPrimero = new elaprendiz.gui.button.ButtonRect();
         btnAnterior = new elaprendiz.gui.button.ButtonRect();
@@ -169,14 +177,6 @@ public final class IProveedores extends javax.swing.JInternalFrame {
         rbTodos = new javax.swing.JRadioButton();
         rbAtivos = new javax.swing.JRadioButton();
         rbNoActivos = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblProveedores = new javax.swing.JTable();
-        pnlAcciones = new javax.swing.JPanel();
-        btnNuevo = new elaprendiz.gui.button.ButtonRect();
-        btnModificar = new elaprendiz.gui.button.ButtonRect();
-        btnGuardar = new elaprendiz.gui.button.ButtonRect();
-        btnCancelar = new elaprendiz.gui.button.ButtonRect();
-        btnSalir = new elaprendiz.gui.button.ButtonRect();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setOpaque(false);
@@ -218,6 +218,7 @@ public final class IProveedores extends javax.swing.JInternalFrame {
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
         panelImage1.setMinimumSize(new java.awt.Dimension(100, 100));
 
+        pnlEntradas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlEntradas.setOpaque(false);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -427,6 +428,248 @@ public final class IProveedores extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout pnlEntradasLayout = new javax.swing.GroupLayout(pnlEntradas);
+        pnlEntradas.setLayout(pnlEntradasLayout);
+        pnlEntradasLayout.setHorizontalGroup(
+            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEntradasLayout.createSequentialGroup()
+                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblCodigo)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(lblRuc)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(lblProveedor)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblDirec)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(lblCiudad)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(lblEmail)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtEmailProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(lblTelefono)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtTelefProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(lblFax)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtFaxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblContacto)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addComponent(lblTelefonoContacto)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtTelefContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(lblMovil)
+                        .addGap(8, 8, 8)
+                        .addComponent(txtMovilContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(lblEmailContacto)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtEmailContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(LblLabDrogueria)
+                        .addGap(10, 10, 10)
+                        .addComponent(cbxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblEstado)
+                        .addGap(4, 4, 4)
+                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(lblBanco)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(lblnroCta)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtNumCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlEntradasLayout.setVerticalGroup(
+            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEntradasLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblCodigo))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblRuc))
+                    .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblProveedor))
+                    .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDirec)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblCiudad))
+                    .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblEmail))
+                    .addComponent(txtEmailProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblTelefono))
+                    .addComponent(txtTelefProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblFax))
+                    .addComponent(txtFaxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblContacto))
+                    .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(lblTelefonoContacto))
+                    .addComponent(txtTelefContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblMovil))
+                    .addComponent(txtMovilContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblEmailContacto))
+                    .addComponent(txtEmailContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LblLabDrogueria))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(cbxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblEstado))
+                    .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblBanco))
+                    .addComponent(txtBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEntradasLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblnroCta))
+                    .addComponent(txtNumCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        lblCodigo.getAccessibleContext().setAccessibleName("COPROVEEDOR");
+
+        pnlAcciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlAcciones.setOpaque(false);
+        pnlAcciones.setPreferredSize(new java.awt.Dimension(468, 40));
+        pnlAcciones.setLayout(null);
+
+        btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        pnlAcciones.add(btnNuevo);
+        btnNuevo.setBounds(10, 6, 78, 25);
+
+        btnModificar.setBackground(new java.awt.Color(51, 153, 255));
+        btnModificar.setText("Modificar");
+        btnModificar.setEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        pnlAcciones.add(btnModificar);
+        btnModificar.setBounds(94, 6, 98, 25);
+
+        btnGuardar.setBackground(new java.awt.Color(51, 153, 255));
+        btnGuardar.setText("Guardar");
+        btnGuardar.setEnabled(false);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        pnlAcciones.add(btnGuardar);
+        btnGuardar.setBounds(198, 6, 89, 25);
+
+        btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        pnlAcciones.add(btnCancelar);
+        btnCancelar.setBounds(293, 6, 94, 25);
+
+        btnSalir.setBackground(new java.awt.Color(51, 153, 255));
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        pnlAcciones.add(btnSalir);
+        btnSalir.setBounds(393, 6, 63, 25);
+
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(452, 90));
+
+        tblProveedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProveedoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblProveedores);
+
         pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         pnlBuscador.setOpaque(false);
 
@@ -511,276 +754,47 @@ public final class IProveedores extends javax.swing.JInternalFrame {
         });
         pnlBuscador.add(rbNoActivos);
 
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(452, 90));
-
-        tblProveedores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblProveedoresMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblProveedores);
-
-        javax.swing.GroupLayout pnlEntradasLayout = new javax.swing.GroupLayout(pnlEntradas);
-        pnlEntradas.setLayout(pnlEntradasLayout);
-        pnlEntradasLayout.setHorizontalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblCodigo)
-                .addGap(12, 12, 12)
-                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(lblRuc)
-                .addGap(4, 4, 4)
-                .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(lblProveedor)
-                .addGap(10, 10, 10)
-                .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblDirec)
-                .addGap(12, 12, 12)
-                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(lblCiudad)
-                .addGap(10, 10, 10)
-                .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lblEmail)
-                .addGap(12, 12, 12)
-                .addComponent(txtEmailProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(lblTelefono)
-                .addGap(10, 10, 10)
-                .addComponent(txtTelefProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(lblFax)
-                .addGap(4, 4, 4)
-                .addComponent(txtFaxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblContacto)
-                .addGap(10, 10, 10)
-                .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(lblTelefonoContacto)
-                .addGap(10, 10, 10)
-                .addComponent(txtTelefContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(lblMovil)
-                .addGap(8, 8, 8)
-                .addComponent(txtMovilContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lblEmailContacto)
-                .addGap(10, 10, 10)
-                .addComponent(txtEmailContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(LblLabDrogueria)
-                .addGap(10, 10, 10)
-                .addComponent(cbxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(lblEstado)
-                .addGap(4, 4, 4)
-                .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(lblBanco)
-                .addGap(12, 12, 12)
-                .addComponent(txtBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(lblnroCta)
-                .addGap(10, 10, 10)
-                .addComponent(txtNumCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-        pnlEntradasLayout.setVerticalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblCodigo))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblRuc))
-                    .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblProveedor))
-                    .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDirec)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblCiudad))
-                    .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblEmail))
-                    .addComponent(txtEmailProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblTelefono))
-                    .addComponent(txtTelefProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblFax))
-                    .addComponent(txtFaxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblContacto))
-                    .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(lblTelefonoContacto))
-                    .addComponent(txtTelefContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblMovil))
-                    .addComponent(txtMovilContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblEmailContacto))
-                    .addComponent(txtEmailContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(LblLabDrogueria))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(cbxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblEstado))
-                    .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblBanco))
-                    .addComponent(txtBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblnroCta))
-                    .addComponent(txtNumCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        lblCodigo.getAccessibleContext().setAccessibleName("COPROVEEDOR");
-
-        pnlAcciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlAcciones.setOpaque(false);
-        pnlAcciones.setPreferredSize(new java.awt.Dimension(468, 40));
-        pnlAcciones.setLayout(null);
-
-        btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
-        btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
-        pnlAcciones.add(btnNuevo);
-        btnNuevo.setBounds(10, 6, 78, 25);
-
-        btnModificar.setBackground(new java.awt.Color(51, 153, 255));
-        btnModificar.setText("Modificar");
-        btnModificar.setEnabled(false);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-        pnlAcciones.add(btnModificar);
-        btnModificar.setBounds(94, 6, 98, 25);
-
-        btnGuardar.setBackground(new java.awt.Color(51, 153, 255));
-        btnGuardar.setText("Guardar");
-        btnGuardar.setEnabled(false);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        pnlAcciones.add(btnGuardar);
-        btnGuardar.setBounds(198, 6, 89, 25);
-
-        btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        pnlAcciones.add(btnCancelar);
-        btnCancelar.setBounds(293, 6, 94, 25);
-
-        btnSalir.setBackground(new java.awt.Color(51, 153, 255));
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        pnlAcciones.add(btnSalir);
-        btnSalir.setBounds(393, 6, 63, 25);
-
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlEntradas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(142, Short.MAX_VALUE))
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(pnlEntradas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                .addContainerGap(194, Short.MAX_VALUE)
                 .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(182, 182, 182))
+                .addGap(188, 188, 188))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addComponent(pnlEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panelImage1, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

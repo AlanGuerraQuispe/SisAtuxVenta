@@ -138,7 +138,7 @@ public class DlgGuiaIngresoListaProd extends JDialog {
      * Initializes the state of this instance.
      */
     private void jbInit() throws Exception {
-        this.setSize(new Dimension(765, 538));
+        //this.setSize(new Dimension(730, 520));
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.getContentPane().setLayout(xYLayout2);
         this.addWindowListener(new WindowAdapter() {
@@ -206,8 +206,8 @@ public class DlgGuiaIngresoListaProd extends JDialog {
                 btnRelacion_actionPerformed(e);
             }
         });
-        xYLayout2.setWidth(769);
-        xYLayout2.setHeight(537);
+        xYLayout2.setWidth(730);
+        xYLayout2.setHeight(505);
         lblEstadoProductoInv.setFont(new Font("SansSerif", 1, 11));
         lblEstadoProductoInv.setForeground(Color.red);
         lblEstadoProductoInv.setText("El Producto esto siendo INVENTARIADO !!!");
@@ -219,15 +219,15 @@ public class DlgGuiaIngresoListaProd extends JDialog {
         pnlCriterioBusqueda.add(btnBuscar, new XYConstraints(20, 10, 65, 20));
         pnlCriterioBusqueda.add(txtFindText, new XYConstraints(100, 10, 320, 20));
         this.getContentPane().add(lblEstadoProductoInv, new XYConstraints(490, 75, 230, 20));
-        this.getContentPane().add(pnlCriterioBusqueda, new XYConstraints(30, 10, 695, 65));
+        this.getContentPane().add(pnlCriterioBusqueda, new XYConstraints(15, 10, 695, 65));
         pnlCabRelProductosGuiaIng.add(btnRelacion, new XYConstraints(10, 0, 160, 25));
-        this.getContentPane().add(pnlCabRelProductosGuiaIng, new XYConstraints(30, 100, 695, 25));
+        this.getContentPane().add(pnlCabRelProductosGuiaIng, new XYConstraints(15, 100, 695, 25));
         scrRelProductosGuiaIng.getViewport().add(tblRelProductosGuiaIng, null);
-        this.getContentPane().add(scrRelProductosGuiaIng, new XYConstraints(30, 125, 695, 320));
+        this.getContentPane().add(scrRelProductosGuiaIng, new XYConstraints(15, 125, 695, 320));
         this.getContentPane().add(lblSalirT, new XYConstraints(635, 475, 85, 20));
         this.getContentPane().add(lblAceptarT, new XYConstraints(520, 475, 105, 20));
         this.getContentPane().add(lblSeleccionarRegistroT, new XYConstraints(40, 475, 185, 20));
-        this.getContentPane().add(lblOpcionesT, new XYConstraints(30, 455, 55, 15));
+        this.getContentPane().add(lblOpcionesT, new XYConstraints(15, 455, 55, 15));
         lblEstadoProductoInv.setVisible(false);
         initRelProductosGuiaIng();
     }
