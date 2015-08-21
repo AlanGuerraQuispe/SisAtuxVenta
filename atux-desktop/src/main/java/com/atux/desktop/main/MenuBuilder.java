@@ -107,7 +107,6 @@ public class MenuBuilder {
                 .addPst(FNTomaInventarioPst.class, "Historico")
         ;
 
-
         MenuItem catalogos = createMenu(mb, 'C', new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuCatalogos.png")))
                 .addJInternalFrame(ICompania.class, "Compañías")
                 .addJInternalFrame(IMaestroProductos.class, "Productos")

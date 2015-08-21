@@ -60,8 +60,8 @@ public class FrmAtuxV2 extends JFrame {
         panelCurves2.setLayout(null);
         panelCurves2.setBounds(0, 0, 1250, 580);
         lblLogoAtux.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/LogoAtux.png"))); // NOI18N
+        lblLogoAtux.setBounds(870, 280, 310, 200);
         panelCurves2.add(lblLogoAtux);
-        lblLogoAtux.setBounds(810, 280, 310, 200);
 
         pnlFooterPanel.setBorder(new MatteBorder(new ImageIcon(getClass().getResource("/atux/resources/ImgMenuPrincipalPie.png")))); // NOI18N
         pnlFooterPanel.setBounds(0, 630, 1380, 40);

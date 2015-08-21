@@ -151,6 +151,7 @@ public class LoginPst extends AWFormPresenter<BNLogin> {
     private void obtenerInfoLocal() throws SQLException {
         Local local = AppConfig.getLocal(AtuxVariables.vCodigoLocal);
         AtuxVariables.vDescripcionLocal = local.getDeLocal().trim();
+        AtuxVariables.vDescripcionCortaLocal = local.getDeCortaLocal().trim();
         AtuxVariables.vTipoCaja = local.getTiCaja();
         AtuxVariables.vDescripcionCompania = local.getCompania().getDeCompania();
         AtuxVariables.vCompaniaDireccion = local.getCompania().getDeDireccion();
