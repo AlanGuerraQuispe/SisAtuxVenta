@@ -7,6 +7,7 @@ import java.awt.*;
 public class JStatusBar extends JPanel {
 
     public JStatusBar() {
+
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(10, 23));
 
