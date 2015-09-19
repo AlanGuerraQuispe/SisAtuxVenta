@@ -62,6 +62,7 @@ public class ICompania extends javax.swing.JInternalFrame {
         initComponents();
         cp = new CCompania();
         ctv = new CTipoVia();
+        ctp = new CTipoPoblacion();
         tblListado.setVisible(false);
         lblMensaje.setVisible(false);
         controllerTipoVia = new CTipoVia();
@@ -183,6 +184,7 @@ public class ICompania extends javax.swing.JInternalFrame {
         
         if (cp.getMaestroCompania().getTiPoblacion() != null){
             TipoPoblacion tipoPoblacion = new TipoPoblacion();
+
             tipoPoblacion = ctp.getRegistroPorPk(new Object[]{cp.getMaestroCompania().getTiPoblacion()});
 
             for (int i=0; i<=cmbTipoPoblacion.getItemCount(); i++){
@@ -259,6 +261,10 @@ public class ICompania extends javax.swing.JInternalFrame {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+
+        this.cmbTipoVia.setEnabled(true);
+        this.cmbTipoPoblacion.setEnabled(true);
+
     }
     private void DesActivarCasillas(){
         bntCodigoDeBarras.setEnabled(true);
@@ -283,8 +289,12 @@ public class ICompania extends javax.swing.JInternalFrame {
         this.btnAnterior.setEnabled(true);
         this.rbTodos.setEnabled(true);
         this.rbAtivos.setEnabled(true);
-        this.rbNoActivos.setEnabled(true);        
-        
+        this.rbNoActivos.setEnabled(true);
+
+        this.cmbTipoVia.setEnabled(false);
+        this.cmbTipoPoblacion.setEnabled(false);
+
+
         esActualizacion = false;
 //        this.pnlBuscador.setVisible(true);
         logger.info(txtCodigo.getText());
