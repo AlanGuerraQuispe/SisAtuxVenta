@@ -60,6 +60,23 @@ public class IFormaPago extends javax.swing.JInternalFrame {
         Helper.ajustarAnchoColumnas(tblFormaDePago);
         setFiltroTexto();        
         setEventSelectionModel(tblFormaDePago.getSelectionModel());
+
+        cmbPagoExacto.setBounds(107, 16, 69, 25);
+        cmbTarjetaBancaria.setBounds(290, 16, 69, 25);
+        cmbDeficitCaja.setBounds(455, 16, 69, 25);
+        cmbDetalle.setBounds(589, 16, 69, 25);
+        cmbSobreHermes.setBounds(775, 17, 69, 25);
+        cmbTransaccionBancaria.setBounds(166, 50, 137, 25);
+        cmbAperturaGaveta.setBounds(456, 50, 69, 25);
+
+        txtCmbPagoExacto.setBounds(107, 16, 69, 25);
+        txtCmbTarjetaBancaria.setBounds(290, 16, 69, 25);
+        txtCmbDeficitCaja.setBounds(455, 16, 69, 25);
+        txtCmbDetalle.setBounds(589, 16, 69, 25);
+        txtCmbSobreHermes.setBounds(775, 17, 69, 25);
+        txtCmbTransaccionBancaria.setBounds(166, 50, 137, 25);
+        txtCmbAperturaGaveta.setBounds(456, 50, 69, 25);
+
         DesActivarCasillas();
         rbTodosActionPerformed(null);
         lblMensaje.setVisible(true);
@@ -107,6 +124,15 @@ public class IFormaPago extends javax.swing.JInternalFrame {
         cmbOpcion(cmbTransaccionBancaria, cp.getFormaPago().getInTarjetaBancaria());
         cmbOpcion(cmbAperturaGaveta, cp.getFormaPago().getInAperturaGaveta());
         cmbOpcion(cmbSobreHermes, cp.getFormaPago().getInSobreHermes());
+
+        
+        this.txtCmbPagoExacto.setText(cmbPagoExacto.getSelectedItem().toString());
+        this.txtCmbTarjetaBancaria.setText(cmbTarjetaBancaria.getSelectedItem().toString());
+        this.txtCmbDeficitCaja.setText(cmbDeficitCaja.getSelectedItem().toString());
+        this.txtCmbDetalle.setText(cmbDetalle.getSelectedItem().toString());
+        this.txtCmbSobreHermes.setText(cmbSobreHermes.getSelectedItem().toString());
+        this.txtCmbTransaccionBancaria.setText(cmbTransaccionBancaria.getSelectedItem().toString());
+        this.txtCmbAperturaGaveta.setText(cmbAperturaGaveta.getSelectedItem().toString());
         
         this.btnModificar.setEnabled(true);
     }
@@ -190,6 +216,14 @@ public class IFormaPago extends javax.swing.JInternalFrame {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+        
+        this.txtCmbPagoExacto.setVisible(false);
+        this.txtCmbTarjetaBancaria.setVisible(false);
+        this.txtCmbDeficitCaja.setVisible(false);
+        this.txtCmbDetalle.setVisible(false);
+        this.txtCmbSobreHermes.setVisible(false);
+        this.txtCmbTransaccionBancaria.setVisible(false);
+        this.txtCmbAperturaGaveta.setVisible(false);
     }
     private void DesActivarCasillas(){
         this.pnlEntradasFPago.setEnabled(true);
@@ -225,6 +259,15 @@ public class IFormaPago extends javax.swing.JInternalFrame {
         esActualizacion = false;
         this.pnlBuscadorFPago.setVisible(true);
         logger.info(txtCodigo.getText() + " - " + txtDescrip.getText());
+
+        this.txtCmbPagoExacto.setVisible(true);
+        this.txtCmbTarjetaBancaria.setVisible(true);
+        this.txtCmbDeficitCaja.setVisible(true);
+        this.txtCmbDetalle.setVisible(true);
+        this.txtCmbSobreHermes.setVisible(true);
+        this.txtCmbTransaccionBancaria.setVisible(true);
+        this.txtCmbAperturaGaveta.setVisible(true);
+        lblMensaje.setVisible(false);
     }
 
     public boolean verficarCambios(){
@@ -393,6 +436,13 @@ public class IFormaPago extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFormaDePago = new javax.swing.JTable();
         pnlIndicadores = new javax.swing.JPanel();
+        txtCmbAperturaGaveta = new elaprendiz.gui.textField.TextField();
+        txtCmbPagoExacto = new elaprendiz.gui.textField.TextField();
+        txtCmbTarjetaBancaria = new elaprendiz.gui.textField.TextField();
+        txtCmbDeficitCaja = new elaprendiz.gui.textField.TextField();
+        txtCmbDetalle = new elaprendiz.gui.textField.TextField();
+        txtCmbSobreHermes = new elaprendiz.gui.textField.TextField();
+        txtCmbTransaccionBancaria = new elaprendiz.gui.textField.TextField();
         lblPagEstado = new javax.swing.JLabel();
         lblTarjBancaria = new javax.swing.JLabel();
         lblDeficit = new javax.swing.JLabel();
@@ -417,7 +467,7 @@ public class IFormaPago extends javax.swing.JInternalFrame {
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
-        pnlEntradasFPago.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Forma de Pago", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradasFPago.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Forma de Pago", 1, 2));
         pnlEntradasFPago.setOpaque(false);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -526,7 +576,7 @@ public class IFormaPago extends javax.swing.JInternalFrame {
 
         txtAbrev.getAccessibleContext().setAccessibleName("tvalor");
 
-        pnlBuscadorFPago.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorFPago.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorFPago.setOpaque(false);
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
@@ -608,11 +658,11 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addGap(6, 6, 6)
                 .addComponent(rbTodos)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addComponent(rbAtivos)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addComponent(rbNoActivos))
         );
         pnlBuscadorFPagoLayout.setVerticalGroup(
@@ -626,7 +676,7 @@ public class IFormaPago extends javax.swing.JInternalFrame {
             .addComponent(rbNoActivos)
         );
 
-        pnlAccionesFPago.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesFPago.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesFPago.setOpaque(false);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
@@ -713,20 +763,141 @@ public class IFormaPago extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblFormaDePago);
 
-        pnlIndicadores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlIndicadores.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         pnlIndicadores.setOpaque(false);
+        pnlIndicadores.setLayout(null);
+
+        txtCmbAperturaGaveta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCmbAperturaGavetaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCmbAperturaGavetaFocusLost(evt);
+            }
+        });
+        txtCmbAperturaGaveta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbAperturaGavetaKeyReleased(evt);
+            }
+        });
+        pnlIndicadores.add(txtCmbAperturaGaveta);
+        txtCmbAperturaGaveta.setBounds(870, 30, 10, 20);
+
+        txtCmbPagoExacto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCmbPagoExactoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCmbPagoExactoFocusLost(evt);
+            }
+        });
+        txtCmbPagoExacto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbPagoExactoKeyReleased(evt);
+            }
+        });
+        pnlIndicadores.add(txtCmbPagoExacto);
+        txtCmbPagoExacto.setBounds(850, 10, 10, 20);
+
+        txtCmbTarjetaBancaria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCmbTarjetaBancariaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCmbTarjetaBancariaFocusLost(evt);
+            }
+        });
+        txtCmbTarjetaBancaria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbTarjetaBancariaKeyReleased(evt);
+            }
+        });
+        pnlIndicadores.add(txtCmbTarjetaBancaria);
+        txtCmbTarjetaBancaria.setBounds(860, 10, 10, 20);
+
+        txtCmbDeficitCaja.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCmbDeficitCajaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCmbDeficitCajaFocusLost(evt);
+            }
+        });
+        txtCmbDeficitCaja.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbDeficitCajaKeyReleased(evt);
+            }
+        });
+        pnlIndicadores.add(txtCmbDeficitCaja);
+        txtCmbDeficitCaja.setBounds(870, 10, 10, 20);
+
+        txtCmbDetalle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCmbDetalleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCmbDetalleFocusLost(evt);
+            }
+        });
+        txtCmbDetalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbDetalleKeyReleased(evt);
+            }
+        });
+        pnlIndicadores.add(txtCmbDetalle);
+        txtCmbDetalle.setBounds(880, 10, 10, 20);
+
+        txtCmbSobreHermes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCmbSobreHermesFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCmbSobreHermesFocusLost(evt);
+            }
+        });
+        txtCmbSobreHermes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbSobreHermesKeyReleased(evt);
+            }
+        });
+        pnlIndicadores.add(txtCmbSobreHermes);
+        txtCmbSobreHermes.setBounds(850, 30, 10, 20);
+
+        txtCmbTransaccionBancaria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCmbTransaccionBancariaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCmbTransaccionBancariaFocusLost(evt);
+            }
+        });
+        txtCmbTransaccionBancaria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbTransaccionBancariaKeyReleased(evt);
+            }
+        });
+        pnlIndicadores.add(txtCmbTransaccionBancaria);
+        txtCmbTransaccionBancaria.setBounds(860, 30, 10, 20);
 
         lblPagEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblPagEstado.setText("Pago Exacto:");
+        pnlIndicadores.add(lblPagEstado);
+        lblPagEstado.setBounds(12, 13, 91, 27);
 
         lblTarjBancaria.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTarjBancaria.setText("Tarj. Bancaria:");
+        pnlIndicadores.add(lblTarjBancaria);
+        lblTarjBancaria.setBounds(186, 14, 100, 24);
 
         lblDeficit.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDeficit.setText("Deficit Caja:");
+        pnlIndicadores.add(lblDeficit);
+        lblDeficit.setBounds(369, 13, 82, 27);
 
         lblDetalle.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDetalle.setText("Detalle:");
+        pnlIndicadores.add(lblDetalle);
+        lblDetalle.setBounds(534, 18, 51, 17);
 
         cmbPagoExacto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-----", "Si", "No" }));
         cmbPagoExacto.setName("pexacto"); // NOI18N
@@ -735,6 +906,8 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 cmbPagoExactoKeyReleased(evt);
             }
         });
+        pnlIndicadores.add(cmbPagoExacto);
+        cmbPagoExacto.setBounds(107, 16, 69, 20);
 
         cmbTarjetaBancaria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-----", "Si", "No" }));
         cmbTarjetaBancaria.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -742,6 +915,8 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 cmbTarjetaBancariaKeyReleased(evt);
             }
         });
+        pnlIndicadores.add(cmbTarjetaBancaria);
+        cmbTarjetaBancaria.setBounds(290, 16, 69, 20);
 
         cmbDeficitCaja.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-----", "Si", "No" }));
         cmbDeficitCaja.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -749,6 +924,8 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 cmbDeficitCajaKeyReleased(evt);
             }
         });
+        pnlIndicadores.add(cmbDeficitCaja);
+        cmbDeficitCaja.setBounds(455, 16, 69, 20);
 
         cmbDetalle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-----", "Si", "No" }));
         cmbDetalle.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -756,9 +933,13 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 cmbDetalleKeyReleased(evt);
             }
         });
+        pnlIndicadores.add(cmbDetalle);
+        cmbDetalle.setBounds(589, 16, 69, 20);
 
         lblSobreHermes.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblSobreHermes.setText("Sobre Hermes:");
+        pnlIndicadores.add(lblSobreHermes);
+        lblSobreHermes.setBounds(668, 13, 103, 27);
 
         cmbSobreHermes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-----", "Si", "No" }));
         cmbSobreHermes.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -766,9 +947,13 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 cmbSobreHermesKeyReleased(evt);
             }
         });
+        pnlIndicadores.add(cmbSobreHermes);
+        cmbSobreHermes.setBounds(775, 17, 69, 20);
 
         lblTransacBancaria.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTransacBancaria.setText("Transacción Bancaria:");
+        pnlIndicadores.add(lblTransacBancaria);
+        lblTransacBancaria.setBounds(12, 46, 150, 27);
 
         cmbTransaccionBancaria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-----", "POS", "Delivery", "Manual" }));
         cmbTransaccionBancaria.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -776,9 +961,13 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 cmbTransaccionBancariaKeyReleased(evt);
             }
         });
+        pnlIndicadores.add(cmbTransaccionBancaria);
+        cmbTransaccionBancaria.setBounds(166, 50, 137, 20);
 
         lblAperGaveta.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblAperGaveta.setText("Apertura Gaveta:");
+        pnlIndicadores.add(lblAperGaveta);
+        lblAperGaveta.setBounds(327, 46, 119, 27);
 
         cmbAperturaGaveta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-----", "Si", "No" }));
         cmbAperturaGaveta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -786,9 +975,13 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 cmbAperturaGavetaKeyReleased(evt);
             }
         });
+        pnlIndicadores.add(cmbAperturaGaveta);
+        cmbAperturaGaveta.setBounds(456, 50, 69, 20);
 
         lblCompania.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCompania.setText("Cod Compania:");
+        pnlIndicadores.add(lblCompania);
+        lblCompania.setBounds(543, 46, 106, 27);
 
         txtClienteCompania.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -803,85 +996,15 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 txtClienteCompaniaKeyReleased(evt);
             }
         });
+        pnlIndicadores.add(txtClienteCompania);
+        txtClienteCompania.setBounds(659, 50, 73, 21);
 
         lblDesCompania.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDesCompania.setText(" ");
+        pnlIndicadores.add(lblDesCompania);
+        lblDesCompania.setBounds(736, 51, 156, 17);
 
-        javax.swing.GroupLayout pnlIndicadoresLayout = new javax.swing.GroupLayout(pnlIndicadores);
-        pnlIndicadores.setLayout(pnlIndicadoresLayout);
-        pnlIndicadoresLayout.setHorizontalGroup(
-            pnlIndicadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlIndicadoresLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlIndicadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlIndicadoresLayout.createSequentialGroup()
-                        .addComponent(lblPagEstado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbPagoExacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTarjBancaria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbTarjetaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblDeficit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbDeficitCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlIndicadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlIndicadoresLayout.createSequentialGroup()
-                                .addComponent(lblDetalle)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlIndicadoresLayout.createSequentialGroup()
-                                .addGap(134, 134, 134)
-                                .addComponent(lblSobreHermes)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbSobreHermes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlIndicadoresLayout.createSequentialGroup()
-                        .addComponent(lblTransacBancaria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbTransaccionBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(lblAperGaveta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbAperturaGaveta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblCompania)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtClienteCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDesCompania, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        pnlIndicadoresLayout.setVerticalGroup(
-            pnlIndicadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlIndicadoresLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlIndicadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblPagEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbPagoExacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTarjBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTarjetaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDeficit, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbDeficitCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDetalle)
-                    .addComponent(cmbDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlIndicadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblSobreHermes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbSobreHermes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlIndicadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTransacBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDesCompania)
-                    .addComponent(lblAperGaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbAperturaGaveta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtClienteCompania, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTransaccionBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        lblMensaje.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblMensaje.setFont(new java.awt.Font("Tahoma", 1, 18));
         lblMensaje.setForeground(new java.awt.Color(255, 255, 255));
         lblMensaje.setText("F1 para ver mas datos");
 
@@ -893,28 +1016,28 @@ public class IFormaPago extends javax.swing.JInternalFrame {
                 .addGap(3, 3, 3)
                 .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlIndicadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlIndicadores, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlEntradasFPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlAccionesFPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
-                .addComponent(pnlBuscadorFPago, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(157, Short.MAX_VALUE)
+                .addComponent(pnlBuscadorFPago, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(71, 71, 71))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addComponent(pnlEntradasFPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(pnlIndicadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlIndicadores, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlBuscadorFPago, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlBuscadorFPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMensaje))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlAccionesFPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1192,6 +1315,90 @@ private void txtClienteCompaniaFocusGained(java.awt.event.FocusEvent evt) {//GEN
 private void txtClienteCompaniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClienteCompaniaFocusLost
     lblMensaje.setVisible(false);
 }//GEN-LAST:event_txtClienteCompaniaFocusLost
+
+private void txtCmbAperturaGavetaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbAperturaGavetaFocusGained
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbAperturaGavetaFocusGained
+
+private void txtCmbAperturaGavetaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbAperturaGavetaFocusLost
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbAperturaGavetaFocusLost
+
+private void txtCmbAperturaGavetaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbAperturaGavetaKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbAperturaGavetaKeyReleased
+
+private void txtCmbPagoExactoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbPagoExactoFocusGained
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbPagoExactoFocusGained
+
+private void txtCmbPagoExactoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbPagoExactoFocusLost
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbPagoExactoFocusLost
+
+private void txtCmbPagoExactoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbPagoExactoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbPagoExactoKeyReleased
+
+private void txtCmbTarjetaBancariaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbTarjetaBancariaFocusGained
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTarjetaBancariaFocusGained
+
+private void txtCmbTarjetaBancariaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbTarjetaBancariaFocusLost
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTarjetaBancariaFocusLost
+
+private void txtCmbTarjetaBancariaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbTarjetaBancariaKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTarjetaBancariaKeyReleased
+
+private void txtCmbDeficitCajaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbDeficitCajaFocusGained
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbDeficitCajaFocusGained
+
+private void txtCmbDeficitCajaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbDeficitCajaFocusLost
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbDeficitCajaFocusLost
+
+private void txtCmbDeficitCajaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbDeficitCajaKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbDeficitCajaKeyReleased
+
+private void txtCmbDetalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbDetalleFocusGained
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbDetalleFocusGained
+
+private void txtCmbDetalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbDetalleFocusLost
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbDetalleFocusLost
+
+private void txtCmbDetalleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbDetalleKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbDetalleKeyReleased
+
+private void txtCmbSobreHermesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbSobreHermesFocusGained
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbSobreHermesFocusGained
+
+private void txtCmbSobreHermesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbSobreHermesFocusLost
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbSobreHermesFocusLost
+
+private void txtCmbSobreHermesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbSobreHermesKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbSobreHermesKeyReleased
+
+private void txtCmbTransaccionBancariaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbTransaccionBancariaFocusGained
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTransaccionBancariaFocusGained
+
+private void txtCmbTransaccionBancariaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCmbTransaccionBancariaFocusLost
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTransaccionBancariaFocusLost
+
+private void txtCmbTransaccionBancariaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbTransaccionBancariaKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTransaccionBancariaKeyReleased
 private void BuscarClienteCia(String CoClienteCompania){
     lblDesCompania.setText("");
     String[] Datos ={AtuxVariables.vCodigoCompania,CoClienteCompania};
@@ -1265,6 +1472,13 @@ private void BuscarClienteCia(String CoClienteCompania){
     private javax.swing.JTable tblFormaDePago;
     private elaprendiz.gui.textField.TextField txtAbrev;
     private elaprendiz.gui.textField.TextField txtClienteCompania;
+    private elaprendiz.gui.textField.TextField txtCmbAperturaGaveta;
+    private elaprendiz.gui.textField.TextField txtCmbDeficitCaja;
+    private elaprendiz.gui.textField.TextField txtCmbDetalle;
+    private elaprendiz.gui.textField.TextField txtCmbPagoExacto;
+    private elaprendiz.gui.textField.TextField txtCmbSobreHermes;
+    private elaprendiz.gui.textField.TextField txtCmbTarjetaBancaria;
+    private elaprendiz.gui.textField.TextField txtCmbTransaccionBancaria;
     private elaprendiz.gui.textField.TextField txtCodigo;
     private elaprendiz.gui.textField.TextField txtDescrip;
     // End of variables declaration//GEN-END:variables

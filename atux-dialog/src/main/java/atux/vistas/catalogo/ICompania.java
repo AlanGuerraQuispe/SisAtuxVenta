@@ -81,6 +81,11 @@ public class ICompania extends javax.swing.JInternalFrame {
         setEventSelectionModel(tblListado.getSelectionModel());
         DesActivarCasillas();
         rbAtivosActionPerformed(null);
+        
+        cmbTipoVia.setBounds(10, 135, 90, 25);
+        txtCmbTipoVia.setBounds(10, 135, 90, 25);
+        cmbTipoPoblacion.setBounds(530, 135, 95, 25);
+        txtCmbTipoPoblacion.setBounds(530, 135, 95, 25);
     }
 
     private void setFiltroTexto(){
@@ -201,6 +206,9 @@ public class ICompania extends javax.swing.JInternalFrame {
             chbSetActivo(false);
         }
         
+        txtCmbTipoVia.setText(cmbTipoVia.getSelectedItem().toString());
+        txtCmbTipoPoblacion.setText(cmbTipoPoblacion.getSelectedItem().toString());
+        
         this.btnModificar.setEnabled(true);
     }
 
@@ -264,6 +272,9 @@ public class ICompania extends javax.swing.JInternalFrame {
 
         this.cmbTipoVia.setEnabled(true);
         this.cmbTipoPoblacion.setEnabled(true);
+        
+        txtCmbTipoVia.setVisible(false);
+        txtCmbTipoPoblacion.setVisible(false);
 
     }
     private void DesActivarCasillas(){
@@ -294,6 +305,8 @@ public class ICompania extends javax.swing.JInternalFrame {
         this.cmbTipoVia.setEnabled(false);
         this.cmbTipoPoblacion.setEnabled(false);
 
+        txtCmbTipoVia.setVisible(true);
+        txtCmbTipoPoblacion.setVisible(true);
 
         esActualizacion = false;
 //        this.pnlBuscador.setVisible(true);
@@ -497,6 +510,8 @@ public class ICompania extends javax.swing.JInternalFrame {
         lblPais = new javax.swing.JLabel();
         txtDescripcionCorta = new elaprendiz.gui.textField.TextField();
         lblDescripcionCorta = new javax.swing.JLabel();
+        txtCmbTipoVia = new elaprendiz.gui.textField.TextField();
+        txtCmbTipoPoblacion = new elaprendiz.gui.textField.TextField();
         cmbTipoVia = new elaprendiz.gui.comboBox.ComboBoxRect();
         lblTipoVIa = new javax.swing.JLabel();
         lblNombreVia = new javax.swing.JLabel();
@@ -557,12 +572,15 @@ public class ICompania extends javax.swing.JInternalFrame {
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
-        pnlEntradasObligatorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos Obligatorios", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradasObligatorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos Obligatorios", 1, 2));
         pnlEntradasObligatorias.setOpaque(false);
+        pnlEntradasObligatorias.setLayout(null);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEstado.setText("Estado:");
+        pnlEntradasObligatorias.add(lblEstado);
+        lblEstado.setBounds(640, 16, 110, 17);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -580,10 +598,14 @@ public class ICompania extends javax.swing.JInternalFrame {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(chbEstado);
+        chbEstado.setBounds(640, 36, 116, 25);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCodigo.setText("Codigo:");
+        pnlEntradasObligatorias.add(lblCodigo);
+        lblCodigo.setBounds(10, 16, 70, 17);
 
         txtCodigoDepartamento.setEditable(false);
         txtCodigoDepartamento.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -604,6 +626,8 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtCodigoDepartamentoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigoDepartamento);
+        txtCodigoDepartamento.setBounds(200, 84, 25, 25);
 
         txtDepartamento.setEditable(false);
         txtDepartamento.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -611,12 +635,16 @@ public class ICompania extends javax.swing.JInternalFrame {
         txtDepartamento.setAlignmentY(0.2F);
         txtDepartamento.setFont(new java.awt.Font("Arial", 0, 12));
         txtDepartamento.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasObligatorias.add(txtDepartamento);
+        txtDepartamento.setBounds(230, 84, 150, 25);
 
         lblDepartamento.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDepartamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDepartamento.setText("Departamento");
         lblDepartamento.setAlignmentX(0.2F);
         lblDepartamento.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblDepartamento);
+        lblDepartamento.setBounds(200, 66, 180, 17);
 
         txtCodigoProvincia.setEditable(false);
         txtCodigoProvincia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -637,6 +665,8 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtCodigoProvinciaKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigoProvincia);
+        txtCodigoProvincia.setBounds(386, 84, 25, 25);
 
         txtProvincia.setEditable(false);
         txtProvincia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -644,12 +674,16 @@ public class ICompania extends javax.swing.JInternalFrame {
         txtProvincia.setAlignmentY(0.2F);
         txtProvincia.setFont(new java.awt.Font("Arial", 0, 12));
         txtProvincia.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasObligatorias.add(txtProvincia);
+        txtProvincia.setBounds(416, 84, 150, 25);
 
         lblProvincia.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblProvincia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProvincia.setText("Provincia");
         lblProvincia.setAlignmentX(0.2F);
         lblProvincia.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblProvincia);
+        lblProvincia.setBounds(390, 66, 176, 17);
 
         txtDistrito.setEditable(false);
         txtDistrito.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -657,6 +691,8 @@ public class ICompania extends javax.swing.JInternalFrame {
         txtDistrito.setAlignmentY(0.2F);
         txtDistrito.setFont(new java.awt.Font("Arial", 0, 12));
         txtDistrito.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasObligatorias.add(txtDistrito);
+        txtDistrito.setBounds(602, 84, 150, 25);
 
         txtCodigoDistrito.setEditable(false);
         txtCodigoDistrito.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -677,12 +713,16 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtCodigoDistritoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigoDistrito);
+        txtCodigoDistrito.setBounds(572, 84, 25, 25);
 
         lblDistrito.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDistrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDistrito.setText("Distrito");
         lblDistrito.setAlignmentX(0.2F);
         lblDistrito.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblDistrito);
+        lblDistrito.setBounds(572, 61, 50, 17);
 
         txtCodigo.setEditable(false);
         txtCodigo.setAlignmentX(0.2F);
@@ -694,10 +734,14 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtCodigoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigo);
+        txtCodigo.setBounds(10, 36, 70, 25);
 
         lblDescripcion.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDescripcion.setText("Descripción");
+        pnlEntradasObligatorias.add(lblDescripcion);
+        lblDescripcion.setBounds(260, 16, 220, 17);
 
         txtDescripcion.setEditable(false);
         txtDescripcion.setAlignmentX(0.2F);
@@ -709,10 +753,14 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtDescripcionKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtDescripcion);
+        txtDescripcion.setBounds(260, 36, 220, 25);
 
         lblRUC.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblRUC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRUC.setText("RUC:");
+        pnlEntradasObligatorias.add(lblRUC);
+        lblRUC.setBounds(90, 16, 160, 17);
 
         txtRUC.setEditable(false);
         txtRUC.setAlignmentX(0.2F);
@@ -724,6 +772,8 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtRUCKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtRUC);
+        txtRUC.setBounds(90, 36, 160, 25);
 
         txtCodigoPais.setEditable(false);
         txtCodigoPais.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -744,6 +794,8 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtCodigoPaisKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigoPais);
+        txtCodigoPais.setBounds(10, 84, 25, 25);
 
         txtPais.setEditable(false);
         txtPais.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -751,12 +803,16 @@ public class ICompania extends javax.swing.JInternalFrame {
         txtPais.setAlignmentY(0.2F);
         txtPais.setFont(new java.awt.Font("Arial", 0, 12));
         txtPais.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasObligatorias.add(txtPais);
+        txtPais.setBounds(44, 84, 150, 25);
 
         lblPais.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblPais.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPais.setText("Pais");
         lblPais.setAlignmentX(0.2F);
         lblPais.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblPais);
+        lblPais.setBounds(10, 66, 180, 17);
 
         txtDescripcionCorta.setEditable(false);
         txtDescripcionCorta.setAlignmentX(0.2F);
@@ -768,27 +824,63 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtDescripcionCortaKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtDescripcionCorta);
+        txtDescripcionCorta.setBounds(490, 36, 140, 25);
 
         lblDescripcionCorta.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescripcionCorta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDescripcionCorta.setText("Descrip Corta");
+        pnlEntradasObligatorias.add(lblDescripcionCorta);
+        lblDescripcionCorta.setBounds(490, 16, 140, 17);
+
+        txtCmbTipoVia.setEditable(false);
+        txtCmbTipoVia.setAlignmentX(0.2F);
+        txtCmbTipoVia.setAlignmentY(0.2F);
+        txtCmbTipoVia.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCmbTipoVia.setPreferredSize(new java.awt.Dimension(320, 25));
+        txtCmbTipoVia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbTipoViaKeyReleased(evt);
+            }
+        });
+        pnlEntradasObligatorias.add(txtCmbTipoVia);
+        txtCmbTipoVia.setBounds(750, 120, 10, 20);
+
+        txtCmbTipoPoblacion.setEditable(false);
+        txtCmbTipoPoblacion.setAlignmentX(0.2F);
+        txtCmbTipoPoblacion.setAlignmentY(0.2F);
+        txtCmbTipoPoblacion.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCmbTipoPoblacion.setPreferredSize(new java.awt.Dimension(320, 25));
+        txtCmbTipoPoblacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbTipoPoblacionKeyReleased(evt);
+            }
+        });
+        pnlEntradasObligatorias.add(txtCmbTipoPoblacion);
+        txtCmbTipoPoblacion.setBounds(750, 140, 10, 20);
 
         cmbTipoVia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cmbTipoViaKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(cmbTipoVia);
+        cmbTipoVia.setBounds(10, 135, 90, 20);
 
         lblTipoVIa.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTipoVIa.setText("Tipo Via");
         lblTipoVIa.setAlignmentX(0.2F);
         lblTipoVIa.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblTipoVIa);
+        lblTipoVIa.setBounds(30, 115, 55, 20);
 
         lblNombreVia.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblNombreVia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreVia.setText("Nombre Via");
         lblNombreVia.setAlignmentX(0.2F);
         lblNombreVia.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblNombreVia);
+        lblNombreVia.setBounds(110, 115, 170, 20);
 
         txtNombreVia.setEditable(false);
         txtNombreVia.setAlignmentX(0.2F);
@@ -800,12 +892,16 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtNombreViaKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtNombreVia);
+        txtNombreVia.setBounds(110, 135, 170, 25);
 
         lblNumero.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblNumero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNumero.setText("Num");
         lblNumero.setAlignmentX(0.2F);
         lblNumero.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblNumero);
+        lblNumero.setBounds(291, 115, 50, 20);
 
         txtNumero.setEditable(false);
         txtNumero.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -819,12 +915,16 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtNumeroKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtNumero);
+        txtNumero.setBounds(286, 135, 60, 25);
 
         lblDpto.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDpto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDpto.setText("Dpto.");
         lblDpto.setAlignmentX(0.2F);
         lblDpto.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblDpto);
+        lblDpto.setBounds(354, 115, 50, 20);
 
         txtDpto.setEditable(false);
         txtDpto.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -837,11 +937,15 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtDptoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtDpto);
+        txtDpto.setBounds(352, 135, 50, 25);
 
         lblManzana.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblManzana.setText("Manzana");
         lblManzana.setAlignmentX(0.2F);
         lblManzana.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblManzana);
+        lblManzana.setBounds(410, 115, 61, 20);
 
         txtManzana.setEditable(false);
         txtManzana.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -854,6 +958,8 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtManzanaKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtManzana);
+        txtManzana.setBounds(408, 135, 65, 25);
 
         txtLote.setEditable(false);
         txtLote.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -866,24 +972,32 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtLoteKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtLote);
+        txtLote.setBounds(484, 135, 40, 25);
 
         lblLote.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblLote.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLote.setText("Lote");
         lblLote.setAlignmentX(0.2F);
         lblLote.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblLote);
+        lblLote.setBounds(483, 115, 40, 20);
 
         cmbTipoPoblacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cmbTipoPoblacionKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(cmbTipoPoblacion);
+        cmbTipoPoblacion.setBounds(530, 137, 95, 20);
 
         lblTipoVivienda.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTipoVivienda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTipoVivienda.setText("Tipo Pobl.");
         lblTipoVivienda.setAlignmentX(0.2F);
         lblTipoVivienda.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblTipoVivienda);
+        lblTipoVivienda.setBounds(529, 115, 90, 20);
 
         txtNombrePoblacion.setEditable(false);
         txtNombrePoblacion.setAlignmentX(0.2F);
@@ -895,183 +1009,18 @@ public class ICompania extends javax.swing.JInternalFrame {
                 txtNombrePoblacionKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtNombrePoblacion);
+        txtNombrePoblacion.setBounds(631, 135, 119, 25);
 
         lblPoblacion.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblPoblacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPoblacion.setText("Población");
         lblPoblacion.setAlignmentX(0.2F);
         lblPoblacion.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblPoblacion);
+        lblPoblacion.setBounds(641, 115, 100, 20);
 
-        javax.swing.GroupLayout pnlEntradasObligatoriasLayout = new javax.swing.GroupLayout(pnlEntradasObligatorias);
-        pnlEntradasObligatorias.setLayout(pnlEntradasObligatoriasLayout);
-        pnlEntradasObligatoriasLayout.setHorizontalGroup(
-            pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtDescripcionCorta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(lblRUC, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(lblDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(lblDescripcionCorta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addComponent(txtCodigoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9)
-                                .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addComponent(lblPais, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(lblDepartamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigoProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lblProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblDistrito)
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addComponent(txtCodigoDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addComponent(txtDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addComponent(lblPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11))))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(lblTipoVIa)
-                                .addGap(25, 25, 25)
-                                .addComponent(lblNombreVia, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addComponent(cmbTipoVia, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(txtNombreVia, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(lblDpto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDpto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblManzana)
-                            .addComponent(txtManzana, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addComponent(lblLote, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTipoVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbTipoPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombrePoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlEntradasObligatoriasLayout.setVerticalGroup(
-            pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCodigo)
-                    .addComponent(lblRUC)
-                    .addComponent(lblDescripcion)
-                    .addComponent(lblDescripcionCorta)
-                    .addComponent(lblEstado))
-                .addGap(3, 3, 3)
-                .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescripcionCorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblDepartamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblProvincia))
-                            .addComponent(lblPais))
-                        .addGap(1, 1, 1)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigoPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigoProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDistrito)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigoDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addComponent(lblManzana, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtManzana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addComponent(lblDpto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTipoVIa, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNombreVia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbTipoVia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreVia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLote, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTipoVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombrePoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbTipoPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-
-        pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscador.setOpaque(false);
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
@@ -1169,7 +1118,7 @@ public class ICompania extends javax.swing.JInternalFrame {
                 .addComponent(rbAtivos)
                 .addGap(3, 3, 3)
                 .addComponent(rbNoActivos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         pnlBuscadorLayout.setVerticalGroup(
             pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1183,7 +1132,7 @@ public class ICompania extends javax.swing.JInternalFrame {
             .addComponent(rbNoActivos)
         );
 
-        pnlAcciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAcciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAcciones.setOpaque(false);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
@@ -1243,7 +1192,7 @@ public class ICompania extends javax.swing.JInternalFrame {
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(6, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         pnlAccionesLayout.setVerticalGroup(
             pnlAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1254,7 +1203,7 @@ public class ICompania extends javax.swing.JInternalFrame {
             .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        pnlEntradasComplementarias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos Contactos"));
+        pnlEntradasComplementarias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos Contactos"));
         pnlEntradasComplementarias.setOpaque(false);
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -1539,7 +1488,7 @@ public class ICompania extends javax.swing.JInternalFrame {
             }
         });
 
-        lblMensaje.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblMensaje.setFont(new java.awt.Font("Tahoma", 1, 16));
         lblMensaje.setForeground(new java.awt.Color(255, 255, 255));
         lblMensaje.setText("F1 para ver mas datos");
 
@@ -1548,31 +1497,32 @@ public class ICompania extends javax.swing.JInternalFrame {
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(pnlEntradasObligatorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(320, 320, 320))
-            .addGroup(panelImage1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bntCodigoDeBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bntLicencias, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlEntradasComplementarias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelImage1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(pnlEntradasObligatorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelImage1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnlEntradasComplementarias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(324, 324, 324))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlEntradasObligatorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlEntradasObligatorias, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2144,6 +2094,14 @@ private void txtCodigoDistritoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FI
     lblMensaje.setVisible(false);
 }//GEN-LAST:event_txtCodigoDistritoFocusLost
 
+private void txtCmbTipoViaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbTipoViaKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTipoViaKeyReleased
+
+private void txtCmbTipoPoblacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbTipoPoblacionKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTipoPoblacionKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect bntCodigoDeBarras;
     private elaprendiz.gui.button.ButtonRect bntLicencias;
@@ -2199,6 +2157,8 @@ private void txtCodigoDistritoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FI
     private javax.swing.JTable tblListado;
     private elaprendiz.gui.textField.TextField txtApellidoMaterno;
     private elaprendiz.gui.textField.TextField txtApellidoPaterno;
+    private elaprendiz.gui.textField.TextField txtCmbTipoPoblacion;
+    private elaprendiz.gui.textField.TextField txtCmbTipoVia;
     private elaprendiz.gui.textField.TextField txtCodigo;
     private elaprendiz.gui.textField.TextField txtCodigoDepartamento;
     private elaprendiz.gui.textField.TextField txtCodigoDistrito;

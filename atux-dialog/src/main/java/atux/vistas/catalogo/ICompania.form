@@ -56,27 +56,30 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                  <Component id="pnlEntradasObligatorias" min="-2" max="-2" attributes="3"/>
-                  <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="pnlBuscador" min="-2" pref="562" max="-2" attributes="2"/>
+                  <Component id="pnlBuscador" min="-2" max="-2" attributes="2"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblMensaje" min="-2" pref="190" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="pnlAcciones" min="-2" pref="489" max="-2" attributes="1"/>
+                  <Component id="pnlAcciones" min="-2" max="-2" attributes="1"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="bntCodigoDeBarras" min="-2" pref="160" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="bntLicencias" min="-2" pref="80" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnlEntradasComplementarias" min="-2" max="-2" attributes="1"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="1">
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="pnlEntradasObligatorias" max="32767" attributes="3"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlEntradasComplementarias" min="-2" max="-2" attributes="1"/>
+                      </Group>
+                  </Group>
                   <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -85,7 +88,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnlEntradasObligatorias" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlEntradasObligatorias" min="-2" pref="168" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="lblMensaje" max="32767" attributes="1"/>
@@ -121,221 +124,8 @@
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="txtCodigo" min="-2" pref="70" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                              <Component id="txtRUC" min="-2" pref="160" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                              <Component id="txtDescripcion" min="-2" pref="220" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                              <Component id="txtDescripcionCorta" min="-2" pref="140" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                              <Component id="chbEstado" min="-2" pref="116" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblCodigo" min="-2" pref="70" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                              <Component id="lblRUC" min="-2" pref="160" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                              <Component id="lblDescripcion" min="-2" pref="220" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                              <Component id="lblDescripcionCorta" min="-2" pref="140" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                              <Component id="lblEstado" min="-2" pref="110" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtCodigoPais" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                      <Component id="txtPais" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtCodigoDepartamento" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                                      <Component id="txtDepartamento" min="-2" pref="150" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="1">
-                                      <Component id="lblPais" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="lblDepartamento" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtCodigoProvincia" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                                      <Component id="txtProvincia" min="-2" pref="150" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="1">
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="lblProvincia" max="32767" attributes="1"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblDistrito" min="-2" max="-2" attributes="1"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtCodigoDistrito" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                                      <Component id="txtDistrito" min="-2" pref="150" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblPoblacion" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="lblTipoVIa" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="25" pref="25" max="25" attributes="0"/>
-                                      <Component id="lblNombreVia" min="-2" pref="170" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cmbTipoVia" min="-2" pref="90" max="-2" attributes="0"/>
-                                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                                      <Component id="txtNombreVia" min="-2" pref="170" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="txtNumero" alignment="2" min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="lblNumero" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      <Component id="lblDpto" min="-2" pref="50" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="txtDpto" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="lblManzana" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtManzana" alignment="2" min="-2" pref="65" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblLote" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblTipoVivienda" min="-2" pref="90" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="1">
-                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                      <Component id="txtLote" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cmbTipoPoblacion" min="-2" pref="95" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtNombrePoblacion" min="-2" pref="119" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCodigo" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRUC" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDescripcion" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDescripcionCorta" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="3" pref="3" max="3" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtCodigo" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtRUC" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDescripcion" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDescripcionCorta" min="-2" max="-2" attributes="0"/>
-                          <Component id="chbEstado" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblDepartamento" alignment="3" max="32767" attributes="1"/>
-                                      <Component id="lblProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lblPais" alignment="0" min="-2" max="-2" attributes="1"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtCodigoPais" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtCodigoDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtPais" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="txtDepartamento" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtCodigoProvincia" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtProvincia" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblDistrito" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtCodigoDistrito" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtDistrito" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblManzana" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="txtManzana" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblDpto" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="txtDpto" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblTipoVIa" min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="lblNombreVia" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbTipoVia" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNombreVia" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblLote" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="lblTipoVivienda" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="lblPoblacion" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtLote" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNombrePoblacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbTipoPoblacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblNumero" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="txtNumero" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+            <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblEstado">
@@ -346,6 +136,11 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Estado:"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="640" y="16" width="110" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chbEstado">
               <Properties>
@@ -366,6 +161,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chbEstadoActionPerformed"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="chbEstadoKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="640" y="36" width="116" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCodigo">
               <Properties>
@@ -375,6 +175,11 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Codigo:"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="10" y="16" width="70" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtCodigoDepartamento">
               <Properties>
@@ -394,6 +199,11 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCodigoDepartamentoFocusLost"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoDepartamentoKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="200" y="84" width="25" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtDepartamento">
               <Properties>
@@ -408,6 +218,11 @@
                   <Dimension value="[120, 25]"/>
                 </Property>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="230" y="84" width="150" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDepartamento">
               <Properties>
@@ -419,6 +234,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="200" y="66" width="180" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtCodigoProvincia">
               <Properties>
@@ -438,6 +258,11 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCodigoProvinciaFocusLost"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoProvinciaKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="386" y="84" width="25" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtProvincia">
               <Properties>
@@ -452,6 +277,11 @@
                   <Dimension value="[120, 25]"/>
                 </Property>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="416" y="84" width="150" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblProvincia">
               <Properties>
@@ -463,6 +293,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="390" y="66" width="176" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtDistrito">
               <Properties>
@@ -477,6 +312,11 @@
                   <Dimension value="[120, 25]"/>
                 </Property>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="602" y="84" width="150" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtCodigoDistrito">
               <Properties>
@@ -496,6 +336,11 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCodigoDistritoFocusLost"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoDistritoKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="572" y="84" width="25" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDistrito">
               <Properties>
@@ -507,6 +352,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="572" y="61" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtCodigo">
               <Properties>
@@ -523,6 +373,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="10" y="36" width="70" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDescripcion">
               <Properties>
@@ -532,6 +387,11 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="260" y="16" width="220" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtDescripcion">
               <Properties>
@@ -548,6 +408,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDescripcionKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="260" y="36" width="220" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblRUC">
               <Properties>
@@ -557,6 +422,11 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="RUC:"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="16" width="160" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtRUC">
               <Properties>
@@ -573,6 +443,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRUCKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="36" width="160" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtCodigoPais">
               <Properties>
@@ -592,6 +467,11 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCodigoPaisFocusLost"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoPaisKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="10" y="84" width="25" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtPais">
               <Properties>
@@ -606,6 +486,11 @@
                   <Dimension value="[120, 25]"/>
                 </Property>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="44" y="84" width="150" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblPais">
               <Properties>
@@ -617,6 +502,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="10" y="66" width="180" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtDescripcionCorta">
               <Properties>
@@ -633,6 +523,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDescripcionCortaKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="490" y="36" width="140" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDescripcionCorta">
               <Properties>
@@ -642,11 +537,63 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Descrip Corta"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="490" y="16" width="140" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="elaprendiz.gui.textField.TextField" name="txtCmbTipoVia">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="alignmentX" type="float" value="0.2"/>
+                <Property name="alignmentY" type="float" value="0.2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="12" style="0"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[320, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCmbTipoViaKeyReleased"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="750" y="120" width="10" height="20"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="elaprendiz.gui.textField.TextField" name="txtCmbTipoPoblacion">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="alignmentX" type="float" value="0.2"/>
+                <Property name="alignmentY" type="float" value="0.2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="12" style="0"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[320, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCmbTipoPoblacionKeyReleased"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="750" y="140" width="10" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.comboBox.ComboBoxRect" name="cmbTipoVia">
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbTipoViaKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="10" y="135" width="90" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTipoVIa">
               <Properties>
@@ -657,6 +604,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="30" y="115" width="-1" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNombreVia">
               <Properties>
@@ -668,6 +620,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="110" y="115" width="170" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtNombreVia">
               <Properties>
@@ -684,6 +641,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreViaKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="110" y="135" width="170" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNumero">
               <Properties>
@@ -695,6 +657,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="291" y="115" width="50" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtNumero">
               <Properties>
@@ -713,6 +680,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumeroKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="286" y="135" width="60" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDpto">
               <Properties>
@@ -724,6 +696,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="354" y="115" width="50" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtDpto">
               <Properties>
@@ -741,6 +718,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDptoKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="352" y="135" width="50" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblManzana">
               <Properties>
@@ -751,6 +733,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="410" y="115" width="-1" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtManzana">
               <Properties>
@@ -768,6 +755,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtManzanaKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="408" y="135" width="65" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtLote">
               <Properties>
@@ -785,6 +777,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLoteKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="484" y="135" width="40" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblLote">
               <Properties>
@@ -796,11 +793,21 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="483" y="115" width="40" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.comboBox.ComboBoxRect" name="cmbTipoPoblacion">
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbTipoPoblacionKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="530" y="137" width="95" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTipoVivienda">
               <Properties>
@@ -812,6 +819,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="529" y="115" width="90" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtNombrePoblacion">
               <Properties>
@@ -828,6 +840,11 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombrePoblacionKeyReleased"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="631" y="135" width="119" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblPoblacion">
               <Properties>
@@ -839,6 +856,11 @@
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="641" y="115" width="100" height="20"/>
+                </Constraint>
+              </Constraints>
             </Component>
           </SubComponents>
         </Container>
@@ -876,7 +898,7 @@
                       <Component id="rbAtivos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="3" pref="3" max="3" attributes="0"/>
                       <Component id="rbNoActivos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1040,7 +1062,7 @@
                       <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="5" pref="5" max="5" attributes="0"/>
                       <Component id="btnSalir" min="-2" pref="88" max="-2" attributes="0"/>
-                      <EmptySpace pref="6" max="32767" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

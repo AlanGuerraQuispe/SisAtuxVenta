@@ -91,6 +91,18 @@ public class IVendedores extends javax.swing.JInternalFrame {
         setEventSelectionModel(tblUsuario.getSelectionModel());
         DesActivarCasillas();
         rbAtivosActionPerformed(null);
+
+        txtCmbTipoDocumento.setBounds(210, 70, 150, 25);
+        txtCmbSexo.setBounds(20, 170, 100, 25);
+        txtDteFechaNacimiento.setBounds(146, 16, 106, 25);
+        txtDteFechaIngreso.setBounds(386, 16, 106, 25);
+        txtDteFechaCese.setBounds(603, 16, 105, 25);
+
+        cmbTipoDocumento.setBounds(210, 70, 150, 25);
+        cmbSexo.setBounds(20, 170, 100, 25);
+        dteFechaNacimiento.setBounds(146, 16, 106, 25);
+        dteFechaIngreso.setBounds(386, 16, 106, 25);
+        dteFechaCese.setBounds(603, 16, 105, 25);
     }
 
     private void setFiltroTexto(){
@@ -229,6 +241,12 @@ public class IVendedores extends javax.swing.JInternalFrame {
             pnlImagen.setIcon(new ImageIcon(fileImg1.getImage().getScaledInstance(w,h, Image.SCALE_DEFAULT)));
             pnlImagen.setBounds(new Rectangle(10,10,w,h));
         }
+        
+        txtCmbTipoDocumento.setText(cmbTipoDocumento.getSelectedItem().toString());
+        txtCmbSexo.setText(cmbTipoDocumento.getSelectedItem().toString());
+        txtDteFechaNacimiento.setText(AtuxUtility.getDateToString(cp.getUsuario().getFeNacimiento(),"dd/MM/yyyy"));
+        txtDteFechaIngreso.setText(AtuxUtility.getDateToString(cp.getUsuario().getFeIngreso(),"dd/MM/yyyy"));
+        txtDteFechaCese.setText(AtuxUtility.getDateToString(cp.getUsuario().getFeCese(),"dd/MM/yyyy"));
 
         this.btnModificar.setEnabled(true);
         this.bntPass.setEnabled(true);
@@ -304,6 +322,13 @@ public class IVendedores extends javax.swing.JInternalFrame {
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
         this.btnAgregarFoto.setEnabled(true);
+        
+        this.txtCmbTipoDocumento.setVisible(false);
+        this.txtCmbSexo.setVisible(false);
+        this.txtDteFechaNacimiento.setVisible(false);
+        this.txtDteFechaIngreso.setVisible(false);
+        this.txtDteFechaCese.setVisible(false);
+        
     }
     private void DesActivarCasillas(){
         this.pnlEntradasObligatorias.setEnabled(true);
@@ -339,6 +364,12 @@ public class IVendedores extends javax.swing.JInternalFrame {
         this.rbAtivos.setEnabled(true);
         this.rbNoActivos.setEnabled(true);        
         this.btnAgregarFoto.setEnabled(false);
+        
+        this.txtCmbTipoDocumento.setVisible(true);
+        this.txtCmbSexo.setVisible(true);
+        this.txtDteFechaNacimiento.setVisible(true);
+        this.txtDteFechaIngreso.setVisible(true);
+        this.txtDteFechaCese.setVisible(true);
         
         esActualizacion = false;
 //        this.pnlBuscador.setVisible(true);
@@ -495,6 +526,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         panelImage1 = new elaprendiz.gui.panel.PanelImage();
         pnlEntradasObligatorias = new javax.swing.JPanel();
+        txtCmbTipoDocumento = new elaprendiz.gui.textField.TextField();
+        txtCmbSexo = new elaprendiz.gui.textField.TextField();
         lblEstado = new javax.swing.JLabel();
         chbEstado = new javax.swing.JCheckBox();
         lblNroDocumento = new javax.swing.JLabel();
@@ -531,6 +564,9 @@ public class IVendedores extends javax.swing.JInternalFrame {
         txtLogin = new elaprendiz.gui.textField.TextField();
         txtPassword = new elaprendiz.gui.passwordField.PasswordField();
         pnlEntradasComplementarias = new javax.swing.JPanel();
+        txtDteFechaNacimiento = new elaprendiz.gui.textField.TextField();
+        txtDteFechaIngreso = new elaprendiz.gui.textField.TextField();
+        txtDteFechaCese = new elaprendiz.gui.textField.TextField();
         lblFechaNacimiento = new javax.swing.JLabel();
         dteFechaNacimiento = new com.toedter.calendar.JDateChooser();
         dteFechaIngreso = new com.toedter.calendar.JDateChooser();
@@ -568,11 +604,40 @@ public class IVendedores extends javax.swing.JInternalFrame {
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
-        pnlEntradasObligatorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos Obligatorios", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradasObligatorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos Obligatorios", 1, 2));
         pnlEntradasObligatorias.setOpaque(false);
+        pnlEntradasObligatorias.setLayout(null);
+
+        txtCmbTipoDocumento.setEditable(false);
+        txtCmbTipoDocumento.setAlignmentX(0.2F);
+        txtCmbTipoDocumento.setAlignmentY(0.2F);
+        txtCmbTipoDocumento.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCmbTipoDocumento.setPreferredSize(new java.awt.Dimension(320, 25));
+        txtCmbTipoDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbTipoDocumentoKeyReleased(evt);
+            }
+        });
+        pnlEntradasObligatorias.add(txtCmbTipoDocumento);
+        txtCmbTipoDocumento.setBounds(690, 10, 10, 25);
+
+        txtCmbSexo.setEditable(false);
+        txtCmbSexo.setAlignmentX(0.2F);
+        txtCmbSexo.setAlignmentY(0.2F);
+        txtCmbSexo.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCmbSexo.setPreferredSize(new java.awt.Dimension(320, 25));
+        txtCmbSexo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbSexoKeyReleased(evt);
+            }
+        });
+        pnlEntradasObligatorias.add(txtCmbSexo);
+        txtCmbSexo.setBounds(700, 10, 10, 25);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado:");
+        pnlEntradasObligatorias.add(lblEstado);
+        lblEstado.setBounds(490, 20, 53, 17);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -590,16 +655,22 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(chbEstado);
+        chbEstado.setBounds(550, 20, 116, 20);
 
         lblNroDocumento.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblNroDocumento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNroDocumento.setText("Nro Documento:");
+        pnlEntradasObligatorias.add(lblNroDocumento);
+        lblNroDocumento.setBounds(390, 50, 160, 17);
 
         lblTipoDocumento.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTipoDocumento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTipoDocumento.setText("Tipo Documento");
         lblTipoDocumento.setAlignmentX(0.2F);
         lblTipoDocumento.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblTipoDocumento);
+        lblTipoDocumento.setBounds(210, 50, 150, 20);
 
         cmbTipoDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -611,10 +682,14 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 cmbTipoDocumentoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(cmbTipoDocumento);
+        cmbTipoDocumento.setBounds(210, 70, 150, 20);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCodigo.setText("Codigo:");
+        pnlEntradasObligatorias.add(lblCodigo);
+        lblCodigo.setBounds(10, 50, 170, 17);
 
         pnlFoto.setToolTipText("Click Para cambiar de Imagen");
         pnlFoto.setEnabled(false);
@@ -650,11 +725,16 @@ public class IVendedores extends javax.swing.JInternalFrame {
             .addComponent(pnlImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        pnlEntradasObligatorias.add(pnlFoto);
+        pnlFoto.setBounds(580, 46, 150, 170);
+
         lblApellidoPaterno.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblApellidoPaterno.setText("Ap. Paterno");
         lblApellidoPaterno.setAlignmentX(0.2F);
         lblApellidoPaterno.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblApellidoPaterno);
+        lblApellidoPaterno.setBounds(10, 100, 170, 20);
 
         txtApellidoPaterno.setEditable(false);
         txtApellidoPaterno.setAlignmentX(0.2F);
@@ -666,6 +746,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtApellidoPaternoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtApellidoPaterno);
+        txtApellidoPaterno.setBounds(10, 120, 170, 25);
 
         txtApellidoMaterno.setEditable(false);
         txtApellidoMaterno.setAlignmentX(0.2F);
@@ -678,6 +760,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtApellidoMaternoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtApellidoMaterno);
+        txtApellidoMaterno.setBounds(190, 120, 170, 25);
 
         txtNombres.setEditable(false);
         txtNombres.setAlignmentX(0.2F);
@@ -690,22 +774,30 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtNombresKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtNombres);
+        txtNombres.setBounds(370, 120, 200, 25);
 
         lblNombres.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblNombres.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombres.setText("Nombres");
         lblNombres.setAlignmentX(0.2F);
         lblNombres.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblNombres);
+        lblNombres.setBounds(370, 100, 200, 20);
 
         lblApellidoMaterno.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblApellidoMaterno.setText("Ap. Materno");
         lblApellidoMaterno.setAlignmentX(0.2F);
         lblApellidoMaterno.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblApellidoMaterno);
+        lblApellidoMaterno.setBounds(200, 100, 160, 20);
 
         lblSexo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblSexo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSexo.setText("Sexo:");
+        pnlEntradasObligatorias.add(lblSexo);
+        lblSexo.setBounds(20, 150, 100, 17);
 
         cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "----------------", "Masculino", "Femenino" }));
         cmbSexo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -713,12 +805,16 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 cmbSexoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(cmbSexo);
+        cmbSexo.setBounds(20, 170, 100, 20);
 
         lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDireccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDireccion.setText("Dirección");
         lblDireccion.setAlignmentX(0.2F);
         lblDireccion.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblDireccion);
+        lblDireccion.setBounds(130, 150, 440, 20);
 
         txtDireccion.setEditable(false);
         txtDireccion.setAlignmentX(0.2F);
@@ -730,6 +826,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtDireccionKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtDireccion);
+        txtDireccion.setBounds(130, 170, 440, 25);
 
         txtCodigoDepartamento.setEditable(false);
         txtCodigoDepartamento.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -742,6 +840,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtCodigoDepartamentoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigoDepartamento);
+        txtCodigoDepartamento.setBounds(10, 220, 25, 25);
 
         txtDepartamento.setEditable(false);
         txtDepartamento.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -749,12 +849,16 @@ public class IVendedores extends javax.swing.JInternalFrame {
         txtDepartamento.setAlignmentY(0.2F);
         txtDepartamento.setFont(new java.awt.Font("Arial", 0, 12));
         txtDepartamento.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasObligatorias.add(txtDepartamento);
+        txtDepartamento.setBounds(40, 220, 150, 25);
 
         lblDepartamento.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDepartamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDepartamento.setText("Departamento");
         lblDepartamento.setAlignmentX(0.2F);
         lblDepartamento.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblDepartamento);
+        lblDepartamento.setBounds(10, 200, 180, 20);
 
         txtCodigoProvincia.setEditable(false);
         txtCodigoProvincia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -767,6 +871,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtCodigoProvinciaKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigoProvincia);
+        txtCodigoProvincia.setBounds(200, 220, 25, 25);
 
         txtProvincia.setEditable(false);
         txtProvincia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -774,12 +880,16 @@ public class IVendedores extends javax.swing.JInternalFrame {
         txtProvincia.setAlignmentY(0.2F);
         txtProvincia.setFont(new java.awt.Font("Arial", 0, 12));
         txtProvincia.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasObligatorias.add(txtProvincia);
+        txtProvincia.setBounds(230, 220, 150, 25);
 
         lblProvincia.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblProvincia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProvincia.setText("Provincia");
         lblProvincia.setAlignmentX(0.2F);
         lblProvincia.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblProvincia);
+        lblProvincia.setBounds(200, 200, 180, 20);
 
         txtDistrito.setEditable(false);
         txtDistrito.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -787,6 +897,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
         txtDistrito.setAlignmentY(0.2F);
         txtDistrito.setFont(new java.awt.Font("Arial", 0, 12));
         txtDistrito.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasObligatorias.add(txtDistrito);
+        txtDistrito.setBounds(420, 220, 150, 25);
 
         txtCodigoDistrito.setEditable(false);
         txtCodigoDistrito.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -799,12 +911,16 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtCodigoDistritoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigoDistrito);
+        txtCodigoDistrito.setBounds(390, 220, 25, 25);
 
         lblDistrito.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDistrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDistrito.setText("Distrito");
         lblDistrito.setAlignmentX(0.2F);
         lblDistrito.setAlignmentY(0.2F);
+        pnlEntradasObligatorias.add(lblDistrito);
+        lblDistrito.setBounds(390, 200, 180, 20);
 
         btnAgregarFoto.setBackground(new java.awt.Color(102, 204, 0));
         btnAgregarFoto.setText("Agregar Foto");
@@ -813,6 +929,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 btnAgregarFotoActionPerformed(evt);
             }
         });
+        pnlEntradasObligatorias.add(btnAgregarFoto);
+        btnAgregarFoto.setBounds(590, 220, 130, 25);
 
         txtNroDocumento.setEditable(false);
         txtNroDocumento.setAlignmentX(0.2F);
@@ -824,6 +942,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtNroDocumentoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtNroDocumento);
+        txtNroDocumento.setBounds(390, 70, 160, 25);
 
         txtCodigo.setEditable(false);
         txtCodigo.setAlignmentX(0.2F);
@@ -835,6 +955,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtCodigoKeyReleased(evt);
             }
         });
+        pnlEntradasObligatorias.add(txtCodigo);
+        txtCodigo.setBounds(10, 70, 170, 25);
 
         jPanel2.setEnabled(false);
         jPanel2.setOpaque(false);
@@ -857,7 +979,7 @@ public class IVendedores extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -871,189 +993,72 @@ public class IVendedores extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLogin)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblPassword)
                         .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout pnlEntradasObligatoriasLayout = new javax.swing.GroupLayout(pnlEntradasObligatorias);
-        pnlEntradasObligatorias.setLayout(pnlEntradasObligatoriasLayout);
-        pnlEntradasObligatoriasLayout.setHorizontalGroup(
-            pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(lblSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(lblTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(360, 360, 360)
-                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(lblProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(txtApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(lblApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(380, 380, 380)
-                        .addComponent(lblNroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(360, 360, 360)
-                        .addComponent(lblNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(380, 380, 380)
-                        .addComponent(lblDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(480, 480, 480)
-                        .addComponent(lblEstado))
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(570, 570, 570)
-                        .addComponent(pnlFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(cmbTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(540, 540, 540)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(lblApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(380, 380, 380)
-                        .addComponent(txtNroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addComponent(txtCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtCodigoProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtCodigoDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(txtDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnAgregarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-        pnlEntradasObligatoriasLayout.setVerticalGroup(
-            pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(lblSexo))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lblTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(lblProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(txtApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(txtApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lblCodigo))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(lblApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lblNroDocumento))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(lblNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(lblDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(lblEstado))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(pnlFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(cmbTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(lblApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(txtNroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasObligatoriasLayout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(lblDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(pnlEntradasObligatoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigoProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigoDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlEntradasComplementarias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos Complementarios"));
+        pnlEntradasObligatorias.add(jPanel2);
+        jPanel2.setBounds(10, 16, 460, 30);
+
+        pnlEntradasComplementarias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos Complementarios"));
         pnlEntradasComplementarias.setOpaque(false);
+        pnlEntradasComplementarias.setLayout(null);
+
+        txtDteFechaNacimiento.setEditable(false);
+        txtDteFechaNacimiento.setAlignmentX(0.2F);
+        txtDteFechaNacimiento.setAlignmentY(0.2F);
+        txtDteFechaNacimiento.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaNacimiento.setPreferredSize(new java.awt.Dimension(320, 25));
+        txtDteFechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDteFechaNacimientoKeyReleased(evt);
+            }
+        });
+        pnlEntradasComplementarias.add(txtDteFechaNacimiento);
+        txtDteFechaNacimiento.setBounds(640, 80, 10, 25);
+
+        txtDteFechaIngreso.setEditable(false);
+        txtDteFechaIngreso.setAlignmentX(0.2F);
+        txtDteFechaIngreso.setAlignmentY(0.2F);
+        txtDteFechaIngreso.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaIngreso.setPreferredSize(new java.awt.Dimension(320, 25));
+        txtDteFechaIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDteFechaIngresoKeyReleased(evt);
+            }
+        });
+        pnlEntradasComplementarias.add(txtDteFechaIngreso);
+        txtDteFechaIngreso.setBounds(660, 80, 10, 25);
+
+        txtDteFechaCese.setEditable(false);
+        txtDteFechaCese.setAlignmentX(0.2F);
+        txtDteFechaCese.setAlignmentY(0.2F);
+        txtDteFechaCese.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaCese.setPreferredSize(new java.awt.Dimension(320, 25));
+        txtDteFechaCese.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDteFechaCeseKeyReleased(evt);
+            }
+        });
+        pnlEntradasComplementarias.add(txtDteFechaCese);
+        txtDteFechaCese.setBounds(650, 80, 10, 25);
 
         lblFechaNacimiento.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblFechaNacimiento.setText("Fecha Nacimiento:");
         lblFechaNacimiento.setAlignmentX(0.2F);
         lblFechaNacimiento.setAlignmentY(0.2F);
+        pnlEntradasComplementarias.add(lblFechaNacimiento);
+        lblFechaNacimiento.setBounds(20, 20, 126, 20);
 
         dteFechaNacimiento.setBackground(new java.awt.Color(0, 0, 0));
         dteFechaNacimiento.setForeground(new java.awt.Color(255, 0, 0));
         dteFechaNacimiento.setDate(Calendar.getInstance().getTime());
-        dteFechaNacimiento.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dteFechaNacimiento.setFont(new java.awt.Font("Tahoma", 1, 13));
         dteFechaNacimiento.setPreferredSize(new java.awt.Dimension(120, 22));
         dteFechaNacimiento.setRequestFocusEnabled(false);
         dteFechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1061,11 +1066,13 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 dteFechaNacimientoKeyReleased(evt);
             }
         });
+        pnlEntradasComplementarias.add(dteFechaNacimiento);
+        dteFechaNacimiento.setBounds(150, 20, 106, 20);
 
         dteFechaIngreso.setBackground(new java.awt.Color(0, 0, 0));
         dteFechaIngreso.setForeground(new java.awt.Color(255, 0, 0));
         dteFechaIngreso.setDate(Calendar.getInstance().getTime());
-        dteFechaIngreso.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dteFechaIngreso.setFont(new java.awt.Font("Tahoma", 1, 13));
         dteFechaIngreso.setPreferredSize(new java.awt.Dimension(120, 22));
         dteFechaIngreso.setRequestFocusEnabled(false);
         dteFechaIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1073,17 +1080,21 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 dteFechaIngresoKeyReleased(evt);
             }
         });
+        pnlEntradasComplementarias.add(dteFechaIngreso);
+        dteFechaIngreso.setBounds(390, 20, 106, 20);
 
         lblFechaIngreso.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblFechaIngreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFechaIngreso.setText("Fecha Ingreso:");
         lblFechaIngreso.setAlignmentX(0.2F);
         lblFechaIngreso.setAlignmentY(0.2F);
+        pnlEntradasComplementarias.add(lblFechaIngreso);
+        lblFechaIngreso.setBounds(270, 20, 114, 20);
 
         dteFechaCese.setBackground(new java.awt.Color(0, 0, 0));
         dteFechaCese.setForeground(new java.awt.Color(255, 0, 0));
         dteFechaCese.setDate(Calendar.getInstance().getTime());
-        dteFechaCese.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dteFechaCese.setFont(new java.awt.Font("Tahoma", 1, 13));
         dteFechaCese.setPreferredSize(new java.awt.Dimension(120, 22));
         dteFechaCese.setRequestFocusEnabled(false);
         dteFechaCese.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1091,18 +1102,24 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 dteFechaCeseKeyReleased(evt);
             }
         });
+        pnlEntradasComplementarias.add(dteFechaCese);
+        dteFechaCese.setBounds(600, 20, 105, 20);
 
         lblFechaCese.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblFechaCese.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFechaCese.setText("Fecha Cese:");
         lblFechaCese.setAlignmentX(0.2F);
         lblFechaCese.setAlignmentY(0.2F);
+        pnlEntradasComplementarias.add(lblFechaCese);
+        lblFechaCese.setBounds(510, 20, 89, 20);
 
         lblTeleFijo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTeleFijo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTeleFijo.setText("Telef. Fijo");
         lblTeleFijo.setAlignmentX(0.2F);
         lblTeleFijo.setAlignmentY(0.2F);
+        pnlEntradasComplementarias.add(lblTeleFijo);
+        lblTeleFijo.setBounds(20, 50, 66, 20);
 
         txtFijo.setEditable(false);
         txtFijo.setAlignmentX(0.2F);
@@ -1114,6 +1131,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtFijoKeyReleased(evt);
             }
         });
+        pnlEntradasComplementarias.add(txtFijo);
+        txtFijo.setBounds(90, 50, 140, 25);
 
         txtMovil.setEditable(false);
         txtMovil.setAlignmentX(0.2F);
@@ -1125,35 +1144,45 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtMovilKeyReleased(evt);
             }
         });
+        pnlEntradasComplementarias.add(txtMovil);
+        txtMovil.setBounds(320, 50, 140, 25);
 
         lblTeleMovil.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTeleMovil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTeleMovil.setText("Telef. Movil");
         lblTeleMovil.setAlignmentX(0.2F);
         lblTeleMovil.setAlignmentY(0.2F);
+        pnlEntradasComplementarias.add(lblTeleMovil);
+        lblTeleMovil.setBounds(240, 50, 76, 20);
 
         txtMovil2.setEditable(false);
         txtMovil2.setAlignmentX(0.2F);
         txtMovil2.setAlignmentY(0.2F);
-        txtMovil2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMovil2.setFont(new java.awt.Font("Arial", 0, 12));
         txtMovil2.setPreferredSize(new java.awt.Dimension(320, 25));
         txtMovil2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMovil2KeyReleased(evt);
             }
         });
+        pnlEntradasComplementarias.add(txtMovil2);
+        txtMovil2.setBounds(580, 50, 153, 25);
 
         lblTeleMovil2.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTeleMovil2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTeleMovil2.setText("Telef. Movil 02:");
         lblTeleMovil2.setAlignmentX(0.2F);
         lblTeleMovil2.setAlignmentY(0.2F);
+        pnlEntradasComplementarias.add(lblTeleMovil2);
+        lblTeleMovil2.setBounds(470, 50, 103, 20);
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEmail.setText("E-mail");
         lblEmail.setAlignmentX(0.2F);
         lblEmail.setAlignmentY(0.2F);
+        pnlEntradasComplementarias.add(lblEmail);
+        lblEmail.setBounds(20, 80, 42, 20);
 
         txtEmail.setEditable(false);
         txtEmail.setAlignmentX(0.2F);
@@ -1165,6 +1194,8 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 txtEmailKeyReleased(evt);
             }
         });
+        pnlEntradasComplementarias.add(txtEmail);
+        txtEmail.setBounds(90, 80, 370, 25);
 
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1179,77 +1210,10 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        pnlEntradasComplementarias.add(tblUsuario);
+        tblUsuario.setBounds(550, 80, 26, 21);
 
-        javax.swing.GroupLayout pnlEntradasComplementariasLayout = new javax.swing.GroupLayout(pnlEntradasComplementarias);
-        pnlEntradasComplementarias.setLayout(pnlEntradasComplementariasLayout);
-        pnlEntradasComplementariasLayout.setHorizontalGroup(
-            pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasComplementariasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasComplementariasLayout.createSequentialGroup()
-                        .addComponent(lblFechaNacimiento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dteFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(dteFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblFechaCese, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dteFechaCese, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasComplementariasLayout.createSequentialGroup()
-                        .addGroup(pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTeleFijo)
-                            .addComponent(lblEmail))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlEntradasComplementariasLayout.createSequentialGroup()
-                                .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblTeleMovil)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEntradasComplementariasLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(lblTeleMovil2)
-                                .addGap(2, 2, 2)
-                                .addComponent(txtMovil2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-                            .addGroup(pnlEntradasComplementariasLayout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(tblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        pnlEntradasComplementariasLayout.setVerticalGroup(
-            pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasComplementariasLayout.createSequentialGroup()
-                .addGroup(pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFechaCese, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dteFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dteFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dteFechaCese, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTeleFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMovil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTeleMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMovil2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTeleMovil2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlEntradasComplementariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscador.setOpaque(false);
         pnlBuscador.setPreferredSize(new java.awt.Dimension(575, 37));
 
@@ -1331,10 +1295,10 @@ public class IVendedores extends javax.swing.JInternalFrame {
         pnlBuscador.setLayout(pnlBuscadorLayout);
         pnlBuscadorLayout.setHorizontalGroup(
             pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
             .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorLayout.createSequentialGroup()
-                    .addGap(0, 8, Short.MAX_VALUE)
+                    .addGap(0, 16, Short.MAX_VALUE)
                     .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5, 5, 5)
                     .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1350,14 +1314,14 @@ public class IVendedores extends javax.swing.JInternalFrame {
                     .addComponent(rbAtivos)
                     .addGap(5, 5, 5)
                     .addComponent(rbNoActivos)
-                    .addGap(0, 8, Short.MAX_VALUE)))
+                    .addGap(0, 16, Short.MAX_VALUE)))
         );
         pnlBuscadorLayout.setVerticalGroup(
             pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
+            .addGap(0, 33, Short.MAX_VALUE)
             .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 4, Short.MAX_VALUE)
                     .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1367,10 +1331,10 @@ public class IVendedores extends javax.swing.JInternalFrame {
                         .addComponent(rbTodos)
                         .addComponent(rbAtivos)
                         .addComponent(rbNoActivos))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 4, Short.MAX_VALUE)))
         );
 
-        pnlAcciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAcciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAcciones.setOpaque(false);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
@@ -1461,15 +1425,15 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelImage1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(pnlBuscador, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlEntradasObligatorias, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelImage1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlEntradasComplementarias, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE))
                     .addGroup(panelImage1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(pnlEntradasComplementarias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(pnlBuscador, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlEntradasObligatorias, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelImage1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         panelImage1Layout.setVerticalGroup(
@@ -1478,9 +1442,9 @@ public class IVendedores extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlEntradasObligatorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlEntradasObligatorias, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlEntradasComplementarias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlEntradasComplementarias, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1494,7 +1458,7 @@ public class IVendedores extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         getAccessibleContext().setAccessibleName("Formulario Tipo de Cambio");
@@ -2063,6 +2027,26 @@ private void txtNombresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     }    
 }//GEN-LAST:event_txtNombresKeyReleased
 
+private void txtCmbTipoDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbTipoDocumentoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTipoDocumentoKeyReleased
+
+private void txtCmbSexoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbSexoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbSexoKeyReleased
+
+private void txtDteFechaNacimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDteFechaNacimientoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtDteFechaNacimientoKeyReleased
+
+private void txtDteFechaIngresoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDteFechaIngresoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtDteFechaIngresoKeyReleased
+
+private void txtDteFechaCeseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDteFechaCeseKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtDteFechaCeseKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect bntPass;
     private elaprendiz.gui.button.ButtonRect btnAgregarFoto;
@@ -2118,6 +2102,8 @@ private void txtNombresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private javax.swing.JTable tblUsuario;
     private elaprendiz.gui.textField.TextField txtApellidoMaterno;
     private elaprendiz.gui.textField.TextField txtApellidoPaterno;
+    private elaprendiz.gui.textField.TextField txtCmbSexo;
+    private elaprendiz.gui.textField.TextField txtCmbTipoDocumento;
     private elaprendiz.gui.textField.TextField txtCodigo;
     private elaprendiz.gui.textField.TextField txtCodigoDepartamento;
     private elaprendiz.gui.textField.TextField txtCodigoDistrito;
@@ -2125,6 +2111,9 @@ private void txtNombresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private elaprendiz.gui.textField.TextField txtDepartamento;
     private elaprendiz.gui.textField.TextField txtDireccion;
     private elaprendiz.gui.textField.TextField txtDistrito;
+    private elaprendiz.gui.textField.TextField txtDteFechaCese;
+    private elaprendiz.gui.textField.TextField txtDteFechaIngreso;
+    private elaprendiz.gui.textField.TextField txtDteFechaNacimiento;
     private elaprendiz.gui.textField.TextField txtEmail;
     private elaprendiz.gui.textField.TextField txtFijo;
     private elaprendiz.gui.textField.TextField txtLogin;

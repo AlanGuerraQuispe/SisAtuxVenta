@@ -16,10 +16,12 @@ import atux.modelbd.ImpuestoIGV;
 import atux.modelbd.Moneda;
 import atux.modelbd.ProductoLocal;
 import atux.modelgui.ModeloTablaMaestroProductos;
+import atux.modelgui.ModeloTablaMaestroProductosFull;
 import atux.modelgui.ModeloTablaSimple;
 import atux.util.common.AtuxGridUtils;
 import atux.enums.IndicadorSNRegistro;
 
+import atux.modelbd.ProductoFull;
 import javax.swing.*;
 
 import atux.vistas.buscar.BuscarG1_LineaComercial;
@@ -44,6 +46,7 @@ import atux.util.common.AtuxUtility;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,7 +63,7 @@ import org.apache.commons.logging.LogFactory;
 public class IMaestroProductos extends javax.swing.JInternalFrame {
     private CProducto cp;
     private CProductoLocal cpl;
-    private ModeloTablaMaestroProductos mtp;
+    private ModeloTablaMaestroProductosFull mtp;
     private CMoneda controllerMoneda;
     private CImpuestoIGV controllerIGV;
     private CMotivoControlDigemid controllerControlDigemid;
@@ -175,6 +178,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
 
     public IMaestroProductos() {
         initComponents();
+
         lblMensaje.setVisible(false);
         cp = new CProducto();
         cpl = new CProductoLocal();
@@ -216,15 +220,42 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         btnPrimeroActionPerformed(null);
         AtuxGridUtils.setearPrimerRegistro(tblListado, txtDescripcion, ModeloTablaSimple.COLUMNA_DESCRIPCION);
         tblListado.requestFocus();
-    }
+
+        this.lblCbxProdControlado.setBounds(138, 50, 68, 24);
+        this.lblCbxDescripcionControl.setBounds(214, 50, 214, 24);
+        this.lblCbxPideMedico.setBounds(138, 100, 60, 24);
+        this.lblCbxPideReceta.setBounds(207, 100, 56, 24);
+        this.lblCbxControlLote.setBounds(270, 100, 60, 24);
+        this.lblCbxIndicadorFraccion.setBounds(138, 151, 60, 24);
+
+        this.lblCbxControlLote.setBounds(270, 100, 60, 24);
+        this.lblCbxIndicadorFraccion.setBounds(138, 151, 60, 24);
+        this.lblCmbImpuesto.setBounds(14, 86, 78, 24);
+        this.lblCmbMoneda.setBounds(14, 146, 78, 24);
+
+        this.dteFechaVigencia.setBounds(632, 4, 110, 24);
+        this.dteFechaCreacion.setBounds(806, 4, 110, 24);
+        this.txtDteFechaVigencia.setBounds(632, 4, 110, 24);
+        this.txtDteFechaCreacion.setBounds(806, 4, 110, 24);
+        
+        this.lblCbxProdControlado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        this.lblCbxDescripcionControl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        this.lblCbxPideMedico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        this.lblCbxPideReceta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        this.lblCbxControlLote.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        this.lblCbxIndicadorFraccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        this.lblCmbImpuesto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        this.lblCmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+   }
 
     private void CargarGrilla() {
+
         if (tipoSeleccion == -1) {
-            this.mtp = new ModeloTablaMaestroProductos("T");
+            this.mtp = new ModeloTablaMaestroProductosFull("T");
         } else if (tipoSeleccion == 0) {
-            this.mtp = new ModeloTablaMaestroProductos("I");
+            this.mtp = new ModeloTablaMaestroProductosFull("I");
         } else {
-            this.mtp = new ModeloTablaMaestroProductos("A");
+            this.mtp = new ModeloTablaMaestroProductosFull("A");
         }
 
         numRegistros = mtp.getCantidadRegistros();
@@ -232,7 +263,39 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         Helper.ajustarSoloAnchoColumnas(tblListado, ModeloTablaMaestroProductos.anchoColumnas);
         setEventSelectionModel(tblListado.getSelectionModel());
     }
+    
+    private void ActualizarGrilla() {
+        numRegistros = mtp.getCantidadRegistros();
 
+        for (int j=0; j>=mtp.getCantidadRegistros();j++){
+
+            ModeloTablaMaestroProductosFull mtpAux;
+            mtpAux = new ModeloTablaMaestroProductosFull(cp.getProducto(), cpl.getProductoLocal(), cp.getProductoFull());
+
+            tblListado.setModel(mtp);
+
+//            registros = ((CProducto)cc).getProductosMaestrosFull(Filtro);
+
+
+                
+//            public E set(int index, E element) {
+//            cp.setProductoFull(mtp.getFila(j));
+//if (cp.getProductoFull().getTmpCoProducto().equals(cp.getProducto().getCoProducto())){
+
+            
+            
+            if (mtp.getValueAt(j, 1).equals(cp.getProducto().getCoProducto())) {
+
+                numRegistros=j;
+                break;
+            }
+        }
+
+        tblListado.setModel(mtp);
+        Helper.ajustarSoloAnchoColumnas(tblListado, ModeloTablaMaestroProductos.anchoColumnas);
+        setEventSelectionModel(tblListado.getSelectionModel());
+    }
+    
     private void setEventSelectionModel(ListSelectionModel lsm) {
         ListSelectionListener lsl = new ListSelectionListener() {
             @Override
@@ -246,9 +309,84 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private void selectionEvent(ListSelectionEvent e) {
         if (tblListado.getSelectedRow() != -1) {
             numRegistros = tblListado.getSelectedRow();
-            cp.setProducto(mtp.getFila(tblListado.getSelectedRow()));
-            setMaestroProductos();
+            cp.setProductoFull(mtp.getFila(tblListado.getSelectedRow()));
+            setMaestroProductosFull();
         }
+    }
+
+    private void setMaestroProductosFull() {
+        Limpiar();
+        this.txtCodigo.setText(String.valueOf(cp.getProductoFull().getTmpCoProducto().trim()));
+        this.txtDescripcion.setText(String.valueOf(cp.getProductoFull().getTmpDeProducto().trim()));
+        this.txtUnidad.setText(String.valueOf(cp.getProductoFull().getTmpDeUnidadProducto().trim()));
+        this.txtCodigoLaboratorio.setText(cp.getProductoFull().getTmpCoLaboratorio());
+        this.txtCosto.setText(String.valueOf(cp.getProductoFull().getTmpVaPrecioCompra()));
+        this.dteFechaVigencia.setDate(cp.getProductoFull().getTmpFeVigencia());
+        this.dteFechaCreacion.setDate(cp.getProductoFull().getTmpFeCreaProducto());
+
+        // Set Categoria
+        this.txtCodigoG1.setText(cp.getProductoFull().getTmpCoNivel01());
+        this.txtLineaComercial.setText(cp.getProductoFull().getTg1DeLineaProdErp());
+        this.txtCodigoG2.setText(cp.getProductoFull().getTmpCoNivel02());
+        this.txtDivision.setText(cp.getProductoFull().getTg2DeGrupoProdErp());
+        this.txtCodigoG3.setText(cp.getProductoFull().getTmpCoNivel03());
+        this.txtSub_Division.setText(cp.getProductoFull().getTg3DeGrupoAnatomico());
+        this.txtCodigoG4.setText(cp.getProductoFull().getTmpCoNivel04());
+        this.txtFamilia.setText(cp.getProductoFull().getTg4DeGrupoTerapeutico());
+        this.txtCodigoG5.setText(cp.getProductoFull().getTmpCoNivel05());
+        this.txtSub_Familia.setText(cp.getProductoFull().getTg5DeAccionTerapeutica());
+
+        // Set Laboratorio
+        this.txtCodigoLaboratorio.setText(cp.getProductoFull().getTmpCoLaboratorio());
+        this.txtDescripLaboratorio.setText(cp.getProductoFull().getTlbDeLaboratorio());
+
+
+        //  Control Digemid
+        cmbOpcionSN(cbxIndicadorFraccion, cp.getProductoFull().getTmpInControlado());
+        cmbOpcionSN(cbxPideMedico, cp.getProductoFull().getTmpInPideMedico());
+        cmbOpcionSN(cbxPideReceta, cp.getProductoFull().getTmpInRecetaMedica());
+        cmbOpcionSN(cbxControlLote, cp.getProductoFull().getTmpInControlLote());
+
+        lblCbxIndicadorFraccion.setText(cbxIndicadorFraccion.getSelectedItem().toString());
+        lblCbxPideMedico.setText(cbxPideMedico.getSelectedItem().toString());
+        lblCbxPideReceta.setText(cbxPideReceta.getSelectedItem().toString());
+        lblCbxControlLote.setText(cbxControlLote.getSelectedItem().toString());
+
+        if ("A".equals(cp.getProductoFull().getTmpEsProducto())) {
+            chbSetActivo(true);
+        } else {
+            chbSetActivo(false);
+        }
+        this.btnModificar.setEnabled(true);
+
+        // Producto Local
+//        ProductoLocal prodLocal = new ProductoLocal();
+//        prodLocal = cpl.getRegistroPorPk(new Object[]{AtuxVariables.vCodigoCompania, AtuxVariables.vCodigoLocal, cp.getProductoFull().getCoProducto(), 0});
+        VaFraccionAnt = cp.getProductoFull().getTplVaFraccion();
+        InProdFraccionadoAnt = cp.getProductoFull().getTplInProdFraccionado();
+        DeFraccionAnt = cp.getProductoFull().getTplDeUnidadFraccion();
+        CaStockDisponibleAnt = cp.getProductoFull().getTplCaStockDisponible();
+
+        cmbOpcionSN(cbxIndicadorFraccion, cp.getProductoFull().getTplInProdFraccionado());
+        lblCbxIndicadorFraccion.setText(cbxIndicadorFraccion.getSelectedItem().toString());
+
+        txtCantidadFraccion.setText(cp.getProductoFull().getTplVaFraccion().toString());
+        txtUnidadFraccion.setText(cp.getProductoFull().getTplDeUnidadFraccion());
+        this.txtPrecio.setText(cp.getProductoFull().getTplVaVenta().toString());
+        this.txtDescuento.setText(cp.getProductoFull().getTplPcDescuento1().toString());
+        this.txtPreVtaPublico.setText(cp.getProductoFull().getCalculoPrecioPublico().toString());
+
+        // Impuesto
+        cmbOpcionImpuesto(cmbImpuesto, cp.getProductoFull().getTmpCoImpuesto1());
+        lblCmbImpuesto.setText(cmbImpuesto.getSelectedItem().toString());
+
+        //  Control Procedencia
+        txtCodigoProcedencia.setText(cp.getProductoFull().getTmpCoProcedencia());
+        this.txtDescripProcedencia.setText(cp.getProductoFull().getTpsDePais());
+        
+        this.txtDteFechaVigencia.setText(AtuxUtility.getDateToString(cp.getProductoFull().getTmpFeVigencia(),"dd/MM/yyyy"));
+        this.txtDteFechaCreacion.setText(AtuxUtility.getDateToString(cp.getProductoFull().getTmpFeCreaProducto(),"dd/MM/yyyy"));
+
     }
 
     private void setMaestroProductos() {
@@ -420,15 +558,14 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.cbxIndicadorFraccion.setSelectedIndex(1);
         this.cbxDescripcionControl.setSelectedIndex(0);
 
-        this.cmbImpuesto.setEnabled(false);
-        this.cmbMoneda.setEnabled(false);
-        this.cbxControlLote.setEnabled(false);
-        this.cbxDescripcionControl.setEnabled(false);
-        this.cbxIndicadorFraccion.setEnabled(false);
-        this.cbxPideMedico.setEnabled(false);
-        this.cbxPideReceta.setEnabled(false);
-        this.cbxProdControlado.setEnabled(false);
-
+//        this.cmbImpuesto.setEnabled(false);
+//        this.cmbMoneda.setEnabled(false);
+//        this.cbxControlLote.setEnabled(false);
+//        this.cbxDescripcionControl.setEnabled(false);
+//        this.cbxIndicadorFraccion.setEnabled(false);
+//        this.cbxPideMedico.setEnabled(false);
+//        this.cbxPideReceta.setEnabled(false);
+//        this.cbxProdControlado.setEnabled(false);
     }
 
 
@@ -462,14 +599,33 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
 
-        this.cmbImpuesto.setEnabled(true);
-        this.cmbMoneda.setEnabled(true);
-        this.cbxControlLote.setEnabled(true);
-        this.cbxDescripcionControl.setEnabled(true);
-        this.cbxIndicadorFraccion.setEnabled(true);
-        this.cbxPideMedico.setEnabled(true);
-        this.cbxPideReceta.setEnabled(true);
-        this.cbxProdControlado.setEnabled(true);
+//        this.cmbImpuesto.setEnabled(true);
+//        this.cmbMoneda.setEnabled(true);
+
+//        this.cbxProdControlado.setEnabled(true);
+//        this.cbxDescripcionControl.setEnabled(true);
+//        this.cbxPideMedico.setEnabled(true);
+//        this.cbxPideReceta.setEnabled(true);
+//        this.cbxControlLote.setEnabled(true);
+//        this.cbxIndicadorFraccion.setEnabled(true);
+
+        this.cmbImpuesto.setVisible(true);
+        this.cmbMoneda.setVisible(true);
+        this.cbxProdControlado.setVisible(true);
+        this.cbxDescripcionControl.setVisible(true);
+        this.cbxPideMedico.setVisible(true);
+        this.cbxPideReceta.setVisible(true);
+        this.cbxControlLote.setVisible(true);
+        this.cbxIndicadorFraccion.setVisible(true);
+
+        this.lblCmbImpuesto.setVisible(false);
+        this.lblCmbMoneda.setVisible(false);
+        this.lblCbxProdControlado.setVisible(false);
+        this.lblCbxDescripcionControl.setVisible(false);
+        this.lblCbxPideMedico.setVisible(false);
+        this.lblCbxPideReceta.setVisible(false);
+        this.lblCbxControlLote.setVisible(false);
+        this.lblCbxIndicadorFraccion.setVisible(false);
 
         this.dteFechaVigencia.setEnabled(true);
         this.dteFechaCreacion.setEnabled(true);
@@ -483,6 +639,14 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.btnParametrosReposicion.setEnabled(false);
         this.btnLote.setEnabled(false);
         this.btnRegistroSanitario.setEnabled(false);
+
+        this.dteFechaVigencia.setVisible(true);
+        this.dteFechaCreacion.setVisible(true);
+        this.txtDteFechaVigencia.setVisible(false);
+        this.txtDteFechaCreacion.setVisible(false);
+        UIManager.getDefaults().put("ComboBox.disabledFore ground", Color.BLACK);
+        UIManager.getDefaults().put("ComboBox.disabledBack ground", Color.white);
+
 
     }
 
@@ -515,15 +679,44 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.rbAtivos.setEnabled(true);
         this.rbNoActivos.setEnabled(true);
 
-        this.cmbImpuesto.setEnabled(false);
-        this.cmbMoneda.setEnabled(false);
-        this.cbxControlLote.setEnabled(false);
-        this.cbxDescripcionControl.setEnabled(false);
-        this.cbxIndicadorFraccion.setEnabled(false);
-        this.cbxPideMedico.setEnabled(false);
-        this.cbxPideReceta.setEnabled(false);
-        this.cbxProdControlado.setEnabled(false);
+//        this.cmbImpuesto.setEnabled(false);
+//        this.cmbMoneda.setEnabled(false);
+//        this.cbxControlLote.setEnabled(false);
+//        this.cbxDescripcionControl.setEnabled(false);
+//        this.cbxIndicadorFraccion.setEnabled(false);
+//        this.cbxPideMedico.setEnabled(false);
+//        this.cbxPideReceta.setEnabled(false);
+//        this.cbxProdControlado.setEnabled(false);
 
+//        this.cmbImpuesto.setEnabled(false);
+//        this.cmbMoneda.setEnabled(false);
+//        this.cbxProdControlado.setEnabled(false);
+//        this.cbxDescripcionControl.setEnabled(false);
+//        this.cbxPideMedico.setEnabled(false);
+//        this.cbxPideReceta.setEnabled(false);
+//        this.cbxControlLote.setEnabled(false);
+//        this.cbxIndicadorFraccion.setEnabled(false);
+
+        this.cbxProdControlado.setVisible(false);
+        this.cbxDescripcionControl.setVisible(false);
+        this.cbxPideMedico.setVisible(false);
+        this.cbxPideReceta.setVisible(false);
+        this.cbxControlLote.setVisible(false);
+        this.cbxIndicadorFraccion.setVisible(false);
+        this.cmbImpuesto.setVisible(false);
+        this.cmbMoneda.setVisible(false);
+
+        this.lblCmbImpuesto.setVisible(true);
+        this.lblCmbMoneda.setVisible(true);
+        this.lblCbxProdControlado.setVisible(true);
+        this.lblCbxDescripcionControl.setVisible(true);
+        this.lblCbxPideMedico.setVisible(true);
+        this.lblCbxPideReceta.setVisible(true);
+        this.lblCbxControlLote.setVisible(true);
+        this.lblCbxIndicadorFraccion.setVisible(true);
+
+        
+        
         this.dteFechaVigencia.setEnabled(false);
         this.dteFechaCreacion.setEnabled(false);
         this.txtCantidadFraccion.setEnabled(false);
@@ -535,8 +728,12 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.btnPrincipioActivo.setEnabled(true);
         this.btnParametrosReposicion.setEnabled(true);
         this.btnLote.setEnabled(true);
-        this.btnRegistroSanitario.setEnabled(true);
+        this.btnRegistroSanitario.setEnabled(true); 
 
+        this.dteFechaVigencia.setVisible(false);
+        this.dteFechaCreacion.setVisible(false);
+        this.txtDteFechaVigencia.setVisible(true);
+        this.txtDteFechaCreacion.setVisible(true);
         esActualizacion = false;
     }
 
@@ -596,37 +793,38 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         } else if (this.dteFechaVigencia.getDate() != cp.getProducto().getFeVigencia()) {
             return true;
         }
-
         return false;
     }
 
     private boolean guardarActualizar() throws SQLException {
+
+        cp.getProducto().setPrimaryKey(new String[]{AtuxVariables.vCodigoCompania,this.txtCodigo.getText(),"0"});
         cp.getProducto().setCoCompania(AtuxVariables.vCodigoCompania);
         cp.getProducto().setCoProducto(this.txtCodigo.getText());
         cp.getProducto().setDeProducto(txtDescripcion.getText().toUpperCase());
         cp.getProducto().setNuRevisionProducto("0");
-        cp.getProducto().setDeCortaProducto(null);
-        cp.getProducto().setCoFactorPrecio(null);
         cp.getProducto().setCoMoneda(controllerMoneda.getMoneda().getCoMoneda());
         cp.getProducto().setCoImpuesto1(controllerIGV.getImpuesto().getCoImpuesto());
-        cp.getProducto().setCoImpuesto2(null);
         cp.getProducto().setCoLaboratorio(this.txtCodigoLaboratorio.getText());
-        cp.getProducto().setCoLineaProducto(null);
-        cp.getProducto().setCoGrupoProducto(null);
-        cp.getProducto().setCoCategoriaCcr(null);
-        cp.getProducto().setCoClasificacionIms(null);
-        cp.getProducto().setCoCategoriaSb(null);
-        cp.getProducto().setCoSubcategoriaSb(null);
         cp.getProducto().setDeUnidadProducto(this.txtUnidad.getText().toUpperCase());
-        cp.getProducto().setVaUnidadMedida(0);
-        cp.getProducto().setCoUnidadCompra(null);
-        cp.getProducto().setCoUnidadVenta(null);
-        cp.getProducto().setCoUnidadContenido(null);
-        cp.getProducto().setVaUnidadContenido(0);
         cp.getProducto().setInProdFraccionable(cmbRetornaOpcion(cbxIndicadorFraccion));
         cp.getProducto().setVaPrecioCompra(Double.parseDouble(this.txtCosto.getText()));
-        cp.getProducto().setPcBono(null);
         cp.getProducto().setInRecetaMedica(cmbRetornaOpcion(cbxPideReceta));
+        cp.getProducto().setVaCostoProducto(Double.parseDouble(this.txtCosto.getText()));
+        cp.getProducto().setVaPrecioPublico(Double.parseDouble(txtPreVtaPublico.getText()));
+        cp.getProducto().setInControlado(cmbRetornaOpcion(cbxProdControlado));
+        cp.getProducto().setCoNivel01(this.txtCodigoG1.getText());
+        cp.getProducto().setCoNivel02(this.txtCodigoG2.getText());
+        cp.getProducto().setCoNivel03(this.txtCodigoG3.getText());
+        cp.getProducto().setCoNivel04(this.txtCodigoG4.getText());
+        cp.getProducto().setCoNivel05(this.txtCodigoG5.getText());
+        cp.getProducto().setCoProcedencia(this.txtCodigoProcedencia.getText());
+        cp.getProducto().setFeVigencia(this.dteFechaVigencia.getDate());
+        cp.getProducto().setInControlLote(cmbRetornaOpcion(cbxControlLote));
+        cp.getProducto().setInPideMedico(cmbRetornaOpcion(cbxPideMedico));
+        cp.getProducto().setVaUnidadMedida(0);
+        cp.getProducto().setVaUnidadContenido(0);
+        cp.getProducto().setPcDescuentoBase(0);
 
         if (chbEstado.isSelected()) {
             cp.getProducto().setEsProducto("A");
@@ -634,95 +832,92 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             cp.getProducto().setEsProducto("I");
         }
 
-        cp.getProducto().setCoClaseVenta(null);
-        cp.getProducto().setCoGrupoProdErp(null);
-        cp.getProducto().setCoLineaProdErp(null);
-        cp.getProducto().setCoOtc(null);
-        cp.getProducto().setCoGrupoTerapeutico(null);
-        cp.getProducto().setCoGiro(null);
-        cp.getProducto().setCoGrupoAnatomico(null);
-        cp.getProducto().setCoFormaPresentacion(null);
-        cp.getProducto().setCoAccionTerapeutica(null);
-        cp.getProducto().setCoAccionFarmaceutica(null);
-        cp.getProducto().setPcDescuentoBase(0);
-        cp.getProducto().setCoViadm(null);
-        cp.getProducto().setVaCostoProducto(Double.parseDouble(this.txtCosto.getText()));
-        cp.getProducto().setDeDetallePresentacionLargo(null);
-        cp.getProducto().setVaPrecioPublico(Double.parseDouble(txtPreVtaPublico.getText()));
-        cp.getProducto().setCoProductoSap(null);
-        cp.getProducto().setCoTipoConsumo(null);
-        cp.getProducto().setCoComprador(null);
-        cp.getProducto().setInReintegro(null);
-        cp.getProducto().setInDescontinuado(null);
-        cp.getProducto().setInControlado(cmbRetornaOpcion(cbxProdControlado));
-        cp.getProducto().setCaEmpaque(null);
-        cp.getProducto().setInConsignadoSap(null);
-        cp.getProducto().setCoUnidadSap(null);
-        cp.getProducto().setTiMaterialSap(null);
-        cp.getProducto().setCoUnidadFmSap(null);
-        cp.getProducto().setCoGrupoExt(null);
-        cp.getProducto().setDePartidaArancelaria(null);
-        cp.getProducto().setCoNivel01(this.txtCodigoG1.getText());
-        cp.getProducto().setCoNivel02(this.txtCodigoG2.getText());
-        cp.getProducto().setCoNivel03(this.txtCodigoG3.getText());
-        cp.getProducto().setCoNivel04(this.txtCodigoG4.getText());
-        cp.getProducto().setCoNivel05(this.txtCodigoG5.getText());
-        cp.getProducto().setCoProcedencia(this.txtCodigoProcedencia.getText());
-        cp.getProducto().setNoControlDigemid(null);
-        cp.getProducto().setNoControlLote(null);
-        cp.getProducto().setNoTipoPrecio(null);
-        cp.getProducto().setFeVigencia(this.dteFechaVigencia.getDate());
-        cp.getProducto().setFeUltVenta(null);
-        cp.getProducto().setInControlLote(cmbRetornaOpcion(cbxControlLote));
-        cp.getProducto().setInPideMedico(cmbRetornaOpcion(cbxPideMedico));
+//        cp.getProducto().setDeCortaProducto(null);
+//        cp.getProducto().setCoFactorPrecio(null);
+//        cp.getProducto().setCoImpuesto2(null);
+//        cp.getProducto().setCoLineaProducto(null);
+//        cp.getProducto().setCoGrupoProducto(null);
+//        cp.getProducto().setCoCategoriaCcr(null);
+//        cp.getProducto().setCoClasificacionIms(null);
+//        cp.getProducto().setCoCategoriaSb(null);
+//        cp.getProducto().setCoSubcategoriaSb(null);
+//
+//        cp.getProducto().setCoUnidadCompra(null);
+//        cp.getProducto().setCoUnidadVenta(null);
+//        cp.getProducto().setCoUnidadContenido(null);
+//        cp.getProducto().setPcBono(null);
+//        cp.getProducto().setCoClaseVenta(null);
+//        cp.getProducto().setCoGrupoProdErp(null);
+//        cp.getProducto().setCoLineaProdErp(null);
+//        cp.getProducto().setCoOtc(null);
+//        cp.getProducto().setCoGrupoTerapeutico(null);
+//        cp.getProducto().setCoGiro(null);
+//        cp.getProducto().setCoGrupoAnatomico(null);
+//        cp.getProducto().setCoFormaPresentacion(null);
+//        cp.getProducto().setCoAccionTerapeutica(null);
+//        cp.getProducto().setCoAccionFarmaceutica(null);
+//        cp.getProducto().setCoViadm(null);
+//        cp.getProducto().setDeDetallePresentacionLargo(null);
+//        cp.getProducto().setCoProductoSap(null);
+//        cp.getProducto().setCoTipoConsumo(null);
+//        cp.getProducto().setCoComprador(null);
+//        cp.getProducto().setInReintegro(null);
+//        cp.getProducto().setInDescontinuado(null);
+//        cp.getProducto().setCaEmpaque(null);
+//        cp.getProducto().setInConsignadoSap(null);
+//        cp.getProducto().setCoUnidadSap(null);
+//        cp.getProducto().setTiMaterialSap(null);
+//        cp.getProducto().setCoUnidadFmSap(null);
+//        cp.getProducto().setCoGrupoExt(null);
+//        cp.getProducto().setDePartidaArancelaria(null);
+//        cp.getProducto().setNoControlDigemid(null);
+//        cp.getProducto().setNoControlLote(null);
+//        cp.getProducto().setNoTipoPrecio(null);
+//        cp.getProducto().setFeUltVenta(null);
 
         cpl.getProductoLocal().setCoCompania(AtuxVariables.vCodigoCompania);
         cpl.getProductoLocal().setCoLocal(AtuxVariables.vCodigoLocal);
         cpl.getProductoLocal().setCoProducto(this.txtCodigo.getText());
         cpl.getProductoLocal().setNuRevisionProducto("0");
         cpl.getProductoLocal().setVaVenta(Double.parseDouble(this.txtPrecio.getText()));
-        cpl.getProductoLocal().setCoUnidadVentaFraccion(null);
-
         cpl.getProductoLocal().setCoMoneda(((Moneda) this.cmbMoneda.getSelectedItem()).getCoMoneda());
-
-        cpl.getProductoLocal().setCoUnidadContenido(null);
-        cpl.getProductoLocal().setVaContenidoFraccion(null);
-        cpl.getProductoLocal().setCoDescuento1(null);
         cpl.getProductoLocal().setPcDescuento1(Double.parseDouble(this.txtDescuento.getText()));
-        cpl.getProductoLocal().setCoDescuento2(null);
-        cpl.getProductoLocal().setPcDescuento2(null);
-        cpl.getProductoLocal().setCoDescuento3(null);
-        cpl.getProductoLocal().setPcDescuento3(null);
-        cpl.getProductoLocal().setPcDctoVentaEspecial(null);
-        cpl.getProductoLocal().setInProdInventario(null);
-        cpl.getProductoLocal().setInProductoReponer(null);
-        cpl.getProductoLocal().setCaStockReponer(null);
-        cpl.getProductoLocal().setCaStockReponerCalcula(null);
-
-        cpl.getProductoLocal().setNuDiasRotacionPromedio(null);
-        cpl.getProductoLocal().setNuMinDiasReposicion(null);
-        cpl.getProductoLocal().setNuMaxDiasReposicion(null);
-        cpl.getProductoLocal().setCaMinProdExhibicion(null);
-        cpl.getProductoLocal().setCaProdNoAtendido(null);
         cpl.getProductoLocal().setEsProdLocal(cp.getProducto().getEsProducto());
-        cpl.getProductoLocal().setVaRotacion(null);
-        cpl.getProductoLocal().setCaUltimoPedidoRep(null);
-        cpl.getProductoLocal().setInReplica(null);
-        cpl.getProductoLocal().setFeReplica(null);
-        cpl.getProductoLocal().setNuSecReplica(null);
-        cpl.getProductoLocal().setCaStkDisponiblePedRep(null);
-        cpl.getProductoLocal().setCaStockTransitoPedRep(null);
-        cpl.getProductoLocal().setCoCentroBeneficioSap(null);
-        cpl.getProductoLocal().setVaTotalInventario(null);
-        cpl.getProductoLocal().setVaCostoProducto(null);
-        cpl.getProductoLocal().setVaPrecioPublico(null);
-        cpl.getProductoLocal().setCoUnidadLocalSap(null);
-        cpl.getProductoLocal().setInModCambio(null);
-        cpl.getProductoLocal().setFeUltModPrecio(null);
-        cpl.getProductoLocal().setTsDias(null);
-        cpl.getProductoLocal().setTrDias(null);
-        cpl.getProductoLocal().setIdCreaProdLocal(cp.getProducto().getIdCreaProducto());
-        cpl.getProductoLocal().setFeCreaProdLocal(cp.getProducto().getFeCreaProducto());
+
+//        cpl.getProductoLocal().setCoUnidadVentaFraccion(null);
+//        cpl.getProductoLocal().setCoUnidadContenido(null);
+//        cpl.getProductoLocal().setVaContenidoFraccion(null);
+//        cpl.getProductoLocal().setCoDescuento1(null);
+//        cpl.getProductoLocal().setCoDescuento2(null);
+//        cpl.getProductoLocal().setPcDescuento2(null);
+//        cpl.getProductoLocal().setCoDescuento3(null);
+//        cpl.getProductoLocal().setPcDescuento3(null);
+//        cpl.getProductoLocal().setPcDctoVentaEspecial(null);
+//        cpl.getProductoLocal().setInProdInventario(null);
+//        cpl.getProductoLocal().setInProductoReponer(null);
+//        cpl.getProductoLocal().setCaStockReponer(null);
+//        cpl.getProductoLocal().setCaStockReponerCalcula(null);
+//        cpl.getProductoLocal().setNuDiasRotacionPromedio(null);
+//        cpl.getProductoLocal().setNuMinDiasReposicion(null);
+//        cpl.getProductoLocal().setNuMaxDiasReposicion(null);
+//        cpl.getProductoLocal().setCaMinProdExhibicion(null);
+//        cpl.getProductoLocal().setCaProdNoAtendido(null);
+//        cpl.getProductoLocal().setVaRotacion(null);
+//        cpl.getProductoLocal().setCaUltimoPedidoRep(null);
+//        cpl.getProductoLocal().setInReplica(null);
+//        cpl.getProductoLocal().setFeReplica(null);
+//        cpl.getProductoLocal().setNuSecReplica(null);
+//        cpl.getProductoLocal().setCaStkDisponiblePedRep(null);
+//        cpl.getProductoLocal().setCaStockTransitoPedRep(null);
+//        cpl.getProductoLocal().setCoCentroBeneficioSap(null);
+//        cpl.getProductoLocal().setVaTotalInventario(null);
+//        cpl.getProductoLocal().setVaCostoProducto(null);
+//        cpl.getProductoLocal().setVaPrecioPublico(null);
+//        cpl.getProductoLocal().setCoUnidadLocalSap(null);
+//        cpl.getProductoLocal().setInModCambio(null);
+//        cpl.getProductoLocal().setFeUltModPrecio(null);
+//        cpl.getProductoLocal().setTsDias(null);
+//        cpl.getProductoLocal().setTrDias(null);
         cpl.getProductoLocal().setPrimaryKey(new String[]{cpl.getProductoLocal().getCoCompania(), cpl.getProductoLocal().getCoLocal(), cpl.getProductoLocal().getCoProducto(), cpl.getProductoLocal().getNuRevisionProducto()});
 
         Boolean EstadoGuardar = false;
@@ -733,9 +928,11 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         cpl.getProductoLocal().setCaStockMinimo(0);
         cpl.getProductoLocal().setCaStockMaximo(0);
 
+        cp.getProducto().setVaBono(cp.getProductoFull().getTmpVaBono());
+
         if (!esActualizacion) {
             cp.getProducto().setVaPrecioPromedio(0.00);
-            cp.getProducto().setVaBono(0.00);
+
             cpl.getProductoLocal().setCaStockDisponible(0);
             cpl.getProductoLocal().setCaStockTransito(0);
             cpl.getProductoLocal().setCaStockComprometido(0);
@@ -745,31 +942,38 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             cpl.getProductoLocal().setVaFraccion(Integer.parseInt(txtCantidadFraccion.getText()));
             cpl.getProductoLocal().setDeUnidadFraccion(txtUnidadFraccion.getText().toUpperCase());
 
-            cp.getProducto().setCoProducto(cp.getNuevoCodigo());
-            txtCodigo.setText(cp.getProducto().getCoProducto());
+
             cp.getProducto().setIdCreaProducto(AtuxVariables.vIdUsuario);
             cp.getProducto().setFeCreaProducto(FormatoFecha(AtuxDBUtility.getFechaHoraBD(1)));
+            cpl.getProductoLocal().setIdCreaProdLocal(cp.getProducto().getIdCreaProducto());
+            cpl.getProductoLocal().setFeCreaProdLocal(cp.getProducto().getFeCreaProducto());
+
             cp.getProducto().setCoProducto(cp.getNuevoCodigo());
+            txtCodigo.setText(cp.getProducto().getCoProducto());
+
             EstadoGuardar = cp.guardarRegistro(cp.getProducto());
+
             if (EstadoGuardar == true) {
-                cpl.getProductoLocal().setIdCreaProdLocal(AtuxVariables.vIdUsuario);
-                cpl.getProductoLocal().setFeCreaProdLocal(FormatoFecha(AtuxDBUtility.getFechaHoraBD(1)));
                 cpl.getProductoLocal().setCoProducto(cp.getProducto().getCoProducto());
                 EstadoGuardar = cpl.guardarRegistroNuevo(cpl.getProductoLocal());
             }
         } else {
-
             cpl.getProductoLocal().setInProdFraccionado(InProdFraccionadoAnt);
             cpl.getProductoLocal().setVaFraccion(VaFraccionAnt);
             cpl.getProductoLocal().setDeUnidadFraccion(DeFraccionAnt);
 
+            cp.getProducto().setIdCreaProducto(cp.getProductoFull().getTmpIdCreaProducto());
+            cp.getProducto().setFeCreaProducto(cp.getProductoFull().getTmpFeCreaProducto());
+            cpl.getProductoLocal().setIdCreaProdLocal(cp.getProductoFull().getTplIdCreaProdLocal());
+            cpl.getProductoLocal().setFeCreaProdLocal(cp.getProductoFull().getTplFeCreaProdLocal());
+
             cp.getProducto().setIdModProducto(AtuxVariables.vIdUsuario);
             cp.getProducto().setFeModProducto(FormatoFecha(AtuxDBUtility.getFechaHoraBD(1)));
+            cpl.getProductoLocal().setIdModProdLocal(cp.getProducto().getIdModProducto());
+            cpl.getProductoLocal().setFeModProdLocal(cp.getProducto().getFeModProducto());
 
             int act = cp.actualizarProductos(cp.getProducto());
             if (act == 1) {
-                cpl.getProductoLocal().setIdModProdLocal(AtuxVariables.vIdUsuario);
-                cpl.getProductoLocal().setFeModProdLocal(FormatoFecha(AtuxDBUtility.getFechaHoraBD(1)));
                 act = cpl.actualizarProductosLocal(cpl.getProductoLocal());
                 if (act == 1) {
                     String Guardar = cpl.getGuardaFraccion(AtuxVariables.vCodigoCompania, AtuxVariables.vCodigoLocal, cpl.getProductoLocal().getCoProducto(), cbxIndicadorFraccion.getSelectedItem().toString().substring(0, 1), Integer.parseInt(txtCantidadFraccion.getText()), txtUnidadFraccion.getText().toUpperCase());
@@ -856,20 +1060,29 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         txtUnidadFraccion = new elaprendiz.gui.textField.TextField();
         lblUnidadF = new javax.swing.JLabel();
         cbxDescripcionControl = new javax.swing.JComboBox();
-        cbxControlLote = new javax.swing.JComboBox();
         cbxProdControlado = new javax.swing.JComboBox();
         cbxIndicadorFraccion = new javax.swing.JComboBox();
-        cbxPideReceta = new javax.swing.JComboBox();
+        cbxControlLote = new javax.swing.JComboBox();
         cbxPideMedico = new javax.swing.JComboBox();
+        cbxPideReceta = new javax.swing.JComboBox();
+        txtCodigoProcedencia1 = new elaprendiz.gui.textField.TextField();
+        lblCbxIndicadorFraccion = new elaprendiz.gui.textField.TextField();
+        lblCbxDescripcionControl = new elaprendiz.gui.textField.TextField();
+        lblCbxProdControlado = new elaprendiz.gui.textField.TextField();
+        lblCbxPideMedico = new elaprendiz.gui.textField.TextField();
+        lblCbxPideReceta = new elaprendiz.gui.textField.TextField();
+        lblCbxControlLote = new elaprendiz.gui.textField.TextField();
         pnlDatosPrecio01 = new javax.swing.JPanel();
         lblTipoPrecio = new javax.swing.JLabel();
         lblImpuesto = new javax.swing.JLabel();
         lblMoneda = new javax.swing.JLabel();
-        txtTipoPrecio = new elaprendiz.gui.textField.TextField();
+        lblCmbImpuesto = new elaprendiz.gui.textField.TextField();
         chbEstado = new javax.swing.JCheckBox();
         lblImpuesto1 = new javax.swing.JLabel();
-        cmbImpuesto = new javax.swing.JComboBox();
         cmbMoneda = new javax.swing.JComboBox();
+        cmbImpuesto = new javax.swing.JComboBox();
+        lblCmbMoneda = new elaprendiz.gui.textField.TextField();
+        txtTipoPrecio = new elaprendiz.gui.textField.TextField();
         pnlBuscadorCategorias2 = new javax.swing.JPanel();
         lblPVP = new javax.swing.JLabel();
         lblDescuento = new javax.swing.JLabel();
@@ -881,9 +1094,10 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         lblPrecioSol = new javax.swing.JLabel();
         lblFechaCreacion = new javax.swing.JLabel();
         lblFechaVigencia = new javax.swing.JLabel();
+        txtDteFechaCreacion = new elaprendiz.gui.textField.TextField();
+        txtDteFechaVigencia = new elaprendiz.gui.textField.TextField();
         dteFechaCreacion = new com.toedter.calendar.JDateChooser();
         dteFechaVigencia = new com.toedter.calendar.JDateChooser();
-        lblFechaCreacion1 = new javax.swing.JLabel();
         pnlBuscadorCategorias = new javax.swing.JPanel();
         btnPrimero = new elaprendiz.gui.button.ButtonRect();
         btnAnterior = new elaprendiz.gui.button.ButtonRect();
@@ -920,7 +1134,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         panelImage1.setPreferredSize(new java.awt.Dimension(1200, 500));
         panelImage1.setLayout(null);
 
-        pnlEntradasCategorias_G05.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Maestro de Productos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradasCategorias_G05.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Maestro de Productos", 1, 2));
         pnlEntradasCategorias_G05.setAlignmentX(0.2F);
         pnlEntradasCategorias_G05.setAlignmentY(0.2F);
         pnlEntradasCategorias_G05.setEnabled(false);
@@ -928,7 +1142,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlEntradasCategorias_G05.setPreferredSize(new java.awt.Dimension(748, 120));
         pnlEntradasCategorias_G05.setLayout(null);
 
-        pnlDastosIniciales.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlDastosIniciales.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlDastosIniciales.setAlignmentX(0.2F);
         pnlDastosIniciales.setAlignmentY(0.2F);
         pnlDastosIniciales.setOpaque(false);
@@ -1051,7 +1265,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlEntradasCategorias_G05.add(pnlDastosIniciales);
         pnlDastosIniciales.setBounds(16, 20, 1048, 40);
 
-        pnlSetDeCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Set de Categoria", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlSetDeCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Set de Categoria", 1, 2));
         pnlSetDeCategoria.setAlignmentX(0.2F);
         pnlSetDeCategoria.setAlignmentY(0.2F);
         pnlSetDeCategoria.setOpaque(false);
@@ -1246,7 +1460,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlEntradasCategorias_G05.add(pnlSetDeCategoria);
         pnlSetDeCategoria.setBounds(16, 65, 474, 197);
 
-        pnlControlDigemid.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Control Digemid", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlControlDigemid.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Control Digemid", 1, 2));
         pnlControlDigemid.setOpaque(false);
         pnlControlDigemid.setPreferredSize(new java.awt.Dimension(575, 37));
         pnlControlDigemid.setLayout(null);
@@ -1404,27 +1618,17 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         lblUnidadF.setBounds(274, 130, 110, 15);
 
         cbxDescripcionControl.setFont(new java.awt.Font("Tahoma", 0, 12));
-        cbxDescripcionControl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbxDescripcionControl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDigemid.add(cbxDescripcionControl);
         cbxDescripcionControl.setBounds(214, 50, 214, 24);
 
-        cbxControlLote.setFont(new java.awt.Font("Tahoma", 1, 12));
-        cbxControlLote.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cbxControlLote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxControlLoteActionPerformed(evt);
-            }
-        });
-        pnlControlDigemid.add(cbxControlLote);
-        cbxControlLote.setBounds(273, 100, 60, 24);
-
         cbxProdControlado.setFont(new java.awt.Font("Tahoma", 1, 12));
-        cbxProdControlado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbxProdControlado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDigemid.add(cbxProdControlado);
         cbxProdControlado.setBounds(138, 50, 68, 24);
 
         cbxIndicadorFraccion.setFont(new java.awt.Font("Tahoma", 1, 12));
-        cbxIndicadorFraccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbxIndicadorFraccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         cbxIndicadorFraccion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cbxIndicadorFraccionFocusLost(evt);
@@ -1438,54 +1642,200 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlControlDigemid.add(cbxIndicadorFraccion);
         cbxIndicadorFraccion.setBounds(138, 151, 60, 24);
 
+        cbxControlLote.setFont(new java.awt.Font("Tahoma", 1, 12));
+        cbxControlLote.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        cbxControlLote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxControlLoteActionPerformed(evt);
+            }
+        });
+        pnlControlDigemid.add(cbxControlLote);
+        cbxControlLote.setBounds(270, 100, 60, 24);
+
+        cbxPideMedico.setFont(new java.awt.Font("Tahoma", 1, 12));
+        cbxPideMedico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        pnlControlDigemid.add(cbxPideMedico);
+        cbxPideMedico.setBounds(138, 100, 60, 24);
+
         cbxPideReceta.setFont(new java.awt.Font("Tahoma", 1, 12));
-        cbxPideReceta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbxPideReceta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDigemid.add(cbxPideReceta);
         cbxPideReceta.setBounds(207, 100, 56, 24);
 
-        cbxPideMedico.setFont(new java.awt.Font("Tahoma", 1, 12));
-        cbxPideMedico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pnlControlDigemid.add(cbxPideMedico);
-        cbxPideMedico.setBounds(138, 100, 60, 24);
+        txtCodigoProcedencia1.setEditable(false);
+        txtCodigoProcedencia1.setAlignmentX(0.2F);
+        txtCodigoProcedencia1.setAlignmentY(0.2F);
+        txtCodigoProcedencia1.setDireccionDeSombra(30);
+        txtCodigoProcedencia1.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtCodigoProcedencia1.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCodigoProcedencia1.setMinimumSize(new java.awt.Dimension(6, 20));
+        txtCodigoProcedencia1.setName(""); // NOI18N
+        txtCodigoProcedencia1.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtCodigoProcedencia1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCodigoProcedencia1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodigoProcedencia1FocusLost(evt);
+            }
+        });
+        txtCodigoProcedencia1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodigoProcedencia1KeyReleased(evt);
+            }
+        });
+        pnlControlDigemid.add(txtCodigoProcedencia1);
+        txtCodigoProcedencia1.setBounds(137, 16, 70, 25);
+
+        lblCbxIndicadorFraccion.setEditable(false);
+        lblCbxIndicadorFraccion.setAlignmentX(0.2F);
+        lblCbxIndicadorFraccion.setAlignmentY(0.2F);
+        lblCbxIndicadorFraccion.setDireccionDeSombra(30);
+        lblCbxIndicadorFraccion.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        lblCbxIndicadorFraccion.setFont(new java.awt.Font("Arial", 0, 12));
+        lblCbxIndicadorFraccion.setMinimumSize(new java.awt.Dimension(6, 20));
+        lblCbxIndicadorFraccion.setName("pcodigo"); // NOI18N
+        lblCbxIndicadorFraccion.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblCbxIndicadorFraccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblCbxIndicadorFraccionKeyReleased(evt);
+            }
+        });
+        pnlControlDigemid.add(lblCbxIndicadorFraccion);
+        lblCbxIndicadorFraccion.setBounds(20, 170, 20, 20);
+
+        lblCbxDescripcionControl.setEditable(false);
+        lblCbxDescripcionControl.setAlignmentX(0.2F);
+        lblCbxDescripcionControl.setAlignmentY(0.2F);
+        lblCbxDescripcionControl.setDireccionDeSombra(30);
+        lblCbxDescripcionControl.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        lblCbxDescripcionControl.setFont(new java.awt.Font("Arial", 0, 12));
+        lblCbxDescripcionControl.setMinimumSize(new java.awt.Dimension(6, 20));
+        lblCbxDescripcionControl.setName("pcodigo"); // NOI18N
+        lblCbxDescripcionControl.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblCbxDescripcionControl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblCbxDescripcionControlKeyReleased(evt);
+            }
+        });
+        pnlControlDigemid.add(lblCbxDescripcionControl);
+        lblCbxDescripcionControl.setBounds(20, 80, 20, 20);
+
+        lblCbxProdControlado.setEditable(false);
+        lblCbxProdControlado.setAlignmentX(0.2F);
+        lblCbxProdControlado.setAlignmentY(0.2F);
+        lblCbxProdControlado.setDireccionDeSombra(30);
+        lblCbxProdControlado.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        lblCbxProdControlado.setFont(new java.awt.Font("Arial", 0, 12));
+        lblCbxProdControlado.setMinimumSize(new java.awt.Dimension(6, 20));
+        lblCbxProdControlado.setName("pcodigo"); // NOI18N
+        lblCbxProdControlado.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblCbxProdControlado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblCbxProdControladoKeyReleased(evt);
+            }
+        });
+        pnlControlDigemid.add(lblCbxProdControlado);
+        lblCbxProdControlado.setBounds(50, 80, 20, 20);
+
+        lblCbxPideMedico.setEditable(false);
+        lblCbxPideMedico.setAlignmentX(0.2F);
+        lblCbxPideMedico.setAlignmentY(0.2F);
+        lblCbxPideMedico.setDireccionDeSombra(30);
+        lblCbxPideMedico.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        lblCbxPideMedico.setFont(new java.awt.Font("Arial", 0, 12));
+        lblCbxPideMedico.setMinimumSize(new java.awt.Dimension(6, 20));
+        lblCbxPideMedico.setName("pcodigo"); // NOI18N
+        lblCbxPideMedico.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblCbxPideMedico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblCbxPideMedicoKeyReleased(evt);
+            }
+        });
+        pnlControlDigemid.add(lblCbxPideMedico);
+        lblCbxPideMedico.setBounds(20, 130, 20, 20);
+
+        lblCbxPideReceta.setEditable(false);
+        lblCbxPideReceta.setAlignmentX(0.2F);
+        lblCbxPideReceta.setAlignmentY(0.2F);
+        lblCbxPideReceta.setDireccionDeSombra(30);
+        lblCbxPideReceta.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        lblCbxPideReceta.setFont(new java.awt.Font("Arial", 0, 12));
+        lblCbxPideReceta.setMinimumSize(new java.awt.Dimension(6, 20));
+        lblCbxPideReceta.setName("pcodigo"); // NOI18N
+        lblCbxPideReceta.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblCbxPideReceta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblCbxPideRecetaKeyReleased(evt);
+            }
+        });
+        pnlControlDigemid.add(lblCbxPideReceta);
+        lblCbxPideReceta.setBounds(50, 130, 20, 20);
+
+        lblCbxControlLote.setEditable(false);
+        lblCbxControlLote.setAlignmentX(0.2F);
+        lblCbxControlLote.setAlignmentY(0.2F);
+        lblCbxControlLote.setDireccionDeSombra(30);
+        lblCbxControlLote.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        lblCbxControlLote.setFont(new java.awt.Font("Arial", 0, 12));
+        lblCbxControlLote.setMinimumSize(new java.awt.Dimension(6, 20));
+        lblCbxControlLote.setName("pcodigo"); // NOI18N
+        lblCbxControlLote.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblCbxControlLote.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblCbxControlLoteKeyReleased(evt);
+            }
+        });
+        pnlControlDigemid.add(lblCbxControlLote);
+        lblCbxControlLote.setBounds(80, 130, 20, 20);
 
         pnlEntradasCategorias_G05.add(pnlControlDigemid);
         pnlControlDigemid.setBounds(496, 65, 447, 197);
 
-        pnlDatosPrecio01.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlDatosPrecio01.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlDatosPrecio01.setAlignmentX(0.2F);
         pnlDatosPrecio01.setAlignmentY(0.2F);
         pnlDatosPrecio01.setOpaque(false);
         pnlDatosPrecio01.setPreferredSize(new java.awt.Dimension(575, 37));
+        pnlDatosPrecio01.setLayout(null);
 
         lblTipoPrecio.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblTipoPrecio.setText("Tp. Precio");
         lblTipoPrecio.setAlignmentX(0.2F);
         lblTipoPrecio.setAlignmentY(0.2F);
+        pnlDatosPrecio01.add(lblTipoPrecio);
+        lblTipoPrecio.setBounds(24, 6, 60, 15);
 
         lblImpuesto.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblImpuesto.setText("Imp. IGV");
         lblImpuesto.setAlignmentX(0.2F);
         lblImpuesto.setAlignmentY(0.2F);
+        pnlDatosPrecio01.add(lblImpuesto);
+        lblImpuesto.setBounds(24, 61, 53, 15);
 
         lblMoneda.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblMoneda.setText("Moneda S/.");
         lblMoneda.setAlignmentX(0.2F);
         lblMoneda.setAlignmentY(0.2F);
+        pnlDatosPrecio01.add(lblMoneda);
+        lblMoneda.setBounds(16, 119, 72, 15);
 
-        txtTipoPrecio.setEditable(false);
-        txtTipoPrecio.setAlignmentX(0.2F);
-        txtTipoPrecio.setAlignmentY(0.2F);
-        txtTipoPrecio.setDireccionDeSombra(30);
-        txtTipoPrecio.setDisabledTextColor(new java.awt.Color(255, 102, 102));
-        txtTipoPrecio.setFont(new java.awt.Font("Arial", 0, 12));
-        txtTipoPrecio.setMinimumSize(new java.awt.Dimension(6, 20));
-        txtTipoPrecio.setName("pcodigo"); // NOI18N
-        txtTipoPrecio.setPreferredSize(new java.awt.Dimension(120, 25));
-        txtTipoPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+        lblCmbImpuesto.setEditable(false);
+        lblCmbImpuesto.setAlignmentX(0.2F);
+        lblCmbImpuesto.setAlignmentY(0.2F);
+        lblCmbImpuesto.setDireccionDeSombra(30);
+        lblCmbImpuesto.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        lblCmbImpuesto.setFont(new java.awt.Font("Arial", 0, 12));
+        lblCmbImpuesto.setMinimumSize(new java.awt.Dimension(6, 20));
+        lblCmbImpuesto.setName("pcodigo"); // NOI18N
+        lblCmbImpuesto.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblCmbImpuesto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTipoPrecioKeyReleased(evt);
+                lblCmbImpuestoKeyReleased(evt);
             }
         });
+        pnlDatosPrecio01.add(lblCmbImpuesto);
+        lblCmbImpuesto.setBounds(90, 60, 20, 25);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -1505,80 +1855,77 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlDatosPrecio01.add(chbEstado);
+        chbEstado.setBounds(5, 189, 100, 26);
 
         lblImpuesto1.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblImpuesto1.setText("Estado");
         lblImpuesto1.setAlignmentX(0.2F);
         lblImpuesto1.setAlignmentY(0.2F);
-
-        cmbImpuesto.setFont(new java.awt.Font("Tahoma", 0, 12));
-        cmbImpuesto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlDatosPrecio01.add(lblImpuesto1);
+        lblImpuesto1.setBounds(31, 172, 42, 15);
 
         cmbMoneda.setFont(new java.awt.Font("Tahoma", 0, 12));
-        cmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        pnlDatosPrecio01.add(cmbMoneda);
+        cmbMoneda.setBounds(14, 146, 78, 24);
 
-        javax.swing.GroupLayout pnlDatosPrecio01Layout = new javax.swing.GroupLayout(pnlDatosPrecio01);
-        pnlDatosPrecio01.setLayout(pnlDatosPrecio01Layout);
-        pnlDatosPrecio01Layout.setHorizontalGroup(
-            pnlDatosPrecio01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblTipoPrecio))
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(txtTipoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblImpuesto))
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(cmbImpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblMoneda))
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(cmbMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(lblImpuesto1))
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(3, 3, 3)
-                .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnlDatosPrecio01Layout.setVerticalGroup(
-            pnlDatosPrecio01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDatosPrecio01Layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(lblTipoPrecio)
-                .addGap(5, 5, 5)
-                .addComponent(txtTipoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblImpuesto)
-                .addGap(10, 10, 10)
-                .addComponent(cmbImpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(lblMoneda)
-                .addGap(12, 12, 12)
-                .addComponent(cmbMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(lblImpuesto1)
-                .addGap(2, 2, 2)
-                .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        cmbImpuesto.setFont(new java.awt.Font("Tahoma", 0, 12));
+        cmbImpuesto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        pnlDatosPrecio01.add(cmbImpuesto);
+        cmbImpuesto.setBounds(14, 86, 78, 24);
+
+        lblCmbMoneda.setEditable(false);
+        lblCmbMoneda.setAlignmentX(0.2F);
+        lblCmbMoneda.setAlignmentY(0.2F);
+        lblCmbMoneda.setDireccionDeSombra(30);
+        lblCmbMoneda.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        lblCmbMoneda.setFont(new java.awt.Font("Arial", 0, 12));
+        lblCmbMoneda.setMinimumSize(new java.awt.Dimension(6, 20));
+        lblCmbMoneda.setName("pcodigo"); // NOI18N
+        lblCmbMoneda.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblCmbMoneda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblCmbMonedaKeyReleased(evt);
+            }
+        });
+        pnlDatosPrecio01.add(lblCmbMoneda);
+        lblCmbMoneda.setBounds(90, 120, 20, 25);
+
+        txtTipoPrecio.setEditable(false);
+        txtTipoPrecio.setAlignmentX(0.2F);
+        txtTipoPrecio.setAlignmentY(0.2F);
+        txtTipoPrecio.setDireccionDeSombra(30);
+        txtTipoPrecio.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtTipoPrecio.setFont(new java.awt.Font("Arial", 0, 12));
+        txtTipoPrecio.setMinimumSize(new java.awt.Dimension(6, 20));
+        txtTipoPrecio.setName("pcodigo"); // NOI18N
+        txtTipoPrecio.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtTipoPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTipoPrecioKeyReleased(evt);
+            }
+        });
+        pnlDatosPrecio01.add(txtTipoPrecio);
+        txtTipoPrecio.setBounds(12, 26, 80, 25);
 
         pnlEntradasCategorias_G05.add(pnlDatosPrecio01);
         pnlDatosPrecio01.setBounds(949, 75, 117, 232);
 
-        pnlBuscadorCategorias2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorCategorias2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorCategorias2.setOpaque(false);
         pnlBuscadorCategorias2.setPreferredSize(new java.awt.Dimension(575, 37));
+        pnlBuscadorCategorias2.setLayout(null);
 
         lblPVP.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblPVP.setText("PVP S/.");
+        pnlBuscadorCategorias2.add(lblPVP);
+        lblPVP.setBounds(422, 4, 47, 23);
 
         lblDescuento.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblDescuento.setText("Desc. %");
+        pnlBuscadorCategorias2.add(lblDescuento);
+        lblDescuento.setBounds(292, 4, 50, 23);
 
         txtDescuento.setEditable(false);
         txtDescuento.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1593,6 +1940,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                 txtDescuentoKeyReleased(evt);
             }
         });
+        pnlBuscadorCategorias2.add(txtDescuento);
+        txtDescuento.setBounds(342, 3, 70, 25);
 
         txtPreVtaPublico.setEditable(false);
         txtPreVtaPublico.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1607,6 +1956,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                 txtPreVtaPublicoKeyReleased(evt);
             }
         });
+        pnlBuscadorCategorias2.add(txtPreVtaPublico);
+        txtPreVtaPublico.setBounds(472, 3, 70, 25);
 
         txtPrecio.setEditable(false);
         txtPrecio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1621,9 +1972,13 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                 txtPrecioKeyReleased(evt);
             }
         });
+        pnlBuscadorCategorias2.add(txtPrecio);
+        txtPrecio.setBounds(212, 3, 70, 25);
 
         lblCostoSol.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblCostoSol.setText("Costo S/.");
+        pnlBuscadorCategorias2.add(lblCostoSol);
+        lblCostoSol.setBounds(12, 4, 59, 23);
 
         txtCosto.setEditable(false);
         txtCosto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1638,15 +1993,55 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                 txtCostoKeyReleased(evt);
             }
         });
+        pnlBuscadorCategorias2.add(txtCosto);
+        txtCosto.setBounds(72, 3, 70, 25);
 
         lblPrecioSol.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblPrecioSol.setText("Precio S/.");
+        pnlBuscadorCategorias2.add(lblPrecioSol);
+        lblPrecioSol.setBounds(152, 4, 60, 23);
 
         lblFechaCreacion.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblFechaCreacion.setText("Fec.Crea");
+        pnlBuscadorCategorias2.add(lblFechaCreacion);
+        lblFechaCreacion.setBounds(752, 4, 50, 23);
 
         lblFechaVigencia.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblFechaVigencia.setText("Fec.Vigencia");
+        pnlBuscadorCategorias2.add(lblFechaVigencia);
+        lblFechaVigencia.setBounds(552, 4, 73, 23);
+
+        txtDteFechaCreacion.setEditable(false);
+        txtDteFechaCreacion.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtDteFechaCreacion.setDireccionDeSombra(30);
+        txtDteFechaCreacion.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtDteFechaCreacion.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaCreacion.setMinimumSize(new java.awt.Dimension(6, 20));
+        txtDteFechaCreacion.setName(""); // NOI18N
+        txtDteFechaCreacion.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtDteFechaCreacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDteFechaCreacionKeyReleased(evt);
+            }
+        });
+        pnlBuscadorCategorias2.add(txtDteFechaCreacion);
+        txtDteFechaCreacion.setBounds(702, 8, 10, 25);
+
+        txtDteFechaVigencia.setEditable(false);
+        txtDteFechaVigencia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtDteFechaVigencia.setDireccionDeSombra(30);
+        txtDteFechaVigencia.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtDteFechaVigencia.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaVigencia.setMinimumSize(new java.awt.Dimension(6, 20));
+        txtDteFechaVigencia.setName(""); // NOI18N
+        txtDteFechaVigencia.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtDteFechaVigencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDteFechaVigenciaKeyReleased(evt);
+            }
+        });
+        pnlBuscadorCategorias2.add(txtDteFechaVigencia);
+        txtDteFechaVigencia.setBounds(682, 8, 10, 25);
 
         dteFechaCreacion.setBackground(new java.awt.Color(0, 0, 0));
         dteFechaCreacion.setForeground(new java.awt.Color(255, 0, 0));
@@ -1659,83 +2054,17 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                 dteFechaCreacionKeyReleased(evt);
             }
         });
+        pnlBuscadorCategorias2.add(dteFechaCreacion);
+        dteFechaCreacion.setBounds(806, 4, 110, 22);
 
         dteFechaVigencia.setBackground(new java.awt.Color(0, 0, 0));
         dteFechaVigencia.setForeground(new java.awt.Color(255, 0, 0));
         dteFechaVigencia.setDate(Calendar.getInstance().getTime());
-        dteFechaVigencia.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dteFechaVigencia.setFont(new java.awt.Font("Tahoma", 1, 13));
         dteFechaVigencia.setPreferredSize(new java.awt.Dimension(120, 22));
         dteFechaVigencia.setRequestFocusEnabled(false);
-
-        lblFechaCreacion1.setFont(new java.awt.Font("Tahoma", 1, 12));
-
-        javax.swing.GroupLayout pnlBuscadorCategorias2Layout = new javax.swing.GroupLayout(pnlBuscadorCategorias2);
-        pnlBuscadorCategorias2.setLayout(pnlBuscadorCategorias2Layout);
-        pnlBuscadorCategorias2Layout.setHorizontalGroup(
-            pnlBuscadorCategorias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblCostoSol)
-                .addGap(1, 1, 1)
-                .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblPrecioSol)
-                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblDescuento)
-                .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblPVP)
-                .addGap(3, 3, 3)
-                .addComponent(txtPreVtaPublico, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblFechaVigencia)
-                .addGap(7, 7, 7)
-                .addComponent(dteFechaVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblFechaCreacion)
-                .addGap(4, 4, 4)
-                .addComponent(dteFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnlBuscadorCategorias2Layout.setVerticalGroup(
-            pnlBuscadorCategorias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(lblCostoSol, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(lblPrecioSol, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(lblDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(lblPVP, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(txtPreVtaPublico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(lblFechaVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(dteFechaVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(lblFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(dteFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        pnlBuscadorCategorias2.add(dteFechaVigencia);
+        dteFechaVigencia.setBounds(632, 4, 110, 22);
 
         pnlEntradasCategorias_G05.add(pnlBuscadorCategorias2);
         pnlBuscadorCategorias2.setBounds(16, 270, 927, 39);
@@ -1743,7 +2072,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         panelImage1.add(pnlEntradasCategorias_G05);
         pnlEntradasCategorias_G05.setBounds(10, 0, 1078, 320);
 
-        pnlBuscadorCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorCategorias.setOpaque(false);
         pnlBuscadorCategorias.setPreferredSize(new java.awt.Dimension(575, 37));
         pnlBuscadorCategorias.setLayout(null);
@@ -1843,7 +2172,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         panelImage1.add(pnlBuscadorCategorias);
         pnlBuscadorCategorias.setBounds(198, 326, 551, 37);
 
-        pnlAccionesCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesCategorias.setOpaque(false);
         pnlAccionesCategorias.setPreferredSize(new java.awt.Dimension(550, 50));
         pnlAccionesCategorias.setLayout(null);
@@ -2007,7 +2336,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
         );
 
         pack();
@@ -2390,13 +2719,13 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtPreVtaPublicoKeyReleased
 
-    private void txtTipoPrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTipoPrecioKeyReleased
+    private void lblCmbImpuestoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCmbImpuestoKeyReleased
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_ENTER:
                 cmbImpuesto.requestFocus();
                 break;
         }
-    }//GEN-LAST:event_txtTipoPrecioKeyReleased
+    }//GEN-LAST:event_lblCmbImpuestoKeyReleased
 
     private void chbEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chbEstadoKeyReleased
         switch (evt.getKeyCode()) {
@@ -2409,7 +2738,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private void dteFechaCreacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dteFechaCreacionKeyReleased
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_ENTER:
-                txtTipoPrecio.requestFocus();
+                lblCmbImpuesto.requestFocus();
                 break;
         }
     }//GEN-LAST:event_dteFechaCreacionKeyReleased
@@ -2418,8 +2747,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         finalPag = tblListado.getRowCount() - 1;
         numRegistros = 0;
         AtuxGridUtils.showCell(tblListado,numRegistros,ModeloTablaSimple.COLUMNA_DESCRIPCION);
-        cp.setProducto(mtp.getFila(numRegistros));
-        setMaestroProductos();
+        cp.setProductoFull(mtp.getFila(numRegistros));
+        setMaestroProductosFull();
         return;
     }//GEN-LAST:event_btnPrimeroActionPerformed
 
@@ -2430,8 +2759,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             numRegistros = 0;
         }
         AtuxGridUtils.showCell(tblListado,numRegistros,ModeloTablaSimple.COLUMNA_DESCRIPCION);
-        cp.setProducto(mtp.getFila(numRegistros));
-        setMaestroProductos();
+        cp.setProductoFull(mtp.getFila(numRegistros));
+        setMaestroProductosFull();
         return;
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
@@ -2446,7 +2775,16 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
 
         if (pvc.getMaestroProducto() != null) {
             cp.setProducto(pvc.getMaestroProducto());
-            setMaestroProductos();
+
+            for (int j=0; j>=mtp.getCantidadRegistros();j++){
+                cp.setProductoFull(mtp.getFila(j));
+                if (cp.getProductoFull().getTmpCoProducto().equals(cp.getProducto().getCoProducto())){
+                    numRegistros=j;
+                    break;
+                }
+            }
+            cp.setProductoFull(mtp.getFila(numRegistros));
+            setMaestroProductosFull();
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -2458,8 +2796,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             numRegistros = finalPag;
         }
         AtuxGridUtils.showCell(tblListado,numRegistros,ModeloTablaSimple.COLUMNA_DESCRIPCION);
-        cp.setProducto(mtp.getFila(numRegistros));
-        setMaestroProductos();
+        cp.setProductoFull(mtp.getFila(numRegistros));
+        setMaestroProductosFull();
         return;
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
@@ -2467,8 +2805,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         finalPag = tblListado.getRowCount() - 1;
         numRegistros = finalPag;
         AtuxGridUtils.showCell(tblListado,numRegistros, ModeloTablaSimple.COLUMNA_DESCRIPCION);
-        cp.setProducto(mtp.getFila(numRegistros));
-        setMaestroProductos();
+        cp.setProductoFull(mtp.getFila(numRegistros));
+        setMaestroProductosFull();
         return;
     }//GEN-LAST:event_btnUltimoActionPerformed
 
@@ -2566,6 +2904,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         }
         AtuxUtility.aceptarTransaccion();
         DesActivarCasillas();
+//        ActualizarGrilla();
         CargarGrilla();
         JOptionPane.showMessageDialog(this, "Información Guardada Satisfactoriamente", "Mensaje del Sistema", JOptionPane.INFORMATION_MESSAGE);
         tblListado.requestFocus();
@@ -2683,7 +3022,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                     txtUnidadFraccion.setEditable(false);
                     txtCantidadFraccion.setText("0");
                     txtUnidadFraccion.setText("");
-                    txtTipoPrecio.requestFocus();
+                    lblCmbImpuesto.requestFocus();
                 }
                 break;
         }
@@ -2692,6 +3031,58 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private void tblListadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblListadoKeyReleased
 
     }//GEN-LAST:event_tblListadoKeyReleased
+
+private void txtCodigoProcedencia1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoProcedencia1FocusGained
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCodigoProcedencia1FocusGained
+
+private void txtCodigoProcedencia1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoProcedencia1FocusLost
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCodigoProcedencia1FocusLost
+
+private void txtCodigoProcedencia1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProcedencia1KeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCodigoProcedencia1KeyReleased
+
+private void lblCbxIndicadorFraccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCbxIndicadorFraccionKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_lblCbxIndicadorFraccionKeyReleased
+
+private void lblCmbMonedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCmbMonedaKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_lblCmbMonedaKeyReleased
+
+private void txtTipoPrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTipoPrecioKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtTipoPrecioKeyReleased
+
+private void lblCbxDescripcionControlKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCbxDescripcionControlKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_lblCbxDescripcionControlKeyReleased
+
+private void lblCbxProdControladoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCbxProdControladoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_lblCbxProdControladoKeyReleased
+
+private void lblCbxPideMedicoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCbxPideMedicoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_lblCbxPideMedicoKeyReleased
+
+private void lblCbxPideRecetaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCbxPideRecetaKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_lblCbxPideRecetaKeyReleased
+
+private void lblCbxControlLoteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCbxControlLoteKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_lblCbxControlLoteKeyReleased
+
+private void txtDteFechaCreacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDteFechaCreacionKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtDteFechaCreacionKeyReleased
+
+private void txtDteFechaVigenciaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDteFechaVigenciaKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtDteFechaVigenciaKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnAnterior;
@@ -2724,6 +3115,14 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCantidadF;
+    private elaprendiz.gui.textField.TextField lblCbxControlLote;
+    private elaprendiz.gui.textField.TextField lblCbxDescripcionControl;
+    private elaprendiz.gui.textField.TextField lblCbxIndicadorFraccion;
+    private elaprendiz.gui.textField.TextField lblCbxPideMedico;
+    private elaprendiz.gui.textField.TextField lblCbxPideReceta;
+    private elaprendiz.gui.textField.TextField lblCbxProdControlado;
+    private elaprendiz.gui.textField.TextField lblCmbImpuesto;
+    private elaprendiz.gui.textField.TextField lblCmbMoneda;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblControlDigemid;
     private javax.swing.JLabel lblControlLote;
@@ -2732,7 +3131,6 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblDescrip;
     private javax.swing.JLabel lblDescuento;
     private javax.swing.JLabel lblFechaCreacion;
-    private javax.swing.JLabel lblFechaCreacion1;
     private javax.swing.JLabel lblFechaVigencia;
     private javax.swing.JLabel lblFraccionamiento;
     private javax.swing.JLabel lblG1;
@@ -2777,12 +3175,15 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private elaprendiz.gui.textField.TextField txtCodigoG5;
     private elaprendiz.gui.textField.TextField txtCodigoLaboratorio;
     private elaprendiz.gui.textField.TextField txtCodigoProcedencia;
+    private elaprendiz.gui.textField.TextField txtCodigoProcedencia1;
     private elaprendiz.gui.textField.TextField txtCosto;
     private elaprendiz.gui.textField.TextField txtDescripLaboratorio;
     private elaprendiz.gui.textField.TextField txtDescripProcedencia;
     private elaprendiz.gui.textField.TextField txtDescripcion;
     private elaprendiz.gui.textField.TextField txtDescuento;
     private elaprendiz.gui.textField.TextField txtDivision;
+    private elaprendiz.gui.textField.TextField txtDteFechaCreacion;
+    private elaprendiz.gui.textField.TextField txtDteFechaVigencia;
     private elaprendiz.gui.textField.TextField txtFamilia;
     private elaprendiz.gui.textField.TextField txtLineaComercial;
     private elaprendiz.gui.textField.TextField txtPideLote2;

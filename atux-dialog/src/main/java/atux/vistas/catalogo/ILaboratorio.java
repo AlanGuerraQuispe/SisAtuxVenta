@@ -64,6 +64,9 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
         setEventSelectionModel(tblLaboratorio.getSelectionModel());
         DesActivarCasillas();        
         setFiltroTexto();
+        
+        cmbLabPropio.setBounds(550, 178, 119, 25);
+        txtCmbLabPropio.setBounds(550, 178, 119, 25);
 
     }
 
@@ -106,6 +109,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
         txtMovilContacto = new elaprendiz.gui.textField.TextField();
         txtEmailContacto = new elaprendiz.gui.textField.TextField();
         chbEstado = new javax.swing.JCheckBox();
+        txtCmbLabPropio = new elaprendiz.gui.textField.TextField();
         cmbLabPropio = new elaprendiz.gui.comboBox.ComboBoxRect();
         pnlBuscador = new javax.swing.JPanel();
         btnPrimero = new elaprendiz.gui.button.ButtonRect();
@@ -131,51 +135,80 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
-        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Laboratorio", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Laboratorio", 1, 2));
         pnlEntradas.setOpaque(false);
         pnlEntradas.setPreferredSize(new java.awt.Dimension(780, 200));
+        pnlEntradas.setLayout(null);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setText("Codigo:");
+        pnlEntradas.add(lblCodigo);
+        lblCodigo.setBounds(31, 27, 54, 27);
 
         lblAbrevia.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblAbrevia.setText("Abrevia:");
+        pnlEntradas.add(lblAbrevia);
+        lblAbrevia.setBounds(306, 28, 57, 24);
 
         lblLaboratorio.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblLaboratorio.setText("Laboratorio:");
+        pnlEntradas.add(lblLaboratorio);
+        lblLaboratorio.setBounds(453, 27, 86, 27);
 
         lblDirec.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDirec.setText("Direccion:");
+        pnlEntradas.add(lblDirec);
+        lblDirec.setBounds(18, 64, 67, 24);
 
         lblCiudad.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCiudad.setText("Ciudad:");
+        pnlEntradas.add(lblCiudad);
+        lblCiudad.setBounds(486, 64, 53, 24);
 
         lbleMaill.setFont(new java.awt.Font("Tahoma", 1, 14));
         lbleMaill.setText("E-mail:");
+        pnlEntradas.add(lbleMaill);
+        lbleMaill.setBounds(38, 100, 47, 24);
 
         lblTelefono.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTelefono.setText("Telefono:");
+        pnlEntradas.add(lblTelefono);
+        lblTelefono.setBounds(474, 99, 65, 27);
 
         lblFax.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblFax.setText("Fax:");
+        pnlEntradas.add(lblFax);
+        lblFax.setBounds(724, 99, 29, 27);
 
         lblContacto.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblContacto.setText("Contacto:");
+        pnlEntradas.add(lblContacto);
+        lblContacto.setBounds(16, 136, 69, 27);
 
         lblTelefonoContacto.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTelefonoContacto.setText("Telefono:");
+        pnlEntradas.add(lblTelefonoContacto);
+        lblTelefonoContacto.setBounds(474, 135, 65, 27);
 
         lblMovil.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblMovil.setText("Movil:");
+        pnlEntradas.add(lblMovil);
+        lblMovil.setBounds(721, 137, 40, 27);
 
         lblEmailContacto.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEmailContacto.setText("E-mail:");
+        pnlEntradas.add(lblEmailContacto);
+        lblEmailContacto.setBounds(38, 172, 47, 29);
 
         lblLabPropio.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblLabPropio.setText("Lab.Propio:");
+        pnlEntradas.add(lblLabPropio);
+        lblLabPropio.setBounds(461, 179, 79, 17);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado:");
+        pnlEntradas.add(lblEstado);
+        lblEstado.setBounds(704, 182, 53, 17);
 
         txtCodigo.setEditable(false);
         txtCodigo.setDireccionDeSombra(30);
@@ -188,6 +221,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtCodigoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtCodigo);
+        txtCodigo.setBounds(95, 27, 120, 30);
 
         txtAbreviatura.setEditable(false);
         txtAbreviatura.setDireccionDeSombra(30);
@@ -199,6 +234,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtAbreviaturaKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtAbreviatura);
+        txtAbreviatura.setBounds(373, 27, 70, 30);
 
         txtLaboratorio.setEditable(false);
         txtLaboratorio.setDireccionDeSombra(30);
@@ -211,6 +248,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtLaboratorioKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtLaboratorio);
+        txtLaboratorio.setBounds(549, 27, 342, 30);
 
         txtDireccion.setEditable(false);
         txtDireccion.setDireccionDeSombra(30);
@@ -222,6 +261,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtDireccionKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtDireccion);
+        txtDireccion.setBounds(95, 63, 348, 30);
 
         txtCiudad.setEditable(false);
         txtCiudad.setDireccionDeSombra(30);
@@ -233,6 +274,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtCiudadKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtCiudad);
+        txtCiudad.setBounds(549, 63, 342, 30);
 
         txtEmailLaboratorio.setEditable(false);
         txtEmailLaboratorio.setDireccionDeSombra(30);
@@ -245,6 +288,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtEmailLaboratorioKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtEmailLaboratorio);
+        txtEmailLaboratorio.setBounds(95, 99, 348, 30);
 
         txtTelefLaboratorio.setEditable(false);
         txtTelefLaboratorio.setDireccionDeSombra(30);
@@ -256,6 +301,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtTelefLaboratorioKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtTelefLaboratorio);
+        txtTelefLaboratorio.setBounds(549, 99, 120, 30);
 
         txtFaxLaboratorio.setEditable(false);
         txtFaxLaboratorio.setDireccionDeSombra(30);
@@ -267,6 +314,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtFaxLaboratorioKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtFaxLaboratorio);
+        txtFaxLaboratorio.setBounds(771, 99, 120, 30);
 
         txtContacto.setEditable(false);
         txtContacto.setDireccionDeSombra(30);
@@ -278,6 +327,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtContactoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtContacto);
+        txtContacto.setBounds(96, 136, 347, 30);
 
         txtTelefContacto.setEditable(false);
         txtTelefContacto.setDireccionDeSombra(30);
@@ -289,6 +340,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtTelefContactoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtTelefContacto);
+        txtTelefContacto.setBounds(549, 135, 120, 30);
 
         txtMovilContacto.setEditable(false);
         txtMovilContacto.setDireccionDeSombra(30);
@@ -300,6 +353,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtMovilContactoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtMovilContacto);
+        txtMovilContacto.setBounds(771, 135, 120, 34);
 
         txtEmailContacto.setEditable(false);
         txtEmailContacto.setDireccionDeSombra(30);
@@ -312,6 +367,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 txtEmailContactoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtEmailContacto);
+        txtEmailContacto.setBounds(96, 173, 347, 30);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -329,6 +386,21 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(chbEstado);
+        chbEstado.setBounds(775, 178, 116, 25);
+
+        txtCmbLabPropio.setEditable(false);
+        txtCmbLabPropio.setDireccionDeSombra(30);
+        txtCmbLabPropio.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtCmbLabPropio.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCmbLabPropio.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtCmbLabPropio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbLabPropioKeyReleased(evt);
+            }
+        });
+        pnlEntradas.add(txtCmbLabPropio);
+        txtCmbLabPropio.setBounds(679, 135, 13, 30);
 
         cmbLabPropio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-----------------", "Si", "No" }));
         cmbLabPropio.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -336,130 +408,10 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 cmbLabPropioKeyReleased(evt);
             }
         });
+        pnlEntradas.add(cmbLabPropio);
+        cmbLabPropio.setBounds(550, 178, 119, 20);
 
-        javax.swing.GroupLayout pnlEntradasLayout = new javax.swing.GroupLayout(pnlEntradas);
-        pnlEntradas.setLayout(pnlEntradasLayout);
-        pnlEntradasLayout.setHorizontalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCodigo)
-                    .addComponent(lblDirec)
-                    .addComponent(lbleMaill)
-                    .addComponent(lblContacto)
-                    .addComponent(lblEmailContacto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtEmailLaboratorio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                        .addComponent(lblAbrevia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtAbreviatura, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEntradasLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmailContacto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-                            .addComponent(txtContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTelefonoContacto)
-                            .addComponent(lblLaboratorio)
-                            .addComponent(lblCiudad)
-                            .addComponent(lblTelefono))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
-                            .addComponent(txtCiudad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
-                            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                                .addComponent(txtTelefLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                                .addComponent(lblFax)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFaxLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                                .addComponent(txtTelefContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                                .addComponent(lblMovil)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMovilContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(lblLabPropio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbLabPropio, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                        .addGap(35, 35, 35)
-                        .addComponent(lblEstado)
-                        .addGap(18, 18, 18)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        pnlEntradasLayout.setVerticalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTelefLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFaxLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFax, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtMovilContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                                .addComponent(lblMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtTelefContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(9, 9, 9)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblLabPropio)
-                                .addComponent(cmbLabPropio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblEstado))))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAbreviatura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAbrevia, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDirec, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmailLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbleMaill, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmailContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmailContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-
-        pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscador.setOpaque(false);
         pnlBuscador.setPreferredSize(new java.awt.Dimension(780, 200));
 
@@ -537,10 +489,10 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
         pnlBuscador.setLayout(pnlBuscadorLayout);
         pnlBuscadorLayout.setHorizontalGroup(
             pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+            .addGap(0, 572, Short.MAX_VALUE)
             .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorLayout.createSequentialGroup()
-                    .addGap(0, 9, Short.MAX_VALUE)
+                    .addGap(0, 17, Short.MAX_VALUE)
                     .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5, 5, 5)
                     .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -556,14 +508,14 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                     .addComponent(rbAtivos)
                     .addGap(5, 5, 5)
                     .addComponent(rbNoActivos)
-                    .addGap(0, 8, Short.MAX_VALUE)))
+                    .addGap(0, 16, Short.MAX_VALUE)))
         );
         pnlBuscadorLayout.setVerticalGroup(
             pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
+            .addGap(0, 33, Short.MAX_VALUE)
             .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 4, Short.MAX_VALUE)
                     .addGroup(pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -573,7 +525,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                         .addComponent(rbTodos)
                         .addComponent(rbAtivos)
                         .addComponent(rbNoActivos))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 4, Short.MAX_VALUE)))
         );
 
         tblLaboratorio.setModel(new javax.swing.table.DefaultTableModel(
@@ -591,7 +543,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblLaboratorio);
 
-        pnlAccionesLab.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesLab.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesLab.setOpaque(false);
         pnlAccionesLab.setPreferredSize(new java.awt.Dimension(780, 200));
 
@@ -652,7 +604,7 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         pnlAccionesLabLayout.setVerticalGroup(
             pnlAccionesLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -924,6 +876,9 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+        
+        this.txtCmbLabPropio.setVisible(false);
+        
     }
     private void DesActivarCasillas(){
         this.pnlEntradas.setEnabled(true);
@@ -951,6 +906,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
         ECampos.esObligatorio(this.pnlEntradas,false);
         esActualizacion = false;
         this.pnlBuscador.setVisible(true);
+        
+        this.txtCmbLabPropio.setVisible(true);
         
         logger.info(txtCodigo.getText() + " - " + txtLaboratorio.getText());
     }
@@ -996,6 +953,8 @@ public final class ILaboratorio extends javax.swing.JInternalFrame {
             chbSetActivo(false); 
         }
         this.btnModificar.setEnabled(true);
+        
+        txtCmbLabPropio.setText(cmbLabPropio.getSelectedItem().toString());
     }
     
 private void btnPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeroActionPerformed
@@ -1279,6 +1238,10 @@ private void bntParametrosReposicionActionPerformed(java.awt.event.ActionEvent e
                                             -1, null, new Object[]{pvc.getAviso()},null);
 }//GEN-LAST:event_bntParametrosReposicionActionPerformed
 
+private void txtCmbLabPropioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbLabPropioKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbLabPropioKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect bntParametrosReposicion;
     private elaprendiz.gui.button.ButtonRect btnAnterior;
@@ -1318,6 +1281,7 @@ private void bntParametrosReposicionActionPerformed(java.awt.event.ActionEvent e
     private javax.swing.JTable tblLaboratorio;
     private elaprendiz.gui.textField.TextField txtAbreviatura;
     private elaprendiz.gui.textField.TextField txtCiudad;
+    private elaprendiz.gui.textField.TextField txtCmbLabPropio;
     private elaprendiz.gui.textField.TextField txtCodigo;
     private elaprendiz.gui.textField.TextField txtContacto;
     private elaprendiz.gui.textField.TextField txtDireccion;
