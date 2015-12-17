@@ -76,6 +76,7 @@ public class IFormaPago extends javax.swing.JInternalFrame {
         txtCmbSobreHermes.setBounds(775, 17, 69, 25);
         txtCmbTransaccionBancaria.setBounds(166, 50, 137, 25);
         txtCmbAperturaGaveta.setBounds(456, 50, 69, 25);
+        txtClienteCompania.setBounds(659, 50, 73, 25);
 
         DesActivarCasillas();
         rbTodosActionPerformed(null);

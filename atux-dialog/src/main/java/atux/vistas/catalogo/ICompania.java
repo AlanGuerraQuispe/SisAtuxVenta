@@ -400,7 +400,7 @@ public class ICompania extends javax.swing.JInternalFrame {
         cp.getMaestroCompania().setNuInteriorVia(txtDpto.getText());
         cp.getMaestroCompania().setNuManzanaVia(txtManzana.getText());
         cp.getMaestroCompania().setNuLoteVia(txtLote.getText());
-        cp.getMaestroCompania().setTiPoblacion(((TipoPoblacion)cmbTipoPoblacion.getSelectedItem()).getTiPoblacion());
+        cp.getMaestroCompania().setTiPoblacion(((TipoPoblacion) cmbTipoPoblacion.getSelectedItem()).getTiPoblacion());
         cp.getMaestroCompania().setNoPoblacion(txtNombrePoblacion.getText());
         cp.getMaestroCompania().setCoTelPais(txtCodigoTelefPais.getText());
         cp.getMaestroCompania().setCoTelCiudad(txtCodigoTelefCiudad.getText());
@@ -409,7 +409,7 @@ public class ICompania extends javax.swing.JInternalFrame {
         cp.getMaestroCompania().setApPaternoRespCompania(txtApellidoPaterno.getText());
         cp.getMaestroCompania().setApMaternoRespCompania(txtApellidoMaterno.getText());
         cp.getMaestroCompania().setNoRespCompania(txtNombres.getText());
-        cp.getMaestroCompania().setDeDireccion("");
+        cp.getMaestroCompania().setDeDireccion(txtNombreVia.getText() + " " + cp.getMaestroCompania().getNuVia() );
         cp.getMaestroCompania().setDeDireccionWeb(txtURL.getText());
         cp.getMaestroCompania().setDeEmail(txtEmail.getText());
 

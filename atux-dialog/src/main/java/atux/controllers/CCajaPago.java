@@ -639,7 +639,17 @@ public class CCajaPago extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return usr;
     }
 
@@ -687,8 +697,9 @@ public class CCajaPago extends JAbstractController{
         if (datos.isEmpty())
             return "Error al obtener detalle de Forma de Pago";
 
-        TipoCambio =((String) ((ArrayList) datos2.get(0)).get(6));
-        
+//        TipoCambio =((String) ((ArrayList) datos2.get(0)).get(6));
+        TipoCambio =  Double.toString(AtuxVariables.vTipoCambio);
+
         try{
             fw = new FileWriter(rutaImpresora);
             bw = new BufferedWriter (fw);
@@ -703,14 +714,14 @@ public class CCajaPago extends JAbstractController{
         
         Double SubTotal;
 
-        pw.println("******** DETALLE DE CIERRE DE CAJA ********");
+        pw.println("****** DETALLE DE CIERRE DE CAJA *******");
         pw.println("  Dia de Venta : " + Fecha.format(movimientoCaja.getfeDiaVenta()) );
         pw.println("  Cajero : " + movimientoCaja.getapMaternoUsuario().trim() + movimientoCaja.getapPaternoUsuario().trim() + movimientoCaja.getnoUsuario().trim());
         pw.println("  Caja : " + movimientoCaja.getnuCaja() + "        " + "Turno : " + movimientoCaja.getnuTurno());
         pw.println("  Fecha Hora : " + fechaActual );
         pw.println("  Tipo de Cambio : " + TipoCambio );
         pw.println(" ");
-        pw.println("********  COMPROBANTES  GENERADOS  ********");
+        pw.println("*******  COMPROBANTES GENERADOS  *******");
         pw.println(CompletaCeros(movimientoCaja.getcaBoletas().toString(),4)  + "  Boletas  " + CompletaCeros(movimientoCaja.getvaMontoBoletas().toString(),20));
         pw.println(CompletaCeros(movimientoCaja.getcaFacturas().toString(),4) + "  Facturas " + CompletaCeros(movimientoCaja.getvaMontoFacturas().toString(),20));
         pw.println(CompletaCeros(movimientoCaja.getcaGuias().toString(),4)    + "  Guias    " + CompletaCeros(movimientoCaja.getvaMontoGuias().toString(),20));
@@ -718,7 +729,7 @@ public class CCajaPago extends JAbstractController{
         pw.println("  Total Generado : " + CompletaCeros(SubTotal.toString(),20));
 
         pw.println(" ");
-        pw.println("********  COMPROBANTES   ANULADOS  ********");
+        pw.println("*******  COMPROBANTES  ANULADOS  *******");
         pw.println(CompletaCeros(movimientoCaja.getcaBoletasAnul().toString(),4)  + "  Boletas  " + CompletaCeros(movimientoCaja.getvaMontoBoletasAnul().toString(),20));
         pw.println(CompletaCeros(movimientoCaja.getcaFacturasAnul().toString(),4) + "  Facturas " + CompletaCeros(movimientoCaja.getvaMontoFacturasAnul().toString(),20));
         pw.println(CompletaCeros(movimientoCaja.getcaGuiasAnul().toString(),4)    + "  Guias    " + CompletaCeros(movimientoCaja.getvaMontoGuiasAnul().toString(),20));
@@ -726,7 +737,7 @@ public class CCajaPago extends JAbstractController{
         pw.println("  Total Anulados : " + CompletaCeros(SubTotal.toString(),20));
 
         pw.println(" ");
-        pw.println("***************  T O T A L  ***************");
+        pw.println("*************  T O T A L  **************");
         Double TotBoletas  = movimientoCaja.getvaMontoBoletas()  - movimientoCaja.getvaMontoBoletasAnul();
         Double TotFacturas = movimientoCaja.getvaMontoFacturas() - movimientoCaja.getvaMontoFacturasAnul();
         Double TotGuias    = movimientoCaja.getvaMontoGuias()    - movimientoCaja.getvaMontoGuiasAnul();
@@ -738,7 +749,7 @@ public class CCajaPago extends JAbstractController{
         pw.println(" ");
         pw.println(" ");
         pw.println(" ");
-        pw.println("*******  DETALLE DE FORMA DE PAGO  ********");
+        pw.println("*****  DETALLE DE FORMA DE PAGO  *******");
 
         int f;
         String FormaPago;
@@ -748,9 +759,10 @@ public class CCajaPago extends JAbstractController{
             CoFormaPago = ((String) ((ArrayList) datos2.get(f)).get(0)).trim();
             FormaPago = ((String) ((ArrayList) datos2.get(f)).get(1)).trim();
             Monto    = ((String) ((ArrayList) datos2.get(f)).get(5));
-            pw.println(CoFormaPago + "  " + FormaPago +  CompletaCeros(Monto,(36-FormaPago.length())));
+            pw.println(CoFormaPago + "  " + FormaPago +  CompletaCeros(Monto,(33-FormaPago.length())));
         }
-        pw.println("************** Observaciones **************");
+        pw.println(" ");
+        pw.println("************ Observaciones *************");
         
         logger.info(movimientoCaja.getfeDiaVenta().toString());        
         int NuCaja=movimientoCaja.getnuCaja();
@@ -768,16 +780,21 @@ public class CCajaPago extends JAbstractController{
                 obs =(ObsCaja)Data01.get(j);
                  pw.println("  " + obs.getnuSecObs() + "  -  " + obs.getdeObs());
           }
-        pw.println("*******************************************");
-        
+        pw.println("****************************************");
+
+        for (int j = 0; j<8;  j++){
+            pw.println(" ");
+        }
+
+        char[] ESC_CUT_PAPER = new char[] { 0x1B, 'm'};
+        pw.println(ESC_CUT_PAPER);
+
         try{
             pw.close();
         }catch(Exception e){
             logger.error("error al cerrar el PrintWriter", e);
         }
 
-        
-        
         return "Impresión Generada Correctamente ";
     }
     

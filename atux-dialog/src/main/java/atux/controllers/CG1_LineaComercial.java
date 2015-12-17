@@ -3,6 +3,7 @@ package atux.controllers;
 import atux.core.Ex;
 import atux.core.JAbstractController;
 import atux.core.JAbstractModelBD;
+import atux.managerbd.BaseConexion;
 import atux.modelbd.G1_LineaComercial;
 import atux.util.common.AtuxDBUtility;
 import atux.util.common.AtuxVariables;
@@ -48,7 +49,19 @@ public class CG1_LineaComercial extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            BaseConexion.closeConnection();
+            BaseConexion.setConnectionNull();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;    
     }
     
@@ -72,7 +85,19 @@ public class CG1_LineaComercial extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            BaseConexion.closeConnection();
+            BaseConexion.setConnectionNull();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return G1_LComercial;
     }
     
@@ -114,7 +139,19 @@ public class CG1_LineaComercial extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            BaseConexion.closeConnection();
+            BaseConexion.setConnectionNull();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;
         
     }

@@ -232,7 +232,7 @@ public class FrmLoginV2 {
 
 
         pnlLogin.setBackground(new Color(255, 255, 255));
-        pnlLogin.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
+        pnlLogin.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white));
         pnlLogin.setOpaque(false);
 
         jLabel6.setFont(new Font("Tahoma", 1, 14));
@@ -243,13 +243,8 @@ public class FrmLoginV2 {
 
         txtUsuario.setIcon(new ImageIcon(getClass().getResource("/atux/resources/user_blue_32.png"))); // NOI18N
         txtUsuario.setPreferredSize(new Dimension(150, 24));
-
-
         txtPassword.setPreferredSize(new Dimension(150, 24));
-
-
         btnCancel.setText("Cancelar");
-
         btnAceptar.setText("Ingresar");
 
 
@@ -332,9 +327,7 @@ public class FrmLoginV2 {
                                 .addComponent(panelLogin, GroupLayout.PREFERRED_SIZE, 442, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(86, Short.MAX_VALUE))
         );
-
         pnlLeft.setBounds(0, 0, 150, 670);
-
     }
 
     {

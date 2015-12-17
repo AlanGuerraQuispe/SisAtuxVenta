@@ -18,12 +18,10 @@ public abstract class ModeloTabla<M extends JAbstractModelBD> extends AbstractTa
     public ModeloTabla() {
     }
 
-    @Override
     public int getRowCount() {
         return registros.size();
     }
 
-    @Override
     public int getColumnCount() {
         return nombreColumnas.length;
     }

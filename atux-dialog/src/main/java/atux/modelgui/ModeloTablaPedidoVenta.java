@@ -27,7 +27,7 @@ public class ModeloTablaPedidoVenta extends ModeloTabla{
         this.tipoTabla = tipo;
     }
 
-    @Override
+
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(tipoTabla)
         {

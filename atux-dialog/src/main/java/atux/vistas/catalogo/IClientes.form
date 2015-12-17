@@ -57,9 +57,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="jScrollPane1" alignment="2" min="-2" pref="859" max="-2" attributes="0"/>
-                      <Component id="pnlAccionesTDeCambio" alignment="2" min="-2" pref="503" max="-2" attributes="1"/>
-                      <Component id="pnlBuscadorTDeCambio" alignment="2" min="-2" max="-2" attributes="2"/>
                       <Component id="pnlEntradas" alignment="2" min="-2" pref="857" max="-2" attributes="1"/>
+                      <Component id="pnlBuscadorTDeCambio" alignment="2" min="-2" pref="565" max="-2" attributes="2"/>
+                      <Component id="pnlAccionesTDeCambio" alignment="2" min="-2" pref="494" max="-2" attributes="1"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -69,14 +69,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnlEntradas" min="-2" pref="239" max="-2" attributes="0"/>
+                  <Component id="pnlEntradas" min="-2" pref="214" max="-2" attributes="0"/>
+                  <EmptySpace pref="7" max="32767" attributes="0"/>
+                  <Component id="pnlBuscadorTDeCambio" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnlBuscadorTDeCambio" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="178" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="140" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="pnlAccionesTDeCambio" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlAccionesTDeCambio" min="-2" pref="29" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,7 +99,7 @@
             <Component class="elaprendiz.gui.textField.TextField" name="txtCmbTipoCliente">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -114,7 +114,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="370" y="210" width="10" height="20"/>
+                  <AbsoluteConstraints x="410" y="160" width="10" height="10"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -136,14 +136,13 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="350" y="210" width="10" height="20"/>
+                  <AbsoluteConstraints x="400" y="160" width="10" height="10"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtCmbTipoVivienda">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -158,7 +157,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="410" y="210" width="10" height="20"/>
+                  <AbsoluteConstraints x="430" y="160" width="10" height="10"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -180,7 +179,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="390" y="210" width="10" height="20"/>
+                  <AbsoluteConstraints x="420" y="160" width="10" height="10"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -202,7 +201,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="430" y="210" width="10" height="20"/>
+                  <AbsoluteConstraints x="440" y="160" width="10" height="10"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -229,13 +228,13 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nro. de Documento"/>
+                <Property name="text" type="java.lang.String" value="Nro. de Doc."/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="255" y="10" width="-1" height="20"/>
+                  <AbsoluteConstraints x="300" y="10" width="90" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -366,7 +365,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="250" y="30" width="144" height="-1"/>
+                  <AbsoluteConstraints x="294" y="30" width="100" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -416,7 +415,6 @@
             <Component class="elaprendiz.gui.textField.TextField" name="txtReferencia">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -518,7 +516,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="121" y="60" width="190" height="20"/>
+                  <AbsoluteConstraints x="130" y="60" width="190" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -540,7 +538,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="80" width="190" height="-1"/>
+                  <AbsoluteConstraints x="130" y="80" width="190" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -564,20 +562,21 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Numero "/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Nro "/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="330" y="60" width="-1" height="20"/>
+                  <AbsoluteConstraints x="330" y="60" width="40" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtSector">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -592,14 +591,14 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="540" y="80" width="65" height="-1"/>
+                  <AbsoluteConstraints x="490" y="80" width="50" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtManzana">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -614,7 +613,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="610" y="80" width="65" height="-1"/>
+                  <AbsoluteConstraints x="550" y="80" width="30" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -629,7 +628,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="410" y="60" width="-1" height="20"/>
+                  <AbsoluteConstraints x="380" y="60" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -638,20 +637,21 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Manzana"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Mz"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="610" y="60" width="-1" height="20"/>
+                  <AbsoluteConstraints x="550" y="60" width="30" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtDpto">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -666,7 +666,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="400" y="80" width="65" height="-1"/>
+                  <AbsoluteConstraints x="380" y="80" width="40" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -675,20 +675,21 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Lote"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="700" y="60" width="-1" height="20"/>
+                  <AbsoluteConstraints x="590" y="60" width="40" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtNumero">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="direccionDeSombra" type="int" value="80"/>
@@ -704,14 +705,14 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="330" y="80" width="65" height="-1"/>
+                  <AbsoluteConstraints x="330" y="80" width="40" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="elaprendiz.gui.textField.TextField" name="txtLote">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -726,7 +727,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="680" y="80" width="65" height="-1"/>
+                  <AbsoluteConstraints x="590" y="80" width="40" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -735,13 +736,14 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Sector"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="550" y="60" width="-1" height="20"/>
+                  <AbsoluteConstraints x="490" y="60" width="50" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -750,13 +752,14 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Tipo Viv."/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="760" y="60" width="-1" height="20"/>
+                  <AbsoluteConstraints x="649" y="60" width="190" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -778,7 +781,7 @@
             <Component class="elaprendiz.gui.textField.TextField" name="txtBlock">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="horizontalAlignment" type="int" value="11"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -793,7 +796,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="470" y="80" width="65" height="-1"/>
+                  <AbsoluteConstraints x="430" y="80" width="50" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -802,13 +805,14 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Block."/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Block"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="480" y="60" width="-1" height="20"/>
+                  <AbsoluteConstraints x="430" y="60" width="50" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -830,7 +834,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="168" y="30" width="80" height="-1"/>
+                  <AbsoluteConstraints x="168" y="30" width="120" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -839,13 +843,14 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Tp. Cliente"/>
                 <Property name="alignmentX" type="float" value="0.2"/>
                 <Property name="alignmentY" type="float" value="0.2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="170" y="10" width="-1" height="20"/>
+                  <AbsoluteConstraints x="170" y="10" width="120" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1212,7 +1217,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="750" y="80" width="100" height="-1"/>
+                  <AbsoluteConstraints x="640" y="80" width="210" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1233,7 +1238,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="420" y="30" width="350" height="-1"/>
+                  <AbsoluteConstraints x="400" y="30" width="370" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1280,54 +1285,8 @@
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="563" max="32767" attributes="0"/>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
-                          <Component id="btnPrimero" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                          <Component id="btnAnterior" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                          <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                          <Component id="btnSiguiente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                          <Component id="btnUltimo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                          <Component id="rbTodos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                          <Component id="rbAtivos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-                          <Component id="rbNoActivos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnPrimero" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAnterior" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnSiguiente" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnUltimo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbTodos" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbAtivos" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbNoActivos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+            <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnPrimero">
@@ -1340,6 +1299,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrimeroActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="14" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnAnterior">
               <Properties>
@@ -1351,6 +1315,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnteriorActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="67" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnBuscar">
               <Properties>
@@ -1362,6 +1331,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="112" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnSiguiente">
               <Properties>
@@ -1373,6 +1347,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSiguienteActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="198" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnUltimo">
               <Properties>
@@ -1384,6 +1363,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUltimoActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="243" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rbTodos">
               <Properties>
@@ -1404,6 +1388,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbTodosActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="296" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rbAtivos">
               <Properties>
@@ -1425,6 +1414,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbAtivosActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="370" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rbNoActivos">
               <Properties>
@@ -1445,6 +1439,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbNoActivosActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="452" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
           </SubComponents>
         </Container>
@@ -1465,35 +1464,8 @@
             </Property>
           </Properties>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSalir" min="-2" pref="88" max="-2" attributes="0"/>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="btnNuevo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="btnModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+            <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnNuevo">
@@ -1506,6 +1478,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="12" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnModificar">
               <Properties>
@@ -1518,6 +1495,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="96" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnGuardar">
               <Properties>
@@ -1530,6 +1512,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="200" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnCancelar">
               <Properties>
@@ -1541,6 +1528,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="295" y="2" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="elaprendiz.gui.button.ButtonRect" name="btnSalir">
               <Properties>
@@ -1552,6 +1544,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="395" y="2" width="88" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
           </SubComponents>
         </Container>

@@ -50,6 +50,11 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         setEventSelectionModel(tblListado.getSelectionModel());
         DesActivarCasillas();
         lbAviso.setVisible(false);
+        cbxPrincipal.addItem("-----");
+        cbxPrincipal.addItem("Si");
+        cbxPrincipal.addItem("No");
+        cbxPrincipal.setBounds(510, 41, 63, 25);
+        txtCbxPrincipal.setBounds(510, 41, 63, 25);
     }
 
     public final void CargaDatos() {
@@ -109,6 +114,8 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         } else {
             chbSetActivo(false);
         }
+        txtCbxPrincipal.setText(cbxPrincipal.getSelectedItem().toString());
+
     }
 
     private void Limpiar() {
@@ -137,6 +144,9 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+        
+        this.cbxPrincipal.setVisible(true);
+        this.txtCbxPrincipal.setVisible(false);
     }
 
     private void DesActivarCasillas() {
@@ -158,6 +168,9 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         this.rbTodos.setEnabled(true);
         this.rbAtivos.setEnabled(true);
         this.rbNoActivos.setEnabled(true);
+        
+        this.cbxPrincipal.setVisible(false);
+        this.txtCbxPrincipal.setVisible(true);
 
         esActualizacion = false;
         this.pnlBuscadorTDeCambio.setVisible(true);
@@ -307,6 +320,7 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         lblEstado = new javax.swing.JLabel();
         chbEstado = new javax.swing.JCheckBox();
         cbxPrincipal = new javax.swing.JComboBox();
+        txtCbxPrincipal = new elaprendiz.gui.textField.TextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListado = new javax.swing.JTable();
         pnlBuscadorTDeCambio = new javax.swing.JPanel();
@@ -336,7 +350,7 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
             }
         });
 
-        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlEntradas.setEnabled(false);
         pnlEntradas.setOpaque(false);
         pnlEntradas.setPreferredSize(new java.awt.Dimension(748, 120));
@@ -460,6 +474,15 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         pnlEntradas.add(cbxPrincipal);
         cbxPrincipal.setBounds(510, 41, 63, 25);
 
+        txtCbxPrincipal.setEditable(false);
+        txtCbxPrincipal.setDireccionDeSombra(30);
+        txtCbxPrincipal.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtCbxPrincipal.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCbxPrincipal.setName("pdescrip"); // NOI18N
+        txtCbxPrincipal.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtCbxPrincipal);
+        txtCbxPrincipal.setBounds(590, 60, 20, 20);
+
         tblListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -475,7 +498,7 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblListado);
 
-        pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorTDeCambio.setOpaque(false);
         pnlBuscadorTDeCambio.setPreferredSize(new java.awt.Dimension(575, 37));
         pnlBuscadorTDeCambio.setLayout(null);
@@ -559,7 +582,7 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         pnlBuscadorTDeCambio.add(rbNoActivos);
         rbNoActivos.setBounds(360, 6, 101, 25);
 
-        pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesTDeCambio.setOpaque(false);
         pnlAccionesTDeCambio.setPreferredSize(new java.awt.Dimension(550, 50));
         pnlAccionesTDeCambio.setLayout(null);
@@ -616,7 +639,7 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
         pnlAccionesTDeCambio.add(btnSalir);
         btnSalir.setBounds(390, 6, 88, 25);
 
-        lblMensaje.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblMensaje.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblMensaje.setForeground(new java.awt.Color(255, 255, 255));
         lblMensaje.setText("<html><body>Presione F1<br>para ver mas Datos</body></html>");
 
@@ -887,6 +910,7 @@ public class IPrincipioActivoProducto extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbNoActivos;
     private javax.swing.JRadioButton rbTodos;
     private javax.swing.JTable tblListado;
+    public elaprendiz.gui.textField.TextField txtCbxPrincipal;
     private elaprendiz.gui.textField.TextField txtCodigo;
     public elaprendiz.gui.textField.TextField txtCodigoPrincipioActivo;
     private elaprendiz.gui.textField.TextField txtDescripcion;

@@ -68,8 +68,8 @@
                   <Component id="pnlEntradas" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlBuscador" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="141" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="153" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   <Component id="pnlAccionesImp" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -112,7 +112,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="lblValor" min="-2" max="-2" attributes="1"/>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -122,7 +122,7 @@
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Component id="chbEstado" min="-2" pref="116" max="-2" attributes="1"/>
                           </Group>
-                          <Component id="txtDescripcion" max="32767" attributes="1"/>
+                          <Component id="txtDescripcion" pref="333" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -133,16 +133,16 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblCodigo" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="txtCodigo" alignment="3" pref="30" max="32767" attributes="1"/>
+                          <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="1"/>
                           <Component id="lblDescrip" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="txtDescripcion" alignment="3" min="-2" pref="30" max="-2" attributes="1"/>
+                          <Component id="txtDescripcion" alignment="3" min="-2" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblValor" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="txtValor" alignment="3" min="-2" pref="30" max="-2" attributes="1"/>
+                          <Component id="txtValor" alignment="3" min="-2" max="-2" attributes="1"/>
                           <Component id="lblAbreviatura" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="txtAbrDescripcion" alignment="3" min="-2" pref="30" max="-2" attributes="1"/>
+                          <Component id="txtAbrDescripcion" alignment="3" min="-2" max="-2" attributes="1"/>
                           <Component id="lblEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="chbEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>

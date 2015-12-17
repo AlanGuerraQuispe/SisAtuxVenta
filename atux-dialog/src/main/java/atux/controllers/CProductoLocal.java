@@ -128,6 +128,15 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
         return prodLocal;
     }
@@ -289,7 +298,17 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;
     }
 
@@ -440,14 +459,13 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             BaseConexion.setConnectionNull();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        finally {
-        // Se cierran los recursos de base de datos.
-        try {
-        if (rs != null) {
-            rs.close();
-            }
-        } catch (SQLException e) {
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
                 System.out.println("No ha podido cerrar ResultSet.");
             }
         }
@@ -587,13 +605,13 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             BaseConexion.setConnectionNull();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }finally {
-        // Se cierran los recursos de base de datos.
-        try {
-        if (rs != null) {
-            rs.close();
-            }
-        } catch (SQLException e) {
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
                 System.out.println("No ha podido cerrar ResultSet.");
             }
         }
@@ -737,14 +755,13 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             BaseConexion.setConnectionNull();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        finally {
-        // Se cierran los recursos de base de datos.
-        try {
-        if (rs != null) {
-            rs.close();
-            }
-        } catch (SQLException e) {
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
                 System.out.println("No ha podido cerrar ResultSet.");
             }
         }
@@ -830,8 +847,7 @@ public class CProductoLocal extends JAbstractController implements Serializable{
                 BaseConexion.setConnectionNull();
             } catch (SQLException ex) {
                 ex.printStackTrace();
-            }
-            finally {
+            } finally {
                 // Se cierran los recursos de base de datos.
                 try {
                     if (rs != null) {
@@ -840,7 +856,7 @@ public class CProductoLocal extends JAbstractController implements Serializable{
                 } catch (SQLException e) {
                     System.out.println("No ha podido cerrar ResultSet.");
                 }
-             }
+            }
         }
         return (ArrayList<ProductoLocal>) prodLocal.getInsumosProducto();
     }
@@ -926,17 +942,17 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             BaseConexion.setConnectionNull();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        finally {
-        // Se cierran los recursos de base de datos.
-        try {
-        if (rs != null) {
-            rs.close();
-            }
-        } catch (SQLException e) {
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
                 System.out.println("No ha podido cerrar ResultSet.");
             }
         }
+
         return rgs;
     }
 

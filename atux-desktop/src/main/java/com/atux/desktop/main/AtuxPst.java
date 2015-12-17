@@ -38,7 +38,8 @@ public class AtuxPst {
         String bdInfo = StringUtils.nvl("TEST", "¿BD?");
         String debugInfo = SPSysProp.isDeveloperDebugEnabled() ? " /DEBUGMODE " : "";
         String appInfo = "[V:" + version + "/Env:" + enviroment + "/BD:" + bdInfo + debugInfo + "]";
-        frmAtux.setTitle("Atux " + /*appInfo version + " " +*/ " " + AppCtx.instance().getUsuario().getIdUsuario() +" - IP : [ " + AtuxVariables.vIP_PC.trim()+" ]");
+        frmAtux.setTitle("ICBB " + /*appInfo version + " " +*/ " " + AppCtx.instance().getUsuario().getIdUsuario() +" - IP : [ " + AtuxVariables.vIP_PC.trim()+" ]");
+//        frmAtux.setTitle("ATUX " + /*appInfo version + " " +*/ " " + AppCtx.instance().getUsuario().getIdUsuario() +" - IP : [ " + AtuxVariables.vIP_PC.trim()+" ]");
         final MenuBuilder mb = new MenuBuilder();
         frmAtux.setJMenuBar(mb.createMenus());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

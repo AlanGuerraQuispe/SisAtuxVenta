@@ -65,7 +65,7 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
     private void setEventTable()
     {
         TableModelListener tml = new TableModelListener(){
-            @Override
+
             public void tableChanged(TableModelEvent e) {
                 tableHandlerEvent(e);                
             }

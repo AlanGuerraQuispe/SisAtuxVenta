@@ -66,6 +66,10 @@ public class IProductoLote extends javax.swing.JPanel {
         DesActivarCasillas();        
         this.ifr = ifr;
         lbAviso.setVisible(false);
+        dteFechaIngreso.setBounds(287, 57, 110, 30);
+        dteFechaVencimiento.setBounds(495, 57, 110, 30);
+        txtDteFechaIngreso.setBounds(287, 57, 110, 30);
+        txtDteFechaVencimiento.setBounds(495, 57, 110, 30);
     }
 
     public final void CargaDatos(){
@@ -118,7 +122,7 @@ public class IProductoLote extends javax.swing.JPanel {
         Limpiar();
 
         this.txtProductoLote.setText(String.valueOf(cp.getProductoLote().getNuLote()));
-        this.txtFechaVencimiento.setDate(cp.getProductoLote().getFeVencimiento());
+        this.dteFechaVencimiento.setDate(cp.getProductoLote().getFeVencimiento());
 
         if("A".equals(cp.getProductoLote().getEsLote())){
             chbSetActivo(true); 
@@ -128,6 +132,9 @@ public class IProductoLote extends javax.swing.JPanel {
 
         ti_documento_recepcion = cp.getProductoLote().getTiDocumentoRecepcion();
         nu_documento_recepcion = cp.getProductoLote().getNuDocumentoRecepcion();
+
+        txtDteFechaIngreso.setText(AtuxUtility.getDateToString(dteFechaIngreso.getDate(), "dd/MM/yyyy"));
+        txtDteFechaVencimiento.setText(AtuxUtility.getDateToString(dteFechaVencimiento.getDate(), "dd/MM/yyyy"));
     }
     
     private void Limpiar(){
@@ -135,12 +142,14 @@ public class IProductoLote extends javax.swing.JPanel {
         this.chbEstado.setSelected(true);
         ti_documento_recepcion="";
         nu_documento_recepcion="";
+        txtDteFechaIngreso.setText("");
+        txtDteFechaVencimiento.setText("");
         chbSetActivo(true);
     }
 
     private void ActivarCasillas(){
         pnlEntradas.setEnabled(false);
-        ECampos.setEditableTexto(this.pnlEntradas, true, new Component[]{lblCodigo,lblProductoLote,lblDescripcion,lblUnidad,lblEstado,txtCodigo,txtDescripcion,txtUnidad},false,"");        
+        ECampos.setEditableTexto(this.pnlEntradas, true, new Component[]{lblfecha, lblVencimiento, lblCodigo,lblProductoLote,lblDescripcion,lblUnidad,lblEstado,txtCodigo,txtDescripcion,txtUnidad},false,"");        
         this.tblListado.setEnabled(false);
         this.tblListado.clearSelection();        
         this.btnNuevo.setEnabled(false);
@@ -157,10 +166,15 @@ public class IProductoLote extends javax.swing.JPanel {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+        
+        this.dteFechaIngreso.setVisible(true);
+        this.dteFechaVencimiento.setVisible(true);
+        this.txtDteFechaIngreso.setVisible(false);
+        this.txtDteFechaVencimiento.setVisible(false);
     }
     private void DesActivarCasillas(){
         this.pnlEntradas.setEnabled(true);
-        ECampos.setEditableTexto(this.pnlEntradas, false, new Component[]{lblCodigo,lblProductoLote,lblDescripcion,lblUnidad,lblEstado,txtCodigo,txtDescripcion,txtUnidad},false,"");        
+        ECampos.setEditableTexto(this.pnlEntradas, false, new Component[]{lblfecha, lblVencimiento, lblCodigo,lblProductoLote,lblDescripcion,lblUnidad,lblEstado,txtCodigo,txtDescripcion,txtUnidad},false,"");        
         this.tblListado.setEnabled(true);
         this.tblListado.clearSelection();
         this.btnNuevo.setEnabled(true);
@@ -178,6 +192,11 @@ public class IProductoLote extends javax.swing.JPanel {
         this.rbAtivos.setEnabled(true);
         this.rbNoActivos.setEnabled(true);        
 
+        this.dteFechaIngreso.setVisible(false);
+        this.dteFechaVencimiento.setVisible(false);
+        this.txtDteFechaIngreso.setVisible(true);
+        this.txtDteFechaVencimiento.setVisible(true);
+
         esActualizacion = false;
         this.pnlBuscadorTDeCambio.setVisible(true);
         logger.info(txtProductoLote.getText());
@@ -186,7 +205,7 @@ public class IProductoLote extends javax.swing.JPanel {
     public boolean verficarCambios(){
         if(!this.txtProductoLote.getText().equals(String.valueOf(cp.getProductoLote().getNuLote()))){
             return true;
-        }else if(txtFechaIngreso.getDate() != cp.getProductoLote().getFeVencimiento()){
+        }else if(dteFechaIngreso.getDate() != cp.getProductoLote().getFeVencimiento()){
             return true;
         }else if(!chbEstado.isSelected() != ("I".equals(cp.getProductoLote().getEsLote()))){
             return true;
@@ -199,8 +218,8 @@ public class IProductoLote extends javax.swing.JPanel {
         cp.getProductoLote().setCoLocal(AtuxVariables.vCodigoLocal);
         cp.getProductoLote().setCoProducto(txtCodigo.getText());
         cp.getProductoLote().setNuLote(txtProductoLote.getText());
-        cp.getProductoLote().setFeIngreso(txtFechaIngreso.getDate());
-        cp.getProductoLote().setFeVencimiento(txtFechaVencimiento.getDate());
+        cp.getProductoLote().setFeIngreso(dteFechaIngreso.getDate());
+        cp.getProductoLote().setFeVencimiento(dteFechaVencimiento.getDate());
         
 
         if (chbEstado.isSelected()){
@@ -315,9 +334,12 @@ public class IProductoLote extends javax.swing.JPanel {
         lblEstado = new javax.swing.JLabel();
         chbEstado = new javax.swing.JCheckBox();
         lblfecha = new javax.swing.JLabel();
-        txtFechaIngreso = new com.toedter.calendar.JDateChooser();
-        lblfecha1 = new javax.swing.JLabel();
-        txtFechaVencimiento = new com.toedter.calendar.JDateChooser();
+        dteFechaIngreso = new com.toedter.calendar.JDateChooser();
+        lblVencimiento = new javax.swing.JLabel();
+        dteFechaVencimiento = new com.toedter.calendar.JDateChooser();
+        txtProductoLote1 = new elaprendiz.gui.textField.TextField();
+        txtDteFechaVencimiento = new elaprendiz.gui.textField.TextField();
+        txtDteFechaIngreso = new elaprendiz.gui.textField.TextField();
         lblListado = new javax.swing.JScrollPane();
         tblListado = new javax.swing.JTable();
         pnlBuscadorTDeCambio = new javax.swing.JPanel();
@@ -343,18 +365,24 @@ public class IProductoLote extends javax.swing.JPanel {
         panelImage1.setPreferredSize(new java.awt.Dimension(780, 300));
 
         pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Maestro de Producto", 1, 2));
-        pnlEntradas.setEnabled(false);
         pnlEntradas.setOpaque(false);
         pnlEntradas.setPreferredSize(new java.awt.Dimension(748, 120));
+        pnlEntradas.setLayout(null);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setText("Codigo:");
+        pnlEntradas.add(lblCodigo);
+        lblCodigo.setBounds(16, 17, 54, 27);
 
         lblDescripcion.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescripcion.setText("Descripcion:");
+        pnlEntradas.add(lblDescripcion);
+        lblDescripcion.setBounds(167, 19, 83, 24);
 
         lblUnidad.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblUnidad.setText("Unidad:");
+        pnlEntradas.add(lblUnidad);
+        lblUnidad.setBounds(573, 22, 53, 17);
 
         txtCodigo.setEditable(false);
         txtCodigo.setDireccionDeSombra(30);
@@ -362,6 +390,8 @@ public class IProductoLote extends javax.swing.JPanel {
         txtCodigo.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodigo.setName("pcodigo"); // NOI18N
         txtCodigo.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtCodigo);
+        txtCodigo.setBounds(80, 16, 83, 30);
 
         txtDescripcion.setEditable(false);
         txtDescripcion.setDireccionDeSombra(30);
@@ -369,6 +399,8 @@ public class IProductoLote extends javax.swing.JPanel {
         txtDescripcion.setFont(new java.awt.Font("Arial", 0, 12));
         txtDescripcion.setName("pdescrip"); // NOI18N
         txtDescripcion.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtDescripcion);
+        txtDescripcion.setBounds(254, 16, 301, 30);
 
         txtUnidad.setEditable(false);
         txtUnidad.setDireccionDeSombra(30);
@@ -376,9 +408,13 @@ public class IProductoLote extends javax.swing.JPanel {
         txtUnidad.setFont(new java.awt.Font("Arial", 0, 12));
         txtUnidad.setName("pdescrip"); // NOI18N
         txtUnidad.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtUnidad);
+        txtUnidad.setBounds(636, 16, 141, 30);
 
         lblProductoLote.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblProductoLote.setText("Lote");
+        pnlEntradas.add(lblProductoLote);
+        lblProductoLote.setBounds(16, 60, 31, 24);
 
         txtProductoLote.setEditable(false);
         txtProductoLote.setDireccionDeSombra(30);
@@ -391,9 +427,13 @@ public class IProductoLote extends javax.swing.JPanel {
                 txtProductoLoteKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtProductoLote);
+        txtProductoLote.setBounds(51, 57, 162, 30);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado:");
+        pnlEntradas.add(lblEstado);
+        lblEstado.setBounds(618, 61, 53, 17);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -411,104 +451,88 @@ public class IProductoLote extends javax.swing.JPanel {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(chbEstado);
+        chbEstado.setBounds(677, 57, 100, 25);
 
         lblfecha.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblfecha.setText("Ingreso:");
+        pnlEntradas.add(lblfecha);
+        lblfecha.setBounds(223, 58, 60, 27);
 
-        txtFechaIngreso.setBackground(new java.awt.Color(0, 0, 0));
-        txtFechaIngreso.setForeground(new java.awt.Color(255, 0, 0));
-        txtFechaIngreso.setDate(Calendar.getInstance().getTime());
-        txtFechaIngreso.setFont(new java.awt.Font("Tahoma", 1, 13));
-        txtFechaIngreso.setPreferredSize(new java.awt.Dimension(120, 22));
-        txtFechaIngreso.setRequestFocusEnabled(false);
-        txtFechaIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
+        dteFechaIngreso.setBackground(new java.awt.Color(0, 0, 0));
+        dteFechaIngreso.setForeground(new java.awt.Color(255, 0, 0));
+        dteFechaIngreso.setDate(Calendar.getInstance().getTime());
+        dteFechaIngreso.setFont(new java.awt.Font("Tahoma", 1, 13));
+        dteFechaIngreso.setPreferredSize(new java.awt.Dimension(120, 22));
+        dteFechaIngreso.setRequestFocusEnabled(false);
+        dteFechaIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFechaIngresoKeyReleased(evt);
+                dteFechaIngresoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(dteFechaIngreso);
+        dteFechaIngreso.setBounds(287, 61, 110, 22);
 
-        lblfecha1.setFont(new java.awt.Font("Tahoma", 1, 14));
-        lblfecha1.setText("Vencimiento:");
+        lblVencimiento.setFont(new java.awt.Font("Tahoma", 1, 14));
+        lblVencimiento.setText("Vencimiento:");
+        pnlEntradas.add(lblVencimiento);
+        lblVencimiento.setBounds(401, 58, 90, 27);
 
-        txtFechaVencimiento.setBackground(new java.awt.Color(0, 0, 0));
-        txtFechaVencimiento.setForeground(new java.awt.Color(255, 0, 0));
-        txtFechaVencimiento.setDate(Calendar.getInstance().getTime());
-        txtFechaVencimiento.setFont(new java.awt.Font("Tahoma", 1, 13));
-        txtFechaVencimiento.setPreferredSize(new java.awt.Dimension(120, 22));
-        txtFechaVencimiento.setRequestFocusEnabled(false);
-        txtFechaVencimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+        dteFechaVencimiento.setBackground(new java.awt.Color(0, 0, 0));
+        dteFechaVencimiento.setForeground(new java.awt.Color(255, 0, 0));
+        dteFechaVencimiento.setDate(Calendar.getInstance().getTime());
+        dteFechaVencimiento.setFont(new java.awt.Font("Tahoma", 1, 13));
+        dteFechaVencimiento.setPreferredSize(new java.awt.Dimension(120, 22));
+        dteFechaVencimiento.setRequestFocusEnabled(false);
+        dteFechaVencimiento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFechaVencimientoKeyReleased(evt);
+                dteFechaVencimientoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(dteFechaVencimiento);
+        dteFechaVencimiento.setBounds(495, 61, 110, 22);
 
-        javax.swing.GroupLayout pnlEntradasLayout = new javax.swing.GroupLayout(pnlEntradas);
-        pnlEntradas.setLayout(pnlEntradasLayout);
-        pnlEntradasLayout.setHorizontalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(lblProductoLote)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProductoLote, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblfecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblfecha1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblEstado)
-                        .addGap(6, 6, 6)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(lblCodigo)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(lblDescripcion)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblUnidad)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29))
-        );
-        pnlEntradasLayout.setVerticalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblUnidad))
-                    .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtProductoLote, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblProductoLote, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblfecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblEstado)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        txtProductoLote1.setEditable(false);
+        txtProductoLote1.setDireccionDeSombra(30);
+        txtProductoLote1.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtProductoLote1.setFont(new java.awt.Font("Arial", 0, 12));
+        txtProductoLote1.setName("pdescrip"); // NOI18N
+        txtProductoLote1.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtProductoLote1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtProductoLote1KeyReleased(evt);
+            }
+        });
+        pnlEntradas.add(txtProductoLote1);
+        txtProductoLote1.setBounds(223, 114, 21, 15);
+
+        txtDteFechaVencimiento.setEditable(false);
+        txtDteFechaVencimiento.setDireccionDeSombra(30);
+        txtDteFechaVencimiento.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtDteFechaVencimiento.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaVencimiento.setName("pdescrip"); // NOI18N
+        txtDteFechaVencimiento.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtDteFechaVencimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDteFechaVencimientoKeyReleased(evt);
+            }
+        });
+        pnlEntradas.add(txtDteFechaVencimiento);
+        txtDteFechaVencimiento.setBounds(260, 80, 21, 15);
+
+        txtDteFechaIngreso.setEditable(false);
+        txtDteFechaIngreso.setDireccionDeSombra(30);
+        txtDteFechaIngreso.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtDteFechaIngreso.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaIngreso.setName("pdescrip"); // NOI18N
+        txtDteFechaIngreso.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtDteFechaIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDteFechaIngresoKeyReleased(evt);
+            }
+        });
+        pnlEntradas.add(txtDteFechaIngreso);
+        txtDteFechaIngreso.setBounds(230, 80, 21, 15);
 
         tblListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -528,6 +552,7 @@ public class IProductoLote extends javax.swing.JPanel {
         pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorTDeCambio.setOpaque(false);
         pnlBuscadorTDeCambio.setPreferredSize(new java.awt.Dimension(575, 37));
+        pnlBuscadorTDeCambio.setLayout(null);
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
         btnPrimero.setText("<<");
@@ -536,6 +561,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnPrimeroActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(btnPrimero);
+        btnPrimero.setBounds(12, 2, 48, 25);
 
         btnAnterior.setBackground(new java.awt.Color(102, 204, 0));
         btnAnterior.setText("<");
@@ -544,6 +571,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnAnteriorActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(btnAnterior);
+        btnAnterior.setBounds(65, 2, 40, 25);
 
         btnSiguiente.setBackground(new java.awt.Color(102, 204, 0));
         btnSiguiente.setText(">");
@@ -552,6 +581,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(btnSiguiente);
+        btnSiguiente.setBounds(111, 2, 40, 25);
 
         btnUltimo.setBackground(new java.awt.Color(104, 204, 0));
         btnUltimo.setText(">>");
@@ -560,6 +591,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnUltimoActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(btnUltimo);
+        btnUltimo.setBounds(156, 2, 48, 25);
 
         rbTodos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbTodos);
@@ -571,6 +604,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 rbTodosActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(rbTodos);
+        rbTodos.setBounds(209, 2, 69, 25);
 
         rbAtivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbAtivos);
@@ -583,6 +618,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 rbAtivosActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(rbAtivos);
+        rbAtivos.setBounds(283, 2, 77, 25);
 
         rbNoActivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbNoActivos);
@@ -594,42 +631,13 @@ public class IProductoLote extends javax.swing.JPanel {
                 rbNoActivosActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnlBuscadorTDeCambioLayout = new javax.swing.GroupLayout(pnlBuscadorTDeCambio);
-        pnlBuscadorTDeCambio.setLayout(pnlBuscadorTDeCambioLayout);
-        pnlBuscadorTDeCambioLayout.setHorizontalGroup(
-            pnlBuscadorTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscadorTDeCambioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(rbTodos)
-                .addGap(5, 5, 5)
-                .addComponent(rbAtivos)
-                .addGap(5, 5, 5)
-                .addComponent(rbNoActivos)
-                .addGap(99, 99, 99))
-        );
-        pnlBuscadorTDeCambioLayout.setVerticalGroup(
-            pnlBuscadorTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(rbTodos)
-            .addComponent(rbAtivos)
-            .addComponent(rbNoActivos)
-            .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        pnlBuscadorTDeCambio.add(rbNoActivos);
+        rbNoActivos.setBounds(365, 2, 101, 25);
 
         pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesTDeCambio.setOpaque(false);
         pnlAccionesTDeCambio.setPreferredSize(new java.awt.Dimension(550, 50));
+        pnlAccionesTDeCambio.setLayout(null);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
         btnNuevo.setText("Nuevo");
@@ -638,6 +646,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnNuevoActionPerformed(evt);
             }
         });
+        pnlAccionesTDeCambio.add(btnNuevo);
+        btnNuevo.setBounds(12, 2, 78, 25);
 
         btnModificar.setBackground(new java.awt.Color(51, 153, 255));
         btnModificar.setText("Modificar");
@@ -647,6 +657,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnModificarActionPerformed(evt);
             }
         });
+        pnlAccionesTDeCambio.add(btnModificar);
+        btnModificar.setBounds(96, 2, 98, 25);
 
         btnGuardar.setBackground(new java.awt.Color(51, 153, 255));
         btnGuardar.setText("Guardar");
@@ -656,6 +668,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnGuardarActionPerformed(evt);
             }
         });
+        pnlAccionesTDeCambio.add(btnGuardar);
+        btnGuardar.setBounds(204, 2, 89, 25);
 
         btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
         btnCancelar.setText("Cancelar");
@@ -664,6 +678,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
+        pnlAccionesTDeCambio.add(btnCancelar);
+        btnCancelar.setBounds(299, 2, 94, 25);
 
         btnSalir.setBackground(new java.awt.Color(51, 153, 255));
         btnSalir.setText("Salir");
@@ -672,35 +688,8 @@ public class IProductoLote extends javax.swing.JPanel {
                 btnSalirActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnlAccionesTDeCambioLayout = new javax.swing.GroupLayout(pnlAccionesTDeCambio);
-        pnlAccionesTDeCambio.setLayout(pnlAccionesTDeCambioLayout);
-        pnlAccionesTDeCambioLayout.setHorizontalGroup(
-            pnlAccionesTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAccionesTDeCambioLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnlAccionesTDeCambioLayout.setVerticalGroup(
-            pnlAccionesTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAccionesTDeCambioLayout.createSequentialGroup()
-                .addGroup(pnlAccionesTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnlAccionesTDeCambio.add(btnSalir);
+        btnSalir.setBounds(403, 2, 88, 25);
 
         lbAviso.setBackground(new java.awt.Color(255, 0, 51));
         lbAviso.setForeground(new java.awt.Color(255, 255, 0));
@@ -894,24 +883,36 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void txtProductoLoteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoLoteKeyReleased
     switch (evt.getKeyCode()){
-        case KeyEvent.VK_ENTER: txtFechaIngreso.requestFocus();
+        case KeyEvent.VK_ENTER: dteFechaIngreso.requestFocus();
              break;
     }
 }//GEN-LAST:event_txtProductoLoteKeyReleased
 
-private void txtFechaIngresoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaIngresoKeyReleased
+private void dteFechaIngresoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dteFechaIngresoKeyReleased
     switch (evt.getKeyCode()){
-        case KeyEvent.VK_ENTER: txtFechaVencimiento.requestFocus();
+        case KeyEvent.VK_ENTER: dteFechaVencimiento.requestFocus();
              break;
     }
-}//GEN-LAST:event_txtFechaIngresoKeyReleased
+}//GEN-LAST:event_dteFechaIngresoKeyReleased
 
-private void txtFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaVencimientoKeyReleased
+private void dteFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dteFechaVencimientoKeyReleased
     switch (evt.getKeyCode()){
         case KeyEvent.VK_ENTER: chbEstado.requestFocus();
              break;
     }
-}//GEN-LAST:event_txtFechaVencimientoKeyReleased
+}//GEN-LAST:event_dteFechaVencimientoKeyReleased
+
+private void txtProductoLote1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoLote1KeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtProductoLote1KeyReleased
+
+private void txtDteFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDteFechaVencimientoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtDteFechaVencimientoKeyReleased
+
+private void txtDteFechaIngresoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDteFechaIngresoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtDteFechaIngresoKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnAnterior;
@@ -925,6 +926,8 @@ private void txtFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-
     private elaprendiz.gui.button.ButtonRect btnUltimo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chbEstado;
+    private com.toedter.calendar.JDateChooser dteFechaIngreso;
+    private com.toedter.calendar.JDateChooser dteFechaVencimiento;
     private elaprendiz.gui.label.LabelRect lbAviso;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescripcion;
@@ -932,8 +935,8 @@ private void txtFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-
     private javax.swing.JScrollPane lblListado;
     private javax.swing.JLabel lblProductoLote;
     private javax.swing.JLabel lblUnidad;
+    private javax.swing.JLabel lblVencimiento;
     private javax.swing.JLabel lblfecha;
-    private javax.swing.JLabel lblfecha1;
     private elaprendiz.gui.panel.PanelImage panelImage1;
     private javax.swing.JPanel pnlAccionesTDeCambio;
     private javax.swing.JPanel pnlBuscadorTDeCambio;
@@ -944,9 +947,10 @@ private void txtFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-
     private javax.swing.JTable tblListado;
     private elaprendiz.gui.textField.TextField txtCodigo;
     private elaprendiz.gui.textField.TextField txtDescripcion;
-    private com.toedter.calendar.JDateChooser txtFechaIngreso;
-    private com.toedter.calendar.JDateChooser txtFechaVencimiento;
+    private elaprendiz.gui.textField.TextField txtDteFechaIngreso;
+    private elaprendiz.gui.textField.TextField txtDteFechaVencimiento;
     private elaprendiz.gui.textField.TextField txtProductoLote;
+    private elaprendiz.gui.textField.TextField txtProductoLote1;
     private elaprendiz.gui.textField.TextField txtUnidad;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,7 +49,7 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
 
         tblPrincipioActivo.setModel(mtp);
         Helper.ajustarSoloAnchoColumnas(tblPrincipioActivo,ModeloTablaPrincipioActivo.anchoColumnas);
-        Helper.ajustarAnchoColumnas(tblPrincipioActivo);
+//        Helper.ajustarAnchoColumnas(tblPrincipioActivo);
         setFiltroTexto();        
         setEventSelectionModel(tblPrincipioActivo.getSelectionModel());
         DesActivarCasillas();
@@ -264,24 +264,31 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
 
         setBorder(null);
         setTitle("Formulario de Principio Activo");
-        setPreferredSize(new java.awt.Dimension(790, 440));
+        setPreferredSize(new java.awt.Dimension(780, 420));
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
-        panelImage1.setPreferredSize(new java.awt.Dimension(790, 440));
+        panelImage1.setPreferredSize(new java.awt.Dimension(780, 420));
+        panelImage1.setLayout(null);
 
-        pnlEntradasPActivo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Principio Activo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
-        pnlEntradasPActivo.setEnabled(false);
+        pnlEntradasPActivo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Principio Activo", 1, 2));
         pnlEntradasPActivo.setOpaque(false);
         pnlEntradasPActivo.setPreferredSize(new java.awt.Dimension(748, 120));
+        pnlEntradasPActivo.setLayout(null);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setText("Codigo:");
+        pnlEntradasPActivo.add(lblCodigo);
+        lblCodigo.setBounds(16, 16, 54, 27);
 
         lblDescrip.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescrip.setText("Descripcion:");
+        pnlEntradasPActivo.add(lblDescrip);
+        lblDescrip.setBounds(167, 17, 83, 24);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado:");
+        pnlEntradasPActivo.add(lblEstado);
+        lblEstado.setBounds(559, 21, 53, 17);
 
         txtCodigo.setEditable(false);
         txtCodigo.setDireccionDeSombra(30);
@@ -294,6 +301,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 txtCodigoKeyReleased(evt);
             }
         });
+        pnlEntradasPActivo.add(txtCodigo);
+        txtCodigo.setBounds(80, 18, 83, 25);
 
         txtDescrip.setEditable(false);
         txtDescrip.setDireccionDeSombra(30);
@@ -306,6 +315,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 txtDescripKeyReleased(evt);
             }
         });
+        pnlEntradasPActivo.add(txtDescrip);
+        txtDescrip.setBounds(254, 18, 301, 25);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -323,42 +334,16 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradasPActivo.add(chbEstado);
+        chbEstado.setBounds(618, 17, 100, 25);
 
-        javax.swing.GroupLayout pnlEntradasPActivoLayout = new javax.swing.GroupLayout(pnlEntradasPActivo);
-        pnlEntradasPActivo.setLayout(pnlEntradasPActivoLayout);
-        pnlEntradasPActivoLayout.setHorizontalGroup(
-            pnlEntradasPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasPActivoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCodigo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblDescrip)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblEstado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        pnlEntradasPActivoLayout.setVerticalGroup(
-            pnlEntradasPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasPActivoLayout.createSequentialGroup()
-                .addGroup(pnlEntradasPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEstado)
-                    .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        panelImage1.add(pnlEntradasPActivo);
+        pnlEntradasPActivo.setBounds(10, 11, 748, 55);
 
-        pnlBuscadorPActivo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorPActivo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorPActivo.setOpaque(false);
         pnlBuscadorPActivo.setPreferredSize(new java.awt.Dimension(575, 37));
+        pnlBuscadorPActivo.setLayout(null);
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
         btnPrimero.setText("<<");
@@ -367,6 +352,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnPrimeroActionPerformed(evt);
             }
         });
+        pnlBuscadorPActivo.add(btnPrimero);
+        btnPrimero.setBounds(12, 2, 48, 25);
 
         btnAnterior.setBackground(new java.awt.Color(102, 204, 0));
         btnAnterior.setText("<");
@@ -375,6 +362,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnAnteriorActionPerformed(evt);
             }
         });
+        pnlBuscadorPActivo.add(btnAnterior);
+        btnAnterior.setBounds(66, 2, 40, 25);
 
         btnSiguiente.setBackground(new java.awt.Color(102, 204, 0));
         btnSiguiente.setText(">");
@@ -383,6 +372,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnSiguienteActionPerformed(evt);
             }
         });
+        pnlBuscadorPActivo.add(btnSiguiente);
+        btnSiguiente.setBounds(199, 2, 40, 25);
 
         btnUltimo.setBackground(new java.awt.Color(104, 204, 0));
         btnUltimo.setText(">>");
@@ -391,21 +382,26 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnUltimoActionPerformed(evt);
             }
         });
+        pnlBuscadorPActivo.add(btnUltimo);
+        btnUltimo.setBounds(245, 2, 48, 25);
 
         rbTodos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbTodos);
-        rbTodos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        rbTodos.setFont(new java.awt.Font("Arial", 1, 14));
         rbTodos.setForeground(new java.awt.Color(255, 255, 255));
+        rbTodos.setSelected(true);
         rbTodos.setText("Todos");
         rbTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbTodosActionPerformed(evt);
             }
         });
+        pnlBuscadorPActivo.add(rbTodos);
+        rbTodos.setBounds(311, 2, 69, 25);
 
         rbAtivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbAtivos);
-        rbAtivos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        rbAtivos.setFont(new java.awt.Font("Arial", 1, 14));
         rbAtivos.setForeground(new java.awt.Color(255, 255, 255));
         rbAtivos.setText("Activos");
         rbAtivos.addActionListener(new java.awt.event.ActionListener() {
@@ -413,10 +409,12 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 rbAtivosActionPerformed(evt);
             }
         });
+        pnlBuscadorPActivo.add(rbAtivos);
+        rbAtivos.setBounds(385, 2, 77, 25);
 
         rbNoActivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbNoActivos);
-        rbNoActivos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        rbNoActivos.setFont(new java.awt.Font("Arial", 1, 14));
         rbNoActivos.setForeground(new java.awt.Color(255, 255, 255));
         rbNoActivos.setText("No Activos");
         rbNoActivos.addActionListener(new java.awt.event.ActionListener() {
@@ -424,6 +422,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 rbNoActivosActionPerformed(evt);
             }
         });
+        pnlBuscadorPActivo.add(rbNoActivos);
+        rbNoActivos.setBounds(464, 2, 101, 25);
 
         btnBucar.setBackground(new java.awt.Color(102, 204, 0));
         btnBucar.setText("Buscar");
@@ -432,46 +432,16 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnBucarActionPerformed(evt);
             }
         });
+        pnlBuscadorPActivo.add(btnBucar);
+        btnBucar.setBounds(112, 2, 81, 25);
 
-        javax.swing.GroupLayout pnlBuscadorPActivoLayout = new javax.swing.GroupLayout(pnlBuscadorPActivo);
-        pnlBuscadorPActivo.setLayout(pnlBuscadorPActivoLayout);
-        pnlBuscadorPActivoLayout.setHorizontalGroup(
-            pnlBuscadorPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscadorPActivoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBucar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rbTodos)
-                .addGap(5, 5, 5)
-                .addComponent(rbAtivos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbNoActivos)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        pnlBuscadorPActivoLayout.setVerticalGroup(
-            pnlBuscadorPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscadorPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnBucar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(rbTodos)
-                .addComponent(rbAtivos)
-                .addComponent(rbNoActivos))
-        );
+        panelImage1.add(pnlBuscadorPActivo);
+        pnlBuscadorPActivo.setBounds(85, 72, 597, 29);
 
-        pnlAccionesPActivo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesPActivo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesPActivo.setOpaque(false);
         pnlAccionesPActivo.setPreferredSize(new java.awt.Dimension(550, 50));
+        pnlAccionesPActivo.setLayout(null);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
         btnNuevo.setText("Nuevo");
@@ -480,6 +450,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
+        pnlAccionesPActivo.add(btnNuevo);
+        btnNuevo.setBounds(12, 2, 78, 25);
 
         btnModificar.setBackground(new java.awt.Color(51, 153, 255));
         btnModificar.setText("Modificar");
@@ -489,6 +461,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
+        pnlAccionesPActivo.add(btnModificar);
+        btnModificar.setBounds(96, 2, 98, 25);
 
         btnGuardar.setBackground(new java.awt.Color(51, 153, 255));
         btnGuardar.setText("Guardar");
@@ -498,6 +472,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
+        pnlAccionesPActivo.add(btnGuardar);
+        btnGuardar.setBounds(200, 2, 89, 25);
 
         btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
         btnCancelar.setText("Cancelar");
@@ -506,6 +482,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
+        pnlAccionesPActivo.add(btnCancelar);
+        btnCancelar.setBounds(295, 2, 94, 25);
 
         btnSalir.setBackground(new java.awt.Color(51, 153, 255));
         btnSalir.setText("Salir");
@@ -514,33 +492,11 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
                 btnSalirActionPerformed(evt);
             }
         });
+        pnlAccionesPActivo.add(btnSalir);
+        btnSalir.setBounds(395, 2, 88, 25);
 
-        javax.swing.GroupLayout pnlAccionesPActivoLayout = new javax.swing.GroupLayout(pnlAccionesPActivo);
-        pnlAccionesPActivo.setLayout(pnlAccionesPActivoLayout);
-        pnlAccionesPActivoLayout.setHorizontalGroup(
-            pnlAccionesPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAccionesPActivoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlAccionesPActivoLayout.setVerticalGroup(
-            pnlAccionesPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAccionesPActivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        panelImage1.add(pnlAccionesPActivo);
+        pnlAccionesPActivo.setBounds(132, 348, 503, 29);
 
         tblPrincipioActivo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -557,32 +513,8 @@ public class IPrincipioActivo extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblPrincipioActivo);
 
-        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
-        panelImage1.setLayout(panelImage1Layout);
-        panelImage1Layout.setHorizontalGroup(
-            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImage1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(pnlEntradasPActivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlBuscadorPActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
-                    .addComponent(pnlAccionesPActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
-        );
-        panelImage1Layout.setVerticalGroup(
-            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImage1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlEntradasPActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlBuscadorPActivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(pnlAccionesPActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        panelImage1.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 107, 748, 230);
 
         getContentPane().add(panelImage1, java.awt.BorderLayout.CENTER);
 

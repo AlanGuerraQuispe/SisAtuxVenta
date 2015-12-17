@@ -397,10 +397,10 @@ public class CSimpleModelo extends JAbstractController implements Serializable{
             query.append("       || NVL(TRIM(USUARIO.AP_MATERNO_USUARIO),' ')  \n");
             query.append("       || ' '  \n");
             query.append("       || NVL(TRIM(USUARIO.NO_USUARIO),' ') \n");
-            query.append("FROM     CMTS_USUARIO USUARIO        , \n");
-            query.append("         CMTS_USUARIO_ROL USUARIO_ROL, \n");
-            query.append("         VTTR_CAJA_PAGO CAJA         , \n");
-            query.append("         VTTR_USUARIO_CAJA USUARIO_CAJA \n");
+            query.append("FROM     atux.CMTS_USUARIO USUARIO        , \n");
+            query.append("         atux.CMTS_USUARIO_ROL USUARIO_ROL, \n");
+            query.append("         atux.VTTR_CAJA_PAGO CAJA         , \n");
+            query.append("         atux.VTTR_USUARIO_CAJA USUARIO_CAJA \n");
             query.append("WHERE    USUARIO_ROL.CO_COMPANIA     ='").append(AtuxVariables.vCodigoCompania).append("'");
             query.append("AND      USUARIO_ROL.CO_LOCAL        ='").append(AtuxVariables.vCodigoLocal).append("'");
             query.append("AND      USUARIO_ROL.CO_ROL          ='").append(AtuxVariables.ROL_CAJERO).append("'");
@@ -421,8 +421,7 @@ public class CSimpleModelo extends JAbstractController implements Serializable{
 
             rs =  this.getRegistrosSinFiltro(query);
 
-            while(rs.next())
-            {
+            while(rs.next())            {
                 usuario = new Usuario();
                 usuario.setPrimaryKey(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
                 usuario.setCoCompania(rs.getString(1));

@@ -808,7 +808,7 @@ public class DlgPedidoTraslado extends JDialog {
 				txtDesLocal.setText(VariablesTrasladoProducto.vNoLocal);
 			}
 		} else {
-			VariablesTrasladoProducto.vCodLocal = AtuxUtility.caracterIzquierda(txtCodLocal.getText().trim(), 3, "0");
+			VariablesTrasladoProducto.vCodLocal = AtuxUtility.caracterIzquierda(txtCodLocal.getText().trim(), 5, "0");
 			try {
 				VariablesTrasladoProducto.vNoLocal = DBTrasladoProducto.getNombreLocal();
 				if (VariablesTrasladoProducto.vNoLocal.trim().length() == 0) {

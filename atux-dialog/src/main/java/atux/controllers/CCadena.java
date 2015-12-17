@@ -59,7 +59,17 @@ public class CCadena extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;    
     }    
     
@@ -84,7 +94,17 @@ public class CCadena extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;    
     }
     
@@ -107,7 +127,17 @@ public class CCadena extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return mCadena;
     }
     
@@ -148,7 +178,17 @@ public class CCadena extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;
         
     }
@@ -181,7 +221,17 @@ public class CCadena extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;
     }    
     

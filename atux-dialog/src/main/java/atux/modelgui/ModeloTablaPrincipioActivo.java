@@ -11,7 +11,7 @@ public class ModeloTablaPrincipioActivo extends ModeloTabla{
     public static int TODOS = -1;
     public static int ACTIVOS = 1;
     public static int NO_ACTIVOS = 0;    
-    public static final Integer[] anchoColumnas  = {140,600,200,300};
+    public static final Integer[] anchoColumnas  = {140,800,200,200};
     
     public ModeloTablaPrincipioActivo() {
         cc = new CPrincipioActivo();

@@ -1715,9 +1715,9 @@ public final class ILocales extends javax.swing.JInternalFrame {
         cp.getLocales().setNuInteriorVia(txtDpto.getText());
         cp.getLocales().setNuManzanaVia(txtManzana.getText());
         cp.getLocales().setNuLoteVia(txtLote.getText());
-        cp.getLocales().setTiPoblacion(((TipoPoblacion)cmbTipoPoblacion.getSelectedItem()).getTiPoblacion());
+        cp.getLocales().setTiPoblacion(((TipoPoblacion) cmbTipoPoblacion.getSelectedItem()).getTiPoblacion());
         cp.getLocales().setNoPoblacion(txtNombrePoblacion.getText());
-        cp.getLocales().setDeDireccionLocal("");
+        cp.getLocales().setDeDireccionLocal(txtNombreVia.getText() + " " + txtNumero.getText());
         cp.getLocales().setCoTelPais(txtCodigoTelefPais.getText());
         cp.getLocales().setCoTelCiudad(txtCodigoTelefCiudad.getText());
         cp.getLocales().setNuTelNormal(txtNumeroTelefono.getText());

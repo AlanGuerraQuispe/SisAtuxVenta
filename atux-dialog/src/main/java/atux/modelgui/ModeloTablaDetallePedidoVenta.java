@@ -144,7 +144,7 @@ public class ModeloTablaDetallePedidoVenta extends ModeloTabla{
         return numItems;
     }
 
-    @Override
+
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(tipoTabla)
         {            

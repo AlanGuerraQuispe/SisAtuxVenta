@@ -36,7 +36,17 @@ public class CCliente extends JAbstractController{
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return false;
     }
 
@@ -81,8 +91,7 @@ public class CCliente extends JAbstractController{
             BaseConexion.setConnectionNull();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        finally {
+        } finally {
             // Se cierran los recursos de base de datos.
             try {
                 if (rs != null) {
@@ -92,6 +101,7 @@ public class CCliente extends JAbstractController{
                 System.out.println("No ha podido cerrar ResultSet.");
             }
         }
+
         return rgs;
     }
 
@@ -130,7 +140,17 @@ public class CCliente extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return clienteLocal;
     }
 
@@ -169,7 +189,17 @@ public class CCliente extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return clienteLocal;
     }
 
@@ -229,8 +259,7 @@ public class CCliente extends JAbstractController{
             BaseConexion.setConnectionNull();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        finally {
+        } finally {
             // Se cierran los recursos de base de datos.
             try {
                 if (rs != null) {
@@ -581,7 +610,7 @@ public class CCliente extends JAbstractController{
     public String getNuevoCodigo(String coCompania, String coLocal){
         String Codigo="";
         try {
-            return AtuxDBUtility.getValueAt(Cliente.nt,"rtrim(ltrim(to_char(max(CO_CLIENTE_LOCAL) + 1,'00000000')))"," CO_COMPANIA = '"+coCompania +"' AND CO_LOCAL = '" + coLocal + "'");
+            return AtuxDBUtility.getValueAt(Cliente.nt,"rtrim(ltrim(to_char(nvl(max(CO_CLIENTE_LOCAL),0) + 1,'00000000')))"," CO_COMPANIA = '"+coCompania +"' AND CO_LOCAL = '" + coLocal + "'");
         } catch (SQLException ex) {
             Logger.getLogger(CCliente.class.getName()).log(Level.SEVERE, null, ex);
         }

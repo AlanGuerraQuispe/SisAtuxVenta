@@ -64,6 +64,8 @@ public class DonacionServiceImpl implements DonacionService {
             id.setCoLocal(AppCtx.instance().getCoLocal());
             id.setCoInstitucion(donacionDetalle.getDonacion().getCoInstitucion());
             id.setNuPedido(pedidoVenta.getNuPedido());
+            pedidoDonacion.setCreadoPor(AtuxVariables.vIdUsuario);
+            pedidoDonacion.setFechaCreacion(new Date());
             pedidoDonacion.setFePedido(pedidoVenta.getFePedido());
             pedidoDonacion.setTiComprobante(pedidoVenta.getTiComprobante());
             pedidoDonacion.setTiPedido(pedidoVenta.getTiPedido());

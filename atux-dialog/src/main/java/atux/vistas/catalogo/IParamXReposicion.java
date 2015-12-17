@@ -52,6 +52,10 @@ public class IParamXReposicion extends javax.swing.JPanel {
         setFiltroTexto();        
         setEventSelectionModel(tblListado.getSelectionModel());
         DesActivarCasillas();
+        dteFechaInicio.setBounds(342, 76, 110, 25);
+        dteFechaFinal.setBounds(458, 76, 110, 25);
+        txtDteFechaInicio.setBounds(342, 76, 110, 25);
+        txtDteFechaFinal.setBounds(458, 76, 110, 25);        
     }
 
 
@@ -130,6 +134,9 @@ public class IParamXReposicion extends javax.swing.JPanel {
         }else{
             chbSetActivo(false); 
         }
+
+        txtDteFechaInicio.setText(AtuxUtility.getDateToString(dteFechaInicio.getDate(), "dd/MM/yyyy") );
+        txtDteFechaFinal.setText(AtuxUtility.getDateToString(dteFechaFinal.getDate(), "dd/MM/yyyy") );
     }
     
     private void Limpiar(){
@@ -163,6 +170,11 @@ public class IParamXReposicion extends javax.swing.JPanel {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+        
+        this.dteFechaInicio.setVisible(true);
+        this.dteFechaFinal.setVisible(true);
+        this.txtDteFechaInicio.setVisible(false);
+        this.txtDteFechaFinal.setVisible(false);
     }
     private void DesActivarCasillas(){
         this.pnlEntradas.setEnabled(true);
@@ -185,6 +197,11 @@ public class IParamXReposicion extends javax.swing.JPanel {
         this.rbTodos.setEnabled(true);
         this.rbAtivos.setEnabled(true);
         this.rbNoActivos.setEnabled(true);        
+
+        this.dteFechaInicio.setVisible(false);
+        this.dteFechaFinal.setVisible(false);
+        this.txtDteFechaInicio.setVisible(true);
+        this.txtDteFechaFinal.setVisible(true);
 
         esActualizacion = false;
         this.pnlBuscadorTDeCambio.setVisible(true);
@@ -348,6 +365,8 @@ public class IParamXReposicion extends javax.swing.JPanel {
         lblMensaje = new elaprendiz.gui.label.LabelRect();
         dteFechaInicio = new com.toedter.calendar.JDateChooser();
         dteFechaFinal = new com.toedter.calendar.JDateChooser();
+        txtDteFechaInicio = new elaprendiz.gui.textField.TextField();
+        txtDteFechaFinal = new elaprendiz.gui.textField.TextField();
         pnlBuscadorTDeCambio = new javax.swing.JPanel();
         btnPrimero = new elaprendiz.gui.button.ButtonRect();
         btnAnterior = new elaprendiz.gui.button.ButtonRect();
@@ -380,39 +399,54 @@ public class IParamXReposicion extends javax.swing.JPanel {
         pnlMedicosEspecialidad.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnlMedicosEspecialidad.setOpaque(false);
 
-        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Parametros de Reposicion", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Parametros de Reposicion", 1, 2));
         pnlEntradas.setEnabled(false);
         pnlEntradas.setOpaque(false);
         pnlEntradas.setPreferredSize(new java.awt.Dimension(748, 120));
+        pnlEntradas.setLayout(null);
 
         lblMinimo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblMinimo.setText("Minimo:");
         lblMinimo.setAlignmentX(0.2F);
         lblMinimo.setAlignmentY(0.2F);
+        pnlEntradas.add(lblMinimo);
+        lblMinimo.setBounds(16, 54, 54, 16);
 
         lblMaximo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblMaximo.setText("Maximo:");
         lblMaximo.setAlignmentX(0.2F);
         lblMaximo.setAlignmentY(0.2F);
+        pnlEntradas.add(lblMaximo);
+        lblMaximo.setBounds(142, 54, 58, 17);
 
         lblPeriodo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblPeriodo.setText("Periodo:");
         lblPeriodo.setAlignmentX(0.2F);
         lblPeriodo.setAlignmentY(0.2F);
+        pnlEntradas.add(lblPeriodo);
+        lblPeriodo.setBounds(251, 54, 58, 17);
 
         lblVigenciaInicio.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblVigenciaInicio.setText("Vigencia Inicio");
         lblVigenciaInicio.setAlignmentX(0.2F);
         lblVigenciaInicio.setAlignmentY(0.2F);
+        pnlEntradas.add(lblVigenciaInicio);
+        lblVigenciaInicio.setBounds(350, 54, 99, 17);
 
         lblVigenciaFinal.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblVigenciaFinal.setText("Vigencia Final");
+        pnlEntradas.add(lblVigenciaFinal);
+        lblVigenciaFinal.setBounds(459, 52, 92, 20);
 
         lblSuministro.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblSuministro.setText("Tiempo de Suministro-TS");
+        pnlEntradas.add(lblSuministro);
+        lblSuministro.setBounds(16, 122, 174, 25);
 
         lblReposicion.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblReposicion.setText("Tiempo de Reposicion-TR");
+        pnlEntradas.add(lblReposicion);
+        lblReposicion.setBounds(16, 153, 175, 25);
 
         txtMinimo.setEditable(false);
         txtMinimo.setAlignmentX(0.2F);
@@ -422,11 +456,8 @@ public class IParamXReposicion extends javax.swing.JPanel {
         txtMinimo.setFont(new java.awt.Font("Arial", 0, 12));
         txtMinimo.setName("pcodigo"); // NOI18N
         txtMinimo.setPreferredSize(new java.awt.Dimension(120, 25));
-        txtMinimo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMinimoKeyReleased(evt);
-            }
-        });
+        pnlEntradas.add(txtMinimo);
+        txtMinimo.setBounds(16, 76, 100, 25);
 
         txtMaximo.setEditable(false);
         txtMaximo.setAlignmentX(0.2F);
@@ -436,11 +467,8 @@ public class IParamXReposicion extends javax.swing.JPanel {
         txtMaximo.setFont(new java.awt.Font("Arial", 0, 12));
         txtMaximo.setName("pcodigo"); // NOI18N
         txtMaximo.setPreferredSize(new java.awt.Dimension(120, 25));
-        txtMaximo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMaximoKeyReleased(evt);
-            }
-        });
+        pnlEntradas.add(txtMaximo);
+        txtMaximo.setBounds(126, 76, 100, 25);
 
         txtPeriodo.setEditable(false);
         txtPeriodo.setAlignmentX(0.2F);
@@ -450,11 +478,8 @@ public class IParamXReposicion extends javax.swing.JPanel {
         txtPeriodo.setFont(new java.awt.Font("Arial", 0, 12));
         txtPeriodo.setName("pdescrip"); // NOI18N
         txtPeriodo.setPreferredSize(new java.awt.Dimension(120, 25));
-        txtPeriodo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPeriodoKeyReleased(evt);
-            }
-        });
+        pnlEntradas.add(txtPeriodo);
+        txtPeriodo.setBounds(236, 76, 100, 25);
 
         txtTmpSuministro.setEditable(false);
         txtTmpSuministro.setAlignmentX(0.2F);
@@ -464,6 +489,8 @@ public class IParamXReposicion extends javax.swing.JPanel {
         txtTmpSuministro.setFont(new java.awt.Font("Arial", 0, 12));
         txtTmpSuministro.setName(""); // NOI18N
         txtTmpSuministro.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtTmpSuministro);
+        txtTmpSuministro.setBounds(209, 119, 107, 25);
 
         txtTmpReposicion.setEditable(false);
         txtTmpReposicion.setAlignmentX(0.2F);
@@ -473,6 +500,8 @@ public class IParamXReposicion extends javax.swing.JPanel {
         txtTmpReposicion.setFont(new java.awt.Font("Arial", 0, 12));
         txtTmpReposicion.setName(""); // NOI18N
         txtTmpReposicion.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtTmpReposicion);
+        txtTmpReposicion.setBounds(209, 154, 107, 25);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -492,16 +521,22 @@ public class IParamXReposicion extends javax.swing.JPanel {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(chbEstado);
+        chbEstado.setBounds(400, 119, 93, 28);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado");
         lblEstado.setAlignmentX(0.2F);
         lblEstado.setAlignmentY(0.2F);
+        pnlEntradas.add(lblEstado);
+        lblEstado.setBounds(342, 122, 48, 17);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setText("Código:");
         lblCodigo.setAlignmentX(0.2F);
         lblCodigo.setAlignmentY(0.2F);
+        pnlEntradas.add(lblCodigo);
+        lblCodigo.setBounds(16, 19, 54, 17);
 
         txtCodigo.setEditable(false);
         txtCodigo.setAlignmentX(0.2F);
@@ -511,11 +546,15 @@ public class IParamXReposicion extends javax.swing.JPanel {
         txtCodigo.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodigo.setName("pcodigo"); // NOI18N
         txtCodigo.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtCodigo);
+        txtCodigo.setBounds(80, 16, 86, 25);
 
         lblDescripcion.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescripcion.setText("Descripción:");
         lblDescripcion.setAlignmentX(0.2F);
         lblDescripcion.setAlignmentY(0.2F);
+        pnlEntradas.add(lblDescripcion);
+        lblDescripcion.setBounds(184, 19, 83, 17);
 
         txtDescripcion.setEditable(false);
         txtDescripcion.setAlignmentX(0.2F);
@@ -525,16 +564,22 @@ public class IParamXReposicion extends javax.swing.JPanel {
         txtDescripcion.setFont(new java.awt.Font("Arial", 0, 12));
         txtDescripcion.setName("pcodigo"); // NOI18N
         txtDescripcion.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtDescripcion);
+        txtDescripcion.setBounds(277, 16, 291, 25);
 
         lblAviso.setBackground(new java.awt.Color(255, 0, 51));
         lblAviso.setForeground(new java.awt.Color(255, 255, 0));
         lblAviso.setText("Tipo de Parametro");
         lblAviso.setPreferredSize(new java.awt.Dimension(250, 17));
+        pnlEntradas.add(lblAviso);
+        lblAviso.setBounds(400, 158, 28, 17);
 
         lblMensaje.setBackground(new java.awt.Color(255, 0, 51));
         lblMensaje.setForeground(new java.awt.Color(255, 255, 0));
         lblMensaje.setText("Tipo de Parametro");
         lblMensaje.setPreferredSize(new java.awt.Dimension(250, 17));
+        pnlEntradas.add(lblMensaje);
+        lblMensaje.setBounds(438, 158, 28, 17);
 
         dteFechaInicio.setBackground(new java.awt.Color(0, 0, 0));
         dteFechaInicio.setForeground(new java.awt.Color(255, 0, 0));
@@ -547,6 +592,8 @@ public class IParamXReposicion extends javax.swing.JPanel {
                 dteFechaInicioKeyReleased(evt);
             }
         });
+        pnlEntradas.add(dteFechaInicio);
+        dteFechaInicio.setBounds(342, 79, 110, 22);
 
         dteFechaFinal.setBackground(new java.awt.Color(0, 0, 0));
         dteFechaFinal.setForeground(new java.awt.Color(255, 0, 0));
@@ -559,123 +606,32 @@ public class IParamXReposicion extends javax.swing.JPanel {
                 dteFechaFinalKeyReleased(evt);
             }
         });
+        pnlEntradas.add(dteFechaFinal);
+        dteFechaFinal.setBounds(458, 79, 110, 22);
 
-        javax.swing.GroupLayout pnlEntradasLayout = new javax.swing.GroupLayout(pnlEntradas);
-        pnlEntradas.setLayout(pnlEntradasLayout);
-        pnlEntradasLayout.setHorizontalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(lblCodigo)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblDescripcion)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(lblMinimo)
-                        .addGap(72, 72, 72)
-                        .addComponent(lblMaximo)
-                        .addGap(51, 51, 51)
-                        .addComponent(lblPeriodo)
-                        .addGap(41, 41, 41)
-                        .addComponent(lblVigenciaInicio)
-                        .addGap(10, 10, 10)
-                        .addComponent(lblVigenciaFinal))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(txtMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(dteFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(dteFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(lblSuministro)
-                        .addGap(19, 19, 19)
-                        .addComponent(txtTmpSuministro, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(lblEstado)
-                        .addGap(10, 10, 10)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(lblReposicion)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTmpReposicion, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
-        );
-        pnlEntradasLayout.setVerticalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblCodigo))
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblDescripcion))
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(lblMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(lblMaximo))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(lblPeriodo))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(lblVigenciaInicio))
-                    .addComponent(lblVigenciaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(dteFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(dteFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblSuministro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtTmpSuministro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblEstado))
-                    .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblReposicion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(txtTmpReposicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
+        txtDteFechaInicio.setEditable(false);
+        txtDteFechaInicio.setAlignmentX(0.2F);
+        txtDteFechaInicio.setAlignmentY(0.2F);
+        txtDteFechaInicio.setDireccionDeSombra(30);
+        txtDteFechaInicio.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtDteFechaInicio.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaInicio.setName("pdescrip"); // NOI18N
+        txtDteFechaInicio.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtDteFechaInicio);
+        txtDteFechaInicio.setBounds(530, 130, 20, 20);
 
-        pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        txtDteFechaFinal.setEditable(false);
+        txtDteFechaFinal.setAlignmentX(0.2F);
+        txtDteFechaFinal.setAlignmentY(0.2F);
+        txtDteFechaFinal.setDireccionDeSombra(30);
+        txtDteFechaFinal.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtDteFechaFinal.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaFinal.setName("pdescrip"); // NOI18N
+        txtDteFechaFinal.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtDteFechaFinal);
+        txtDteFechaFinal.setBounds(530, 160, 20, 20);
+
+        pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorTDeCambio.setOpaque(false);
         pnlBuscadorTDeCambio.setPreferredSize(new java.awt.Dimension(575, 37));
 
@@ -724,7 +680,7 @@ public class IParamXReposicion extends javax.swing.JPanel {
 
         rbAtivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbAtivos);
-        rbAtivos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        rbAtivos.setFont(new java.awt.Font("Arial", 1, 14));
         rbAtivos.setForeground(new java.awt.Color(255, 255, 255));
         rbAtivos.setSelected(true);
         rbAtivos.setText("Activos");
@@ -792,7 +748,7 @@ public class IParamXReposicion extends javax.swing.JPanel {
         ));
         jScrollPanelXPaDeRpDeProd.setViewportView(tblListado);
 
-        pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesTDeCambio.setOpaque(false);
         pnlAccionesTDeCambio.setPreferredSize(new java.awt.Dimension(550, 50));
 
@@ -885,7 +841,7 @@ public class IParamXReposicion extends javax.swing.JPanel {
             .addGroup(pnlMedicosEspecialidadLayout.createSequentialGroup()
                 .addComponent(pnlEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPanelXPaDeRpDeProd, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1137,6 +1093,8 @@ private void txtPeriodoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private javax.swing.JTable tblListado;
     private elaprendiz.gui.textField.TextField txtCodigo;
     private elaprendiz.gui.textField.TextField txtDescripcion;
+    private elaprendiz.gui.textField.TextField txtDteFechaFinal;
+    private elaprendiz.gui.textField.TextField txtDteFechaInicio;
     private elaprendiz.gui.textField.TextField txtMaximo;
     private elaprendiz.gui.textField.TextField txtMinimo;
     private elaprendiz.gui.textField.TextField txtPeriodo;

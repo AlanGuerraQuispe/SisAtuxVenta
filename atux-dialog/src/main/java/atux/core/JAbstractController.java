@@ -438,7 +438,7 @@ public abstract class JAbstractController<M extends JAbstractModelBD> implements
         }
     }
     
-    @Override
+
     public ResultSet getRegistros(String nombreTabla, String[] campos, String[] columnaId, Object[] id,String[] columOrder) {
         String condiciones = unirColumnasValores(columnaId,id);
         
@@ -596,7 +596,7 @@ public abstract class JAbstractController<M extends JAbstractModelBD> implements
      * @param id id
      * @return 
      */
-    @Override
+
     public int actualizarRegistro(String nomTabla, String[] cnls, String columnaId, Object id) {
         Number vl = null;        
         if(esNumerico(id))
@@ -623,7 +623,7 @@ public abstract class JAbstractController<M extends JAbstractModelBD> implements
         return actualizarRegistro(nomTabla, new String[]{cnls},columnaId,id);
     }
 
-    @Override
+
     public int agregarRegistro(String nombreTabla, String[] campos, Object[] valores) {
         
         sql = "insert into "+nombreTabla+"("+generarArrayAString(campos)+") values("+

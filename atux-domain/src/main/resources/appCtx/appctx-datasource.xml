@@ -14,11 +14,12 @@
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
         <!--<property name="url" value="jdbc:oracle:thin:@192.168.1.140:1521:XE" />-->
         <!--<property name="url" value="jdbc:oracle:thin:@7.128.235.239:1521:XE" />-->
-        <property name="url" value="jdbc:oracle:thin:@192.168.1.111:1521:ABDPV001" />
-        <!--<property name="url" value="jdbc:oracle:thin:@192.168.1.91:1521:XE" />-->
+        <!--        <property name="url" value="jdbc:oracle:thin:@192.168.1.111:1521:ABDPV001" />-->
+        <property name="url" value="jdbc:oracle:thin:@192.168.1.100:1521:ATUXPRO" />
+                <!--<property name="url" value="jdbc:oracle:thin:@192.168.1.91:1521:XE" />-->
         <!--<property name="url" value="jdbc:oracle:thin:@7.86.89.177:1521:ABDPV001" />-->
-        <property name="username" value="ecventa"/>
-        <property name="password" value="venta"/>
+        <property name="username" value="atux"/>
+        <property name="password" value="atuxpro"/>
         <property name="timeBetweenEvictionRunsMillis" value="10000"/><!--evict cada 10 segs-->
         <property name="numTestsPerEvictionRun" value="10"/><!--analizar 10 conex-->
         <property name="minEvictableIdleTimeMillis" value="10000"/><!-- evitc si 10 segs idle -->

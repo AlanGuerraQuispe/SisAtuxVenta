@@ -1,5 +1,7 @@
 package atux.vistas.buscar;
 
+import atux.vistas.utilitario.*;
+import atux.vistas.buscar.*;
 import atux.controllers.CUsuario;
 import atux.core.JAbstractModelBD;
 import atux.modelgui.ModeloTablaUsuario;

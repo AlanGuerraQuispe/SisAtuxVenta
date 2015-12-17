@@ -63,6 +63,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         DesActivarCasillas();        
         this.ifr = ifr;
         lbAviso.setVisible(false);
+        dteFechaVencimiento.setBounds(453, 57, 110, 30);
+        txtDteFechaVencimiento.setBounds(453, 57, 110, 30);
     }
 
     public final void CargaDatos(){
@@ -101,8 +103,9 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         Limpiar();
 
         this.txtProductoRegSanitario.setText(String.valueOf(cp.getProductoRegSanitario().getNuRegSanitario()));
-        this.txtFechaVencimiento.setDate(cp.getProductoRegSanitario().getFeVenRegSanitario());
-
+        this.dteFechaVencimiento.setDate(cp.getProductoRegSanitario().getFeVenRegSanitario());
+        this.txtDteFechaVencimiento.setText(AtuxUtility.getDateToString(dteFechaVencimiento.getDate(), "dd/MM/yyyy"));
+        
         if("A".equals(cp.getProductoRegSanitario().getEsRegSanitario())){
             chbSetActivo(true); 
         }else{
@@ -118,7 +121,7 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
 
     private void ActivarCasillas(){
         pnlEntradas.setEnabled(false);
-        ECampos.setEditableTexto(this.pnlEntradas, true, new Component[]{lblCodigo,lblProductoRegSanitario,lblDescripcion,lblUnidad,lblEstado,txtCodigo,txtDescripcion,txtUnidad},false,"");        
+        ECampos.setEditableTexto(this.pnlEntradas, true, new Component[]{lblfecha, lblCodigo,lblProductoRegSanitario,lblDescripcion,lblUnidad,lblEstado,txtCodigo,txtDescripcion,txtUnidad},false,"");        
         this.tblListado.setEnabled(false);
         this.tblListado.clearSelection();        
         this.btnNuevo.setEnabled(false);
@@ -135,10 +138,12 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+        this.dteFechaVencimiento.setVisible(true);
+        this.txtDteFechaVencimiento.setVisible(false);
     }
     private void DesActivarCasillas(){
         this.pnlEntradas.setEnabled(true);
-        ECampos.setEditableTexto(this.pnlEntradas, false, new Component[]{lblCodigo,lblProductoRegSanitario,lblDescripcion,lblUnidad,lblEstado,txtCodigo,txtDescripcion,txtUnidad},false,"");        
+        ECampos.setEditableTexto(this.pnlEntradas, false, new Component[]{lblfecha, lblCodigo,lblProductoRegSanitario,lblDescripcion,lblUnidad,lblEstado,txtCodigo,txtDescripcion,txtUnidad},false,"");        
         this.tblListado.setEnabled(true);
         this.tblListado.clearSelection();
         this.btnNuevo.setEnabled(true);
@@ -154,7 +159,9 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         this.btnAnterior.setEnabled(true);
         this.rbTodos.setEnabled(true);
         this.rbAtivos.setEnabled(true);
-        this.rbNoActivos.setEnabled(true);        
+        this.rbNoActivos.setEnabled(true);   
+        this.dteFechaVencimiento.setVisible(false);
+        this.txtDteFechaVencimiento.setVisible(true);
 
         esActualizacion = false;
         this.pnlBuscadorTDeCambio.setVisible(true);
@@ -164,7 +171,7 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
     public boolean verficarCambios(){
         if(!this.txtProductoRegSanitario.getText().equals(String.valueOf(cp.getProductoRegSanitario().getNuRegSanitario()))){
             return true;
-        }else if(txtFechaVencimiento.getDate() != cp.getProductoRegSanitario().getFeVenRegSanitario()){
+        }else if(dteFechaVencimiento.getDate() != cp.getProductoRegSanitario().getFeVenRegSanitario()){
             return true;
         }else if(!chbEstado.isSelected() != ("I".equals(cp.getProductoRegSanitario().getEsRegSanitario()))){
             return true;
@@ -177,7 +184,7 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         cp.getProductoRegSanitario().setCoLocal(AtuxVariables.vCodigoLocal);
         cp.getProductoRegSanitario().setCoProducto(txtCodigo.getText());
         cp.getProductoRegSanitario().setNuRegSanitario(txtProductoRegSanitario.getText());
-        cp.getProductoRegSanitario().setFeVenRegSanitario(txtFechaVencimiento.getDate());
+        cp.getProductoRegSanitario().setFeVenRegSanitario(dteFechaVencimiento.getDate());
 
         if (chbEstado.isSelected()){
             cp.getProductoRegSanitario().setEsRegSanitario("A");
@@ -288,7 +295,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         lblEstado = new javax.swing.JLabel();
         chbEstado = new javax.swing.JCheckBox();
         lblfecha = new javax.swing.JLabel();
-        txtFechaVencimiento = new com.toedter.calendar.JDateChooser();
+        dteFechaVencimiento = new com.toedter.calendar.JDateChooser();
+        txtDteFechaVencimiento = new elaprendiz.gui.textField.TextField();
         lblListado = new javax.swing.JScrollPane();
         tblListado = new javax.swing.JTable();
         pnlBuscadorTDeCambio = new javax.swing.JPanel();
@@ -314,18 +322,24 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         panelImage1.setPreferredSize(new java.awt.Dimension(780, 300));
 
         pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Maestro de Producto", 1, 2));
-        pnlEntradas.setEnabled(false);
         pnlEntradas.setOpaque(false);
         pnlEntradas.setPreferredSize(new java.awt.Dimension(748, 120));
+        pnlEntradas.setLayout(null);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setText("Codigo:");
+        pnlEntradas.add(lblCodigo);
+        lblCodigo.setBounds(16, 17, 54, 27);
 
         lblDescripcion.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescripcion.setText("Descripcion:");
+        pnlEntradas.add(lblDescripcion);
+        lblDescripcion.setBounds(167, 19, 83, 24);
 
         lblUnidad.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblUnidad.setText("Unidad:");
+        pnlEntradas.add(lblUnidad);
+        lblUnidad.setBounds(573, 22, 53, 17);
 
         txtCodigo.setEditable(false);
         txtCodigo.setDireccionDeSombra(30);
@@ -333,6 +347,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         txtCodigo.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodigo.setName("pcodigo"); // NOI18N
         txtCodigo.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtCodigo);
+        txtCodigo.setBounds(80, 16, 83, 30);
 
         txtDescripcion.setEditable(false);
         txtDescripcion.setDireccionDeSombra(30);
@@ -340,6 +356,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         txtDescripcion.setFont(new java.awt.Font("Arial", 0, 12));
         txtDescripcion.setName("pdescrip"); // NOI18N
         txtDescripcion.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtDescripcion);
+        txtDescripcion.setBounds(254, 16, 301, 30);
 
         txtUnidad.setEditable(false);
         txtUnidad.setDireccionDeSombra(30);
@@ -347,9 +365,13 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         txtUnidad.setFont(new java.awt.Font("Arial", 0, 12));
         txtUnidad.setName("pdescrip"); // NOI18N
         txtUnidad.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradas.add(txtUnidad);
+        txtUnidad.setBounds(636, 16, 141, 30);
 
         lblProductoRegSanitario.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblProductoRegSanitario.setText("Registro Sanitario");
+        pnlEntradas.add(lblProductoRegSanitario);
+        lblProductoRegSanitario.setBounds(16, 60, 123, 24);
 
         txtProductoRegSanitario.setEditable(false);
         txtProductoRegSanitario.setDireccionDeSombra(30);
@@ -362,9 +384,13 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 txtProductoRegSanitarioKeyReleased(evt);
             }
         });
+        pnlEntradas.add(txtProductoRegSanitario);
+        txtProductoRegSanitario.setBounds(143, 57, 162, 30);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado:");
+        pnlEntradas.add(lblEstado);
+        lblEstado.setBounds(581, 63, 53, 17);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -382,81 +408,41 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(chbEstado);
+        chbEstado.setBounds(640, 59, 116, 25);
 
         lblfecha.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblfecha.setText("Fecha Vencimiento:");
+        pnlEntradas.add(lblfecha);
+        lblfecha.setBounds(315, 58, 134, 27);
 
-        txtFechaVencimiento.setBackground(new java.awt.Color(0, 0, 0));
-        txtFechaVencimiento.setForeground(new java.awt.Color(255, 0, 0));
-        txtFechaVencimiento.setDate(Calendar.getInstance().getTime());
-        txtFechaVencimiento.setFont(new java.awt.Font("Tahoma", 1, 13));
-        txtFechaVencimiento.setPreferredSize(new java.awt.Dimension(120, 22));
-        txtFechaVencimiento.setRequestFocusEnabled(false);
-        txtFechaVencimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+        dteFechaVencimiento.setBackground(new java.awt.Color(0, 0, 0));
+        dteFechaVencimiento.setForeground(new java.awt.Color(255, 0, 0));
+        dteFechaVencimiento.setDate(Calendar.getInstance().getTime());
+        dteFechaVencimiento.setFont(new java.awt.Font("Tahoma", 1, 13));
+        dteFechaVencimiento.setPreferredSize(new java.awt.Dimension(120, 22));
+        dteFechaVencimiento.setRequestFocusEnabled(false);
+        dteFechaVencimiento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFechaVencimientoKeyReleased(evt);
+                dteFechaVencimientoKeyReleased(evt);
             }
         });
+        pnlEntradas.add(dteFechaVencimiento);
+        dteFechaVencimiento.setBounds(453, 61, 110, 22);
 
-        javax.swing.GroupLayout pnlEntradasLayout = new javax.swing.GroupLayout(pnlEntradas);
-        pnlEntradas.setLayout(pnlEntradasLayout);
-        pnlEntradasLayout.setHorizontalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(lblProductoRegSanitario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProductoRegSanitario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblfecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblEstado)
-                        .addGap(6, 6, 6)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addComponent(lblCodigo)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(lblDescripcion)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblUnidad)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29))
-        );
-        pnlEntradasLayout.setVerticalGroup(
-            pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasLayout.createSequentialGroup()
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblUnidad))
-                    .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEstado)
-                    .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtProductoRegSanitario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductoRegSanitario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        txtDteFechaVencimiento.setEditable(false);
+        txtDteFechaVencimiento.setDireccionDeSombra(30);
+        txtDteFechaVencimiento.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtDteFechaVencimiento.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDteFechaVencimiento.setName("pdescrip"); // NOI18N
+        txtDteFechaVencimiento.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtDteFechaVencimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDteFechaVencimientoKeyReleased(evt);
+            }
+        });
+        pnlEntradas.add(txtDteFechaVencimiento);
+        txtDteFechaVencimiento.setBounds(345, 87, 20, 10);
 
         tblListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -476,6 +462,7 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
         pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorTDeCambio.setOpaque(false);
         pnlBuscadorTDeCambio.setPreferredSize(new java.awt.Dimension(575, 37));
+        pnlBuscadorTDeCambio.setLayout(null);
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
         btnPrimero.setText("<<");
@@ -484,6 +471,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnPrimeroActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(btnPrimero);
+        btnPrimero.setBounds(12, 2, 48, 25);
 
         btnAnterior.setBackground(new java.awt.Color(102, 204, 0));
         btnAnterior.setText("<");
@@ -492,6 +481,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnAnteriorActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(btnAnterior);
+        btnAnterior.setBounds(65, 2, 40, 25);
 
         btnSiguiente.setBackground(new java.awt.Color(102, 204, 0));
         btnSiguiente.setText(">");
@@ -500,6 +491,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(btnSiguiente);
+        btnSiguiente.setBounds(111, 2, 40, 25);
 
         btnUltimo.setBackground(new java.awt.Color(104, 204, 0));
         btnUltimo.setText(">>");
@@ -508,6 +501,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnUltimoActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(btnUltimo);
+        btnUltimo.setBounds(156, 2, 48, 25);
 
         rbTodos.setBackground(new java.awt.Color(51, 153, 255));
         rbTodos.setFont(new java.awt.Font("Arial", 1, 14));
@@ -518,6 +513,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 rbTodosActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(rbTodos);
+        rbTodos.setBounds(209, 2, 69, 25);
 
         rbAtivos.setBackground(new java.awt.Color(51, 153, 255));
         rbAtivos.setFont(new java.awt.Font("Arial", 1, 14));
@@ -529,6 +526,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 rbAtivosActionPerformed(evt);
             }
         });
+        pnlBuscadorTDeCambio.add(rbAtivos);
+        rbAtivos.setBounds(283, 2, 77, 25);
 
         rbNoActivos.setBackground(new java.awt.Color(51, 153, 255));
         rbNoActivos.setFont(new java.awt.Font("Arial", 1, 14));
@@ -539,42 +538,13 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 rbNoActivosActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnlBuscadorTDeCambioLayout = new javax.swing.GroupLayout(pnlBuscadorTDeCambio);
-        pnlBuscadorTDeCambio.setLayout(pnlBuscadorTDeCambioLayout);
-        pnlBuscadorTDeCambioLayout.setHorizontalGroup(
-            pnlBuscadorTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscadorTDeCambioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(rbTodos)
-                .addGap(5, 5, 5)
-                .addComponent(rbAtivos)
-                .addGap(5, 5, 5)
-                .addComponent(rbNoActivos)
-                .addGap(99, 99, 99))
-        );
-        pnlBuscadorTDeCambioLayout.setVerticalGroup(
-            pnlBuscadorTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(rbTodos)
-            .addComponent(rbAtivos)
-            .addComponent(rbNoActivos)
-            .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        pnlBuscadorTDeCambio.add(rbNoActivos);
+        rbNoActivos.setBounds(365, 2, 101, 25);
 
         pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesTDeCambio.setOpaque(false);
         pnlAccionesTDeCambio.setPreferredSize(new java.awt.Dimension(550, 50));
+        pnlAccionesTDeCambio.setLayout(null);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
         btnNuevo.setText("Nuevo");
@@ -583,6 +553,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnNuevoActionPerformed(evt);
             }
         });
+        pnlAccionesTDeCambio.add(btnNuevo);
+        btnNuevo.setBounds(12, 2, 78, 25);
 
         btnModificar.setBackground(new java.awt.Color(51, 153, 255));
         btnModificar.setText("Modificar");
@@ -592,6 +564,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnModificarActionPerformed(evt);
             }
         });
+        pnlAccionesTDeCambio.add(btnModificar);
+        btnModificar.setBounds(96, 2, 98, 25);
 
         btnGuardar.setBackground(new java.awt.Color(51, 153, 255));
         btnGuardar.setText("Guardar");
@@ -601,6 +575,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnGuardarActionPerformed(evt);
             }
         });
+        pnlAccionesTDeCambio.add(btnGuardar);
+        btnGuardar.setBounds(204, 2, 89, 25);
 
         btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
         btnCancelar.setText("Cancelar");
@@ -609,6 +585,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
+        pnlAccionesTDeCambio.add(btnCancelar);
+        btnCancelar.setBounds(299, 2, 94, 25);
 
         btnSalir.setBackground(new java.awt.Color(51, 153, 255));
         btnSalir.setText("Salir");
@@ -617,35 +595,8 @@ public class IRegistrosSanitarios extends javax.swing.JPanel {
                 btnSalirActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnlAccionesTDeCambioLayout = new javax.swing.GroupLayout(pnlAccionesTDeCambio);
-        pnlAccionesTDeCambio.setLayout(pnlAccionesTDeCambioLayout);
-        pnlAccionesTDeCambioLayout.setHorizontalGroup(
-            pnlAccionesTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAccionesTDeCambioLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnlAccionesTDeCambioLayout.setVerticalGroup(
-            pnlAccionesTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAccionesTDeCambioLayout.createSequentialGroup()
-                .addGroup(pnlAccionesTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnlAccionesTDeCambio.add(btnSalir);
+        btnSalir.setBounds(403, 2, 88, 25);
 
         lbAviso.setBackground(new java.awt.Color(255, 0, 51));
         lbAviso.setForeground(new java.awt.Color(255, 255, 0));
@@ -838,17 +789,21 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void txtProductoRegSanitarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoRegSanitarioKeyReleased
     switch (evt.getKeyCode()){
-        case KeyEvent.VK_ENTER: txtFechaVencimiento.requestFocus();
+        case KeyEvent.VK_ENTER: dteFechaVencimiento.requestFocus();
              break;
     }
 }//GEN-LAST:event_txtProductoRegSanitarioKeyReleased
 
-private void txtFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaVencimientoKeyReleased
+private void dteFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dteFechaVencimientoKeyReleased
     switch (evt.getKeyCode()){
         case KeyEvent.VK_ENTER: chbEstado.requestFocus();
              break;
     }
-}//GEN-LAST:event_txtFechaVencimientoKeyReleased
+}//GEN-LAST:event_dteFechaVencimientoKeyReleased
+
+private void txtDteFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDteFechaVencimientoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtDteFechaVencimientoKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnAnterior;
@@ -862,6 +817,7 @@ private void txtFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-
     private elaprendiz.gui.button.ButtonRect btnUltimo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chbEstado;
+    private com.toedter.calendar.JDateChooser dteFechaVencimiento;
     private elaprendiz.gui.label.LabelRect lbAviso;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescripcion;
@@ -880,7 +836,7 @@ private void txtFechaVencimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-
     private javax.swing.JTable tblListado;
     private elaprendiz.gui.textField.TextField txtCodigo;
     private elaprendiz.gui.textField.TextField txtDescripcion;
-    private com.toedter.calendar.JDateChooser txtFechaVencimiento;
+    private elaprendiz.gui.textField.TextField txtDteFechaVencimiento;
     private elaprendiz.gui.textField.TextField txtProductoRegSanitario;
     private elaprendiz.gui.textField.TextField txtUnidad;
     // End of variables declaration//GEN-END:variables

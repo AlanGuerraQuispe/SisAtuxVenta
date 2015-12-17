@@ -2,8 +2,10 @@ package atux.modelgui;
 
 import atux.controllers.CProducto;
 import atux.modelbd.Producto;
+import atux.modelbd.ProductoFull;
+import atux.modelbd.ProductoLocal;
 
-public class ModeloTablaMaestroProductos extends ModeloTabla{
+public class ModeloTablaMaestroProductosFull extends ModeloTabla{
 
     String[] columnas = {"CODIGO", "DESCRIPCION", "UNIDAD PRODUCTO", "LABORATORIO"};
     public static int TODOS = -1;
@@ -11,34 +13,40 @@ public class ModeloTablaMaestroProductos extends ModeloTabla{
     public static int NO_ACTIVOS = 0;
     public static final Integer[] anchoColumnas  = {140,600,200,300};
     public static final Integer[] anchoColumnasBusqueda  = {100,400,200,200};
-    
-    public ModeloTablaMaestroProductos(String Filtro) {
+
+    public ModeloTablaMaestroProductosFull (Producto producto, ProductoLocal productoLocal, ProductoFull productoFull) {
         cc = new CProducto();
-        this.nombreColumnas = columnas;       
-        registros = ((CProducto)cc).getProductosLaboratorio(Filtro);
+        this.nombreColumnas = columnas;
+        registros = ((CProducto)cc).getProductosMaestrosFull(producto, productoLocal, productoFull );
+
     }
 
 
-
-    public ModeloTablaMaestroProductos(int opcion) {
+    public ModeloTablaMaestroProductosFull(String Filtro) {
         cc = new CProducto();
-        this.nombreColumnas = columnas;       
+        this.nombreColumnas = columnas;
+        registros = ((CProducto)cc).getProductosMaestrosFull(Filtro);
+    }
+
+    public ModeloTablaMaestroProductosFull(int opcion) {
+        cc = new CProducto();
+        this.nombreColumnas = columnas;
         registros = ((CProducto)cc).getRegistros();
     }
-    
-    public ModeloTablaMaestroProductos(String[] campo,Object[] valor) {
+
+    public ModeloTablaMaestroProductosFull(String[] campo, Object[] valor) {
         cc = new CProducto();
-        this.nombreColumnas = columnas;       
+        this.nombreColumnas = columnas;
         registros = ((CProducto)cc).getRegistros(campo,valor);
     }
-    
-    public ModeloTablaMaestroProductos(int inicio,int finalPag) {
+
+    public ModeloTablaMaestroProductosFull(int inicio, int finalPag) {
         cc = new CProducto();
         this.nombreColumnas = columnas;
         cc.setNumPaginador(inicio, finalPag);
         registros = ((CProducto)cc).getRegistros(null);
     }
-    public ModeloTablaMaestroProductos(int opcion,int inicio,int finalPag) {
+    public ModeloTablaMaestroProductosFull(int opcion, int inicio, int finalPag) {
         cc = new CProducto();
         this.nombreColumnas = columnas;
         cc.setNumPaginador(inicio, finalPag);
@@ -70,11 +78,12 @@ public class ModeloTablaMaestroProductos extends ModeloTabla{
     public Object getValueAt(int rowIndex, int columnIndex) {        
         switch(columnIndex)
         {
-            case 0: return ((Producto)registros.get(rowIndex)).getCoProducto();
-            case 1: return ((Producto)registros.get(rowIndex)).getDeProducto();
-            case 2: return ((Producto)registros.get(rowIndex)).getDeUnidadProducto();
-            case 3: return ((Producto)registros.get(rowIndex)).getDeLaboratorio();
+            case 0: return ((ProductoFull)registros.get(rowIndex)).getTmpCoProducto();
+            case 1: return ((ProductoFull)registros.get(rowIndex)).getTmpDeProducto();
+            case 2: return ((ProductoFull)registros.get(rowIndex)).getTmpDeUnidadProducto();
+            case 3: return ((ProductoFull)registros.get(rowIndex)).getTlbDeLaboratorio();
             default: return null;   
         }
     }
+
 }

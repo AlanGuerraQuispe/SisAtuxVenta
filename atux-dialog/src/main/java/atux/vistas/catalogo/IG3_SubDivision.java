@@ -53,6 +53,12 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
         setFiltroTexto();        
         rbAtivos.setSelected(true);
         LlenaGrid();
+        txtLineaComercial.setBounds(306, 16, 269, 25);
+        txtDivision.setBounds(306, 54, 269, 25);
+        txtSub_Divisiion.setBounds(306, 90, 269, 25);
+        txtCodigoG1.setBounds(97, 16, 83, 25);
+        txtCodigoG2.setBounds(97, 54, 83, 25);
+        txtCodigoG3.setBounds(97, 90, 83, 25);        
     }
 
     private void Limpiar(String Todo){
@@ -279,37 +285,52 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
 
         setBorder(null);
         setTitle("Formulario de Set de Categorias - G3");
-        setPreferredSize(new java.awt.Dimension(820, 470));
+        setPreferredSize(new java.awt.Dimension(780, 460));
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
-        panelImage1.setPreferredSize(new java.awt.Dimension(820, 470));
+        panelImage1.setPreferredSize(new java.awt.Dimension(780, 460));
+        panelImage1.setLayout(null);
 
-        pnlEntradasCategorias_G03.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Set de Categorias - G03", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
-        pnlEntradasCategorias_G03.setEnabled(false);
+        pnlEntradasCategorias_G03.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Set de Categorias - G03", 1, 2));
         pnlEntradasCategorias_G03.setOpaque(false);
         pnlEntradasCategorias_G03.setPreferredSize(new java.awt.Dimension(748, 120));
+        pnlEntradasCategorias_G03.setLayout(null);
 
         lblCodigoG1.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigoG1.setText("G1 - Codigo:");
+        pnlEntradasCategorias_G03.add(lblCodigoG1);
+        lblCodigoG1.setBounds(6, 17, 87, 27);
 
         lblDescripG1.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescripG1.setText("Linea Comercial:");
+        pnlEntradasCategorias_G03.add(lblDescripG1);
+        lblDescripG1.setBounds(190, 17, 112, 24);
 
         lblCodigoG2.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigoG2.setText("G2 - Codigo:");
+        pnlEntradasCategorias_G03.add(lblCodigoG2);
+        lblCodigoG2.setBounds(6, 55, 87, 27);
 
         lblDescripG2.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescripG2.setText("Division:");
+        pnlEntradasCategorias_G03.add(lblDescripG2);
+        lblDescripG2.setBounds(245, 55, 57, 24);
 
         lblCodigoG3.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigoG3.setText("G3 - Codigo:");
+        pnlEntradasCategorias_G03.add(lblCodigoG3);
+        lblCodigoG3.setBounds(6, 91, 87, 27);
 
         lblDescripG3.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblDescripG3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDescripG3.setText("Sub_Division:");
+        pnlEntradasCategorias_G03.add(lblDescripG3);
+        lblDescripG3.setBounds(190, 91, 112, 24);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado:");
+        pnlEntradasCategorias_G03.add(lblEstado);
+        lblEstado.setBounds(580, 96, 53, 17);
 
         txtCodigoG1.setEditable(false);
         txtCodigoG1.setDireccionDeSombra(30);
@@ -317,6 +338,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
         txtCodigoG1.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodigoG1.setName("pcodigo"); // NOI18N
         txtCodigoG1.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasCategorias_G03.add(txtCodigoG1);
+        txtCodigoG1.setBounds(97, 16, 83, 30);
 
         txtLineaComercial.setEditable(false);
         txtLineaComercial.setDireccionDeSombra(30);
@@ -324,6 +347,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
         txtLineaComercial.setFont(new java.awt.Font("Arial", 0, 12));
         txtLineaComercial.setName("pdescrip"); // NOI18N
         txtLineaComercial.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasCategorias_G03.add(txtLineaComercial);
+        txtLineaComercial.setBounds(306, 16, 269, 30);
 
         txtCodigoG2.setEditable(false);
         txtCodigoG2.setDireccionDeSombra(30);
@@ -331,6 +356,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
         txtCodigoG2.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodigoG2.setName("pcodigo"); // NOI18N
         txtCodigoG2.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasCategorias_G03.add(txtCodigoG2);
+        txtCodigoG2.setBounds(97, 54, 83, 30);
 
         txtDivision.setEditable(false);
         txtDivision.setDireccionDeSombra(30);
@@ -338,6 +365,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
         txtDivision.setFont(new java.awt.Font("Arial", 0, 12));
         txtDivision.setName("pdescrip"); // NOI18N
         txtDivision.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasCategorias_G03.add(txtDivision);
+        txtDivision.setBounds(306, 54, 269, 30);
 
         txtCodigoG3.setEditable(false);
         txtCodigoG3.setDireccionDeSombra(30);
@@ -350,6 +379,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 txtCodigoG3KeyReleased(evt);
             }
         });
+        pnlEntradasCategorias_G03.add(txtCodigoG3);
+        txtCodigoG3.setBounds(97, 90, 83, 30);
 
         txtSub_Divisiion.setEditable(false);
         txtSub_Divisiion.setDireccionDeSombra(30);
@@ -362,6 +393,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 txtSub_DivisiionKeyReleased(evt);
             }
         });
+        pnlEntradasCategorias_G03.add(txtSub_Divisiion);
+        txtSub_Divisiion.setBounds(306, 90, 269, 30);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -379,6 +412,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradasCategorias_G03.add(chbEstado);
+        chbEstado.setBounds(640, 96, 100, 20);
 
         btnSeleccionarG1.setBackground(new java.awt.Color(51, 153, 255));
         btnSeleccionarG1.setText("Seleccionar");
@@ -387,6 +422,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnSeleccionarG1ActionPerformed(evt);
             }
         });
+        pnlEntradasCategorias_G03.add(btnSeleccionarG1);
+        btnSeleccionarG1.setBounds(590, 16, 115, 25);
 
         btnSeleccionarG2.setBackground(new java.awt.Color(51, 153, 255));
         btnSeleccionarG2.setText("Seleccionar");
@@ -395,91 +432,16 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnSeleccionarG2ActionPerformed(evt);
             }
         });
+        pnlEntradasCategorias_G03.add(btnSeleccionarG2);
+        btnSeleccionarG2.setBounds(590, 56, 115, 25);
 
-        javax.swing.GroupLayout pnlEntradasCategorias_G03Layout = new javax.swing.GroupLayout(pnlEntradasCategorias_G03);
-        pnlEntradasCategorias_G03.setLayout(pnlEntradasCategorias_G03Layout);
-        pnlEntradasCategorias_G03Layout.setHorizontalGroup(
-            pnlEntradasCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                .addComponent(lblCodigoG1)
-                .addGap(4, 4, 4)
-                .addComponent(txtCodigoG1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblDescripG1)
-                .addGap(4, 4, 4)
-                .addComponent(txtLineaComercial, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(btnSeleccionarG1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                .addComponent(lblCodigoG2)
-                .addGap(4, 4, 4)
-                .addComponent(txtCodigoG2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(lblDescripG2)
-                .addGap(4, 4, 4)
-                .addComponent(txtDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(btnSeleccionarG2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                .addComponent(lblCodigoG3)
-                .addGap(4, 4, 4)
-                .addComponent(txtCodigoG3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblDescripG3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(txtSub_Divisiion, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(lblEstado)
-                .addGap(7, 7, 7)
-                .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnlEntradasCategorias_G03Layout.setVerticalGroup(
-            pnlEntradasCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                .addGroup(pnlEntradasCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblCodigoG1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtCodigoG1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblDescripG1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtLineaComercial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSeleccionarG1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(pnlEntradasCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblCodigoG2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtCodigoG2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblDescripG2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnSeleccionarG2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
-                .addGroup(pnlEntradasCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblCodigoG3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtCodigoG3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblDescripG3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtSub_Divisiion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblEstado))
-                    .addGroup(pnlEntradasCategorias_G03Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
+        panelImage1.add(pnlEntradasCategorias_G03);
+        pnlEntradasCategorias_G03.setBounds(10, 11, 764, 130);
 
-        pnlBuscadorCategorias_G03.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorCategorias_G03.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorCategorias_G03.setOpaque(false);
         pnlBuscadorCategorias_G03.setPreferredSize(new java.awt.Dimension(575, 37));
+        pnlBuscadorCategorias_G03.setLayout(null);
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
         btnPrimero.setText("<<");
@@ -488,6 +450,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnPrimeroActionPerformed(evt);
             }
         });
+        pnlBuscadorCategorias_G03.add(btnPrimero);
+        btnPrimero.setBounds(12, 2, 48, 25);
 
         btnAnterior.setBackground(new java.awt.Color(102, 204, 0));
         btnAnterior.setText("<");
@@ -496,6 +460,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnAnteriorActionPerformed(evt);
             }
         });
+        pnlBuscadorCategorias_G03.add(btnAnterior);
+        btnAnterior.setBounds(65, 2, 40, 25);
 
         btnSiguiente.setBackground(new java.awt.Color(102, 204, 0));
         btnSiguiente.setText(">");
@@ -504,6 +470,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnSiguienteActionPerformed(evt);
             }
         });
+        pnlBuscadorCategorias_G03.add(btnSiguiente);
+        btnSiguiente.setBounds(111, 2, 40, 25);
 
         btnUltimo.setBackground(new java.awt.Color(104, 204, 0));
         btnUltimo.setText(">>");
@@ -512,6 +480,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnUltimoActionPerformed(evt);
             }
         });
+        pnlBuscadorCategorias_G03.add(btnUltimo);
+        btnUltimo.setBounds(156, 2, 48, 25);
 
         rbTodos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbTodos);
@@ -523,6 +493,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 rbTodosActionPerformed(evt);
             }
         });
+        pnlBuscadorCategorias_G03.add(rbTodos);
+        rbTodos.setBounds(209, 2, 69, 25);
 
         rbAtivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbAtivos);
@@ -534,6 +506,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 rbAtivosActionPerformed(evt);
             }
         });
+        pnlBuscadorCategorias_G03.add(rbAtivos);
+        rbAtivos.setBounds(283, 2, 77, 25);
 
         rbNoActivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbNoActivos);
@@ -545,45 +519,16 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 rbNoActivosActionPerformed(evt);
             }
         });
+        pnlBuscadorCategorias_G03.add(rbNoActivos);
+        rbNoActivos.setBounds(365, 2, 101, 25);
 
-        javax.swing.GroupLayout pnlBuscadorCategorias_G03Layout = new javax.swing.GroupLayout(pnlBuscadorCategorias_G03);
-        pnlBuscadorCategorias_G03.setLayout(pnlBuscadorCategorias_G03Layout);
-        pnlBuscadorCategorias_G03Layout.setHorizontalGroup(
-            pnlBuscadorCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscadorCategorias_G03Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(rbTodos)
-                .addGap(5, 5, 5)
-                .addComponent(rbAtivos)
-                .addGap(5, 5, 5)
-                .addComponent(rbNoActivos)
-                .addGap(95, 95, 95))
-        );
-        pnlBuscadorCategorias_G03Layout.setVerticalGroup(
-            pnlBuscadorCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscadorCategorias_G03Layout.createSequentialGroup()
-                .addGroup(pnlBuscadorCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbTodos)
-                    .addComponent(rbAtivos)
-                    .addComponent(rbNoActivos)
-                    .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(4, Short.MAX_VALUE))
-        );
+        panelImage1.add(pnlBuscadorCategorias_G03);
+        pnlBuscadorCategorias_G03.setBounds(148, 147, 488, 32);
 
-        pnlAccionesCategorias_G03.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesCategorias_G03.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesCategorias_G03.setOpaque(false);
         pnlAccionesCategorias_G03.setPreferredSize(new java.awt.Dimension(550, 50));
+        pnlAccionesCategorias_G03.setLayout(null);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
         btnNuevo.setText("Nuevo");
@@ -592,6 +537,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
+        pnlAccionesCategorias_G03.add(btnNuevo);
+        btnNuevo.setBounds(12, 2, 78, 25);
 
         btnModificar.setBackground(new java.awt.Color(51, 153, 255));
         btnModificar.setText("Modificar");
@@ -601,6 +548,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
+        pnlAccionesCategorias_G03.add(btnModificar);
+        btnModificar.setBounds(96, 2, 98, 25);
 
         btnGuardar.setBackground(new java.awt.Color(51, 153, 255));
         btnGuardar.setText("Guardar");
@@ -610,6 +559,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
+        pnlAccionesCategorias_G03.add(btnGuardar);
+        btnGuardar.setBounds(200, 2, 89, 25);
 
         btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
         btnCancelar.setText("Cancelar");
@@ -618,6 +569,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
+        pnlAccionesCategorias_G03.add(btnCancelar);
+        btnCancelar.setBounds(295, 2, 94, 25);
 
         btnSalir.setBackground(new java.awt.Color(51, 153, 255));
         btnSalir.setText("Salir");
@@ -626,33 +579,11 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
                 btnSalirActionPerformed(evt);
             }
         });
+        pnlAccionesCategorias_G03.add(btnSalir);
+        btnSalir.setBounds(395, 2, 88, 25);
 
-        javax.swing.GroupLayout pnlAccionesCategorias_G03Layout = new javax.swing.GroupLayout(pnlAccionesCategorias_G03);
-        pnlAccionesCategorias_G03.setLayout(pnlAccionesCategorias_G03Layout);
-        pnlAccionesCategorias_G03Layout.setHorizontalGroup(
-            pnlAccionesCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAccionesCategorias_G03Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlAccionesCategorias_G03Layout.setVerticalGroup(
-            pnlAccionesCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAccionesCategorias_G03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        panelImage1.add(pnlAccionesCategorias_G03);
+        pnlAccionesCategorias_G03.setBounds(142, 393, 495, 31);
 
         tblListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -669,32 +600,8 @@ public class IG3_SubDivision extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblListado);
 
-        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
-        panelImage1.setLayout(panelImage1Layout);
-        panelImage1Layout.setHorizontalGroup(
-            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImage1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(pnlEntradasCategorias_G03, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlAccionesCategorias_G03, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlBuscadorCategorias_G03, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        panelImage1Layout.setVerticalGroup(
-            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlEntradasCategorias_G03, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlBuscadorCategorias_G03, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(pnlAccionesCategorias_G03, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-        );
+        panelImage1.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 185, 756, 197);
 
         getContentPane().add(panelImage1, java.awt.BorderLayout.CENTER);
 

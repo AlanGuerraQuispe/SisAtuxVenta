@@ -464,7 +464,7 @@ public class DlgGuiaIngreso extends JDialog {
 			initInfoMontos(true);
 			try {
 				porcentajeVariacion = AtuxUtility.getDecimalNumber(AtuxDBUtility.getValueAt("CMTR_VARIABLES_SISTEMA", "VA_NUMERICO",
-						"CO_COMPANIA = '"+AtuxVariables.vCodigoCompania+"' AND CO_LOCAL = '099' AND CO_VARIABLE = 'porcentaje.variacion.cotizacion'"));
+						"CO_COMPANIA = '"+AtuxVariables.vCodigoCompania+"' AND CO_LOCAL = '00099' AND CO_VARIABLE = 'porcentaje.variacion.cotizacion'"));
 				porcentajeVariacion = porcentajeVariacion / 100;
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this, "Problemas al obtener el Porcentaje de Variacion de Precios", "Cotizaciones por Competencia", JOptionPane.WARNING_MESSAGE);

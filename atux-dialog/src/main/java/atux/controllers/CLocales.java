@@ -722,7 +722,7 @@ public class CLocales extends JAbstractController{
     public String getNuevoCodigo(String coCompania){
         String Codigo="";
         try {
-            return AtuxDBUtility.getValueAt(Locales.nt,"CASE WHEN LENGTH(TRIM(TRANSLATE(max(co_local), ' +-.0123456789', ' '))) IS NULL THEN rtrim(ltrim(to_char(max(co_local) + 1,'000'))) ELSE CASE when substr(max(co_local),2,2)+1 < 100 then substr(max(co_local),1,1) || to_char(substr(max(co_local),2,2)+1) ELSE CHR(ASCII(substr(max(co_local),1,1)) +1) || '01' END END NuevoCodigo"," CO_COMPANIA = '" + coCompania + "'");
+            return AtuxDBUtility.getValueAt(Locales.nt,"CASE WHEN LENGTH(TRIM(TRANSLATE(max(co_local), ' +-.0123456789', ' '))) IS NULL THEN rtrim(ltrim(to_char(max(co_local) + 1,'00000'))) ELSE CASE when substr(max(co_local),2,2)+1 < 100 then substr(max(co_local),1,1) || to_char(substr(max(co_local),2,2)+1) ELSE CHR(ASCII(substr(max(co_local),1,1)) +1) || '01' END END NuevoCodigo"," CO_COMPANIA = '" + coCompania + "'");
         } catch (SQLException ex) {
             Logger.getLogger(CLocales.class.getName()).log(Level.SEVERE, null, ex);
         }

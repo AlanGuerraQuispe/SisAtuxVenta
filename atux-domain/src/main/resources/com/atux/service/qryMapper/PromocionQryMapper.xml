@@ -146,10 +146,10 @@
        </where>
     </select>
     <delete id="deletePromocion" parameterType="string">
-        DELETE FROM PRTD_PRODUCTO_PLAN_PROMO WHERE CO_COMPANIA='001' AND CO_PROMOCION=#{value}
+        DELETE FROM PRTD_PRODUCTO_PLAN_PROMO WHERE CO_COMPANIA='00001' AND CO_PROMOCION=#{value}
     </delete>
     <delete id="deletePromocionLocal" parameterType="string">
-        DELETE FROM PRTR_LOCAL_PROMO WHERE CO_COMPANIA='001' AND CO_PROMOCION=#{value}
+        DELETE FROM PRTR_LOCAL_PROMO WHERE CO_COMPANIA='00001' AND CO_PROMOCION=#{value}
     </delete>
 
 </mapper>

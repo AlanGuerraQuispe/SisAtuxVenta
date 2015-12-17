@@ -3,6 +3,7 @@ package atux.controllers;
 import atux.core.Ex;
 import atux.core.JAbstractController;
 import atux.core.JAbstractModelBD;
+import atux.managerbd.BaseConexion;
 import atux.modelbd.G2_Division;
 import atux.util.common.AtuxDBUtility;
 import java.sql.SQLException;
@@ -47,7 +48,19 @@ public class CG2_Division extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            BaseConexion.closeConnection();
+            BaseConexion.setConnectionNull();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;    
     }
     
@@ -71,7 +84,19 @@ public class CG2_Division extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            BaseConexion.closeConnection();
+            BaseConexion.setConnectionNull();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return G2_Grupo;
     }
     
@@ -113,7 +138,19 @@ public class CG2_Division extends JAbstractController{
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Se cierran los recursos de base de datos.
+            BaseConexion.closeConnection();
+            BaseConexion.setConnectionNull();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No ha podido cerrar ResultSet.");
+            }
         }
+
         return rgs;
         
     }

@@ -64,7 +64,7 @@ public class INumeroPedido extends javax.swing.JDialog {
         lblFecha.setForeground(new java.awt.Color(255, 255, 255));
         lblFecha.setText("dd/mm/yyyy");
 
-        btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/LogoMenu.png"))); // NOI18N
+        btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/LogoMenuICBB.png"))); // NOI18N
         btnContinuar.setBorder(null);
         btnContinuar.setFocusPainted(false);
         btnContinuar.setFocusable(false);
@@ -80,7 +80,7 @@ public class INumeroPedido extends javax.swing.JDialog {
             panelImageNumeroPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImageNumeroPedidoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panelImageNumeroPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelImageNumeroPedidoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

@@ -74,6 +74,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
         setFiltroTexto();        
         setEventSelectionModel(tblMedicos.getSelectionModel());
         DesActivarCasillas();
+        cmbTipoDocumento.setBounds(264, 137, 80, 25);
+        txtCmbTipoDocumento.setBounds(264, 137, 80, 25);
     }
 
     private void setFiltroTexto(){
@@ -127,6 +129,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
         }else{
             chbSetActivo(false); 
         }
+        txtCmbTipoDocumento.setText(cmbTipoDocumento.getSelectedItem().toString());
+
         this.btnModificar.setEnabled(true);
     }
     
@@ -164,6 +168,9 @@ public class IMedicos extends javax.swing.JInternalFrame {
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
         
+        cmbTipoDocumento.setVisible(true);
+        txtCmbTipoDocumento.setVisible(false);
+        
         this.cmbTipoDocumento.setEnabled(true);
         btnEspecialidad.setEnabled(false);
     }
@@ -186,7 +193,10 @@ public class IMedicos extends javax.swing.JInternalFrame {
         this.btnBuscar.setEnabled(true);
         this.rbTodos.setEnabled(true);
         this.rbAtivos.setEnabled(true);
-        this.rbNoActivos.setEnabled(true);        
+        this.rbNoActivos.setEnabled(true);
+
+        cmbTipoDocumento.setVisible(false);
+        txtCmbTipoDocumento.setVisible(true);
 
         esActualizacion = false;
         this.cmbTipoDocumento.setEnabled(false);
@@ -309,6 +319,7 @@ public class IMedicos extends javax.swing.JInternalFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         panelImage1 = new elaprendiz.gui.panel.PanelImage();
         pnlEntradasMedicos = new javax.swing.JPanel();
+        txtCmbTipoDocumento = new elaprendiz.gui.textField.TextField();
         lblCodigo = new javax.swing.JLabel();
         lblCMP = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
@@ -353,33 +364,63 @@ public class IMedicos extends javax.swing.JInternalFrame {
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
-        pnlEntradasMedicos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Medicos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradasMedicos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Medicos", 1, 2));
         pnlEntradasMedicos.setEnabled(false);
         pnlEntradasMedicos.setOpaque(false);
+        pnlEntradasMedicos.setLayout(null);
+
+        txtCmbTipoDocumento.setEditable(false);
+        txtCmbTipoDocumento.setDireccionDeSombra(30);
+        txtCmbTipoDocumento.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtCmbTipoDocumento.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCmbTipoDocumento.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtCmbTipoDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCmbTipoDocumentoKeyReleased(evt);
+            }
+        });
+        pnlEntradasMedicos.add(txtCmbTipoDocumento);
+        txtCmbTipoDocumento.setBounds(356, 135, 30, 25);
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCodigo.setText("Codigo:");
+        pnlEntradasMedicos.add(lblCodigo);
+        lblCodigo.setBounds(31, 16, 54, 27);
 
         lblCMP.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblCMP.setText("CMP:");
+        pnlEntradasMedicos.add(lblCMP);
+        lblCMP.setBounds(540, 16, 36, 27);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado:");
+        pnlEntradasMedicos.add(lblEstado);
+        lblEstado.setBounds(706, 22, 53, 17);
 
         lblApPaterno.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblApPaterno.setText("Ap.Paterno:");
+        pnlEntradasMedicos.add(lblApPaterno);
+        lblApPaterno.setBounds(6, 54, 83, 24);
 
         lblApeMaterno.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblApeMaterno.setText("Ap.Materno:");
+        pnlEntradasMedicos.add(lblApeMaterno);
+        lblApeMaterno.setBounds(480, 54, 86, 24);
 
         lblNombres.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblNombres.setText("Nombres:");
+        pnlEntradasMedicos.add(lblNombres);
+        lblNombres.setBounds(21, 95, 68, 24);
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEmail.setText("E-mail:");
+        pnlEntradasMedicos.add(lblEmail);
+        lblEmail.setBounds(520, 95, 47, 24);
 
         lblTelefono.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTelefono.setText("Teléfono:");
+        pnlEntradasMedicos.add(lblTelefono);
+        lblTelefono.setBounds(27, 133, 65, 27);
 
         txtCodigo.setEditable(false);
         txtCodigo.setDireccionDeSombra(30);
@@ -392,6 +433,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 txtCodigoKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(txtCodigo);
+        txtCodigo.setBounds(95, 18, 83, 25);
 
         txtCMP.setEditable(false);
         txtCMP.setDireccionDeSombra(30);
@@ -403,6 +446,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 txtCMPKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(txtCMP);
+        txtCMP.setBounds(580, 18, 83, 25);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -420,6 +465,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(chbEstado);
+        chbEstado.setBounds(765, 18, 111, 25);
 
         txtAp_Paterno.setEditable(false);
         txtAp_Paterno.setDireccionDeSombra(30);
@@ -437,6 +484,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 txtAp_PaternoKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(txtAp_Paterno);
+        txtAp_Paterno.setBounds(93, 53, 380, 30);
 
         txtAp_Materno.setEditable(false);
         txtAp_Materno.setDireccionDeSombra(30);
@@ -454,6 +503,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 txtAp_MaternoKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(txtAp_Materno);
+        txtAp_Materno.setBounds(580, 53, 320, 30);
 
         txtNombres.setEditable(false);
         txtNombres.setDireccionDeSombra(30);
@@ -471,6 +522,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 txtNombresKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(txtNombres);
+        txtNombres.setBounds(93, 94, 380, 30);
 
         txtemail.setEditable(false);
         txtemail.setDireccionDeSombra(30);
@@ -482,6 +535,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 txtemailKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(txtemail);
+        txtemail.setBounds(580, 94, 320, 30);
 
         txtTelefono.setEditable(false);
         txtTelefono.setDireccionDeSombra(30);
@@ -493,6 +548,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 txtTelefonoKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(txtTelefono);
+        txtTelefono.setBounds(96, 135, 83, 25);
 
         btnEspecialidad.setBackground(new java.awt.Color(51, 153, 255));
         btnEspecialidad.setText("Especialidad");
@@ -501,12 +558,18 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 btnEspecialidadActionPerformed(evt);
             }
         });
+        pnlEntradasMedicos.add(btnEspecialidad);
+        btnEspecialidad.setBounds(780, 135, 121, 25);
 
         lblTipoDoc.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTipoDoc.setText("Tipo Doc:");
+        pnlEntradasMedicos.add(lblTipoDoc);
+        lblTipoDoc.setBounds(189, 133, 65, 27);
 
-        lblNroDoc.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNroDoc.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblNroDoc.setText("Nro Doc:");
+        pnlEntradasMedicos.add(lblNroDoc);
+        lblNroDoc.setBounds(510, 133, 61, 27);
 
         txtNroDocumento.setEditable(false);
         txtNroDocumento.setDireccionDeSombra(30);
@@ -518,6 +581,8 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 txtNroDocumentoKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(txtNroDocumento);
+        txtNroDocumento.setBounds(580, 135, 167, 25);
 
         cmbTipoDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -529,120 +594,10 @@ public class IMedicos extends javax.swing.JInternalFrame {
                 cmbTipoDocumentoKeyReleased(evt);
             }
         });
+        pnlEntradasMedicos.add(cmbTipoDocumento);
+        cmbTipoDocumento.setBounds(264, 137, 80, 20);
 
-        javax.swing.GroupLayout pnlEntradasMedicosLayout = new javax.swing.GroupLayout(pnlEntradasMedicos);
-        pnlEntradasMedicos.setLayout(pnlEntradasMedicosLayout);
-        pnlEntradasMedicosLayout.setHorizontalGroup(
-            pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                .addGroup(pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(lblCodigo)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(362, 362, 362)
-                        .addComponent(lblCMP)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtCMP, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(lblEstado)
-                        .addGap(6, 6, 6)
-                        .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addComponent(lblApPaterno)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtAp_Paterno, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(lblApeMaterno)
-                        .addGap(14, 14, 14)
-                        .addComponent(txtAp_Materno, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(lblNombres)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(lblEmail)
-                        .addGap(13, 13, 13)
-                        .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblTelefono)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(lblTipoDoc)
-                        .addGap(10, 10, 10)
-                        .addComponent(cmbTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(166, 166, 166)
-                        .addComponent(lblNroDoc)
-                        .addGap(9, 9, 9)
-                        .addComponent(txtNroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlEntradasMedicosLayout.setVerticalGroup(
-            pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                .addGroup(pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblCMP, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(lblEstado))
-                            .addComponent(txtCMP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(10, 10, 10)
-                .addGroup(pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblApPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtAp_Paterno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtAp_Materno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(pnlEntradasMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNroDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(txtNroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(cmbTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEntradasMedicosLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(btnEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnlBuscadorMedicos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorMedicos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorMedicos.setOpaque(false);
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
@@ -725,7 +680,7 @@ public class IMedicos extends javax.swing.JInternalFrame {
             .addGap(0, 563, Short.MAX_VALUE)
             .addGroup(pnlBuscadorMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorMedicosLayout.createSequentialGroup()
-                    .addGap(0, 8, Short.MAX_VALUE)
+                    .addGap(0, 12, Short.MAX_VALUE)
                     .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5, 5, 5)
                     .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -741,7 +696,7 @@ public class IMedicos extends javax.swing.JInternalFrame {
                     .addComponent(rbAtivos)
                     .addGap(5, 5, 5)
                     .addComponent(rbNoActivos)
-                    .addGap(0, 8, Short.MAX_VALUE)))
+                    .addGap(0, 12, Short.MAX_VALUE)))
         );
         pnlBuscadorMedicosLayout.setVerticalGroup(
             pnlBuscadorMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -761,7 +716,7 @@ public class IMedicos extends javax.swing.JInternalFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        pnlAccionesMedicos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesMedicos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesMedicos.setOpaque(false);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
@@ -852,19 +807,19 @@ public class IMedicos extends javax.swing.JInternalFrame {
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImage1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlEntradasMedicos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 917, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 917, Short.MAX_VALUE)
                     .addComponent(pnlAccionesMedicos, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlBuscadorMedicos, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlEntradasMedicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlBuscadorMedicos, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
-                .addComponent(pnlEntradasMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlEntradasMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlBuscadorMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1165,6 +1120,10 @@ private void chbEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
 }//GEN-LAST:event_chbEstadoKeyReleased
 
+private void txtCmbTipoDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCmbTipoDocumentoKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtCmbTipoDocumentoKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnAnterior;
     private elaprendiz.gui.button.ButtonRect btnBuscar;
@@ -1202,6 +1161,7 @@ private void chbEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private elaprendiz.gui.textField.TextField txtAp_Materno;
     private elaprendiz.gui.textField.TextField txtAp_Paterno;
     private elaprendiz.gui.textField.TextField txtCMP;
+    private elaprendiz.gui.textField.TextField txtCmbTipoDocumento;
     private elaprendiz.gui.textField.TextField txtCodigo;
     private elaprendiz.gui.textField.TextField txtNombres;
     private elaprendiz.gui.textField.TextField txtNroDocumento;

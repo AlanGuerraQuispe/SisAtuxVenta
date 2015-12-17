@@ -1984,9 +1984,10 @@ private void bntPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     usuario=cp.getUsuario();
 
+   
     if(nu == JOptionPane.OK_OPTION){
         CambiarPassword pvc = new CambiarPassword(usuario);
-        JLabel aviso = pvc.getLbAviso();
+        JLabel aviso = pvc.getlblAviso();
 
         JOptionPane.showInternalOptionDialog(this, pvc, "Cambiar Contraseña",JOptionPane.OK_CANCEL_OPTION,
                                     JOptionPane.QUESTION_MESSAGE, null, new Object[]{aviso},null);
